@@ -2,9 +2,10 @@ ifeq ($(TARGET_BOARD_PLATFORM),)
     $(error Please define TARGET_BOARD_PLATFORM in product-level Makefile)
 endif
 
-# Hald blacklist config
-# REMOVE THIS WHEN hald IS REMOVED
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/../atomisp.conf:system/etc/modprobe.d/atomisp.conf
+# Android framework boilerplate.
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
 
 # Camera HAL (libcamera2)
 PRODUCT_PACKAGES += camera.$(TARGET_BOARD_PLATFORM)
@@ -27,7 +28,9 @@ PRODUCT_PACKAGES += \
     shisp_2400b0_v21.bin \
 
 # libmix
-PRODUCT_PACKAGES += libmix_videovpp
+PRODUCT_PACKAGES += \
+    libmix_videovpp \
+    libintelmetadatabuffer
 
 # Only include libmix_videovpp test program in eng builds.
 ifeq ($(TARGET_BUILD_VARIANT),eng)
