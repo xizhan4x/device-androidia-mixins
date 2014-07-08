@@ -1,0 +1,15 @@
+# init.rc for telephony services specific to flashless platforms
+
+on post-fs-data
+
+# create config modem FW folder
+    mkdir /config/telephony
+    chown system radio /config/telephony
+    chmod 770 /config/telephony
+
+# adding nvm manager
+service nvm_manager /system/bin/nvm_server
+    class core
+    socket nvm-ctl stream 660 system radio
+    user system
+    group radio cache inet misc system

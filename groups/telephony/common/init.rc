@@ -4,3 +4,35 @@ on init
     # Contains dynamic configuration and calibration data.
     mkdir /config 0770 radio radio
 
+# init.rc for telephony services common to all platforms
+
+on post-fs-data
+
+# create NVM log folder
+    mkdir /data/modem
+    chown system radio /data/modem
+    chmod 770 /data/modem
+
+# create factory modem FW folder
+    mkdir /factory/telephony
+    chown system radio /factory/telephony
+    chmod 770 /factory/telephony
+
+# create cache modem FW folder
+    mkdir /cache/telephony
+    chown system radio /cache/telephony
+    chmod 770 /cache/telephony
+
+# adding Modem Manager
+service mmgr /system/bin/mmgr
+    class main
+    socket mmgr stream 660 system radio
+    user system
+    group radio cache inet misc system usb
+
+on property:persist.ril-daemon.disable=0
+   start ril-daemon
+
+on property:persist.ril-daemon.disable=1
+   stop ril-daemon
+
