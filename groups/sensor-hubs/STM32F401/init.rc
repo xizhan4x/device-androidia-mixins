@@ -1,0 +1,42 @@
+on post-fs
+    setprop ro.iio.accel.name "Accelerometer"
+    setprop ro.iio.accel.vendor "Intel"
+    setprop ro.iio.accel.max_range 20
+    setprop ro.iio.accel.resolution 0.01
+    setprop ro.iio.accel.power 0.23
+    setprop ro.iio.accel.transform "ISH"
+
+    setprop ro.iio.anglvel.name "Gyroscope"
+    setprop ro.iio.anglvel.vendor "Intel"
+    setprop ro.iio.anglvel.max_range 35
+    setprop ro.iio.anglvel.resolution 0.002
+    setprop ro.iio.anglvel.power 6.1
+    setprop ro.iio.anglvel.transform "ISH"
+
+    setprop ro.iio.magn.name = "Compass"
+    setprop ro.iio.magn.vendor "Intel"
+    setprop ro.iio.magn.max_range 2048
+    setprop ro.iio.magn.resolution 0.01
+    setprop ro.iio.magn.power 0.1
+    setprop ro.iio.magn.transform "ISH"
+
+    setprop ro.iio.intensity.name = "ALS"
+    setprop ro.iio.intensity.vendor "Intel"
+    setprop ro.iio.intensity.max_range 50000
+    setprop ro.iio.intensity.resolution 1.0
+    setprop ro.iio.intensity.power 0.01
+    setprop ro.iio.intensity.transform "ISH"
+
+    setprop ro.iio.incli.name "Orientation Sensor"
+    setprop ro.iio.incli.vendor "Intel"
+    setprop ro.iio.incli.max_range 360
+    setprop ro.iio.incli.resolution 0.01
+    setprop ro.iio.incli.power 0.1
+    setprop ro.iio.incli.transform "ISH"
+
+    setprop ro.iio.rot.name "Rotation Vector Sensor"
+    setprop ro.iio.rot.vendor "Intel"
+    setprop ro.iio.rot.max_range 1
+    setprop ro.iio.rot.resolution 0.001
+    setprop ro.iio.rot.power 0.1
+    setprop ro.iio.rot.transform "ISH"
