@@ -1,0 +1,113 @@
+/dev/iio:device*              0660   system     system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_accel_sampling_frequency   0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_accel_scale                0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_accel_offset               0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_accel_hysterisis           0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_accel_x_raw                0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_accel_y_raw                0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_accel_z_raw                0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_anglvel_sampling_frequency 0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_anglvel_scale              0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_anglvel_offset             0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_anglvel_hysterisis         0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_anglvel_x_raw              0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_anglvel_y_raw              0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_anglvel_z_raw              0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_magn_sampling_frequency    0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_magn_scale                 0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_magn_offset                0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_magn_hysterisis            0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_magn_x_raw                 0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_magn_y_raw                 0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_magn_z_raw                 0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_intensity_sampling_frequency 0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_intensity_scale              0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_intensity_offset             0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_intensity_hysterisis         0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_rot_sampling_frequency       0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_rot_scale                    0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_rot_offset                   0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_rot_hysterisis               0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_incli_sampling_frequency     0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_incli_scale                  0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_incli_offset                 0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_incli_hysterisis             0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_incli_x_raw                  0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_incli_y_raw                  0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* in_incli_z_raw                  0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* buffer/enable           0660    system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* buffer/length           0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* name                    0660    system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_x_en      0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_x_index   0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_x_type    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_y_en      0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_y_index   0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_y_type    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_z_en      0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_z_index   0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_accel_z_type    0660   system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_x_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_x_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_x_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_y_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_y_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_y_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_z_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_z_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_anglvel_z_type  0660   system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_x_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_x_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_x_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_y_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_y_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_y_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_z_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_z_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_magn_z_type  0660   system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_x_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_x_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_x_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_y_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_y_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_y_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_z_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_z_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_z_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_w_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_w_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_rot_quat_w_type  0660   system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_intensity_both_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_intensity_both_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_intensity_both_type  0660   system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_x_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_x_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_x_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_y_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_y_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_y_type  0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_z_en    0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_z_index 0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* scan_elements/in_incli_z_type  0660   system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* trigger/current_trigger          0660   system  system
+
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* power/autosuspend_delay_ms      0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* power/control                   0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* power/runtime_active_time       0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* power/runtime_status            0660   system  system
+/sys/devices/pci*/*/i2c-*/i2c-*/*/*/iio:device* power/runtime_suspended_time    0660   system  system
