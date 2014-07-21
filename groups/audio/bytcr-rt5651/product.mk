@@ -22,7 +22,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_ENG += \
     remote-process
 
-audiohal_config := device/intel/common/audio/bytcr-rt564x
+audiohal_config := device/intel/common/audio/bytcr-rt5651
 define copy-pfw
 $(eval PRODUCT_COPY_FILES += \
     $(audiohal_config)/pfw/$(strip $(1)):system/etc/parameter-framework/$(strip $(1)) \
@@ -36,35 +36,23 @@ endef
 
 
 ifneq ($(filter $(TARGET_BUILD_VARIANT),eng),)
-$(call copy-pfw, ParameterFrameworkConfiguration-bytcr-rt5642-t100.xml)
-$(call copy-pfw, ParameterFrameworkConfiguration-bytcr-rt5640-default.xml)
-$(call copy-pfw, ParameterFrameworkConfigurationRoute-bytcr-rt5642-t100.xml)
-$(call copy-pfw, ParameterFrameworkConfigurationRoute-bytcr-rt5640-default.xml)
+$(call copy-pfw, ParameterFrameworkConfiguration-bytcr-rt5651-default.xml)
+$(call copy-pfw, ParameterFrameworkConfigurationRoute-bytcr-rt5651-default.xml)
 else
-$(call copy-pfw-ch-name, ParameterFrameworkConfiguration-bytcr-rt5642-t100-NoTuning.xml, ParameterFrameworkConfiguration-bytcr-rt5642-t100.xml)
-$(call copy-pfw-ch-name, ParameterFrameworkConfiguration-bytcr-rt5640-default-NoTuning.xml, ParameterFrameworkConfiguration-bytcr-rt5640-default.xml)
-$(call copy-pfw-ch-name, ParameterFrameworkConfigurationRoute-bytcr-rt5642-t100-NoTuning.xml, ParameterFrameworkConfigurationRoute-bytcr-rt5642-t100.xml)
-$(call copy-pfw-ch-name, ParameterFrameworkConfigurationRoute-bytcr-rt5640-default-NoTuning.xml, ParameterFrameworkConfigurationRoute-bytcr-rt5640-default.xml)
+$(call copy-pfw-ch-name, ParameterFrameworkConfiguration-bytcr-rt5651-default-NoTuning.xml, ParameterFrameworkConfiguration-bytcr-rt5651-default.xml)
+$(call copy-pfw-ch-name, ParameterFrameworkConfigurationRoute-bytcr-rt5651-default-NoTuning.xml, ParameterFrameworkConfigurationRoute-bytcr-rt5651-default.xml)
 endif
 
-$(call copy-pfw, RouteClass-bytcr-rt5642-t100.xml)
-$(call copy-pfw, RouteSubsystem-bytcr-rt5642-t100.xml)
-$(call copy-pfw, RouteConfigurableDomains-bytcr-rt5642-t100.xml)
-$(call copy-pfw, AudioClass-bytcr-rt5642-t100.xml)
-$(call copy-pfw, AudioConfigurableDomains-bytcr-rt5642-t100.xml)
-$(call copy-pfw, CodecSubsystem-bytcr-rt5642-t100.xml)
-$(call copy-pfw, LpeSubsystem-bytcr-rt5642-t100.xml)
+$(call copy-pfw, RouteClass-bytcr-rt5651-default.xml)
+$(call copy-pfw, RouteSubsystem-bytcr-rt5651-default.xml)
+$(call copy-pfw, RouteConfigurableDomains-bytcr-rt5651-default.xml)
+$(call copy-pfw, AudioClass-bytcr-rt5651-default.xml)
+$(call copy-pfw, AudioConfigurableDomains-bytcr-rt5651-default.xml)
+$(call copy-pfw, CodecSubsystem-bytcr-rt5651-default.xml)
+$(call copy-pfw, LpeSubsystem-bytcr-rt5651-default.xml)
 
-$(call copy-pfw, RouteClass-bytcr-rt5640-default.xml)
-$(call copy-pfw, RouteSubsystem-bytcr-rt5640-default.xml)
-$(call copy-pfw, RouteConfigurableDomains-bytcr-rt5640-default.xml)
-$(call copy-pfw, AudioClass-bytcr-rt5640-default.xml)
-$(call copy-pfw, AudioConfigurableDomains-bytcr-rt5640-default.xml)
-$(call copy-pfw, CodecSubsystem-bytcr-rt5640-default.xml)
-$(call copy-pfw, LpeSubsystem-bytcr-rt5640-default.xml)
-
-$(call copy-pfw, CodecSubsystem-bytcr-rt564x-common.xml)
-$(call copy-pfw, LpeSubsystem-bytcr-rt564x-common.xml)
+$(call copy-pfw, CodecSubsystem-bytcr-rt5651-common.xml)
+$(call copy-pfw, LpeSubsystem-bytcr-rt5651-common.xml)
 $(call copy-pfw, RouteSubsystem-common.xml)
 $(call copy-pfw, SysfsPmdownTimeBytcrSubsystem.xml)
 $(call copy-pfw, ConfigurationSubsystem.xml)
