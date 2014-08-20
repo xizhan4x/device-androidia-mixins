@@ -6,6 +6,10 @@ PRODUCT_PACKAGES += \
     gpsd \
     gpscerd \
 
+PRODUCT_PROOPERTY_OVERRIDES += \
+        ro.spid.gps.FrqPlan=$[FrqPlan]\
+        ro.spid.gps.RfType=$[RfType]
+
 PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
 
