@@ -1,0 +1,15 @@
+on post-fs-data
+    # Create data folder for GPS
+    mkdir /data/gps 0770 gps system
+
+service gpsd /system/bin/gpsd -c /system/rt/hal_fuse/gps_bcm4752.xml
+    class main
+    user gps
+    group system inet radio sdcard_rw
+
+service gpscerd /system/bin/gpscerd /data/gps/gps.cer
+    class main
+    user system
+    group system
+    oneshot
+

@@ -1,0 +1,100 @@
+# Init config file dedicated to the Telemetry components
+
+# The Telemetry client daemon
+#
+# The server name and port are picked from the
+# persist.intel.tm.server_{name,port} system properties. By default the
+# daemon is disabled. It will be started by init based on value of property
+# persist.intel.tm.state that has a trigger associated with it in this file.
+service telemetryd /system/bin/telemetryd /data /cache
+    class main
+    user telemetry
+    group telemetry inet cache
+    disabled
+
+# Only start daemon if explicitly allowed by the user via the state
+# property
+on property:persist.intel.tm.state=enabled
+   mkdir /data/telemetry 0711 telemetry telemetry
+   mkdir /data/telemetry/queue 03713 telemetry telemetry
+   mkdir /data/telemetry/sent 03713 telemetry telemetry
+   mkdir /cache/telemetry 0711 telemetry telemetry
+   mkdir /cache/telemetry/queue 03713 telemetry telemetry
+   mkdir /cache/telemetry/sent 03713 telemetry telemetry
+   # For updates from before to now, ensure the ownerships are right
+   # ensure permissions are non-permissive in case directory exists
+   # before
+   chown telemetry telemetry /data/telemetry
+   chown telemetry telemetry /data/telemetry/machine_id
+   chown telemetry telemetry /data/telemetry/queue
+   chown telemetry telemetry /data/telemetry/sent
+   chown telemetry telemetry /cache/telemetry
+   chown telemetry telemetry /cache/telemetry/machine_id
+   chown telemetry telemetry /cache/telemetry/queue
+   chown telemetry telemetry /cache/telemetry/sent
+   chmod 0711  /data/telemetry
+   chmod 0600  /data/telemetry/machine_id
+   chmod 03713 /data/telemetry/queue
+   chmod 03713 /data/telemetry/sent
+   chmod 0711  /cache/telemetry
+   chmod 0600  /cache/telemetry/machine_id
+   chmod 03713 /cache/telemetry/queue
+   chmod 03713 /cache/telemetry/sent
+   start telemetryd
+
+on property:persist.intel.tm.state=disabled
+   stop telemetryd
+   # telemetry daemon sets up storage. Just in case it has not run (due to
+   # being disabled) we set up storage here - this should be done for each
+   # datastore in persist.intel.tm.datastores
+   mkdir /data/telemetry 0000
+   mkdir /data/telemetry/queue 0000
+   mkdir /data/telemetry/sent 0000
+   mkdir /cache/telemetry 0000
+   mkdir /cache/telemetry/queue 0000
+   mkdir /cache/telemetry/sent 0000
+   # ensure permissions are non-permissive in case directory exists before
+   chmod 0000 /data/telemetry/queue
+   chmod 0000 /data/telemetry/sent
+   chmod 0000 /cache/telemetry/queue
+   chmod 0000 /cache/telemetry/sent
+
+# debuggerd does not check/create /data/tombstones on start, instead this
+# directory is created when first tombstone is written. If we (tm_fprobe)
+# want to start monitoring this directory we need it to exist, so create
+# it here.  The chmod/chown are there to make updates work from versions
+# that used root:root and 0755.
+on post-fs-data
+    mkdir /data/tombstones 0775 system system
+    chmod 0775 /data/tombstones
+    chown telemetry telemetry /data/tombstones/telemetry_last_processed
+
+# start the file probe that waits for particular files (eg. tombstones) to
+# be created from which it will create records where the daemon
+# (telemetryd) can find them to pass on to the frontend. The probe
+# will drop the root uid but retain CAP_DAC_READ_SEARCH and the "system"
+# gid to be able to read the tombstone files (0600) and write to the
+# tombstones directory.
+service tm_fprobe /system/bin/tm_fprobe
+    class main
+    user root
+    group system
+
+# the pstore probe depends on pstore-clean which is launched as part of
+# class core. It does a one-time check to see if any crash dumps have been
+# saved before reboot and creates a telemetry report if so.
+service tm_pstore_probe /system/bin/tm_pstore_probe
+    class main
+    user root
+    group system
+    oneshot
+    disabled
+on property:init.svc.pstore-clean=stopped
+    start tm_pstore_probe
+
+# start the probe that watches dmesg for Oops messages and reports them live.
+# The probe will drop the root uid but retain CAP_SYSLOG
+service tm_dmesg_probe /system/bin/tm_dmesg_probe
+    class main
+    user root
+    group telemetry
