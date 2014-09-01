@@ -9,7 +9,7 @@ on boot
 on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp system
 
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+service dhcpcd_bt-pan /system/bin/dhcpcd -d -aABKL
     disabled
     oneshot
 
