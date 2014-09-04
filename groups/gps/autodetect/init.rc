@@ -5,7 +5,7 @@ on post-fs-data
 service gpsd /system/bin/gpsd -c /system/rt/hal_fuse/gps_bcm4752.xml
     class main
     user gps
-    group system inet radio sdcard_rw
+    group system inet radio sdcard_rw net_admin
 
 service gpscerd /system/bin/gpscerd /data/gps/gps.cer
     class main
