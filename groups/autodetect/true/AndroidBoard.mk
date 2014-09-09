@@ -1,4 +1,5 @@
 
+LIBHALCLIENT_DIR ?= hardware/intel/libhalclient/
 #
 # MEDIA
 #
