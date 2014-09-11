@@ -6,10 +6,3 @@ service oemcustom /system/bin/sh /system/etc/init.oemcustom.sh
     user root
     group root
     oneshot
-
-service setup_fs_oem /system/bin/setup_fs \
-        /dev/block/by-name/android_oem
-    class core
-    user root
-    group root
-    oneshot
