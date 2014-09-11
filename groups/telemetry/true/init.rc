@@ -11,7 +11,7 @@ import init.telemetry_userdebug.rc
 # daemon is disabled. It will be started by init based on value of property
 # persist.intel.tm.state that has a trigger associated with it in this file.
 service telemetryd /system/bin/telemetryd /data /cache
-    class main
+    class late_start
     user telemetry
     group telemetry inet cache
     disabled
@@ -75,7 +75,7 @@ service tm_fprobe /system/bin/tm_fprobe
 # class core. It does a one-time check to see if any crash dumps have been
 # saved before reboot and creates a telemetry report if so.
 service tm_pstore_probe /system/bin/tm_pstore_probe
-    class main
+    class core
     user root
     group system
     oneshot
@@ -86,7 +86,7 @@ on property:init.svc.pstore-clean=stopped
 # start the probe that watches dmesg for Oops messages and reports them live.
 # The probe will drop the root uid but retain CAP_SYSLOG
 service tm_dmesg_probe /system/bin/tm_dmesg_probe
-    class main
+    class core
     user root
     group telemetry
 
