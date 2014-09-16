@@ -1,4 +1,4 @@
 # enable Native bridge for executables
-service enable_native_bridge /system/bin/enable_native_bridge
+service native_bridge /system/bin/enable_native_bridge
     class main
     oneshot
