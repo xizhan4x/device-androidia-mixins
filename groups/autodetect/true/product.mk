@@ -17,12 +17,14 @@ HAL_TELEMETRY := true
 HAL_SCRIPTS_PREFIX := /system/etc
 HAL_PROPERTIES_PREFIX := /system/etc/hald/properties
 HAL_RECORDS_PREFIX := /system/etc/hald/hrec.d
-HAL_FUSE_PREFIX := /system/etc/hald/fuse/
-HAL_PERMISSIONS_PREFIX := /system/etc/hald/fuse/permissions
+HAL_FUSE_PREFIX_DEFAULT := /system/etc/hald/fuse/default
+HAL_FUSE_PREFIX_PERM := /system/etc/hald/fuse/permissions
+HAL_FUSE_PREFIX_ATOMISP := /system/etc/hald/fuse/atomisp
 HAL_OEM_VAR_PREFIX := /system/etc/firmware/
 
-HAL_FUSE_MOUNT := /system/rt/hal_fuse
+HAL_FUSE_MOUNT_DEFAULT := /system/rt/hal_fuse
 HAL_FUSE_MOUNT_PERM := /system/etc/permissions
+HAL_FUSE_MOUNT_ATOMISP := /system/etc/atomisp
 
 HAL_BM_SOURCE_GFX_PREFIX := /system/vendor/gfx
 HAL_BM_TARGET_GFX := /system/rt/gfx
