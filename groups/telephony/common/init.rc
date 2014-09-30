@@ -1,8 +1,10 @@
 on init
-    # Contains modem-specific data and firmware.
-    mkdir /radio 0770 radio radio
     # Contains dynamic configuration and calibration data.
     mkdir /config 0770 radio radio
+    # Used as mounting point for factory partition.
+    # Calibration files configuring IMEI and RF calibration will also be stored on this partition.
+    mkdir /factory 0770 system system
+
 
 # init.rc for telephony services common to all platforms
 
