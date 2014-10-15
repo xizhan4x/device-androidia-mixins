@@ -16,52 +16,39 @@ service telemetryd /system/bin/telemetryd /data /cache
     group telemetry inet cache
     disabled
 
+# Mount and unmount the Telemetry daemon's queue storage directories
+service tm_storage /system/bin/tm_storage_setup update /data /cache
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+# When new filesystems are mounted check if we need to update the datastores.
+# No trigger on post-fs-data because that also causes the persist.* properties
+# to be loaded and triggers property:persist.intel.tm.state=enabled/disabled.
+on post-fs
+    start tm_storage
+
 # Only start daemon if explicitly allowed by the user via the state
 # property
 on property:persist.intel.tm.state=enabled
-   mkdir /data/telemetry 0711 telemetry telemetry
-   mkdir /data/telemetry/queue 03713 telemetry telemetry
-   mkdir /data/telemetry/sent 03713 telemetry telemetry
-   mkdir /cache/telemetry 0711 telemetry telemetry
-   mkdir /cache/telemetry/queue 03713 telemetry telemetry
-   mkdir /cache/telemetry/sent 03713 telemetry telemetry
-   # For updates from before to now, ensure the ownerships are right
-   # ensure permissions are non-permissive in case directory exists
-   # before
-   chown telemetry telemetry /data/telemetry
-   chown telemetry telemetry /data/telemetry/machine_id
-   chown telemetry telemetry /data/telemetry/queue
-   chown telemetry telemetry /data/telemetry/sent
-   chown telemetry telemetry /cache/telemetry
-   chown telemetry telemetry /cache/telemetry/machine_id
-   chown telemetry telemetry /cache/telemetry/queue
-   chown telemetry telemetry /cache/telemetry/sent
-   chmod 0711  /data/telemetry
-   chmod 0600  /data/telemetry/machine_id
-   chmod 03713 /data/telemetry/queue
-   chmod 03713 /data/telemetry/sent
-   chmod 0711  /cache/telemetry
-   chmod 0600  /cache/telemetry/machine_id
-   chmod 03713 /cache/telemetry/queue
-   chmod 03713 /cache/telemetry/sent
-   start telemetryd
+    # Fixme: this may have no effect as it may be triggered simultaneously
+    # with "on post-fs" and init will not launch two instances of tm_storage
+    start tm_storage
+    start telemetryd
 
 on property:persist.intel.tm.state=disabled
-   stop telemetryd
-   # telemetry daemon sets up storage. Just in case it has not run (due to
-   # being disabled) we set up storage here - this should be done for each
-   # datastore in persist.intel.tm.datastores
-   mkdir /data/telemetry 0000
-   mkdir /data/telemetry/queue 0000
-   mkdir /data/telemetry/sent 0000
-   mkdir /cache/telemetry 0000
-   mkdir /cache/telemetry/queue 0000
-   mkdir /cache/telemetry/sent 0000
-   # ensure permissions are non-permissive in case directory exists before
-   chmod 0000 /data/telemetry/queue
-   chmod 0000 /data/telemetry/sent
-   chmod 0000 /cache/telemetry/queue
-   chmod 0000 /cache/telemetry/sent
+    stop telemetryd
+    # Call the storage update script to tear down the datastores.
+    start tm_storage
+
+# This will trigger when cryptfs resets the main and late_start classes
+# before trying to unmount /data when setting up encryption.  Telemetryd
+# must have stopped using /data/telemetry and we must unmount it for the
+# /data unmount to succeed.
+on property:init.svc.telemetryd=stopped
+    start tm_storage
 
 # debuggerd does not check/create /data/tombstones on start, instead this
 # directory is created when first tombstone is written. If we (tm_fprobe)
