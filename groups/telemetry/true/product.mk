@@ -21,6 +21,21 @@ PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
 TELEMETRY_KEY_FILES := $(wildcard $(TELEMETRY_KEYPATH)/devel/rsa*aa.x509.pem)
 PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
                 $(file):system/etc/tm/keys/devel/$(notdir $(file)))
+TELEMETRY_KEY_FILES := $(wildcard $(TELEMETRY_KEYPATH)/qa01/rsa*aa.x509.pem)
+PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
+                $(file):system/etc/tm/keys/qa01/$(notdir $(file)))
+TELEMETRY_KEY_FILES := $(wildcard $(TELEMETRY_KEYPATH)/qa02/rsa*aa.x509.pem)
+PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
+                $(file):system/etc/tm/keys/qa02/$(notdir $(file)))
+TELEMETRY_KEY_FILES := $(wildcard $(TELEMETRY_KEYPATH)/qa03/rsa*aa.x509.pem)
+PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
+                $(file):system/etc/tm/keys/qa03/$(notdir $(file)))
+TELEMETRY_KEY_FILES := $(wildcard $(TELEMETRY_KEYPATH)/qa04/rsa*aa.x509.pem)
+PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
+                $(file):system/etc/tm/keys/qa04/$(notdir $(file)))
+TELEMETRY_KEY_FILES := $(wildcard $(TELEMETRY_KEYPATH)/qa05/rsa*aa.x509.pem)
+PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
+                $(file):system/etc/tm/keys/qa05/$(notdir $(file)))
 
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
