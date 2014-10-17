@@ -1,8 +1,0 @@
-
-on early-boot
-    start oemcustom
-
-service oemcustom /system/bin/sh /system/etc/init.oemcustom.sh
-    user root
-    group root
-    oneshot
