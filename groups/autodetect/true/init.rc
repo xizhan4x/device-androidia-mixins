@@ -2,6 +2,7 @@
 on early-boot
     start hald
     wait /dev/hald.ready 5
+    restorecon /dev/hald.ready
 
 service hald /system/bin/hald
     user root
