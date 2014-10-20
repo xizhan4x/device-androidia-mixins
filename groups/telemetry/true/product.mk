@@ -1,7 +1,6 @@
 #
 # Telemetry
 PRODUCT_PACKAGES += \
-    TelemetrySetup \
     telemetryd tm_record tm_fprobe tm_pstore_probe tm_dmesg_probe
 
 TELEMETRY_SETNAME := all1
