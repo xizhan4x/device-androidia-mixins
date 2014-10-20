@@ -1,0 +1,19 @@
+# Init config file dedicated to the Telemetry log probe
+
+# the log probe scans the logs (system, main, events, and radio) for errors
+# by default and can be configured for many more. There is no filtering for
+# private data so we disable it by default.
+service tm_logprobe /system/bin/tm_logprobe
+    class main
+    user root
+    group root
+    disabled
+
+# By enabling the log probe it will start the daemon - for these events to
+# show up in records it is also required that persist.intel.tm.noncompliant
+# is set to 2 or 1
+on property:persist.intel.tm.logprobe=1
+    start tm_logprobe
+
+on property:persist.intel.tm.logprobe=0
+    stop tm_logprobe
