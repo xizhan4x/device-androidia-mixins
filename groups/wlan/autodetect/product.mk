@@ -4,5 +4,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
-PRODUCT_PACKAGES += wpa_supplicant
+PRODUCT_PACKAGES += \
+	wpa_supplicant \
+	wifi_bcm4334x
 
