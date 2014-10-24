@@ -2,6 +2,7 @@ on post-fs-data
     # configuration file for wifail
     chmod 0660 /system/etc/wifi/wifail.conf
     chown wifi wifi /system/etc/wifi/wifail.conf
+    restorecon_resursive /system/rt/wifi
 
 service wifail /system/bin/wifail -c @android:wpa_wlan0
     class main
