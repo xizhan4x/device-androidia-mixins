@@ -4,13 +4,13 @@ LIBHALCLIENT_DIR ?= hardware/intel/libhalclient/
 # AUDIO
 #
 ifeq ($(HAL_BIND_MOUNT), true)
-# Create symbolic links for audio mixer paths
-MIXER_PATHS:
-	@echo "Creating symbolic link on mixer_paths.xml"
+AUDIO_FILES:
+	@echo "Creating symbolic link for audio files"
 	@mkdir -p $(TARGET_OUT)/etc;
 	@ln -sf $(HAL_BM_TARGET_AUDIO)/etc/mixer_paths.xml $(TARGET_OUT)/etc/;
+	@ln -sf $(HAL_BM_TARGET_AUDIO)/etc/audio_hw.xml $(TARGET_OUT)/etc/;
 
-ALL_DEFAULT_INSTALLED_MODULES += MIXER_PATHS
+ALL_DEFAULT_INSTALLED_MODULES += AUDIO_FILES
 endif
 
 #
