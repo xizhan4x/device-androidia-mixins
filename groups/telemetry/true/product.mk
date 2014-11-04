@@ -42,9 +42,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
         persist.intel.tm.setname=$(TELEMETRY_SETNAME) \
         persist.intel.tm.domain=$(TELEMETRY_DOMAIN) \
         persist.intel.tm.server_name=$(TELEMETRY_SETNAME).$(TELEMETRY_DOMAIN) \
-        persist.intel.tm.server_name=all1.tmfe.intel.com \
         persist.intel.tm.server_port=25001 \
         persist.intel.tm.state=disabled \
         persist.intel.tm.noncompliant=0 \
+        persist.intel.tm.kern_dbg_raw=0 \
+        persist.intel.tm.tomb_dbg_raw=0 \
         persist.intel.tm.fprobe_rmfile=0
 
