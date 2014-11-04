@@ -6,6 +6,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
+# copy atproxy_usbreset
+PRODUCT_COPY_FILES += \
+    device/intel/common/telephony/atproxy_usbreset:system/bin/atproxy_usbreset
+
 # Modem related packages
 PRODUCT_PACKAGES += \
     mdm_fw_pkg \
@@ -15,6 +19,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mmgr \
     libmodemupdate
+
+# AT Proxy
+PRODUCT_PACKAGES += \
+    proxy
 
 PRODUCT_PACKAGES_DEBUG += \
     mmgr-debug
