@@ -12,7 +12,9 @@ PRODUCT_COPY_FILES += \
 
 # Modem related packages
 PRODUCT_PACKAGES += \
-    mdm_fw_pkg \
+    mdm_fw_pkg
+
+PRODUCT_PACKAGES_DEBUG += \
     miu-app
 
 # Modem Manager related packages
