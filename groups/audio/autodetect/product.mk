@@ -17,7 +17,7 @@ PRODUCT_PACKAGES += \
         audio.a2dp.default
 
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/audio_hw_ALC5640.xml:system/vendor/audio/ALC5640/etc/audio_hw.xml
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/audio_hw_BYT-CR.xml:system/vendor/audio/ALC5640/etc/audio_hw.xml
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/mixer_paths_ALC5640.xml:system/vendor/audio/ALC5640/etc/mixer_paths.xml
 
 # SST Firmware
