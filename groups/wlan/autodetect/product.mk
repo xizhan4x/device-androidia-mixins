@@ -1,4 +1,3 @@
-# Uses same supplicant config as the bcm43241
 PRODUCT_COPY_FILES += \
     device/intel/common/wlan/wpa_supplicant-common.conf:system/etc/wifi/wpa_supplicant.conf \
     device/intel/coho/wlan/8723bs.conf:system/etc/modprobe.d/8723bs.conf \
@@ -6,6 +5,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
 PRODUCT_PACKAGES += \
-	wpa_supplicant \
-	wifi_bcm4334x
-
+		wpa_supplicant \
+		wpa_supplicant-brcm \
+		wpa_supplicant-rtk \
+		wifi_bcm4334x
