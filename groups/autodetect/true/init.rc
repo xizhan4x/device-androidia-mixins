@@ -6,6 +6,8 @@ on early-boot
     restorecon /system/vendor/gfx/ufo_byt/bin/coreu
     restorecon /system/vendor/gfx/ufo_byt/bin/hdcpd
     restorecon /system/vendor/wifi/aosp/wpa_supplicant
+    restorecon /system/vendor/wifi/brcm/wpa_supplicant-brcm
+    restorecon /system/vendor/wifi/rtk/wpa_supplicant-rtk
 
 service hald /system/bin/hald
     user root
