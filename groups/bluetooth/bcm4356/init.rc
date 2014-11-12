@@ -1,0 +1,37 @@
+on post-fs-data
+    # To store BT paired info
+    mkdir /data/misc/hcid 0770 bluetooth bluetooth
+
+on boot
+    insmod /system/lib/modules/rfkill-gpio.ko
+    insmod /system/lib/modules/iptable_raw.ko
+    insmod /system/lib/modules/ip6table_raw.ko
+    insmod /system/lib/modules/8250_dw.ko
+    insmod /system/lib/modules/6lowpan_iphc.ko
+    insmod /system/lib/modules/bluetooth.ko
+    insmod /system/lib/modules/hci_uart.ko
+    chmod 0644 /sys/kernel/debug/bluetooth/l2cap_le_max_credits
+    chmod 0644 /sys/kernel/debug/bluetooth/l2cap_le_default_mps
+
+on post-fs-data
+    mkdir /data/misc/dhcp 0770 dhcp system
+
+on property:bluetooth.hwcfg=start
+    start btcfg
+
+on property:bluetooth.hwcfg=stop
+    stop btcfg
+
+service btcfg /system/bin/hciattach -n /dev/ttyS1 bcm43xx 3000000 flow no
+    user bluetooth
+    group bluetooth
+    oneshot
+    disabled
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    disabled
+    oneshot
