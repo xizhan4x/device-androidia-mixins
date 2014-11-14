@@ -3,3 +3,11 @@
 #OemTelephony for OEM HOOK API
 PRODUCT_PACKAGES += \
     OemTelephonyApp
+
+# copy sarconfig.xml configuration file
+PRODUCT_COPY_FILES += \
+    device/intel/common/telephony/sarconfig.xml:system/etc/sarconfig.xml
+
+#SARManager
+PRODUCT_PACKAGES += \
+    SARManager
