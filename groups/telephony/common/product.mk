@@ -34,3 +34,7 @@ PRODUCT_PACKAGES += \
     librapid-ril-core \
     librapid-ril-util
 
+# Modem Trace Server (MTS)
+PRODUCT_PACKAGES += \
+    mts
+
