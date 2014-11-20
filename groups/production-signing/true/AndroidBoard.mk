@@ -1,0 +1,1 @@
+ALL_DEFAULT_INSTALLED_MODULES += host-ecss-tools
