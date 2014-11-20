@@ -25,6 +25,10 @@ on post-fs-data
     chown system radio /cache/telephony
     chmod 770 /cache/telephony
 
+#  change owner and mode for f_rndis
+    chown system system /sys/class/android_usb/android0/f_rndis/ethaddr
+    chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
+
 # adding Modem Manager
 service mmgr /system/bin/mmgr
     class main
@@ -90,7 +94,7 @@ on property:sys.usb.config=rndis,acm,adb
     setprop sys.usb.state ${sys.usb.config}
 
 on property:persist.system.at-proxy.mode=*
-setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
+    setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
 
 on property:system.at-proxy.mode=0
     stop proxy
@@ -100,11 +104,11 @@ on property:system.at-proxy.mode=0
 on property:system.at-proxy.mode=1
     stop ad_proxy
     stop proxy-tunneling
-    setprop sys.usb.config acm,adb
+    setprop sys.usb.config rndis,acm,adb
     start proxy
 
 on property:system.at-proxy.mode=2
     stop ad_proxy
     stop proxy
-    setprop sys.usb.config acm,adb
+    setprop sys.usb.config rndis,acm,adb
     start proxy-tunneling
