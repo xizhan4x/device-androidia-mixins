@@ -25,6 +25,11 @@ on post-fs-data
     chown system radio /cache/telephony
     chmod 770 /cache/telephony
 
+# create PinCaching folder
+    mkdir /data/telephony
+    chown radio radio /data/telephony
+    chmod 770 /data/telephony
+
 # adding Modem Manager
 service mmgr /system/bin/mmgr
     class main
