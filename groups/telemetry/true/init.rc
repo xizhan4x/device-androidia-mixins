@@ -102,3 +102,9 @@ service tm_dmesg_probe /system/bin/tm_dmesg_probe
     class main
     user root
     group telemetry
+
+# start the log-line count probe
+service tm_logcnt_probe /system/bin/tm_logcount_probe
+    class core
+    user telemetry
+    group telemetry

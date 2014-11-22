@@ -1,7 +1,7 @@
 #
 # Telemetry
 PRODUCT_PACKAGES += \
-    telemetryd tm_record tm_fprobe tm_pstore_probe tm_dmesg_probe
+    telemetryd tm_record tm_fprobe tm_pstore_probe tm_dmesg_probe tm_logcount_probe
 
 TELEMETRY_SETNAME := all1
 TELEMETRY_DOMAIN := tmfe.intel.com
