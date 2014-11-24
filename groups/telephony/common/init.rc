@@ -72,7 +72,7 @@ on property:sys.usb.config=rndis
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state ${sys.usb.config}
     wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
-    write /sys/class/net/rndis0/queues/rx-0/rps_cpus F
+    write /sys/class/net/rndis0/queues/rx-0/rps_cpus FFFFFFFF
 
 # USB RNDIS configuration, with adb
 on property:sys.usb.config=rndis,adb
@@ -84,7 +84,7 @@ on property:sys.usb.config=rndis,adb
     start adbd
     setprop sys.usb.state ${sys.usb.config}
     wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
-    write /sys/class/net/rndis0/queues/rx-0/rps_cpus F
+    write /sys/class/net/rndis0/queues/rx-0/rps_cpus FFFFFFFF
 
 # USB ACM configuration, with rndis and adb
 on property:sys.usb.config=rndis,acm,adb
@@ -97,7 +97,7 @@ on property:sys.usb.config=rndis,acm,adb
     start adbd
     setprop sys.usb.state ${sys.usb.config}
     wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
-    write /sys/class/net/rndis0/queues/rx-0/rps_cpus F
+    write /sys/class/net/rndis0/queues/rx-0/rps_cpus FFFFFFFF
 
 on property:persist.system.at-proxy.mode=*
     setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
@@ -123,12 +123,12 @@ on property:system.at-proxy.mode=2
 on property:sys.usb.modemevt=1
    setprop sys.usb.modemevt 0
    wait /sys/class/net/usb0/queues/rx-0/rps_cpus 1
-   write /sys/class/net/usb0/queues/rx-0/rps_cpus F
+   write /sys/class/net/usb0/queues/rx-0/rps_cpus FFFFFFFF
    wait /sys/class/net/usb1/queues/rx-0/rps_cpus 1
-   write /sys/class/net/usb1/queues/rx-0/rps_cpus F
+   write /sys/class/net/usb1/queues/rx-0/rps_cpus FFFFFFFF
    wait /sys/class/net/usb2/queues/rx-0/rps_cpus 1
-   write /sys/class/net/usb2/queues/rx-0/rps_cpus F
+   write /sys/class/net/usb2/queues/rx-0/rps_cpus FFFFFFFF
    wait /sys/class/net/usb3/queues/rx-0/rps_cpus 1
-   write /sys/class/net/usb3/queues/rx-0/rps_cpus F
+   write /sys/class/net/usb3/queues/rx-0/rps_cpus FFFFFFFF
    wait /sys/class/net/usb4/queues/rx-0/rps_cpus 1
-   write /sys/class/net/usb4/queues/rx-0/rps_cpus F
+   write /sys/class/net/usb4/queues/rx-0/rps_cpus FFFFFFFF
