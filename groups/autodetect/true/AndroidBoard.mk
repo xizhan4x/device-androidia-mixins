@@ -7,8 +7,8 @@ ifeq ($(HAL_BIND_MOUNT), true)
 AUDIO_FILES:
 	@echo "Creating symbolic link for audio files"
 	@mkdir -p $(TARGET_OUT)/etc;
-	@ln -sf $(HAL_BM_TARGET_AUDIO)/etc/mixer_paths.xml $(TARGET_OUT)/etc/;
-	@ln -sf $(HAL_BM_TARGET_AUDIO)/etc/audio_hw.xml $(TARGET_OUT)/etc/;
+	@ln -sf $(HAL_FUSE_MOUNT_DEFAULT)/mixer_paths.xml $(TARGET_OUT)/etc/;
+	@ln -sf $(HAL_FUSE_MOUNT_DEFAULT)/audio_hw.xml $(TARGET_OUT)/etc/;
 
 ALL_DEFAULT_INSTALLED_MODULES += AUDIO_FILES
 endif
