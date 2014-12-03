@@ -3,6 +3,8 @@
 # Config flags
 BOARD_HAVE_MODEM := true
 BOARD_HAVE_ATPROXY := true
+# crashlogd configuration
+CRASHLOGD_MODULE_MODEM ?= true
 # Set the list of supported modem families
 # This parameter comes from mixin group instantiation in the device definition
 BOARD_MODEM_LIST := {{{modems}}}
