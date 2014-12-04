@@ -6,6 +6,4 @@ PRODUCT_PACKAGES += \
     gpsd \
     gpscerd \
 
-PRODUCT_COPY_FILES += \
-        frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-
+# No need to copy android.hardware.location.gps, this is done via a hald hrec.
