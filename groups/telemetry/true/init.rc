@@ -108,3 +108,10 @@ service tm_logcnt_probe /system/bin/tm_logcount_probe
     class core
     user telemetry
     group telemetry
+
+# the log probe scans the logs (system, main, events, and radio) for errors
+# by default and can be configured for many more.
+service tm_logprobe /system/bin/tm_logprobe
+    class main
+    user telemetry
+    group telemetry cache log
