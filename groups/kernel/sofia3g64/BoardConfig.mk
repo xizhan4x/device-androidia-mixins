@@ -16,4 +16,4 @@ BOARD_KERNEL_CMDLINE += \
 	firmware_class.path=/system/vendor/firmware \
 
 # Device Tree Blob file name:
-BOARD_DTB_FILE ?= SF_3G-es2-svb.dtb
+BOARD_DTB_FILE ?= $[board_dtb]
