@@ -25,5 +25,5 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Flash partition layout:
-BOARD_PRG_FILE ?= device/intel/sofia3g/Sf3g_svb_v1/modem_cfg_emmc.prg
+BOARD_PRG_FILE ?= device/intel/sofia3g/$(TARGET_PRODUCT)/modem_cfg_emmc.prg
 
