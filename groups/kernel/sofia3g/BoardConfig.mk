@@ -14,6 +14,8 @@ BOARD_KERNEL_CMDLINE += \
 	cma=128M \
 	nolapic_pm \
 	firmware_class.path=/system/vendor/firmware \
+	apic=sofia \
+
 
 # Device Tree Blob file name:
 BOARD_DTB_FILE ?= $[board_dtb]
