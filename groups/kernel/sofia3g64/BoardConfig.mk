@@ -19,3 +19,5 @@ BOARD_KERNEL_CMDLINE += \
 
 # Device Tree Blob file name:
 BOARD_DTB_FILE ?= $[board_dtb]
+
+TARGET_USES_64_BIT_BINDER := true
