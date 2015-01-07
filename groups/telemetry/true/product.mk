@@ -6,13 +6,13 @@ PRODUCT_PACKAGES += \
 
 TELEMETRY_SETNAME := all1
 TELEMETRY_DOMAIN := tmfe.intel.com
-TELEMETRY_KEYPATH := $(LOCAL_PATH)/telemetry/keys
+TELEMETRY_KEYPATH := device/intel/common/telemetry/keys
 
 # Telemetry keys need to be installed on device. The zipped archive that
 # contains the keys can be found in vendor/intel/telemetry-client/keys. The
 # ideal way would be to install the keys from those archives directly.
 # Until the best way to do so (see IRDA-298) can be determined we extract
-# the keys into LOCAL_PATH/telemetry/keys and install them from here
+# the keys into device/intel/common/telemetry/keys and install them from here
 TELEMETRY_KEY_FILES := $(wildcard $(TELEMETRY_KEYPATH)/all/rsa*aa.x509.pem)
 PRODUCT_COPY_FILES += $(foreach file,$(TELEMETRY_KEY_FILES),\
                 $(file):system/etc/tm/keys/all/$(notdir $(file)))
@@ -54,7 +54,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 #install configuration file of events that should always be sent if
 #logprobe enabled in non-compliant mode
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/telemetry/logevent/logprobe-logevent.conf:system/etc/tm/logprobe-logevent.conf
+PRODUCT_COPY_FILES += device/intel/common/telemetry/logevent/logprobe-logevent.conf:system/etc/tm/logprobe-logevent.conf
 
 #install configuration file describing compliant events that can always be sent
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/telemetry/logevent/event-log-tags:system/etc/tm/logevent/event-log-tags
+PRODUCT_COPY_FILES += device/intel/common/telemetry/logevent/event-log-tags:system/etc/tm/logevent/event-log-tags
