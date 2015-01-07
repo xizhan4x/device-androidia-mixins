@@ -2,7 +2,12 @@
 # Telemetry
 PRODUCT_PACKAGES += \
     telemetryd tm_record tm_fprobe tm_pstore_probe tm_dmesg_probe \
-    tm_logcount_probe tm_logprobe
+    tm_logcount_probe tm_logprobe \
+    DataReport \
+    DataReportSettings 
+
+
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/telemetry/overlay
 
 TELEMETRY_SETNAME := all1
 TELEMETRY_DOMAIN := tmfe.intel.com
