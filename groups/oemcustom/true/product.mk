@@ -7,6 +7,6 @@ PRODUCT_OEM_PROPERTIES = \
 	ro.product.locale.region
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/bootanimation.zip:oem/media/bootanimation.zip \
-	$(LOCAL_PATH)/oem/oem.img:oem.img
+	device/intel/common/oem/bootanimation.zip:oem/media/bootanimation.zip \
+	device/intel/common/oem/oem.img:oem.img
 
