@@ -1,0 +1,18 @@
+on boot
+    setprop camera.disable_zsl_mode 1
+
+on property:sys.boot_completed=1
+    # Defer loading modules that may require firmware till fs is ready
+    # additional list of modules to load for intel-ipu4
+    insmod /lib/modules/smiapp-pll.ko
+    write /sys/kernel/debug/dynamic_debug/control "module smiapp_pll +p"
+    insmod /lib/modules/smiapp.ko
+    write /sys/kernel/debug/dynamic_debug/control "module smiapp +p"
+    insmod /lib/modules/lib2600-mod.ko
+    insmod /lib/modules/lib2600psys-mod.ko
+    insmod /lib/modules/intel-ipu4-wrapper-2600.ko
+    insmod /lib/modules/intel-ipu4-mod.ko
+    insmod /lib/modules/intel-ipu4-mmu.ko
+    insmod /lib/modules/videobuf2-dma-contig.ko
+    insmod /lib/modules/intel-ipu4-isys-mod.ko
+    insmod /lib/modules/intel-ipu4-psys-mod.ko
