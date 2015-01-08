@@ -27,7 +27,8 @@ PRODUCT_PACKAGES += \
     proxy
 
 PRODUCT_PACKAGES_DEBUG += \
-    mmgr-debug
+    mmgr-debug \
+    run_test_ipc.sh
 
 # Rapid RIL packages
 PRODUCT_PACKAGES += \
