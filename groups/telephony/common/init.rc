@@ -25,10 +25,6 @@ on post-fs-data
     chown system radio /cache/telephony
     chmod 770 /cache/telephony
 
-#  change owner and mode for f_rndis
-    chown system system /sys/class/android_usb/android0/f_rndis/ethaddr
-    chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
-
 # adding Modem Manager
 service mmgr /system/bin/mmgr
     class main
@@ -62,29 +58,6 @@ on property:persist.ril-daemon.disable=0
 
 on property:persist.ril-daemon.disable=1
    stop ril-daemon
-
-# USB RNDIS configuration
-on property:sys.usb.config=rndis
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 8087
-    write /sys/class/android_usb/android0/idProduct 0a62
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state ${sys.usb.config}
-    wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
-    write /sys/class/net/rndis0/queues/rx-0/rps_cpus FFFFFFFF
-
-# USB RNDIS configuration, with adb
-on property:sys.usb.config=rndis,adb
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 8087
-    write /sys/class/android_usb/android0/idProduct 0a63
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/class/android_usb/android0/enable 1
-    start adbd
-    setprop sys.usb.state ${sys.usb.config}
-    wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
-    write /sys/class/net/rndis0/queues/rx-0/rps_cpus FFFFFFFF
 
 # USB ACM configuration, with rndis and adb
 on property:sys.usb.config=rndis,acm,adb
