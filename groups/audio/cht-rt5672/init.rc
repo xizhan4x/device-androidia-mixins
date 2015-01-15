@@ -1,0 +1,2 @@
+on boot
+    setprop media.pfw.verbose true
