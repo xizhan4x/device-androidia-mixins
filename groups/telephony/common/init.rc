@@ -83,25 +83,6 @@ on property:persist.ril-daemon.disable=0
 on property:persist.ril-daemon.disable=1
    stop ril-daemon
 
-# USB RNDIS configuration
-on property:sys.usb.config=rndis
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 8087
-    write /sys/class/android_usb/android0/idProduct 0a62
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state ${sys.usb.config}
-
-# USB RNDIS configuration, with adb
-on property:sys.usb.config=rndis,adb
-    write /sys/class/android_usb/android0/enable 0
-    write /sys/class/android_usb/android0/idVendor 8087
-    write /sys/class/android_usb/android0/idProduct 0a63
-    write /sys/class/android_usb/android0/functions ${sys.usb.config}
-    write /sys/class/android_usb/android0/enable 1
-    start adbd
-    setprop sys.usb.state ${sys.usb.config}
-
 # USB ACM configuration, with rndis and adb
 on property:sys.usb.config=rndis,acm,adb
     write /sys/class/android_usb/android0/enable 0
@@ -112,9 +93,11 @@ on property:sys.usb.config=rndis,acm,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}
+    wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
+    write /sys/class/net/rndis0/queues/rx-0/rps_cpus FFFFFFFF
 
 on property:persist.system.at-proxy.mode=*
-setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
+    setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
 
 on property:system.at-proxy.mode=0
     stop proxy
@@ -124,11 +107,25 @@ on property:system.at-proxy.mode=0
 on property:system.at-proxy.mode=1
     stop ad_proxy
     stop proxy-tunneling
-    setprop sys.usb.config acm,adb
+    setprop sys.usb.config rndis,acm,adb
     start proxy
 
 on property:system.at-proxy.mode=2
     stop ad_proxy
     stop proxy
-    setprop sys.usb.config acm,adb
+    setprop sys.usb.config rndis,acm,adb
     start proxy-tunneling
+
+# Activate RPS for usbX devices
+on property:sys.usb.modemevt=1
+   setprop sys.usb.modemevt 0
+   wait /sys/class/net/usb0/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb0/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb1/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb1/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb2/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb2/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb3/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb3/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb4/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb4/queues/rx-0/rps_cpus FFFFFFFF
