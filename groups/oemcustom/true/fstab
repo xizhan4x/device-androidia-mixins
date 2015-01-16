@@ -1,0 +1,2 @@
+
+/dev/block/by-name/android_oem          /oem            ext4    ro,context=u:object_r:oemfs:s0                        wait
