@@ -4,6 +4,6 @@ PRODUCT_COPY_FILES += \
 #
 # IDC files for input devices
 #
-IDC_FILES := $(wildcard device/intel/coho/idc/*.idc)
+IDC_FILES := $(wildcard device/intel/common/touch/*.idc)
 PRODUCT_COPY_FILES += \
     $(foreach f, $(IDC_FILES), $(f):system/usr/idc/$(notdir $(f)))
