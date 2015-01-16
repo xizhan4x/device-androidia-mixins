@@ -1,0 +1,2 @@
+GPS_CHIP_VENDOR := bcm
+GPS_CHIP := 4752
