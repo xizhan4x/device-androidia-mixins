@@ -16,7 +16,6 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_BOOTLOADER_IS_2ND := true
 TARGET_NO_RECOVERY := true
 
-#Address Configuration settings pertaining to 512MB RAM
 BOARD_KERNEL_BASE := 0x0 
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x400000 --second_offset 0x600010
