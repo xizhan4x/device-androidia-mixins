@@ -7,7 +7,8 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Audio Primary HAL
 PRODUCT_PACKAGES += \
-        audio.primary.$(TARGET_BOARD_PLATFORM)
+        audio.primary.$(TARGET_BOARD_PLATFORM) \
+	audio.primary.irda-aosp
 
 # Extended Audio HALs
 PRODUCT_PACKAGES += \
