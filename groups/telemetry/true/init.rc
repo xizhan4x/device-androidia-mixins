@@ -1,5 +1,9 @@
 # Init config file dedicated to the Telemetry components
 
+# init.telemetry_userdebug.rc contains useful content in userdebug images
+# and nothing in user builds
+import init.telemetry_userdebug.rc
+
 # The Telemetry client daemon
 #
 # The server name and port are picked from the
@@ -98,3 +102,16 @@ service tm_dmesg_probe /system/bin/tm_dmesg_probe
     class main
     user root
     group telemetry
+
+# start the log-line count probe
+service tm_logcnt_probe /system/bin/tm_logcount_probe
+    class core
+    user telemetry
+    group telemetry
+
+# the log probe scans the logs (system, main, events, and radio) for errors
+# by default and can be configured for many more.
+service tm_logprobe /system/bin/tm_logprobe
+    class main
+    user telemetry
+    group telemetry cache log
