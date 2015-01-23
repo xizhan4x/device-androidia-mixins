@@ -16,4 +16,4 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.tel.hot_swap.support=true
 
 # Telephony common overlay folder
-DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
