@@ -1,0 +1,7 @@
+# The atomisp driver is sensitive to initialization order (it must be
+# loaded after the sensor drivers) and does a request_firmware() out
+# of the module init function which will deadlock init.  Load it from
+# a service instead.
+
+on boot
+    setprop camera.disable_zsl_mode 1

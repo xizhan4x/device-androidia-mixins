@@ -34,7 +34,7 @@ MEDIA_PROFILE_LIST:
 	@ln -sf $(HAL_BM_TARGET_MEDIA)/etc/media_profiles_config.xml $(TARGET_OUT)/etc/;
 	@ln -sf $(HAL_BM_TARGET_MEDIA)/etc/camera_profiles_config.xml $(TARGET_OUT)/etc/;
 	@ln -sf $(HAL_FUSE_MOUNT_DEFAULT)/media_profiles.xml $(TARGET_OUT)/etc/;
-	@ln -sf $(HAL_FUSE_MOUNT_DEFAULT)/camera_profiles.xml $(TARGET_OUT)/etc/;
+	@ln -sf $(HAL_FUSE_MOUNT_DEFAULT)/camera3_profiles.xml $(TARGET_OUT)/etc/;
 
 ALL_DEFAULT_INSTALLED_MODULES += MEDIA_PROFILE_LIST
 endif
