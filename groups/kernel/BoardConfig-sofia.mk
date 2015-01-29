@@ -9,4 +9,4 @@ BOARD_KERNEL_CMDLINE += \
 	apic=sofia \
 
 # Device Tree Blob file name:
-BOARD_DTB_FILE ?= $[board_dtb]
+BOARD_DTB_FILE ?= {{{board_dtb}}}

@@ -40,8 +40,8 @@ $(BOOTIMG_FLS): bootimage
 #	$(FLSTOOL_CMDLINE) --output $@ --tag RECOVERY $(INSTALLED_RECOVERYIMAGE_TARGET):3
 
 BUILD_BOOTCORE_FROM_SRC := true
-MODEM_PLATFORM := $[modem_platform]
-MODEM_PROJECTNAME := $[modem_projectname]
+MODEM_PLATFORM := {{{modem_platform}}}
+MODEM_PROJECTNAME := {{{modem_projectname}}}
 SOCLIB_SRC_PATH := $(CURDIR)/soclib
 MOBILEVISOR_SVC_PATH := $(CURDIR)/mobilevisor/services
 MOBILEVISOR_SRC_PATH := $(CURDIR)/mobilevisor/products
@@ -51,8 +51,8 @@ FLASHFILES_DIR := $(PRODUCT_OUT)/fls
 VBT_GENERATE_TOOL := $(MOBILEVISOR_REL_PATH)/tools/vbtgen
 BUILD_VMM_FROM_SRC := true
 BUILD_SECVM_FROM_SRC := true
-MV_CONFIG_BITNESS := $[bitness]
-MV_CONFIG_CHIP_VER := $[mv_config_chip_ver]
+MV_CONFIG_BITNESS := {{{bitness}}}
+MV_CONFIG_CHIP_VER := {{{mv_config_chip_ver}}}
 GEN_VMM_FLS_FILES := true
 SECVM_SRC_PATH := $(CURDIR)/secure_vm
 NON_IMC_BUILD := true

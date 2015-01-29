@@ -1,1 +1,131 @@
-../common/init.rc
+on init
+    # Contains dynamic configuration and calibration data.
+    mkdir /config 0770 radio radio
+    # Used as mounting point for factory partition.
+    # Calibration files configuring IMEI and RF calibration will also be stored on this partition.
+    mkdir /factory 0770 system system
+
+
+# init.rc for telephony services common to all platforms
+on boot
+    # change group for IPC interfaces
+    chown root system /sys/bus/usb/devices/{{{ssic_port}}}/power/pm_qos_no_power_off
+    chown root system /sys/bus/usb/devices/{{{ssic_port}}}/power/control
+    chown root system /sys/bus/usb/devices/{{{ssic_port}}}/power/autosuspend_delay_ms
+    chmod 0660 /sys/bus/usb/devices/{{{ssic_port}}}/power/pm_qos_no_power_off
+    chmod 0660 /sys/bus/usb/devices/{{{ssic_port}}}/power/control
+    chmod 0660 /sys/bus/usb/devices/{{{ssic_port}}}/power/pm_qos_no_power_off
+    chown root system /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off
+    chown root system /sys/bus/usb/devices/{{{hsic_port}}}/power/control
+    chown root system /sys/bus/usb/devices/{{{hsic_port}}}/power/autosuspend_delay_ms
+    chmod 0660 /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off
+    chmod 0660 /sys/bus/usb/devices/{{{hsic_port}}}/power/control
+    chmod 0660 /sys/bus/usb/devices/{{{hsic_port}}}/power/autosuspend_delay_ms
+    chown root system /sys/bus/usb/drivers/usb/unbind
+    chmod 0660 /sys/bus/usb/drivers/usb/unbind
+    # Disable all the IPC links connected to the modem
+    write /sys/bus/usb/devices/{{{ssic_port}}}/power/pm_qos_no_power_off 0
+    write /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off 0
+
+on post-fs-data
+
+# create NVM log folder
+    mkdir /data/modem
+    chown system radio /data/modem
+    chmod 770 /data/modem
+
+# create factory modem FW folder
+    mkdir /factory/telephony
+    chown system radio /factory/telephony
+    chmod 770 /factory/telephony
+
+# create cache modem FW folder
+    mkdir /cache/telephony
+    chown system radio /cache/telephony
+    chmod 770 /cache/telephony
+
+# create PinCaching folder
+    mkdir /data/telephony
+    chown radio radio /data/telephony
+    chmod 770 /data/telephony
+
+# adding Modem Manager
+service mmgr /system/bin/mmgr
+    class main
+    socket mmgr stream 660 system radio
+    user system
+    group radio cache inet misc system usb
+
+# AT proxy service
+service proxy /system/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10
+    socket atproxy-status stream 666 root radio system
+    class main
+    user radio
+    group radio system cache inet misc
+    disabled
+
+# AT proxy tunneling mode service
+service proxy-tunneling /system/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10 -t on
+    class main
+    user radio
+    group radio system cache inet misc
+    disabled
+
+# AT proxy USB reset utility service
+service atproxy_usbreset /system/bin/atproxy_usbreset
+    oneshot
+    user radio
+    disabled
+
+on property:persist.ril-daemon.disable=0
+   start ril-daemon
+
+on property:persist.ril-daemon.disable=1
+   stop ril-daemon
+
+# USB ACM configuration, with rndis and adb
+on property:sys.usb.config=rndis,acm,adb
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 8087
+    write /sys/class/android_usb/android0/idProduct 0a64
+    write /sys/class/android_usb/android0/f_acm/instances 1
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+    wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
+    write /sys/class/net/rndis0/queues/rx-0/rps_cpus FFFFFFFF
+
+on property:persist.system.at-proxy.mode=*
+    setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
+
+on property:system.at-proxy.mode=0
+    stop proxy
+    stop proxy-tunneling
+    start atproxy_usbreset
+
+on property:system.at-proxy.mode=1
+    stop ad_proxy
+    stop proxy-tunneling
+    setprop sys.usb.config rndis,acm,adb
+    start proxy
+
+on property:system.at-proxy.mode=2
+    stop ad_proxy
+    stop proxy
+    setprop sys.usb.config rndis,acm,adb
+    start proxy-tunneling
+
+# Activate RPS for usbX devices
+on property:sys.usb.modemevt=1
+   setprop sys.usb.modemevt 0
+   wait /sys/class/net/usb0/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb0/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb1/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb1/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb2/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb2/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb3/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb3/queues/rx-0/rps_cpus FFFFFFFF
+   wait /sys/class/net/usb4/queues/rx-0/rps_cpus 1
+   write /sys/class/net/usb4/queues/rx-0/rps_cpus FFFFFFFF
