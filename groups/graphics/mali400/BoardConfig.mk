@@ -1,4 +1,5 @@
 BOARD_EGL_CFG := device/intel/common/graphics/mali/egl.cfg
+BOARD_USE_MALI_GFX := true
 USE_OPENGL_RENDERER := true
 TARGET_DISABLE_TRIPLE_BUFFERING := false
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
