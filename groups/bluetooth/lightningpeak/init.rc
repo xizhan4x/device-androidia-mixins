@@ -1,0 +1,4 @@
+on boot
+    insmod /system/lib/modules/8250_dw.ko
+    insmod /system/lib/modules/lnp_ldisc.ko
+
