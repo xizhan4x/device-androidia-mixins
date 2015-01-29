@@ -5,7 +5,7 @@ BOARD_HAVE_MODEM := true
 BOARD_HAVE_ATPROXY := true
 # Set the list of supported modem families
 # This parameter comes from mixin group instantiation in the device definition
-BOARD_MODEM_LIST := $[modems]
+BOARD_MODEM_LIST := {{{modems}}}
 
 # System Properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
