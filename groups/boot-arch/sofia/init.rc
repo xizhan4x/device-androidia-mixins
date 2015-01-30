@@ -1,2 +1,2 @@
 on fs
-    mount_all /fstab.sofia3g
+    mount_all /fstab
