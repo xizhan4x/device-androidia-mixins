@@ -2,8 +2,8 @@
 LOCAL_KERNEL_MODULE_FILES :=
 ifeq ($(TARGET_PREBUILT_KERNEL),)
   # use default kernel
-  LOCAL_KERNEL_PATH := device/intel/$[path]-kernel/$(TARGET_KERNEL_ARCH)
-  LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/bzImage
+  LOCAL_KERNEL_PATH := device/intel/{{{path}}}-kernel/$(TARGET_KERNEL_ARCH)
+  LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/{{{binary_name}}}
   LOCAL_KERNEL_MODULE_FILES := $(wildcard $(LOCAL_KERNEL_PATH)/modules/*)
   LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
 else
@@ -18,7 +18,8 @@ else
 endif
 
 ifneq ($(LOCAL_KERNEL_MODULE_TREE_PATH),)
-  LOCAL_KERNEL_VERSION := $(shell file -k $(LOCAL_KERNEL) | sed -nr 's|.*version ([^ ]+) .*|\1|p')
+  LOCAL_KERNEL_VERSION := $(shell strings $(LOCAL_KERNEL_PATH)/vmlinux | grep -m 1 'Linux version' | awk '{print $$3}')
+
   ifeq ($(LOCAL_KERNEL_VERSION),)
     $(error Cannot get version for kernel '$(LOCAL_KERNEL)')
   endif
