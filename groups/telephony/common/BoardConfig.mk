@@ -17,3 +17,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 # Telephony common overlay folder
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
+
+BOARD_FACTORYIMAGE_PARTITION_SIZE := 10485760
+
