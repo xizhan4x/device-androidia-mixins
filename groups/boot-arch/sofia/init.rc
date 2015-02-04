@@ -1,2 +1,2 @@
 on fs
-    mount_all /fstab
+    mount_all /fstab.{{{hardware}}}
