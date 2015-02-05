@@ -1,0 +1,1 @@
+../flashless/BoardConfig.mk
