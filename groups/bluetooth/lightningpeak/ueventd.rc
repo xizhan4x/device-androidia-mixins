@@ -1,0 +1,3 @@
+#Bluedroid uhid support
+/dev/uhid                                    0660 bluetooth bluetooth
+/dev/ttyS1                                   0660 bluetooth bluetooth
