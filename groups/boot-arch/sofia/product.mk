@@ -1,12 +1,21 @@
 PRODUCT_PACKAGES += \
-                    mobilevisor.fls \
-                    modem.fls \
-                    mvconfig_smp.fls \
-                    psi_flash.fls \
-                    secvm.fls \
-                    slb.fls \
-                    splash_img.fls \
-                    ucode_patch.fls \
+    setup_fs \
+    setup_fs_nvm \
+    libnvmmodule \
+    nvm_useragent \
+    nvmtest \
+    nvm_init.sh \
+    libipcservice \
+    libipcs \
+    libipcservice_tcpip_plugin \
+    libipcservice_tty_plugin \
+    libipcservice_uds_plugin \
+    libipcservice_utaos \
+    ipcsd \
+    ipcservice_daemon \
+    rpcNotifier \
+    rpcServer \
+    rpc-daemon \
 
 TARGET_BOARD_PLATFORM := sofia3g
 
