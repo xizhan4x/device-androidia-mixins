@@ -16,7 +16,6 @@ BOARD_SEPOLICY_UNION := \
     genfs_contexts \
     gpsd.te \
     hdcpd.te \
-    init_shell.te \
     init.te \
     kernel.te \
     keymaster.te \
@@ -35,6 +34,7 @@ BOARD_SEPOLICY_UNION := \
     surfaceflinger.te \
     system_app.te \
     system_server.te \
+    te_macros \
     thermal.te \
     ueventd.te \
     untrusted_app.te \
