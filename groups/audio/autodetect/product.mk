@@ -7,8 +7,15 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Audio Primary HAL
 PRODUCT_PACKAGES += \
-        audio.primary.$(TARGET_BOARD_PLATFORM) \
-	audio.primary.irda-aosp
+        audio_hal_configurable \
+        audio.primary.irda-aosp \
+        parameter-framework.route.coho \
+        parameter-framework.audio.coho \
+        libremote-processor
+
+# parameter-framework debug/tuning/engineering
+PRODUCT_PACKAGES_ENG += \
+        remote-process
 
 # Extended Audio HALs
 PRODUCT_PACKAGES += \
