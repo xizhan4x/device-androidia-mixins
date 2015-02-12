@@ -6,5 +6,6 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # SST Firmware
 PRODUCT_PACKAGES += \
-    fw_sst_22a8.bin
+    fw_sst_22a8.bin \
+    dfw_sst.bin
 
