@@ -24,7 +24,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Flash partition layout:
-INTEL_PRG_FILE ?= device/intel/sofia3g/$(TARGET_PRODUCT)/modem_cfg_emmc.prg
+INTEL_PRG_FILE ?= device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
 GEN_PRG_FROM_SRC := true
 
 # Enable -DFEAT_RPC_SERVICE for various IMC services
