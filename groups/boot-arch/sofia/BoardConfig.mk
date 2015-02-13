@@ -25,6 +25,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # Flash partition layout:
 INTEL_PRG_FILE ?= device/intel/sofia3g/$(TARGET_PRODUCT)/modem_cfg_emmc.prg
+GEN_PRG_FROM_SRC := true
 
 # Enable -DFEAT_RPC_SERVICE for various IMC services
 FEAT_MSM := YES
