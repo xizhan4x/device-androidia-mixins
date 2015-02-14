@@ -40,6 +40,7 @@ HAL_BM_TARGET_WIFI := /system/rt/wifi
 
 HAL_BM_TARGETS := :$(HAL_BM_TARGET_GFX):$(HAL_BM_TARGET_MEDIA):$(HAL_BM_TARGET_AUDIO):$(HAL_BM_TARGET_WIFI):
 
+HAL_KMSG_NAME := /dev/__hal_kmsg__
 
 # Forcing these directories to live post zip update
 PRODUCT_COPY_FILES += \
