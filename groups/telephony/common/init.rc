@@ -53,7 +53,7 @@ on post-fs-data
 service mmgr /system/bin/mmgr
     class main
     socket mmgr stream 660 system radio
-    user system
+    user root
     group radio cache inet misc system usb
 
 # AT proxy service
