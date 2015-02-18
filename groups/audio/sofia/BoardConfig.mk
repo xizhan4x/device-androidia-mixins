@@ -1,0 +1,1 @@
+BOARD_USE_VLX_AUDIO := true
