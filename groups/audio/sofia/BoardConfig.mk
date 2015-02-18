@@ -1,1 +1,1 @@
-BOARD_USE_VLX_AUDIO := true
+INTEL_AUDIO_HAL := imc
