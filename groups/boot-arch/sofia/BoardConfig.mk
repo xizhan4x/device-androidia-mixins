@@ -14,7 +14,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 TARGET_BOOTLOADER_IS_2ND := true
-TARGET_NO_RECOVERY := true
+TARGET_NO_RECOVERY := false
 
 BOARD_KERNEL_BASE := 0x0 
 BOARD_KERNEL_PAGESIZE := 4096
@@ -24,5 +24,8 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Flash partition layout:
-BOARD_PRG_FILE ?= device/intel/sofia3g/$(TARGET_PRODUCT)/modem_cfg_emmc.prg
+INTEL_PRG_FILE ?= device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
+GEN_PRG_FROM_SRC := true
 
+# Enable -DFEAT_RPC_SERVICE for various IMC services
+FEAT_MSM := YES
