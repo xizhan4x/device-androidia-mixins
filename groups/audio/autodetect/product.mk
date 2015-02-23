@@ -26,6 +26,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
+# Audio topology files
+PRODUCT_PACKAGES += \
+    topology.audio.$(TARGET_BOARD_PLATFORM)
+
 # SST Firmware
 PRODUCT_PACKAGES += \
     fw_sst_0f28_ssp0.bin \
