@@ -23,6 +23,8 @@ MEDIA_CODECS_LIST:
 	@echo "Creating symbolic link on media_codecs.xml"
 	@mkdir -p $(TARGET_OUT)/etc;
 	@ln -sf $(HAL_BM_TARGET_MEDIA)/etc/media_codecs.xml $(TARGET_OUT)/etc/;
+	@ln -sf $(HAL_BM_TARGET_MEDIA)/etc/media_codecs_google_audio.xml $(TARGET_OUT)/etc/;
+	@ln -sf $(HAL_BM_TARGET_MEDIA)/etc/media_codecs_google_video.xml $(TARGET_OUT)/etc/;
 
 ALL_DEFAULT_INSTALLED_MODULES += MEDIA_CODECS_LIST
 
