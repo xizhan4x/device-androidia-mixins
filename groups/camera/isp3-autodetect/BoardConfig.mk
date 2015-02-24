@@ -1,1 +1,0 @@
-../isp3/BoardConfig.mk

@@ -1,0 +1,1 @@
+../ipu2/product.mk
