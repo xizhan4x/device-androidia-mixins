@@ -17,7 +17,7 @@ PRODUCT_PACKAGES += \
     rpcServer \
     rpc-daemon \
 
-TARGET_BOARD_PLATFORM := sofia3g
+TARGET_BOARD_PLATFORM := {{{board_platform}}}
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.rc:root/init.{{{hardware}}}.rc \
