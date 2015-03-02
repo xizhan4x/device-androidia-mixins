@@ -11,7 +11,7 @@ BOARD_MODEM_LIST := {{{modems}}}
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.dual_sim=none \
     persist.ril-daemon.disable=0 \
-    rild.libpath=/system/lib/librapid-ril-core.so \
+    rild.libpath=librapid-ril-core.so \
     ro.telephony.default_network=9 \
     persist.tel.hot_swap.support=true
 
