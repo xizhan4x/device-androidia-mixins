@@ -17,6 +17,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_ENG += \
         remote-process
 
+PFW_CONFIGURATION_FOLDER := /system/etc/parameter-framework/
+
 # Extended Audio HALs
 PRODUCT_PACKAGES += \
         audio.r_submix.default \
