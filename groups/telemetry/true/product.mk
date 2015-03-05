@@ -2,7 +2,7 @@
 # Telemetry
 PRODUCT_PACKAGES += \
     telemetryd tm_record tm_fprobe tm_pstore_probe tm_dmesg_probe \
-    tm_logcount_probe tm_logprobe \
+    tm_logcount_probe tm_logprobe tm_storage_setup \
     DataReport \
     DataReportSettings 
 
