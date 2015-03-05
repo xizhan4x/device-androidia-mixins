@@ -4,8 +4,11 @@ BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/telemetry
 BOARD_SEPOLICY_UNION += \
 	file_contexts \
 	file.te \
+	keys.conf \
+	mac_permissions.xml \
 	netd.te \
 	property_contexts \
 	property.te \
+	seapp_contexts \
 	telemetry.te \
-        vold.te
+	vold.te
