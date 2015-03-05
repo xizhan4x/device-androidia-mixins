@@ -3,6 +3,7 @@ on early-boot
     start hald
     wait /dev/hald.ready 5
     restorecon /dev/hald.ready
+    restorecon /system/vendor/gfx/ufo_byt/bin/msync
     restorecon /system/vendor/gfx/ufo_byt/bin/coreu
     restorecon /system/vendor/gfx/ufo_byt/bin/hdcpd
     restorecon /system/vendor/wifi/aosp/wpa_supplicant
