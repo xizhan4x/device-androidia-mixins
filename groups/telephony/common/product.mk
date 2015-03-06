@@ -5,10 +5,6 @@ PRODUCT_COPY_FILES += \
 # Inherit from common Open Source Telephony product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# copy permission files
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
-
 # copy atproxy_usbreset
 PRODUCT_COPY_FILES += \
     device/intel/common/telephony/atproxy_usbreset:system/bin/atproxy_usbreset
