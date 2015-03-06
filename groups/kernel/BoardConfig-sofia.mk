@@ -7,6 +7,7 @@ BOARD_KERNEL_CMDLINE += \
 	cma=128M \
 	nolapic_pm \
 	apic=sofia \
+	cma={{{cma_size}}} \
 
 # Device Tree Blob file name:
 BOARD_DTB_FILE ?= {{{board_dtb}}}
