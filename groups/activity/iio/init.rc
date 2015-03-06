@@ -1,0 +1,10 @@
+on post-fs
+    insmod /system/lib/modules/mma9551_core.ko
+    insmod /system/lib/modules/mma9553.ko
+
+#    setprop ro.iio.accel.name "Freescale MMA9553 Sensor"
+#    setprop ro.iio.accel.vendor "Freescale"
+#    setprop ro.iio.accel.max_range 39.24
+#    setprop ro.iio.accel.resolution 0.01
+#    setprop ro.iio.accel.power 2
+

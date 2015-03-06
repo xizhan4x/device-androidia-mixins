@@ -1,0 +1,65 @@
+/dev/iio:device*              0660   system     system
+
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_accel_scale          0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_accel_x_raw          0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_accel_y_raw          0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_accel_z_raw          0660    system  system
+
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_activity_calibgender			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_activity_calibgender_available		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_activity_calibheight			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_activity_jogging_input			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_activity_running_input			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_activity_still_input			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_activity_walking_input			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_distance_calibgender			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_distance_calibgender_available		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_distance_calibheight			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_distance_en				0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_distance_input				0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_energy_calibgender			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_energy_calibgender_available		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_energy_calibheight			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_energy_calibweight			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_energy_en					0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_energy_raw				0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_energy_scale				0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_steps_debounce_count			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_steps_debounce_time			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_steps_en					0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_steps_input				0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_velocity_calibgender			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_velocity_calibgender_available		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_velocity_calibheight			0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_velocity_sqrt(x^2+y^2+z^2)_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_velocity_sqrt(x^2+y^2+z^2)_integration_time	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_velocity_sqrt(x^2+y^2+z^2)_raw		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* in_velocity_sqrt(x^2+y^2+z^2)_scale		0660    system  system
+
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_jogging_thresh_falling_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_jogging_thresh_falling_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_jogging_thresh_falling_value	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_jogging_thresh_rising_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_jogging_thresh_rising_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_jogging_thresh_rising_value	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_running_thresh_falling_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_running_thresh_falling_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_running_thresh_falling_value	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_running_thresh_rising_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_running_thresh_rising_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_running_thresh_rising_value	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_still_thresh_falling_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_still_thresh_falling_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_still_thresh_falling_value	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_still_thresh_rising_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_still_thresh_rising_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_still_thresh_rising_value		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_walking_thresh_falling_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_walking_thresh_falling_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_walking_thresh_falling_value	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_walking_thresh_rising_en		0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_walking_thresh_rising_period	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_activity_walking_thresh_rising_value	0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_steps_change_en				0660    system  system
+/sys/devices/*/*/*/*/*/*/*/i2c-*/i2c-*/iio:device* events/in_steps_change_value				0660    system  system
+
