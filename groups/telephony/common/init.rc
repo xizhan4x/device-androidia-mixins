@@ -27,8 +27,11 @@ on boot
     write /sys/bus/usb/devices/{{{ssic_port}}}/power/pm_qos_no_power_off 0
     write /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off 0
 
-on post-fs-data
+on post-fs
+    restorecon_recursive /config
+    restorecon_recursive /factory
 
+on post-fs-data
 # create NVM log folder
     mkdir /data/modem
     chown system radio /data/modem

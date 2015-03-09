@@ -20,3 +20,14 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
 
 BOARD_FACTORYIMAGE_PARTITION_SIZE := 10485760
 
+BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/telephony
+
+# Please keep this list in alphabetical order.
+BOARD_SEPOLICY_UNION +=\
+	file_contexts \
+	file.te \
+	gpsd.te \
+	mmgr.te \
+	nvm_server.te \
+	radio.te \
+	rild.te
