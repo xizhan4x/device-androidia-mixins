@@ -7,5 +7,5 @@ BOARD_SEPOLICY_UNION += \
 	netd.te \
 	property_contexts \
 	property.te \
-	telemetry.te
-
+	telemetry.te \
+        vold.te
