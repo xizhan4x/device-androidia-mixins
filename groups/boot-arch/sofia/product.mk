@@ -16,6 +16,15 @@ PRODUCT_PACKAGES += \
     rpcNotifier \
     rpcServer \
     rpc-daemon \
+{{#fls_prebuilts}}
+    mobilevisor.fls \
+    mvconfig_smp.fls \
+    secvm.fls \
+    splash_img.fls \
+    psi_flash.fls \
+    slb.fls \
+    ucode_patch.fls \
+{{/fls_prebuilts}}
 
 TARGET_BOARD_PLATFORM := {{{board_platform}}}
 TARGET_PROJECT := {{{board_platform}}}

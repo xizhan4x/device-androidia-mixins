@@ -1,8 +1,16 @@
+{{^fls_prebuilts}}
 BUILD_BOOTCORE_FROM_SRC := true
 BUILD_SECVM_FROM_SRC := true
 BUILD_VMM_FROM_SRC := true
-GEN_ANDROID_FLS_FILES := true
 GEN_VMM_FLS_FILES := true
+{{/fls_prebuilts}}
+{{#fls_prebuilts}}
+BUILD_BOOTCORE_FROM_SRC := false
+BUILD_SECVM_FROM_SRC := false
+BUILD_VMM_FROM_SRC := false
+GEN_VMM_FLS_FILES := false
+{{/fls_prebuilts}}
+GEN_ANDROID_FLS_FILES := true
 MODEM_PLATFORM := {{{modem_platform}}}
 MODEM_PROJECTNAME := {{{modem_projectname}}}
 MV_CONFIG_BITNESS := {{{bitness}}}
@@ -11,7 +19,12 @@ MODEM_BUILD_ARGUMENTS = INT_STAGE=MEX HW_BASE=XG_ES_2.0 UTA_CLIENT=RPC ASM_DEFS_
 
 BUILT_MODEM := modem/prebuilt/$(MODEM_PLATFORM)/$(MODEM_PROJECTNAME).ihex
 
+{{^fls_prebuilts}}
 NON_IMC_BUILD := true
+{{/fls_prebuilts}}
+{{#fls_prebuilts}}
+NON_IMC_BUILD := false
+{{/fls_prebuilts}}
 export NON_IMC_BUILD
 
 include device/intel/common/boot/sofia/sofia-base.mk
