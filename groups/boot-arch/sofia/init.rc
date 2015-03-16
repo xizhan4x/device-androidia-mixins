@@ -60,8 +60,12 @@ service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS2 -
     group root
 
 service rpcServer /system/bin/rpcServer
-    class main
+{{#telephony}}
+    socket msmSock stream 660 system radio
+{{/telephony}}
+    class core
     user root
+    group root
 
 service setup_fs_nvm /system/bin/setup_fs_nvm /dev/block/by-name/ImcPartID076 /nvm_fs_partition
     class core
@@ -80,7 +84,11 @@ service rpcNotifier /system/bin/rpcNotifier
     user root
 
 service rpc-daemon /system/bin/rpc-daemon
-    class main
+    socket rpc_send stream 660 system radio
+    socket rpc_recv stream 660 system radio
+    socket rpc_reg stream 660 system radio
+    group root radio system
+    class core
     user root
     disabled
 
