@@ -8,3 +8,8 @@ PRODUCT_PACKAGES += libcamera.legacy
 
 # Add OV680 FW
 PRODUCT_PACKAGES += ov680_fw.bin
+
+# Add IntelCamera extension.
+PRODUCT_PACKAGES += libintelcamera_jni \
+                    com.intel.camera.extensions \
+                    com.intel.camera.extensions.xml \
