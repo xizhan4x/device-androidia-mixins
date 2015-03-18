@@ -53,7 +53,7 @@ on property:init.svc.setup_fs_nvm=stopped
 on property:persist.tool_enable=1
     start ipcsd
 
-service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS2 --mex=TTY,/dev/vbpipe15
+service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS2 --mex=TTY,/dev/mvpipe-GTI
     class main
     disabled
     user root
