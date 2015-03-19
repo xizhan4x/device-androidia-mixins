@@ -7,8 +7,17 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Audio Primary HAL
 PRODUCT_PACKAGES += \
-        audio.primary.$(TARGET_BOARD_PLATFORM) \
-	audio.primary.irda-aosp
+        audio_hal_configurable \
+        audio.primary.irda-aosp \
+        parameter-framework.route.coho \
+        parameter-framework.audio.coho \
+        libremote-processor
+
+# parameter-framework debug/tuning/engineering
+PRODUCT_PACKAGES_ENG += \
+        remote-process
+
+PFW_CONFIGURATION_FOLDER := /system/etc/parameter-framework/
 
 # Extended Audio HALs
 PRODUCT_PACKAGES += \
@@ -18,6 +27,10 @@ PRODUCT_PACKAGES += \
         audio.a2dp.default
 
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+
+# Audio topology files
+PRODUCT_PACKAGES += \
+    topology.audio.$(TARGET_BOARD_PLATFORM)
 
 # SST Firmware
 PRODUCT_PACKAGES += \
