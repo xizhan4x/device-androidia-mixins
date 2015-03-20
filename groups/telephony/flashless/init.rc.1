@@ -1,11 +1,25 @@
 # init.rc for telephony services specific to flashless platforms
 
+on init
+    # Contains dynamic configuration and calibration data.
+    mkdir /config 0770 radio radio
+
 on post-fs-data
 
 # create config modem FW folder
     mkdir /config/telephony
     chown system radio /config/telephony
     chmod 770 /config/telephony
+
+# create NVM log folder
+    mkdir /data/modem
+    chown system radio /data/modem
+    chmod 770 /data/modem
+
+# create cache modem FW folder
+    mkdir /cache/telephony
+    chown system radio /cache/telephony
+    chmod 770 /cache/telephony
 
 # adding nvm manager
 service nvm_manager /system/bin/nvm_server
