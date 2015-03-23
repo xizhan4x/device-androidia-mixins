@@ -19,12 +19,7 @@ MODEM_BUILD_ARGUMENTS = INT_STAGE=MEX HW_BASE=XG_ES_2.0 UTA_CLIENT=RPC ASM_DEFS_
 
 BUILT_MODEM := modem/prebuilt/$(MODEM_PLATFORM)/$(MODEM_PROJECTNAME).ihex
 
-{{^fls_prebuilts}}
 NON_IMC_BUILD := true
-{{/fls_prebuilts}}
-{{#fls_prebuilts}}
-NON_IMC_BUILD := false
-{{/fls_prebuilts}}
 export NON_IMC_BUILD
 
 include device/intel/common/boot/sofia/sofia-base.mk
