@@ -5,7 +5,8 @@ NFC_CONF_PATH ?= device/intel/common/nfc/fdp
 
 # FDP-specific configuration files
 PRODUCT_COPY_FILES += \
-    $(NFC_CONF_PATH)/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
+    $(NFC_CONF_PATH)/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    $(NFC_CONF_PATH)/infc.conf:system/etc/infc.conf
 
 # FDP-specific NFC packages
 PRODUCT_PACKAGES += \
