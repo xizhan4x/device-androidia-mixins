@@ -27,6 +27,8 @@ BOARD_SEPOLICY_UNION +=\
 	gpsd.te \
 	mmgr.te \
 	nvm_server.te \
+	property.te \
+	property_contexts \
 	radio.te \
 	rild.te \
 	service_contexts
