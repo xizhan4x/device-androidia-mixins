@@ -1,7 +1,6 @@
 BOARD_KERNEL_CMDLINE += \
 	idle=halt \
 	debug \
-	notsc \
 	nolapic_pm \
 	apic=sofia \
 	cma={{{cma_size}}}
