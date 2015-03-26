@@ -10,3 +10,8 @@
 /dev/mdm_ctrl*            0660   root       radio
 /dev/ttyIFX0              0660   root       radio
 /dev/ttyIFX1              0660   root       radio
+
+# change group and rights for IPC interfaces
+/sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/control 0664 root system
+/sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/autosuspend_delay_ms 0664 root system
+
