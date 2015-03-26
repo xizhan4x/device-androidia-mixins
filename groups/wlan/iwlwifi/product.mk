@@ -4,6 +4,10 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_cli
 
+# iwlwifi USC
+PRODUCT_PACKAGES += \
+    wifi_intel_usc
+
 #copy iwlwifi wpa config files
 PRODUCT_COPY_FILES += \
         device/intel/common/wlan/wpa_supplicant-common.conf:system/etc/wifi/wpa_supplicant.conf \
