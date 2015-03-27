@@ -31,4 +31,6 @@ BOARD_SEPOLICY_UNION +=\
 	property_contexts \
 	radio.te \
 	rild.te \
-	service_contexts
+	service_contexts \
+	system_app.te
+
