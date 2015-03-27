@@ -1,0 +1,16 @@
+on charger
+    class_start charger
+    start console
+
+service batteryserver /charger
+    class charger
+    user root
+    console
+    oneshot
+
+on charger
+     mount_all ./fstab.s3gr10m6s
+     start setup_fs_nvm
+     start watchdog
+
+
