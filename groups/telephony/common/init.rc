@@ -8,8 +8,7 @@ on boot
     # disable HSIC bus
     write /sys/bus/usb/devices/{{{hsic_bus}}}-0:1.0/port{{{hsic_port}}}/power/pm_qos_no_power_off 0
 
-on post-fs
-    restorecon_recursive /config
+on post-fs-data
 
 # create PinCaching folder
     mkdir /data/telephony
