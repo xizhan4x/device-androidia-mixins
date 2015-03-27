@@ -22,6 +22,10 @@ on property:dev.bootcomplete=1
 on fs
     mount_all /fstab.{{{hardware}}}
 
+on charger
+    mount_all /fstab.{{{hardware}}}
+    start setup_fs_nvm
+
 on post-fs-data
     mkdir /data/rpcd
     # FIXME!: (security)
