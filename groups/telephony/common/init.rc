@@ -17,7 +17,7 @@ on post-fs-data
 service mmgr /system/bin/mmgr
     class main
     socket mmgr stream 660 system radio
-    user root
+    user system
     group radio cache inet misc system usb
 
 # AT proxy service
@@ -116,3 +116,4 @@ on property:sys.usb.modemevt=1
    write /sys/class/net/usb3/queues/rx-0/rps_cpus FFFFFFFF
    wait /sys/class/net/usb4/queues/rx-0/rps_cpus 1
    write /sys/class/net/usb4/queues/rx-0/rps_cpus FFFFFFFF
+
