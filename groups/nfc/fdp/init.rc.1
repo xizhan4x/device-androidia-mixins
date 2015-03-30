@@ -2,3 +2,15 @@ on boot
     # Load NFC I2C driver
     insmod /system/lib/modules/fdp_nfc.ko
 
+on post-fs-data
+    # create config NFC NVM folder
+    mkdir /config/nfc 0770 nfc system
+    start nfc_rest_nvm
+
+service nfc_rest_nvm /system/bin/sh /system/bin/nfc_intel_restore.sh
+    class main
+    user nfc
+    group system nfc
+    disabled
+    oneshot
+
