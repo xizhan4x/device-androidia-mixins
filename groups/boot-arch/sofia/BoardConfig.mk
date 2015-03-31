@@ -41,3 +41,6 @@ FEAT_MSM := YES
 
 PARTITION_XML_PATH = ../../../device/intel/${TARGET_BOARD_PLATFORM}/partition.xml
 RAMLAYOUT_XML_PATH = ../../../device/intel/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
+
+# HACK to work around lack of PAE kernel override
+override LIBART_IMG_TARGET_BASE_ADDRESS := 0x30000000
