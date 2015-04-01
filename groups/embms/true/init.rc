@@ -1,0 +1,4 @@
+on boot
+# Enable nuplayer app
+    setprop embms.dash.nuplayer 1
+
