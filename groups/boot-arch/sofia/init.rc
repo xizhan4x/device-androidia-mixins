@@ -1,8 +1,35 @@
 on early-init
     setprop persist.tool_enable 0
 
+{{#throttle_cpu_during_boot}}
+on early-init
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 416000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 416000
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 416000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 416000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor ondemand
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor ondemand
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor ondemand
+
+# This is commented out temporarily because of issues encountered while
+# preparing initial 3gr mrd6 target for master. When the issues are
+# resolved, we can go back to 900 MHz after boot is complete:
+
+#on property:dev.bootcomplete=1
+#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 900000
+#    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 900000
+#    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 900000
+#    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 900000
+#
+{{/throttle_cpu_during_boot}}
+
 on fs
     mount_all /fstab.{{{hardware}}}
+
+on charger
+    mount_all /fstab.{{{hardware}}}
+    start setup_fs_nvm
 
 on post-fs-data
     mkdir /data/rpcd
