@@ -1,4 +1,4 @@
 on boot
-    setprop media.pfw.verbose true
+    setprop persist.media.pfw.verbose true
 on post-fs-data
     mkdir /mnt/asec/media 0770 media media
