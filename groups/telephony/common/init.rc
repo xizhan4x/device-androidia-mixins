@@ -9,10 +9,12 @@ on init
 # init.rc for telephony services common to all platforms
 on boot
     # change group for IPC interfaces
-    chown root system /sys/bus/usb/devices/{{{ssic_port}}}/power/control
-    chown root system /sys/bus/usb/devices/{{{ssic_port}}}/power/autosuspend_delay_ms
-    chmod 0660 /sys/bus/usb/devices/{{{ssic_port}}}/power/control
-    chmod 0660 /sys/bus/usb/devices/{{{ssic_port}}}/power/autosuspend_delay_ms
+    chown root system /sys/bus/usb/devices/{{{ssic_bus}}}-{{{ssic_port}}}/power/control
+    chown root system /sys/bus/usb/devices/{{{ssic_bus}}}-{{{ssic_port}}}/power/autosuspend_delay_ms
+    chmod 0660 /sys/bus/usb/devices/{{{ssic_bus}}}-{{{ssic_port}}}/power/control
+    chmod 0660 /sys/bus/usb/devices/{{{ssic_bus}}}-{{{ssic_port}}}/power/autosuspend_delay_ms
+    # disable HSIC bus
+    write /sys/bus/usb/devices/{{{hsic_bus}}}-0:1.0/port{{{hsic_port}}}/power/pm_qos_no_power_off 0
 
 on post-fs
     restorecon_recursive /config
