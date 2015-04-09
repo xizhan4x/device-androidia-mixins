@@ -15,3 +15,6 @@
 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/control 0664 root system
 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/autosuspend_delay_ms 0664 root system
 
+# Telephony GPT factory partition block device
+/dev/block/platform/*/*/by-name/modem1_cal 0660 radio system
+/dev/block/platform/*/*/by-name/modem2_cal 0660 radio system
