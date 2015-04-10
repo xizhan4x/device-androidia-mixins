@@ -6,13 +6,15 @@ NFC_CONF_PATH ?= device/intel/common/nfc/fdp
 # FDP-specific configuration files
 PRODUCT_COPY_FILES += \
     $(NFC_CONF_PATH)/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    $(NFC_CONF_PATH)/infc.conf:system/etc/infc.conf
+    $(NFC_CONF_PATH)/infc_b0.conf:system/etc/infc_b0.conf \
+    $(NFC_CONF_PATH)/infc_b2.conf:system/etc/infc_b2.conf
 
 # FDP-specific NFC packages
 PRODUCT_PACKAGES += \
     nfc_nci.fdp.default \
-    PatchRAM \
-    PatchOTP \
-    PatchRamProd \
+    PatchRAM_b0 \
+    PatchOTP_b0 \
+    PatchRAM_b2 \
+    PatchOTP_b2 \
     nfc_intel_restore.sh
 
