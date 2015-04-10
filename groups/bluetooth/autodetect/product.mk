@@ -8,6 +8,7 @@ PRODUCT_PACKAGES += \
     bt_rtl8723b \
     bt_bcm43241 \
     bt_bcm43340 \
+    bt_bcm4330 \
     bt_lnp_fw \
 
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
