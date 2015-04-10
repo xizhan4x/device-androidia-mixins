@@ -85,3 +85,15 @@
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* scan_elements/in_timestamp_type  0660   system  system
 
 /sys/devices/platform/*/i2c-*/i2c-*/iio:device* trigger/current_trigger          0660   system  system
+
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_intensity_scale                    0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_intensity_scale_available          0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_intensity_both_raw                 0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* in_intensity_ir_raw                   0660   system  system
+
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* scan_elements/in_intensity_both_en    0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* scan_elements/in_intensity_both_index 0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* scan_elements/in_intensity_both_type  0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* scan_elements/in_intensity_ir_en      0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* scan_elements/in_intensity_ir_index   0660   system  system
+/sys/devices/platform/*/i2c-*/i2c-*/iio:device* scan_elements/in_intensity_ir_type    0660   system  system
