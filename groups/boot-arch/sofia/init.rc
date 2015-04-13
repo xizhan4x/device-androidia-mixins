@@ -90,3 +90,8 @@ service rpc-daemon /system/bin/rpc-daemon
 on property:rpcd.start=1
     start rpc-daemon
 
+service watchdog /sbin/watchdogd 60
+    class core
+    oneshot
+    seclabel u:r:watchdogd:s0
+
