@@ -9,6 +9,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 
+# Inherit from common Open Source Telephony product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.dual_sim=dsds \
     persist.tel.hot_swap.support=true \
