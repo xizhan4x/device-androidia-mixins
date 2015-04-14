@@ -12,11 +12,6 @@ PRODUCT_COPY_FILES += \
 # Inherit from common Open Source Telephony product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    persist.dual_sim=dsds \
-    persist.tel.hot_swap.support=true \
-	persist.ril-daemon.disable=dsds
-
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
         rild.libpath=/system/lib/librpc-ril.so \
 
