@@ -3,6 +3,8 @@ on post-fs-data
     chmod 777 /sys/devices/1d000000.vmodem/modem_state
     chown root root /sys/bus/platform/drivers/vmodem/1d000000.vmodem/modem_state
     chmod 777 /sys/bus/platform/drivers/vmodem/1d000000.vmodem/modem_state
+    symlink /system/vendor/firmware/modem.fls_ID0_CUST_SecureBlock.bin /data/modem.fls_ID0_CUST_SecureBlock.bin
+    setprop rpcd.start 1
 
 service ril-daemon2 /system/bin/rild -c 2
    class main
