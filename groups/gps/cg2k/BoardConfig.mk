@@ -6,6 +6,4 @@ GPS_TRANS := {{{trans}}}
 GPS_CLOSE_INACTIVE := {{{uart_close}}}
 GPS_UART_PM := {{{uart_pm}}}
 GPS_SIMU := {{{simu}}}
-ifeq ($(BOARD_HAVE_MODEM), true)
-GPS_AMIL := true
-endif
+GPS_AMIL := {{{amil}}}
