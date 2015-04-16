@@ -1,45 +1,64 @@
-simuimage_bin := $(PRODUCT_OUT)/$(TARGET_PRODUCT).img
-simuimage_bin_zip := $(PRODUCT_OUT)/$(TARGET_PRODUCT).zip
+gptimage_size ?= {{{size}}}
 
-simuimage_size := 5368709120
+raw_config := none
+raw_factory := none
 
-$(simuimage_bin): \
+.PHONY: none
+none: ;
+
+.PHONY: $(INSTALLED_CONFIGIMAGE_TARGET).raw
+$(INSTALLED_CONFIGIMAGE_TARGET).raw: $(INSTALLED_CONFIGIMAGE_TARGET) $(SIMG2IMG)
+	$(SIMG2IMG) $< $@
+
+.PHONY: $(INSTALLED_FACTORYIMAGE_TARGET).raw
+$(INSTALLED_FACTORYIMAGE_TARGET).raw: $(INSTALLED_FACTORYIMAGE_TARGET) $(SIMG2IMG)
+	$(SIMG2IMG) $< $@
+
+ifdef INSTALLED_CONFIGIMAGE_TARGET
+raw_config := $(INSTALLED_CONFIGIMAGE_TARGET).raw
+endif
+
+ifdef INSTALLED_FACTORYIMAGE_TARGET
+raw_factory := $(INSTALLED_FACTORYIMAGE_TARGET).raw
+endif
+
+.PHONY: $(GPTIMAGE_BIN)
+$(GPTIMAGE_BIN): \
 	bootloader \
 	bootimage \
 	recoveryimage \
 	systemimage \
-	userdataimage \
 	cacheimage \
-	$(SIMG2IMG)
+	$(SIMG2IMG) \
+	$(raw_config) \
+	$(raw_factory)
 
-	$(hide) rm -f $(PRODUCT_OUT)/*.decomp
-	$(hide) rm -f $(simuimage_bin)
+	$(hide) rm -f $(INSTALLED_SYSTEMIMAGE).raw
+	$(hide) rm -f $(INSTALLED_USERDATAIMAGE_TARGET).raw
+	$(hide) rm -f $(INSTALLED_CACHEIMAGE_TARGET).raw
 
-	$(SIMG2IMG) $(INSTALLED_SYSTEMIMAGE) $(INSTALLED_SYSTEMIMAGE).decomp
-	$(SIMG2IMG) $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/cache.img $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/cache.img.decomp
-	$(SIMG2IMG) $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/userdata.img $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/userdata.img.decomp
+	$(MAKE_EXT4FS) -b $(BOARD_FLASH_BLOCK_SIZE) \
+		-l $(BOARD_USERDATAIMAGE_PARTITION_SIZE) -L android_data \
+		$(PRODUCT_OUT)/userdata.dummy
+
+	$(SIMG2IMG) $(INSTALLED_SYSTEMIMAGE) $(INSTALLED_SYSTEMIMAGE).raw
+	$(SIMG2IMG) $(INSTALLED_CACHEIMAGE_TARGET) $(INSTALLED_CACHEIMAGE_TARGET).raw
 
 	device/intel/build/create_gpt_image.py \
-		--create $(ANDROID_BUILD_TOP)/$@ \
+		--create $@ \
 		--block $(BOARD_FLASH_BLOCK_SIZE) \
-		--table $(ANDROID_BUILD_TOP)/$(BOARD_GPT_INI) \
-		--size $(simuimage_size)B \
+		--table $(BOARD_GPT_INI) \
+		--size $(gptimage_size) \
 		--bootloader $(bootloader_bin) \
 		--bootloader2 $(bootloader_bin) \
-		--boot $(ANDROID_BUILD_TOP)/$(INSTALLED_BOOTIMAGE_TARGET) \
-		--recovery $(ANDROID_BUILD_TOP)/$(INSTALLED_RECOVERYIMAGE_TARGET) \
-		--misc none \
-		--metadata none \
-		--system $(ANDROID_BUILD_TOP)/$(INSTALLED_SYSTEMIMAGE).decomp \
-		--cache $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/cache.img.decomp \
-		--data $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/userdata.img.decomp \
-		--persistent none \
-		--factory none
+		--boot $(INSTALLED_BOOTIMAGE_TARGET) \
+		--recovery $(INSTALLED_RECOVERYIMAGE_TARGET) \
+		--system $(INSTALLED_SYSTEMIMAGE).raw \
+		--data $(PRODUCT_OUT)/userdata.dummy \
+		--cache $(INSTALLED_CACHEIMAGE_TARGET).raw \
+		--config $(raw_config) \
+		--factory $(raw_factory)
 
-$(simuimage_bin_zip): $(simuimage_bin)
-	zip $@ $(simuimage_bin)
+.PHONY: gptimage
+gptimage: $(GPTIMAGE_BIN)
 
-BOARD_FLASHFILES += $(simuimage_bin_zip):$(TARGET_PRODUCT).zip
-
-.PHONY: simuimage
-simuimage: $(simuimage_bin)

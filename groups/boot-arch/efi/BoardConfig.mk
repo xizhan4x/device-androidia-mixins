@@ -8,7 +8,7 @@ TARGET_RECOVERY_FSTAB ?= $(TARGET_DEVICE_DIR)/fstab
 
 # Used by ota_from_target_files to add platform-specific directives
 # to the OTA updater scripts
-TARGET_RELEASETOOLS_EXTENSIONS ?= device/intel/common/recovery/releasetools.py
+TARGET_RELEASETOOLS_EXTENSIONS ?= device/intel/common/recovery
 
 # Adds edify commands swap_entries and copy_partition for robust
 # update of the EFI system partition
@@ -56,6 +56,11 @@ ifeq ({{{fastboot}}},efi)
 BOARD_GPT_BIN = $(PRODUCT_OUT)/gpt.bin
 BOARD_FLASHFILES += $(BOARD_GPT_BIN):gpt.bin
 INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_BIN)
+
+# For fastboot-uefi we offer the possibility to flash from a USB
+# storage device using the "installer" EFI application
+BOARD_FLASHFILES += $(PRODUCT_OUT)/efi/installer.efi
+BOARD_FLASHFILES += device/intel/common/boot/startup.nsh
 else
 #
 # USERFASTBOOT Configuration
@@ -71,7 +76,7 @@ INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_INI)
 endif
 
 ifneq ($(EFI_EMMC_BIN),)
-BOARD_FLASHFILES += $(EFI_EMMC_BIN):emmc.bin
+BOARD_FLASHFILES += $(EFI_EMMC_BIN):firmware.bin
 endif
 
 ifneq ($(EFI_IFWI_BIN),)
@@ -81,3 +86,8 @@ endif
 ifneq ($(DNXP_BIN),)
 BOARD_FLASHFILES += $(DNXP_BIN):dnxp_0x1.bin
 endif
+{{#tdos}}
+# TDOS design requires that the device can't be unlocked
+# as that would defeat it.
+TARGET_NO_DEVICE_UNLOCK := true
+{{/tdos}}
