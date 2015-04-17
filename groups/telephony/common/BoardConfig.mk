@@ -30,4 +30,5 @@ BOARD_SEPOLICY_UNION +=\
 	mmgr.te \
 	nvm_server.te \
 	radio.te \
-	rild.te
+	rild.te \
+	service_contexts
