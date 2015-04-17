@@ -24,3 +24,9 @@ NON_IMC_BUILD := true
 export NON_IMC_BUILD
 
 include device/intel/common/boot/sofia/sofia-base.mk
+
+fls_dist_package := $(PRODUCT_OUT)/fls_dist_package.zip
+$(fls_dist_package): droidcore
+	zip -r $@ $(PRODUCT_OUT)/fls
+
+$(call dist-for-goals,droid,$(fls_dist_package))
