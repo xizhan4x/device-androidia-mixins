@@ -18,7 +18,7 @@ PRODUCT_PACKAGES += \
     rpc-daemon \
 {{#fls_prebuilts}}
     mobilevisor.fls \
-    mvconfig_smp.fls \
+    $(MV_CONFIG_DEFAULT_FLS).fls \
     secvm.fls \
     splash_img.fls \
     psi_flash.fls \
