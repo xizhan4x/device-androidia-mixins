@@ -1,0 +1,21 @@
+                             debug-npk
+                             =========
+
+debug-npk group enables debug features related to North Peak.
+Particularly, this allows to redirect the android logs to
+North Peak so that they are aggregated with other platform logs.
+
+Associated service is 'ap_lognpk', which executes logcatext to
+redirect Android logs to North Peak.
+
+Debug only mixins consideration
+-------------------------------
+
+This feature is part of 'debug-*' groups, which are dedicated to debug
+and product stabilisation, thus do not target final products and user
+builds.
+
+As per build variant (eng, userdebug, user) dedicated files feature is
+not available with mixins, per option files are provided in
+'device/intel/common/debug/' folder and will be included at build time
+regarding selected option.

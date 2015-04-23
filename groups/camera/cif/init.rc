@@ -1,0 +1,2 @@
+on boot
+    setprop camera.disable_zsl_mode 1
