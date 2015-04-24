@@ -12,16 +12,11 @@ on early-init
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor ondemand
 
-# This is commented out temporarily because of issues encountered while
-# preparing initial 3gr mrd6 target for master. When the issues are
-# resolved, we can go back to 900 MHz after boot is complete:
-
-#on property:dev.bootcomplete=1
-#    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 900000
-#    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 900000
-#    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 900000
-#    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 900000
-#
+on property:dev.bootcomplete=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 900000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 900000
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 900000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 900000
 {{/throttle_cpu_during_boot}}
 
 on fs
@@ -35,19 +30,20 @@ on post-fs-data
     mkdir /data/rpcd
     # FIXME!: (security)
     chmod 777 /data/rpcd
-    chown system system /dev/tee_rpc
-    chmod 0666 /dev/tee_rpc
 
 on init
     chmod 0444 /proc/cmdline
     # FIXME!: (security)
-    mkdir /nvm_fs_partition 0777 misc misc
+    mkdir /nvm_fs_partition 0660 misc misc
+    restorecon /nvm_fs_partition
 
 # Once nvm partition is setup, create directory structure and set permissions.
 # NVM dependent services are disabled by default; start them from here.
 on property:init.svc.setup_fs_nvm=stopped
     # FIXME!: (security)
-    mkdir /nvm_fs_partition/nvm 0777 misc misc
+    mkdir /nvm_fs_partition/factory 0660 misc misc
+    mkdir /nvm_fs_partition/nvm 0660 misc misc
+    restorecon_recursive /nvm_fs_partition
     start nvm_uagent
 
 on property:persist.tool_enable=1
@@ -94,4 +90,9 @@ service rpc-daemon /system/bin/rpc-daemon
 
 on property:rpcd.start=1
     start rpc-daemon
+
+service watchdog /sbin/watchdogd 60
+    class core
+    oneshot
+    seclabel u:r:watchdogd:s0
 

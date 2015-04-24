@@ -1,7 +1,7 @@
 BOARD_KERNEL_CMDLINE += \
 	console=ttyS0,115200n8 \
 	idle=halt \
-	earlyprintk=xgold \
+	earlyprintk={{{earlyprintk}}} \
 	debug \
 	notsc \
 	cma=128M \
