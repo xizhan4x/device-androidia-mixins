@@ -27,6 +27,6 @@ include device/intel/common/boot/sofia/sofia-base.mk
 
 fls_dist_package := $(PRODUCT_OUT)/fls_dist_package.zip
 $(fls_dist_package): droidcore
-	zip -r $@ $(PRODUCT_OUT)/fls
+	zip -r $@ $(PRODUCT_OUT)/fls -x $(PRODUCT_OUT)/fls/fls/modem.fls
 
 $(call dist-for-goals,droid,$(fls_dist_package))
