@@ -27,6 +27,7 @@ BOARD_SEPOLICY_UNION +=\
 	file_contexts \
 	file.te \
 	gpsd.te \
+	mediaserver.te \
 	mmgr.te \
 	nvm_server.te \
 	property.te \
