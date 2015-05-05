@@ -1,0 +1,5 @@
+
+on boot
+    #set dirty background bytes to 16 MB, trade-off between
+    #memory overhead and USB MTP write latencies
+    write /proc/sys/vm/dirty_background_bytes 16777216

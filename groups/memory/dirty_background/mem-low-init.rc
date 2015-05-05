@@ -1,0 +1,4 @@
+
+on boot
+    #set dirty background bytes to 4 MB to reduce memory overhead
+    write /proc/sys/vm/dirty_background_bytes 4194304
