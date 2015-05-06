@@ -3,6 +3,8 @@
 # Config flags
 BOARD_HAVE_MODEM := true
 BOARD_HAVE_ATPROXY := true
+# crashlogd configuration
+CRASHLOGD_MODULE_MODEM ?= true
 # Set the list of supported modem families
 # This parameter comes from mixin group instantiation in the device definition
 BOARD_MODEM_LIST := {{{modems}}}
@@ -11,14 +13,12 @@ BOARD_MODEM_LIST := {{{modems}}}
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.dual_sim=none \
     persist.ril-daemon.disable=0 \
-    rild.libpath=/system/lib/librapid-ril-core.so \
+    rild.libpath=librapid-ril-core.so \
     ro.telephony.default_network=9 \
     persist.tel.hot_swap.support=true
 
 # Telephony common overlay folder
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
-
-BOARD_FACTORYIMAGE_PARTITION_SIZE := 10485760
 
 BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/telephony
 
@@ -29,6 +29,10 @@ BOARD_SEPOLICY_UNION +=\
 	gpsd.te \
 	mmgr.te \
 	nvm_server.te \
+	property.te \
+	property_contexts \
 	radio.te \
 	rild.te \
-	service_contexts
+	service_contexts \
+	system_app.te
+
