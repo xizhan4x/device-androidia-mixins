@@ -17,6 +17,7 @@ on fs
 on charger
     mount_all /fstab.{{{hardware}}}
     start setup_fs_nvm
+    write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
 
 on post-fs-data
     mkdir /data/rpcd
