@@ -7,20 +7,12 @@ on early-init
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 416000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 416000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 416000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor ondemand
 
-on property:dev.bootcomplete=1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 900000
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 900000
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 900000
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 900000
 {{/throttle_cpu_during_boot}}
 
 on fs
     mount_all /fstab.{{{hardware}}}
+    write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
 
 on charger
     mount_all /fstab.{{{hardware}}}
