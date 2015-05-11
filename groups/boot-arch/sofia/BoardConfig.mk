@@ -56,3 +56,6 @@ FEAT_MSM := YES
 override LIBART_IMG_TARGET_BASE_ADDRESS := 0x30000000
 
 SECURE_PLAYBACK_ENABLE := true
+
+#Add persistent property to enable factory protection
+PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/ImcPartID126
