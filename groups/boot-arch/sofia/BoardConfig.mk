@@ -1,3 +1,11 @@
+#
+# -- OTA RELATED DEFINES --
+#
+
+# tell build system where to get the recovery.fstab. Userfastboot
+# uses this too.
+TARGET_RECOVERY_FSTAB ?= $(TARGET_DEVICE_DIR)/fstab
+
 BOARD_SYSTEMIMAGE_PARTITION_SIZE ?= 2147483648
 BOARD_CACHEIMAGE_PARTITION_SIZE ?= 445644800
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE ?= ext4
