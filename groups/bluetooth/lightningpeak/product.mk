@@ -13,4 +13,5 @@ PRODUCT_PACKAGES += \
     bddata_K0 \
     bddata_A0 \
     370b12060002340e00_selftest.sfi \
-    370b10060002220e00_selftest.sfi
+    370b10060002220e00_selftest.sfi \
+    bluetooth_intel_restore.sh
