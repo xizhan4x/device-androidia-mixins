@@ -1,7 +1,19 @@
+on post-fs-data
+    # create config BT NVM folder
+    mkdir /config/bluetooth 0770 bluetooth system
+
 on boot
     insmod /system/lib/modules/iptable_raw.ko
     insmod /system/lib/modules/ip6table_raw.ko
     insmod /system/lib/modules/8250_dw.ko
     insmod /system/lib/modules/6lowpan_iphc.ko
     insmod /system/lib/modules/lnp_ldisc.ko
+    start bt_rest_nvm
+    wait /config/bluetooth/bd_addr.conf
 
+service bt_rest_nvm /system/bin/sh /system/bin/bluetooth_intel_restore.sh
+    class main
+    user bluetooth
+    group system bluetooth
+    disabled
+    oneshot
