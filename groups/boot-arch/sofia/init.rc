@@ -10,6 +10,17 @@ on early-init
 
 {{/throttle_cpu_during_boot}}
 
+on boot
+    # fs dirty writeback parameters
+    write /proc/sys/vm/dirty_writeback_centisecs 300
+    write /proc/sys/vm/dirty_ratio 5
+
+on post-fs-data
+
+    # Permissions for LMK minfree_force
+    chown system system /sys/module/lowmemorykiller/parameters/minfree_force
+    write /sys/module/lowmemorykiller/parameters/minfree_force "6536,7536,9536,18536,25536,35536"
+
 on fs
     mount_all /fstab.{{{hardware}}}
     write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0

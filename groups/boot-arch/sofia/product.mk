@@ -38,3 +38,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../media_codecs.xml:system/etc/media_codecs.xml \
 
+PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
+
