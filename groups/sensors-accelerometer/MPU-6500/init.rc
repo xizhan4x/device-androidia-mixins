@@ -1,5 +1,5 @@
 on post-fs
-    insmod /system/lib/modules/inv-mpu6050.ko
+    insmod ${ro.boot.moduleslocation}/inv-mpu6050.ko
 
     setprop ro.iio.accel.name "MPU-6500 Accelerometer"
     setprop ro.iio.accel.vendor "InvenSense"

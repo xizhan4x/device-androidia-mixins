@@ -5,8 +5,8 @@ service sensorhubd /system/bin/sensorhubd
     socket sensorhubd stream 600 system system
 
 on boot
-    insmod /system/lib/modules/heci.ko
-    insmod /system/lib/modules/heci-ish.ko
-    insmod /system/lib/modules/hid-heci-ish.ko
-    insmod /system/lib/modules/sens-col-core.ko
-    insmod /system/lib/modules/hid-sensor-hub.ko
+    insmod ${ro.boot.moduleslocation}/heci.ko
+    insmod ${ro.boot.moduleslocation}/heci-ish.ko
+    insmod ${ro.boot.moduleslocation}/hid-heci-ish.ko
+    insmod ${ro.boot.moduleslocation}/sens-col-core.ko
+    insmod ${ro.boot.moduleslocation}/hid-sensor-hub.ko

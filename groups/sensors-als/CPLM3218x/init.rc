@@ -1,5 +1,5 @@
 on post-fs
-    insmod /system/lib/modules/cm32181.ko
+    insmod ${ro.boot.moduleslocation}/cm32181.ko
 
     setprop ro.iio.illuminance.name "CPLM3218x Ambient Light Sensor"
     setprop ro.iio.illuminance.vendor "Capella Microsystems"

@@ -1,5 +1,5 @@
 on post-fs
-    insmod /system/lib/modules/apds9930.ko
+    insmod ${ro.boot.moduleslocation}/apds9930.ko
 
     setprop ro.iio.illuminance.name "APDS 9930 Ambient Light Sensor"
     setprop ro.iio.illuminance.vendor "Avago Technologies"

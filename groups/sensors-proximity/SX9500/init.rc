@@ -1,5 +1,5 @@
 on post-fs
-    insmod /system/lib/modules/sx9500.ko
+    insmod ${ro.boot.moduleslocation}/sx9500.ko
 
     setprop ro.iio.proximity.name "Semtech SX9500"
     setprop ro.iio.proximity.vendor "Semtech"

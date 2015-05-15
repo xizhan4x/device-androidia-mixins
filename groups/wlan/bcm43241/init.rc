@@ -60,5 +60,5 @@ on post-fs
 on post-fs-data
     start wlan_prov
     wait /config/wifi/mac.txt
-    insmod /system/lib/modules/cfg80211.ko
-    insmod /system/lib/modules/bcmdhd.ko firmware_path=/system/vendor/firmware/brcm/brcmfmac43241b4-sdio.bin nvram_path=/system/vendor/firmware/brcm/brcmfmac43241b4-oob-sdio.txt
+    insmod ${ro.boot.moduleslocation}/cfg80211.ko
+    insmod ${ro.boot.moduleslocation}/bcmdhd.ko firmware_path=/system/vendor/firmware/brcm/brcmfmac43241b4-sdio.bin nvram_path=/system/vendor/firmware/brcm/brcmfmac43241b4-oob-sdio.txt

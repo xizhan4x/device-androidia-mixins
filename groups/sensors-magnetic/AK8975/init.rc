@@ -1,5 +1,5 @@
 on post-fs
-    insmod /system/lib/modules/ak8975.ko
+    insmod ${ro.boot.moduleslocation}/ak8975.ko
 
     setprop ro.iio.magn.name "AK8975 Compass"
     setprop ro.iio.magn.vendor "Asahi Kasei"

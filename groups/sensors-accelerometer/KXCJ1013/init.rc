@@ -1,5 +1,5 @@
 on post-fs
-    insmod /system/lib/modules/kxcjk-1013.ko
+    insmod ${ro.boot.moduleslocation}/kxcjk-1013.ko
 
     setprop ro.iio.accel.name "KXCJK-1013 Accelerometer"
     setprop ro.iio.accel.vendor "Kionix"

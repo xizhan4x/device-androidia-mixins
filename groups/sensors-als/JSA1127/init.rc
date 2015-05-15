@@ -1,5 +1,5 @@
 on post-fs
-    insmod /system/lib/modules/jsa1127.ko
+    insmod ${ro.boot.moduleslocation}/jsa1127.ko
 
     setprop ro.iio.illuminance.name "JSA-1127 Ambient Light Sensor"
     setprop ro.iio.illuminance.vendor "solteam"

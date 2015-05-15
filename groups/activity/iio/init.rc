@@ -1,6 +1,6 @@
 on post-fs
-    insmod /system/lib/modules/mma9551_core.ko
-    insmod /system/lib/modules/mma9553.ko
+    insmod ${ro.boot.moduleslocation}/mma9551_core.ko
+    insmod ${ro.boot.moduleslocation}/mma9553.ko
 
 #    setprop ro.iio.accel.name "Freescale MMA9553 Sensor"
 #    setprop ro.iio.accel.vendor "Freescale"

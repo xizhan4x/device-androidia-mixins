@@ -1,5 +1,5 @@
 on boot
-    insmod /system/lib/modules/gnss_drv.ko
+    insmod ${ro.boot.moduleslocation}/gnss_drv.ko
 
 on post-fs-data
 # Create a folder for gnss logging

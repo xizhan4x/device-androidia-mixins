@@ -1,5 +1,5 @@
 on boot
-    insmod /system/lib/modules/btif_drv.ko
+    insmod ${ro.boot.moduleslocation}/btif_drv.ko
 
 on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp system

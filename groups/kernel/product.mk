@@ -99,7 +99,21 @@ endif
 
 # Copy kernel into place
 
+{{#modules_in_bootimg}}
+ifneq ($(TARGET_BUILD_VARIANT),user)
+  KERNEL_MODULES_ROOT := root/lib/modules
+  ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/lib/modules
+else
+  KERNEL_MODULES_ROOT := system/lib/modules
+  ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/system/lib/modules
+endif
+{{/modules_in_bootimg}}
+{{^modules_in_bootimg}}
+KERNEL_MODULES_ROOT := system/lib/modules
+ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/system/lib/modules
+{{/modules_in_bootimg}}
+
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel \
-	$(foreach f, $(LOCAL_KERNEL_MODULE_FILES), $(f):system/lib/modules/$(notdir $(f))) \
-  $(foreach f, $(LOCAL_KERNEL_MODULE_TREE_FILES), $(LOCAL_KERNEL_PATH)/lib/modules/$(f):system/lib/modules/$(f))
+	$(foreach f, $(LOCAL_KERNEL_MODULE_FILES), $(f):$(KERNEL_MODULES_ROOT)/$(notdir $(f))) \
+  $(foreach f, $(LOCAL_KERNEL_MODULE_TREE_FILES), $(LOCAL_KERNEL_PATH)/lib/modules/$(f):$(KERNEL_MODULES_ROOT)/$(f))
