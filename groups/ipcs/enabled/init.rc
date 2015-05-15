@@ -1,0 +1,6 @@
+# IPCS daemon configuration
+service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway
+    class main
+    user radio
+    group radio inet system
+
