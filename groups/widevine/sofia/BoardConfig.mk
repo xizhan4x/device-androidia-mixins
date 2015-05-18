@@ -1,0 +1,1 @@
+BOARD_USE_IMC_OEMCRYPTO := true

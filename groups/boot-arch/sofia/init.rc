@@ -49,7 +49,7 @@ on init
 # NVM dependent services are disabled by default; start them from here.
 on property:init.svc.setup_fs_nvm=stopped
     # FIXME!: (security)
-    mkdir /nvm_fs_partition/factory 0660 misc misc
+    mkdir /nvm_fs_partition/factory 0770 media misc
     mkdir /nvm_fs_partition/nvm 0660 misc misc
     restorecon_recursive /nvm_fs_partition
     start nvm_uagent
