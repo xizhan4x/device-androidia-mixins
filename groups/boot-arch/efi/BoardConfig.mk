@@ -65,9 +65,6 @@ else
 #
 # USERFASTBOOT Configuration
 #
-TARGET_STAGE_USERFASTBOOT := true
-TARGET_USE_USERFASTBOOT := true
-
 BOOTLOADER_ADDITIONAL_DEPS += $(PRODUCT_OUT)/fastboot.img
 BOOTLOADER_ADDITIONAL_ARGS += --fastboot $(PRODUCT_OUT)/fastboot.img
 
@@ -86,8 +83,11 @@ endif
 ifneq ($(DNXP_BIN),)
 BOARD_FLASHFILES += $(DNXP_BIN):dnxp_0x1.bin
 endif
-{{#tdos}}
-# TDOS design requires that the device can't be unlocked
-# as that would defeat it.
-TARGET_NO_DEVICE_UNLOCK := true
-{{/tdos}}
+
+ifneq ($(CFGPART_XML),)
+BOARD_FLASHFILES += $(CFGPART_XML):cfgpart.xml
+endif
+
+ifneq ($(CSE_SPI_BIN),)
+BOARD_FLASHFILES += $(CSE_SPI_BIN):cse_spi.bin
+endif
