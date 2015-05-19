@@ -1,0 +1,2 @@
+on post-fs-data
+    setprop rpcd.start 1
