@@ -38,7 +38,7 @@ endif
 
 fls_dist_package := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-flashfiles-$(FILE_NAME_TAG).zip
 $(fls_dist_package): droidcore
-	zip -jq $@ $(PRODUCT_OUT)/fls/fls/* -x $(PRODUCT_OUT)/fls/fls/modem.fls
+	(cd $(PRODUCT_OUT)/fls/fls && zip -r ../../$(notdir $@) . -x modem.fls)
 
 INTEL_FACTORY_FLASHFILES_TARGET := $(fls_dist_package)
 
