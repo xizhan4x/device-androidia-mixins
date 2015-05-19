@@ -1,1 +1,1 @@
-$(call inherit-product, vendor/PRIVATE/rockchip/{{{platform}}}/graphics/gpu.mk)
+PRODUCT_PACKAGES += {{{platform}}}_gfx_prebuilts
