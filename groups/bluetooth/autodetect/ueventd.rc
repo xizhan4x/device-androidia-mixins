@@ -2,7 +2,9 @@
 /dev/uhid                                    0660 system net_bt_stack
 /dev/ttyS1                                   0660 bluetooth bluetooth
 
-usbclass:224/1/1                             0660 bluetooth bluetooth suspend_auto,pwr_ctrl_perm
+# USB bluetooth devices
+# Commented out since dmesg trace : "init: invalid line ueventd.rc line for 'usbclass:224/1/1'"
+#usbclass:224/1/1                             0660 bluetooth bluetooth suspend_auto,pwr_ctrl_perm
 
 
 # Bluetooth rfkill nodes
