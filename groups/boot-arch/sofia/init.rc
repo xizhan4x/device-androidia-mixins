@@ -15,6 +15,10 @@ on boot
     write /proc/sys/vm/dirty_writeback_centisecs 300
     write /proc/sys/vm/dirty_ratio 5
 
+ # Tweak background writeout
+    write /proc/sys/vm/dirty_expire_centisecs 15
+
+
 on post-fs-data
 
     # Permissions for LMK minfree_force
