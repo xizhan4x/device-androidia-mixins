@@ -118,6 +118,12 @@ on property:persist.service.mtsp.enable=1
 on property:persist.service.mtsp.enable=0
     stop mtsp
 
+# service used by AMTL to send SIGUSR1 to mts
+service pti_sigusr1 /system/bin/pti_sigusr1
+    user system
+    oneshot
+    disabled
+
 # Activate RPS for usbX devices
 on property:sys.usb.modemevt=1
    setprop sys.usb.modemevt 0
