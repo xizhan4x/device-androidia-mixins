@@ -44,3 +44,5 @@ FEAT_MSM := YES
 
 # HACK to work around lack of PAE kernel override
 override LIBART_IMG_TARGET_BASE_ADDRESS := 0x30000000
+
+SECURE_PLAYBACK_ENABLE := true
