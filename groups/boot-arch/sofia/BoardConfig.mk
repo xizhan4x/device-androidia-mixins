@@ -47,8 +47,10 @@ BOARD_USE_FLS_PREBUILTS := $(TARGET_PRODUCT)
 PARTITION_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/partition.xml
 RAMLAYOUT_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
 
+{{#msm}}
 # Enable -DFEAT_RPC_SERVICE for various IMC services
 FEAT_MSM := YES
+{{/msm}}
 
 # HACK to work around lack of PAE kernel override
 override LIBART_IMG_TARGET_BASE_ADDRESS := 0x30000000
