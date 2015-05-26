@@ -1,6 +1,6 @@
-# If this a debugging build include the public debug modules
-ifneq ($(filter eng userdebug,$(TARGET_BUILD_VARIANT)),)
+PRODUCT_PACKAGES_DEBUG += \
+    AndroidTerm \
+    libjackpal-androidterm4 \
+    pytimechart-record
 
-PRODUCT_PACKAGES += AndroidTerm libjackpal-androidterm4
-
-endif
+PRODUCT_PACKAGES_ENG += peeknpoke
