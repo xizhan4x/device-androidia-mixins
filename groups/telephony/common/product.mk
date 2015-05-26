@@ -21,7 +21,8 @@ PRODUCT_PACKAGES += \
     mmgr \
     libmdmcli_mmgr \
     com.intel.internal.telephony.MmgrClient \
-    libmodemupdate
+    libmodemupdate \
+    fwswitching
 
 # AT Proxy
 PRODUCT_PACKAGES += \
