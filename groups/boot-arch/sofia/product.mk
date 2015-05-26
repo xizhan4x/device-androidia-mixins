@@ -40,3 +40,11 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 
+#Build a verified /system partition
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID068
+#Declare feature android.software.verified_boot
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
+
+#Include verity.mk for GVB and DM_VERITY feature
+$(call inherit-product,build/target/product/verity.mk)
