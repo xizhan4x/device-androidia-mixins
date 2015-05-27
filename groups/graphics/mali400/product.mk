@@ -1,5 +1,5 @@
 PRODUCT_PACKAGES += \
-					gralloc.sofia3g \
-					hwcomposer.sofia3g \
+					gralloc.$(TARGET_BOARD_PLATFORM) \
+					hwcomposer.$(TARGET_BOARD_PLATFORM) \
 					libGLES_mali \
 
