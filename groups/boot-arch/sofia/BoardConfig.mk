@@ -60,3 +60,6 @@ override LIBART_IMG_TARGET_BASE_ADDRESS := 0x30000000
 
 SECURE_PLAYBACK_ENABLE := true
 
+TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/sofia3gr/
+TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
+
