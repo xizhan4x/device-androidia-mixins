@@ -37,7 +37,7 @@ GEN_PRG_FROM_SRC := true
 TARGET_NO_RECOVERY := false
 {{/fls_prebuilts}}
 {{#fls_prebuilts}}
-INTEL_PRG_FILE := hardware/intel/sofia3g-fls/modem_cfg_emmc.prg
+INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/modem_cfg_emmc.prg
 GEN_PRG_FROM_SRC := false
 
 TARGET_NO_RECOVERY := true
