@@ -7,4 +7,5 @@
 /dev/vbpipe5    0600    media   media
 /dev/vbpipe6    0666    system  system
 /dev/mali   0666    system  graphics
+/dev/mali0  0666    system  system
 
