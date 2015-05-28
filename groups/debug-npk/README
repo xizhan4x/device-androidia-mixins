@@ -19,3 +19,43 @@ As per build variant (eng, userdebug, user) dedicated files feature is
 not available with mixins, per option files are provided in
 'device/intel/common/debug/' folder and will be included at build time
 regarding selected option.
+
+Logging configuration
+---------------------
+
+The North Peak configuration is triggered through properties.
+The configuration is persistent across reboots.
+
+ *) Update the current configuration
+
+Set npk.cfg.update property. Eg.
+
+    setprop npk.cfg.update pstore,sw,fw
+
+This will trigger a runtime re-configuration of the North Peak.
+The current configuration can be seen in persist.npk.cfg.
+
+The configuration value is a comma separated list starting with the output
+and followed by all sources to be enabled.
+
+    <output>,<source>[,<source>...]
+
+output:
+    pstore
+    dvc
+    pti
+source:
+    android
+    kernel
+    fw
+    sw(=android,kernel)
+
+ *) Override configuration
+
+The configuration can be forced through the kernel command line with
+    androidboot.npk.cfg=<output>,<source>[,<source>...]
+
+Note that this will set android property ro.boot.npk.cfg.
+
+Changing the configuration with npk.cfg.update will have no effect in this
+case.

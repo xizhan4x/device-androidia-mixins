@@ -5,6 +5,11 @@ PRODUCT_PACKAGES += \
     libauddriver \
     librpc-ril \
 
+#OemTelephony for OEM HOOK API
+PRODUCT_PACKAGES += \
+    OemTelephonyApp-imc \
+    com.intel.internal.telephony.OemTelephony-imc
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \

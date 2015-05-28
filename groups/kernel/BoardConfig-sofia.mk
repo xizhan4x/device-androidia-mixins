@@ -7,9 +7,13 @@ BOARD_KERNEL_CMDLINE += \
 	cma=128M \
 	nolapic_pm \
 	apic=sofia \
-	cma={{{cma_size}}} \
+	cma={{{cma_size}}}
+
+{{#lapic_timer}}
+BOARD_KERNEL_CMDLINE += \
     nolapic_timer \
     x86_intel_xgold_timer=lapic_and_soctimer
+{{/lapic_timer}}
 
 # Device Tree Blob file name:
 BOARD_DTB_FILE ?= {{{board_dtb}}}
