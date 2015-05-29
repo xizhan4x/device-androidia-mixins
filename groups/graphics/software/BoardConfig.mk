@@ -2,7 +2,7 @@ BOARD_KERNEL_CMDLINE += vga=current nomodeset
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 USE_INTEL_UFO_DRIVER := false
-INTEL_VA := true
+INTEL_VA := false
 BOARD_GRAPHIC_IS_GEN := true
 
 # System's VSYNC phase offsets in nanoseconds
