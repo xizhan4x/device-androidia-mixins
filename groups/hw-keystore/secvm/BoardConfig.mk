@@ -1,0 +1,2 @@
+BOARD_USES_SECVM:=true
+
