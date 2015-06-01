@@ -38,7 +38,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../media_codecs.xml:system/etc/media_codecs.xml \
 
-PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 
 #Build a verified /system partition
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID068
