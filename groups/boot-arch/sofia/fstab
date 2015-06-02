@@ -6,15 +6,20 @@
 # See hardware/intel/mrd-3gr-sofia/modem/mhw_drv_src/nv_memory_driver/inc/ftle_def.h
 
 # FTLE_ID_SYSTEM
-/dev/block/by-name/ImcPartID068  /system    ext4    ro                                wait,verify
+/dev/block/by-name/ImcPartID068  /system          ext4    ro                                wait,verify
 # FTLE_ID_USERDATA
-/dev/block/by-name/ImcPartID069  /data      ext4    noatime,nosuid,nodev,errors=panic wait,check
+# FIXME : Need forceencrypt=/dev/block/by-name/android_metadata in <fs_mgr_flags>
+/dev/block/by-name/ImcPartID069  /data            ext4    noatime,nosuid,nodev,errors=panic wait,check
 # FTLE_ID_CACHE
-/dev/block/by-name/ImcPartID070  /cache     ext4    noatime,nosuid,nodev,errors=panic wait,check
+/dev/block/by-name/ImcPartID070  /cache           ext4    noatime,nosuid,nodev,errors=panic wait,check
 # FTLE_ID_BOOT_IMG
-/dev/block/by-name/ImcPartID071  /boot      emmc    defaults                          defaults
+/dev/block/by-name/ImcPartID071  /boot            emmc    defaults                          defaults
 # FTLE_ID_RECOVERY_IMG
-/dev/block/by-name/ImcPartID072  /recovery  emmc    defaults                          defaults
+/dev/block/by-name/ImcPartID072  /recovery        emmc    defaults                          defaults
 # FTLE_ID_BCB
-/dev/block/by-name/ImcPartID074  /misc      emmc    defaults                          defaults
+/dev/block/by-name/ImcPartID074  /misc            emmc    defaults                          defaults
+# FTLE_ID_PERSISTENT
+/dev/block/by-name/ImcPartID126  /persistent      emmc    defaults                          defaults
+# FTLE_ID_METADATA
+/dev/block/by-name/ImcPartID127  /metadata        emmc    defaults                          defaults
 
