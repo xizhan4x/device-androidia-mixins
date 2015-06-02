@@ -1,0 +1,2 @@
+[defaults]
+custom = false
