@@ -6,7 +6,7 @@ BUILD_ARM_FOR_X86 := true
 
 # Native Bridge ABI List
 NB_ABI_LIST_32_BIT := armeabi-v7a armeabi
-# NB_ABI_LIST_64_BIT := arm64-v8a
+NB_ABI_LIST_64_BIT := arm64-v8a
 
 # Support 64 Bit Apps
 ifeq ($(TARGET_SUPPORTS_64_BIT_APPS),true)
