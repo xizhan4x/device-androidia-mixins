@@ -11,7 +11,6 @@ BOARD_MODEM_LIST := {{{modems}}}
 
 # System Properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    persist.dual_sim=none \
     persist.ril-daemon.disable=0 \
     rild.libpath=librapid-ril-core.so \
     ro.telephony.default_network=9 \
@@ -24,9 +23,11 @@ BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/telephony
 
 # Please keep this list in alphabetical order.
 BOARD_SEPOLICY_UNION +=\
+	efiprop.te \
 	file_contexts \
 	file.te \
 	gpsd.te \
+	mediaserver.te \
 	mmgr.te \
 	nvm_server.te \
 	property.te \
@@ -34,5 +35,7 @@ BOARD_SEPOLICY_UNION +=\
 	radio.te \
 	rild.te \
 	service_contexts \
-	system_app.te
+	shell.te \
+	system_app.te \
+	system_server.te
 

@@ -11,7 +11,14 @@
 /dev/ttyIFX0              0660   root       radio
 /dev/ttyIFX1              0660   root       radio
 
-# change group and rights for IPC interfaces
+# change group and rights for SSIC IPC interfaces
 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/control 0664 root system
 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/autosuspend_delay_ms 0664 root system
 
+# change group and rights for M.2 USB-HS IPC interfaces
+/sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id_hs}}}/{{{bus_id_hs}}}-{{{usb_port_m2}}} power/control 0664 root system
+/sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id_hs}}}/{{{bus_id_hs}}}-{{{usb_port_m2}}} power/usb2_hardware_lpm 0664 root system
+
+# Telephony GPT factory partition block device
+/dev/block/platform/*/*/by-name/modem1_cal 0660 radio system
+/dev/block/platform/*/*/by-name/modem2_cal 0660 radio system
