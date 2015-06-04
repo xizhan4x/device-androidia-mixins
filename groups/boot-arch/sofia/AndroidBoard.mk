@@ -37,8 +37,13 @@ FILE_NAME_TAG := $(BUILD_NUMBER)
 endif
 
 fls_dist_package := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-flashfiles-$(FILE_NAME_TAG).zip
+ifeq ($(TARGET_BOARD_PLATFORM), $(filter $(TARGET_BOARD_PLATFORM), sofia3gr))
+$(fls_dist_package): droidcore
+	(cd $(PRODUCT_OUT)/fls/fls && zip -r ../../$(notdir $@) . -x modem.fls)
+else
 $(fls_dist_package): droidcore
 	(cd $(PRODUCT_OUT)/fls/fls && zip -r ../../$(notdir $@) .)
+endif
 
 INTEL_FACTORY_FLASHFILES_TARGET := $(fls_dist_package)
 
