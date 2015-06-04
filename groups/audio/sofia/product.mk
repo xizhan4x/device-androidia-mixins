@@ -1,9 +1,15 @@
 # Audio logging property for audio driver
 ifeq ($(TARGET_BUILD_VARIANT),eng)
+PRODUCT_PROPERTY_OVERRIDES += persist.audio.log=2
+else ifeq ($(TARGET_BUILD_VARIANT),userdebug)
 PRODUCT_PROPERTY_OVERRIDES += persist.audio.log=1
 else
 PRODUCT_PROPERTY_OVERRIDES += persist.audio.log=0
 endif
+{{#digmic}}
+# Use digital microphone
+PRODUCT_PROPERTY_OVERRIDES += persist.audio.digmic=1
+{{/digmic}}
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
