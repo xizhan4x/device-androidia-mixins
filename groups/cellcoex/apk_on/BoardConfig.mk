@@ -9,11 +9,8 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
     ADDITIONAL_DEFAULT_PROPERTIES += log.tag.CWS_CELLCOEX_HANDLER=DEBUG
 endif
 
-# Enable Cellular Coexistence NRT (Non Real Time)
-ADDITIONAL_DEFAULT_PROPERTIES += config.disable_cellcoex=0
-
-# Enable Cellular coexistence RT (Real Time).
-ADDITIONAL_DEFAULT_PROPERTIES += service.cellcoexmgr.rtcoex=1
+# Enable geolocation feature
+ADDITIONAL_DEFAULT_PROPERTIES += persist.cellcoex.geoloc={{{geoloc}}}
 
 # sepolicy rules enhancement for cellcoex
 BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/cellcoex/in_system_apk
