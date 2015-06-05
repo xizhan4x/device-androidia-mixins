@@ -6,10 +6,17 @@ on boot
     chmod 0664 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/power/control
     chown root system /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/power/pm_qos_no_power_off
     chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/power/pm_qos_no_power_off
+
+{{^k4_x}}
     chown root system /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/usb3_lpm
     chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/usb3_lpm
+{{/k4_x}}
+{{#k4_x}}
+    chown root system /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/usb{{{bus_id}}}-port{{{ssic_port}}}/usb3_lpm
+    chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/usb{{{bus_id}}}-port{{{ssic_port}}}/usb3_lpm
+{{/k4_x}}
 
-    # disable HSIC bus
+    # disable HSIC port
     write /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off 0
     chown root system /sys/bus/usb/devices/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
     chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
