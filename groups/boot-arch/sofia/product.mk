@@ -39,6 +39,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../media_codecs.xml:system/etc/media_codecs.xml \
 
 
+#Add persistent property to enable factory protection
+PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/ImcPartID126
+
 #Build a verified /system partition
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID068
 #Declare feature android.software.verified_boot
