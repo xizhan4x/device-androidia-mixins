@@ -1,14 +1,18 @@
 # init.rc for telephony services common to all platforms
 on boot
+
     # change group for IPC interfaces
     chown root system /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/power/control
     chmod 0664 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/power/control
-
     chown root system /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/power/pm_qos_no_power_off
     chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/power/pm_qos_no_power_off
+    chown root system /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/usb3_lpm
+    chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/usb3_lpm
 
     # disable HSIC bus
-    write /sys/bus/usb/devices/{{{hsic_bus}}}-0:1.0/port{{{hsic_port}}}/power/pm_qos_no_power_off 0
+    write /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off 0
+    chown root system /sys/bus/usb/devices/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
+    chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
 
 on post-fs-data
 
