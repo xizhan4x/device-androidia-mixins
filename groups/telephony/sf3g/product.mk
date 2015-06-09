@@ -12,11 +12,12 @@ PRODUCT_PACKAGES += \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    device/intel/common/telephony/all/apns-conf.xml:system/etc/apns-conf.xml
 
 # Inherit from common Open Source Telephony product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-        rild.libpath=/system/lib/librpc-ril.so \
+    rild.libpath=/system/lib/librpc-ril.so \
 
