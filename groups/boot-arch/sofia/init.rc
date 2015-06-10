@@ -52,44 +52,44 @@ on property:init.svc.setup_fs_nvm=stopped
 on property:persist.tool_enable=1
     start ipcsd
 
-service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS2 --mex=TTY,/dev/mvpipe-GTI
-    class main
-    disabled
-    user radio
-    group radio system
+#service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS2 --mex=TTY,/dev/mvpipe-GTI
+#    class main
+#    disabled
+#    user radio
+#    group radio system
 
-service rpcServer /system/bin/rpcServer
-{{#telephony}}
-    socket msmSock stream 660 system radio
-{{/telephony}}
-    class core
-    user root
-    group root
+#service rpcServer /system/bin/rpcServer
+#{{#telephony}}
+#    socket msmSock stream 660 system radio
+#{{/telephony}}
+#    class core
+#    user root
+#    group root
 
-service setup_fs_nvm /system/bin/setup_fs_nvm /dev/block/by-name/ImcPartID076 /nvm_fs_partition
-    class core
-    user root
-    group root
-    oneshot
+#service setup_fs_nvm /system/bin/setup_fs_nvm /dev/block/by-name/ImcPartID076 /nvm_fs_partition
+#    class core
+#    user root
+#    group root
+#    oneshot
 
-service nvm_uagent /system/bin/nvm_useragent
-    class main
-    disabled
-    user root
-    group root
+#service nvm_uagent /system/bin/nvm_useragent
+#    class main
+#    disabled
+#    user root
+#    group root
 
-service rpcNotifier /system/bin/rpcNotifier
-    class main
-    user root
+#service rpcNotifier /system/bin/rpcNotifier
+#    class main
+#    user root
 
-service rpc-daemon /system/bin/rpc-daemon
-    socket rpc_send stream 660 system radio
-    socket rpc_recv stream 660 system radio
-    socket rpc_reg stream 660 system radio
-    group root radio system
-    class core
-    user root
-    disabled
+#service rpc-daemon /system/bin/rpc-daemon
+#    socket rpc_send stream 660 system radio
+#    socket rpc_recv stream 660 system radio
+#    socket rpc_reg stream 660 system radio
+#    group root radio system
+#    class core
+#    user root
+#    disabled
 
 on property:rpcd.start=1
     start rpc-daemon
