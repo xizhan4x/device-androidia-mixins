@@ -1,9 +1,3 @@
-on boot
-    insmod /system/lib/modules/btif_drv.ko
-
-on post-fs-data
-    mkdir /data/misc/dhcp 0770 dhcp system
-
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     disabled
     oneshot
@@ -11,10 +5,6 @@ service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
 service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
-
-on property:init.svc.setup_fs_nvm=stopped
-    mkdir /nvm_fs_partition/bluetooth 0774 bluetooth bluetooth
-    start init_bt_nvm
 
 service init_bt_nvm /system/bin/sh /system/etc/bluetooth/nvm_init.sh
     class main
