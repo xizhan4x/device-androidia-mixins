@@ -4,7 +4,6 @@ BOARD_KERNEL_CMDLINE += \
 	earlyprintk={{{earlyprintk}}} \
 	debug \
 	notsc \
-	cma=128M \
 	nolapic_pm \
 	apic=sofia \
 	cma={{{cma_size}}}
