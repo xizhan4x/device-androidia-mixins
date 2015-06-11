@@ -12,7 +12,7 @@ BOARD_KERNEL_CMDLINE += \
 {{#lapic_timer}}
 BOARD_KERNEL_CMDLINE += \
     nolapic_timer \
-    x86_intel_xgold_timer=lapic_and_soctimer
+    x86_intel_xgold_timer=soctimer_only
 {{/lapic_timer}}
 
 # Device Tree Blob file name:
