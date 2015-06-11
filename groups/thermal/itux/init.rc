@@ -1,59 +1,25 @@
-on post-fs-data
-	# Set this property to enable Thermal service
-	setprop persist.service.thermal 1
+on post-fs
+    setprop persist.service.thermal 1
+    setprop persist.thermal.mode itux
+    setprop persist.thermal.shutdown.msg 1
+    setprop persist.thermal.shutdown.vibra 1
+    setprop persist.thermal.shutdown.tone 1
+    setprop persist.thermal.display.msg 1
+    setprop persist.thermal.display.vibra 1
 
-	# Properties for Thermal Service
-	setprop persist.thermal.debug.xml 0
-	setprop ro.thermal.ituxversion 2.5
-	setprop persist.thermal.shutdown.msg 1
-	setprop persist.thermal.shutdown.vibra 1
-	setprop persist.thermal.shutdown.tone 1
-	setprop persist.thermal.display.msg 1
-	setprop persist.thermal.display.vibra 1
+    # Permissions for Thermal Management
+    chown system system /sys/class/mali/pm/max_freq_level
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/thermal_scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu1/cpufreq/thermal_scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu2/cpufreq/thermal_scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu3/cpufreq/thermal_scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/thermal_scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu1/cpufreq/thermal_scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu2/cpufreq/thermal_scaling_max_freq
+    chmod 0664 /sys/devices/system/cpu/cpu3/cpufreq/thermal_scaling_max_freq
+    chmod 0664 /sys/class/mali/pm/max_freq_level
 
-	# Permissions for Thermal Management
-	chown system system /sys/class/thermal/thermal_zone0/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone0/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone1/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone1/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone2/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone2/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone3/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone3/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone4/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone4/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone5/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone5/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone6/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone6/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone7/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone7/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone8/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone8/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone9/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone9/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone10/trip_point_0_temp
-	chown system system /sys/class/thermal/thermal_zone10/trip_point_1_temp
-	chown system system /sys/class/thermal/thermal_zone0/emul_temp
-	chown system system /sys/class/thermal/thermal_zone1/emul_temp
-	chown system system /sys/class/thermal/thermal_zone2/emul_temp
-	chown system system /sys/class/thermal/thermal_zone3/emul_temp
-	chown system system /sys/class/thermal/thermal_zone4/emul_temp
-	chown system system /sys/class/thermal/thermal_zone5/emul_temp
-	chown system system /sys/class/thermal/thermal_zone6/emul_temp
-	chown system system /sys/class/thermal/thermal_zone7/emul_temp
-	chown system system /sys/class/thermal/thermal_zone8/emul_temp
-	chown system system /sys/class/thermal/thermal_zone9/emul_temp
-	chown system system /sys/class/thermal/thermal_zone10/emul_temp
-	chown system system /sys/class/thermal/cooling_device0/cur_state
-	chown system system /sys/class/thermal/cooling_device1/cur_state
-	chown system system /sys/class/mali/pm/max_freq_level
-	chown system system /sys/devices/system/cpu/cpu0/cpufreq/thermal_scaling_max_freq
-	chown system system /sys/devices/system/cpu/cpu1/cpufreq/thermal_scaling_max_freq
-	chown system system /sys/devices/system/cpu/cpu2/cpufreq/thermal_scaling_max_freq
-	chown system system /sys/devices/system/cpu/cpu3/cpufreq/thermal_scaling_max_freq
-	chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/thermal_scaling_max_freq
-	chmod 0664 /sys/devices/system/cpu/cpu1/cpufreq/thermal_scaling_max_freq
-	chmod 0664 /sys/devices/system/cpu/cpu2/cpufreq/thermal_scaling_max_freq
-	chmod 0664 /sys/devices/system/cpu/cpu3/cpufreq/thermal_scaling_max_freq
-	chmod 0664 /sys/class/mali/pm/max_freq_level
+on boot
+    chown system system /sys/class/powercap/intel-rapl:0/enabled
+    chown system system /sys/class/powercap/intel-rapl:0/constraint_0_power_limit_uw
+    restorecon_recursive /sys/class/powercap
