@@ -22,8 +22,8 @@ PRODUCT_PACKAGES_DEBUG += \
 com.intel.passpointmanager \
 sigmapasspointmanager_stub
 endif
-# Build only when INTEL_WIDI is NOT set
-ifneq ($(INTEL_WIDI), true)
+# Build only when INTEL_WIDI_SINK is NOT set
+ifneq ($(INTEL_WIDI_SINK), true)
 PRODUCT_PACKAGES_DEBUG += \
 com.intel.widi.sink \
 sigmawidisink_stub
