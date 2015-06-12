@@ -32,6 +32,8 @@ BOARD_SEPOLICY_UNION +=\
 	gpsd.te \
 	mediaserver.te \
 	mmgr.te \
+	mts.te \
+	netd.te \
 	nvm_server.te \
 	property.te \
 	property_contexts \
