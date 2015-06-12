@@ -23,3 +23,7 @@ on boot
     chown system system /sys/class/powercap/intel-rapl:0/enabled
     chown system system /sys/class/powercap/intel-rapl:0/constraint_0_power_limit_uw
     restorecon_recursive /sys/class/powercap
+{{#thermal_lite}}
+service thermal_lite /thermal_lite
+    class charger
+{{/thermal_lite}}
