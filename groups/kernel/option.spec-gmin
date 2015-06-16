@@ -1,3 +1,2 @@
 [defaults]
-earlyprintk = xgold
 boot_boost = false
