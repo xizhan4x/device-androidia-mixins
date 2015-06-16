@@ -1,26 +1,42 @@
-#enable Widevine drm
+
+# Widevine drm classic common
+ifneq ($(BOARD_WIDEVINE_OEMCRYPTO_LEVEL),)
 PRODUCT_PROPERTY_OVERRIDES += drm.service.enabled=true
-
-PRODUCT_COPY_FILES += device/intel/common/media/mfx_omxil_core_widevine.conf:system/etc/mfx_omxil_core.conf
-
-# There is an additional dependency on hdcpd that should be controlled
-# through the content-protection mixin
-
-PRODUCT_PACKAGES += com.google.widevine.software.drm.xml \
-    com.google.widevine.software.drm \
+PRODUCT_PACKAGES += com.google.widevine.software.drm.xml\
+    com.google.widevine.software.drm\
     libdrmwvmplugin \
     libwvm \
-    libdrmdecrypt \
+    libdrmdecrypt
+endif
+
+# Widevine drm classic L1 only
+ifeq ($(BOARD_WIDEVINE_OEMCRYPTO_LEVEL),1)
+PRODUCT_PACKAGES += \
     libWVStreamControlAPI_L1 \
     libwvdrm_L1
+endif
 
+# Widevine drm classic L3 only
+ifeq ($(BOARD_WIDEVINE_OEMCRYPTO_LEVEL),3)
+PRODUCT_PACKAGES += \
+    libWVStreamControlAPI_L3 \
+    libwvdrm_L3
+endif
+
+# Widevine drm modular common, reserved by default
+PRODUCT_PACKAGES += \
+    libwvdrmengine
+
+# Widevine drm modular L1 only
+ifeq ($(BOARD_WIDEVINE_OEMCRYPTO_LEVEL),1)
+PRODUCT_PACKAGES += \
+    liboemcrypto
+endif
+
+ifneq ($(BOARD_WIDEVINE_OEMCRYPTO_LEVEL),)
+# Test app for widevine drm classic
 PRODUCT_PACKAGES_ENG += WidevineSamplePlayer
+endif
 
-# WV Modular
-PRODUCT_PACKAGES += libwvdrmengine
-
+# Test app for widevine drm modular
 PRODUCT_PACKAGES_ENG += ExoPlayerDemo
-
-PRODUCT_PACKAGES += liboemcrypto
-
-BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 1
