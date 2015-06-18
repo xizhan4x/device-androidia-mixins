@@ -34,11 +34,6 @@ on charger
     start setup_fs_nvm
     write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
 
-on post-fs-data
-    mkdir /data/rpcd
-    # FIXME!: (security)
-    chmod 777 /data/rpcd
-
 on init
     chmod 0444 /proc/cmdline
     # FIXME!: (security)
