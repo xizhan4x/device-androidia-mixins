@@ -19,6 +19,8 @@ PRODUCT_PACKAGES_DEBUG += \
 # Modem Manager related packages
 PRODUCT_PACKAGES += \
     mmgr \
+    libmdmcli_mmgr \
+    com.intel.internal.telephony.MmgrClient \
     libmodemupdate
 
 # AT Proxy
