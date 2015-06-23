@@ -30,7 +30,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES_DEBUG += \
     mmgr-debug \
-    run_test_ipc.sh
+    run_test_ipc.sh \
+    mcd-test
 
 # Rapid RIL packages
 PRODUCT_PACKAGES += \
