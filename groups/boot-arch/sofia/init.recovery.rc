@@ -21,3 +21,5 @@ service watchdog /sbin/watchdogd 60
     oneshot
     seclabel u:r:watchdogd:s0
 
+on boot
+    start watchdog
