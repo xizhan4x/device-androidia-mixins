@@ -1,0 +1,6 @@
+service pekallfmrserver /system/bin/pekallfmrserver
+	class main
+	user audio
+	group system audio
+	onrestart restart root
+
