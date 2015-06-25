@@ -26,25 +26,3 @@ NON_IMC_BUILD := true
 export NON_IMC_BUILD
 include device/intel/common/boot/sofia/sofia-base.mk
 
-# (pulled from build/core/Makefile as this gets defined much later)
-# Pick a reasonable string to use to identify files.
-ifneq "" "$(filter eng.%,$(BUILD_NUMBER))"
-# BUILD_NUMBER has a timestamp in it, which means that
-# it will change every time.  Pick a stable value.
-FILE_NAME_TAG := eng.$(USER)
-else
-FILE_NAME_TAG := $(BUILD_NUMBER)
-endif
-
-fls_dist_package := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-flashfiles-$(FILE_NAME_TAG).zip
-ifeq ($(TARGET_BOARD_PLATFORM), $(filter $(TARGET_BOARD_PLATFORM), sofia3gr))
-$(fls_dist_package): droidcore
-	(cd $(PRODUCT_OUT)/fls/fls && zip -r ../../$(notdir $@) . -x modem.fls)
-else
-$(fls_dist_package): droidcore
-	(cd $(PRODUCT_OUT)/fls/fls && zip -r ../../$(notdir $@) .)
-endif
-
-INTEL_FACTORY_FLASHFILES_TARGET := $(fls_dist_package)
-
-$(call dist-for-goals,droid,$(fls_dist_package))
