@@ -1,0 +1,6 @@
+on boot
+    write /sys/class/gpio/export 342
+    write /sys/class/gpio/gpio342/direction high
+    chown media camera /sys/class/gpio/gpio342/value
+    chmod 0644 /sys/class/gpio/gpio342/value
+
