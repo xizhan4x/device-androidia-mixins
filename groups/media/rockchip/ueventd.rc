@@ -4,6 +4,6 @@
 /dev/video1    0600    media    media
 /dev/video2    0600    media    media
 /dev/video3    0600    media    media
-/dev/vpu_service    0600    media    media
+/dev/vpu_service    0660    media    graphics
 /dev/hevc_service    0600    media    media
 /dev/mem    0600    media    media

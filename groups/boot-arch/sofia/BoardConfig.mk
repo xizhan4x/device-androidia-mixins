@@ -58,7 +58,7 @@ FEAT_MSM := YES
 # HACK to work around lack of PAE kernel override
 override LIBART_IMG_TARGET_BASE_ADDRESS := 0x30000000
 
-SECURE_PLAYBACK_ENABLE := true
+SECURE_PLAYBACK_ENABLE := false
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/sofia3gr/
 TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
