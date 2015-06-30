@@ -1,6 +1,13 @@
-OVERLAY_TEL_CFG := device/intel/common/telephony-config/catalog
-TEL_CATALOG := system/etc/telephony/catalog
+# To change the default telephony configuration set the following
+# variable to the appropriate telephony configuration name.
+TELEPHONY_CONFIG ?= {{user_build_config}}
 
-FOUND_CONFIGS := $(wildcard $(OVERLAY_TEL_CFG)/*/*.xml)
+ifeq ($(TARGET_BUILD_VARIANT),user)
+TELEPHONY_FOUND_CONFIGS := $(wildcard $(TELEPHONY_CATALOG_DIR)/$(TELEPHONY_CONFIG)/*.xml)
+else
+PRODUCT_COPY_FILES += device/intel/common/telephony-config/init.telephony-config.rc:root/init.telephony-config.rc
+TELEPHONY_FOUND_CONFIGS := $(wildcard $(TELEPHONY_CATALOG_DIR)/*/*.xml)
+endif
+
 PRODUCT_COPY_FILES += \
-    $(foreach _conf, $(FOUND_CONFIGS), $(_conf):$(TEL_CATALOG)/$(patsubst $(OVERLAY_TEL_CFG)/%,%,$(_conf)))
+    $(foreach _conf, $(TELEPHONY_FOUND_CONFIGS), $(_conf):$(TELEPHONY_OUT_CATALOG_DIR)/$(patsubst $(TELEPHONY_CATALOG_DIR)/%,%,$(_conf)))
