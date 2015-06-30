@@ -1,0 +1,8 @@
+{{#thermal_lite}}
+service thermal_lite /thermal_lite
+    oneshot
+    seclabel u:r:thermal_lite:s0
+
+on post-fs-data
+    start thermal_lite ROS
+{{/thermal_lite}}
