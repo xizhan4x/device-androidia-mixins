@@ -3,9 +3,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     librpc-ril \
-    OemTelephonyApp \
     CellBroadcastReceiver \
     Stk
+
+#OemTelephony for OEM HOOK API
+PRODUCT_PACKAGES += \
+    OemTelephonyApp-imc \
+    com.intel.internal.telephony.OemTelephony-imc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
