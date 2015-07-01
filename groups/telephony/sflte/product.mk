@@ -6,6 +6,12 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Stk
 
+PRODUCT_PACKAGES += \
+    com.msm.android.MSMClientLib \
+    com.msm.android.MSMClientLib.xml \
+    MSMClient \
+    libmsm_library_jni
+
 #OemTelephony for OEM HOOK API
 PRODUCT_PACKAGES += \
     OemTelephonyApp-imc \
