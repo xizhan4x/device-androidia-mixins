@@ -21,4 +21,6 @@
 /dev/block/by-name/ImcPartID126  /persistent      emmc    defaults                          defaults
 # FTLE_ID_METADATA
 /dev/block/by-name/ImcPartID127  /metadata        emmc    defaults                          defaults
+# FTLE_ID_FW_UPDATE
+/dev/block/by-name/ImcPartID122  /fwupdate        emmc    defaults                          defaults
 
