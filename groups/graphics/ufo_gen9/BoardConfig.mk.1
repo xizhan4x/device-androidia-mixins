@@ -1,0 +1,14 @@
+# Select ufo gen9 libs
+UFO_ENABLE_GEN := gen9
+
+# Defines Intel library for GPU accelerated Renderscript:
+OVERRIDE_RS_DRIVER := libRSDriver_intel.so
+
+# Use external/drm-dev
+LIBDRM_VER=dev
+
+# Disable power saving. This is temporary until power saving works with A1
+BOARD_KERNEL_CMDLINE += i915.disable_power_well=0 i915.enable_rc6=0
+
+# Force atomic modesetting on gen9 and above
+BOARD_KERNEL_CMDLINE += drm.atomic=1 i915.nuclear_pageflip=1
