@@ -42,3 +42,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mts
 
+# Autocall
+PRODUCT_PACKAGES_DEBUG += \
+    Autocall
