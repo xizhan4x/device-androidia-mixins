@@ -1,0 +1,3 @@
+# WIDI
+INTEL_WIDI := true
+INTEL_WIDI_GEN := true
