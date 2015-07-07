@@ -1,0 +1,3 @@
+on post-fs
+    # Give system access rights to vibrator
+    chown system system /sys/bus/platform/drivers/intel_mid_pmic_vibra/VIBR22A8:00/vibrator
