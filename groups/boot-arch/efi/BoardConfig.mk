@@ -102,3 +102,7 @@ endif
 ifneq ($(CSE_SPI_BIN),)
 BOARD_FLASHFILES += $(CSE_SPI_BIN):cse_spi.bin
 endif
+{{#bootloader_policy}}
+BOOTLOADER_POLICY_OEMVARS = $(PRODUCT_OUT)/bootloader_policy-oemvars.txt
+BOARD_FLASHFILES += $(BOOTLOADER_POLICY_OEMVARS):bootloader_policy-oemvars.txt
+{{/bootloader_policy}}

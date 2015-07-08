@@ -82,6 +82,16 @@ KERNELFLINGER_IGNORE_RSCI := true
 # as that would defeat it.
 TARGET_NO_DEVICE_UNLOCK := true
 {{/tdos}}
+{{#bootloader_policy}}
+# It makes kernelflinger relies on the BOOTLOADER POLICY EFI
+# variables.  TARGET_BOOTLOADER_POLICY is the desired bitmask for this
+# device.
+# - 0x0000000000000000: no policy, the device behaves as usual
+# - 0x0000000000000001: unlock is totally prohibited on this device.
+#   The only way to unlock is to use the secured force-unlock
+#   mechasnism.
+TARGET_BOOTLOADER_POLICY := {{bootloader_policy}}
+{{/bootloader_policy}}
 {{^fastbootefi}}
 TARGET_STAGE_USERFASTBOOT := true
 TARGET_USE_USERFASTBOOT := true

@@ -195,3 +195,13 @@ endif
 ifneq ($(EFI_AFU_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_AFU_BIN):$(TARGET_PRODUCT)-afu-$(FILE_NAME_TAG).bin)
 endif
+{{#bootloader_policy}}
+GEN_BLPOLICY_OEMVARS := device/intel/build/generate_blpolicy_oemvars
+TARGET_ODM_KEY_PAIR := device/intel/build/testkeys/odm
+TARGET_OAK_KEY_PAIR := device/intel/build/testkeys/OAK
+
+$(BOOTLOADER_POLICY_OEMVARS): sign-efi-sig-list
+	$(GEN_BLPOLICY_OEMVARS) -K $(TARGET_ODM_KEY_PAIR) \
+		-O $(TARGET_OAK_KEY_PAIR).x509.pem -B $(TARGET_BOOTLOADER_POLICY) \
+		$(BOOTLOADER_POLICY_OEMVARS)
+{{/bootloader_policy}}
