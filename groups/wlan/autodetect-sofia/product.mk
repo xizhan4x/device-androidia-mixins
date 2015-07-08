@@ -23,7 +23,7 @@ PRODUCT_COPY_FILES += \
 # It will be bind-mounted by hald upon device discovery
 TARGET_OUT_WLAN_FW := $(TARGET_OUT)/system/vendor/wifi/a620/firmware
 TARGET_OUT_ETC_WIFI := $(TARGET_OUT)/system/vendor/wifi/a620/etc
-LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl
+LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/sofia/3gr
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR)/*a620*.ucode))
 IWL_PAPD_DB_FILES := $(notdir $(shell find $(LOCAL_IWL_FW_DIR)/papd_db -type f))

@@ -18,7 +18,7 @@ ifeq ($(HAL_BIND_MOUNT), true)
 # link is not created again by subsequent make invocations). These fake files
 # get overridden by bind-mount or fuse.
 
-LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl
+LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/sofia/3gr
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR)/*a620*.ucode))
 IWL_PAPD_DB_FILES := $(notdir $(shell find $(LOCAL_IWL_FW_DIR)/papd_db -type f))
 
