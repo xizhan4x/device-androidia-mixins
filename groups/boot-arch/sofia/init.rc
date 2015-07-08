@@ -78,10 +78,6 @@ service nvm_uagent /system/bin/nvm_useragent
     user root
     group root
 
-service rpcNotifier /system/bin/rpcNotifier
-    class main
-    user root
-
 service rpc-daemon /system/bin/rpc-daemon
     socket rpc_send stream 660 system radio
     socket rpc_recv stream 660 system radio

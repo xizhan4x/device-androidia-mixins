@@ -10,7 +10,6 @@ PRODUCT_PACKAGES += \
     libipcservice_tty_plugin \
     libipcservice_uds_plugin \
     ipcsd \
-    rpcNotifier \
     rpcServer \
     rpc-daemon \
 {{#fls_prebuilts}}
