@@ -3,9 +3,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     librpc-ril \
-    OemTelephonyApp \
     CellBroadcastReceiver \
     Stk
+
+PRODUCT_PACKAGES += \
+    com.msm.android.MSMClientLib \
+    com.msm.android.MSMClientLib.xml \
+    MSMClient \
+    libmsm_library_jni
+
+#OemTelephony for OEM HOOK API
+PRODUCT_PACKAGES += \
+    OemTelephonyApp-imc \
+    com.intel.internal.telephony.OemTelephony-imc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

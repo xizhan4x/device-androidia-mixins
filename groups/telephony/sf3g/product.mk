@@ -5,6 +5,12 @@ PRODUCT_PACKAGES += \
     libauddriver \
     librpc-ril \
 
+PRODUCT_PACKAGES += \
+    com.msm.android.MSMClientLib \
+    com.msm.android.MSMClientLib.xml \
+    MSMClient \
+    libmsm_library_jni
+
 #OemTelephony for OEM HOOK API
 PRODUCT_PACKAGES += \
     OemTelephonyApp-imc \
