@@ -5,3 +5,8 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/video_isv/overlay
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.sys.media.avsync = 1
+
+# Settings for the video extended mode:
+INTEL_FEATURE_VIDEO_EXT_MODE := true
+
+PRODUCT_BOOT_JARS += com.intel.extmode
