@@ -14,7 +14,7 @@
 # FTLE_ID_BOOT_IMG
 /dev/block/by-name/ImcPartID071  /boot            emmc    defaults                          defaults
 # FTLE_ID_RECOVERY_IMG
-/dev/block/by-name/ImcPartID072  /recovery        emmc    defaults                          defaults
+/dev/block/by-name/ImcPartID121  /recovery        emmc    defaults                          defaults
 # FTLE_ID_BCB
 /dev/block/by-name/ImcPartID074  /misc            emmc    defaults                          defaults
 # FTLE_ID_PERSISTENT
