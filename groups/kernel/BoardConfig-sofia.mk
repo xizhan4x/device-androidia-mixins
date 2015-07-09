@@ -1,12 +1,16 @@
 BOARD_KERNEL_CMDLINE += \
-	console=ttyS0,115200n8 \
 	idle=halt \
-	earlyprintk={{{earlyprintk}}} \
 	debug \
 	notsc \
 	nolapic_pm \
 	apic=sofia \
 	cma={{{cma_size}}}
+
+ifneq (,$(filter eng userdebug,$(TARGET_BUILD_VARIANT)))
+BOARD_KERNEL_CMDLINE += \
+	console=ttyS0,115200n8 \
+	earlyprintk={{{earlyprintk}}}
+endif # TARGET_BUILD_VARIANT is eng, userdebug
 
 {{#lapic_timer}}
 BOARD_KERNEL_CMDLINE += \
