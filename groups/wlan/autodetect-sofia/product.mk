@@ -8,6 +8,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     wifi_intel_usc
 
+#copy modules configuration
+PRODUCT_COPY_FILES += \
+        device/intel/common/wlan/iwlwifi/iwl_3gr.conf:/system/etc/modprobe.d/iwl.conf
+
 #copy iwlwifi wpa config files
 PRODUCT_COPY_FILES += \
         device/intel/common/wlan/wpa_supplicant-common.conf:system/etc/wifi/wpa_supplicant.conf \
