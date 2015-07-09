@@ -1,0 +1,7 @@
+on boot
+    setprop widi.hdcp.enable true
+
+    # Enable abr by default for widi
+    setprop widi.abr.enable true
+    setprop widi.setsocketsize.enable false
+    setprop widi.socketpriority.enable false
