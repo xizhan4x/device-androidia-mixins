@@ -19,9 +19,6 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
         frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
-PRODUCT_COPY_FILES += \
-        device/intel/common/wlan/iwlwifi/load_iwlwifi.sh:system/bin/load_iwlwifi.sh
-
 #
 # Copy a620 firwmare and config files to system/vendor/wifi/a620
 # It will be bind-mounted by hald upon device discovery
