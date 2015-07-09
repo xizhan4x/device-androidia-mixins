@@ -31,6 +31,8 @@ on fs
     write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
 
 on charger
+    write /sys/class/leds/lcd-backlight/brightness 127
+    write /sys/class/leds/lcd-backlight/trigger backlight
     mount_all /fstab.{{{hardware}}}
     start setup_fs_nvm
     write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
