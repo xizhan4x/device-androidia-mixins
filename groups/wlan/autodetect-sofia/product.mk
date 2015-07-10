@@ -8,6 +8,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     wifi_intel_usc
 
+#copy modules configuration
+PRODUCT_COPY_FILES += \
+        device/intel/common/wlan/iwlwifi/iwl_3gr.conf:/system/etc/modprobe.d/iwl.conf
+
 #copy iwlwifi wpa config files
 PRODUCT_COPY_FILES += \
         device/intel/common/wlan/wpa_supplicant-common.conf:system/etc/wifi/wpa_supplicant.conf \
@@ -15,15 +19,12 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
         frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
-PRODUCT_COPY_FILES += \
-        device/intel/common/wlan/iwlwifi/load_iwlwifi.sh:system/bin/load_iwlwifi.sh
-
 #
 # Copy a620 firwmare and config files to system/vendor/wifi/a620
 # It will be bind-mounted by hald upon device discovery
 TARGET_OUT_WLAN_FW := $(TARGET_OUT)/system/vendor/wifi/a620/firmware
 TARGET_OUT_ETC_WIFI := $(TARGET_OUT)/system/vendor/wifi/a620/etc
-LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl
+LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/sofia/3gr
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR)/*a620*.ucode))
 IWL_PAPD_DB_FILES := $(notdir $(shell find $(LOCAL_IWL_FW_DIR)/papd_db -type f))
