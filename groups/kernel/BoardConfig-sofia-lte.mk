@@ -11,11 +11,5 @@ BOARD_KERNEL_CMDLINE += \
 	earlyprintk={{{earlyprintk}}}
 endif # TARGET_BUILD_VARIANT is eng, userdebug
 
-{{#lapic_timer}}
-BOARD_KERNEL_CMDLINE += \
-    nolapic_timer \
-    x86_intel_xgold_timer=soctimer_only
-{{/lapic_timer}}
-
 # Device Tree Blob file name:
 BOARD_DTB_FILE ?= {{{board_dtb}}}
