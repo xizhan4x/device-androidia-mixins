@@ -5,7 +5,7 @@ on post-fs-data
 # Create a folder for gnss logging
     mkdir /data/gnss 0775 gps system
 
-service lbsd /system/bin/sh /system/bin/lbsd.sh
+service lbsd /system/bin/lbsd.sh
     class main
     user gps
     group gps radio inet system
