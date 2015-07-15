@@ -12,7 +12,7 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
-on property:init.svc.setup_fs_nvm=stopped
+on property:nvm_partition=mounted
     mkdir /nvm_fs_partition/bluetooth 0774 bluetooth bluetooth
     start init_bt_nvm
 

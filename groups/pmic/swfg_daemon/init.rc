@@ -1,7 +1,7 @@
 on post-fs-data
     chown system system /dev/charfg
 
-on property:init.svc.setup_fs_nvm=stopped
+on property:nvm_partition=mounted
     start swfg_daemon
 
 service swfg_daemon /system/bin/swfg_daemon

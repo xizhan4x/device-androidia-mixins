@@ -54,10 +54,20 @@ on property:sys.boot_completed=1
 # Once nvm partition is setup, create directory structure and set permissions.
 # NVM dependent services are disabled by default; start them from here.
 on property:init.svc.setup_fs_nvm=stopped
-    # FIXME!: (security)
+    wait /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID076
+    mount ext4 /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID076 /nvm_fs_partition nosuid nodev data=journal
+    restorecon_recursive /nvm_fs_partition
+
+    # After mount, owner is root
+    chown misc misc /nvm_fs_partition
+    chmod 0775 /nvm_fs_partition
+
+    # Set this property to enable nvm partition dependent services
+    setprop nvm_partition mounted
+
     mkdir /nvm_fs_partition/factory 0770 media drm
     mkdir /nvm_fs_partition/nvm 0660 misc misc
-    restorecon_recursive /nvm_fs_partition
+    mkdir /nvm_fs_partition/bluetooth 0664 bluetooth bluetooth
     start nvm_uagent
 
 service rpcServer /system/bin/rpcServer
@@ -68,7 +78,7 @@ service rpcServer /system/bin/rpcServer
     user root
     group root
 
-service setup_fs_nvm /system/bin/setup_fs_nvm /dev/block/by-name/ImcPartID076 /nvm_fs_partition
+service setup_fs_nvm /system/bin/setup_fs_nvm /dev/block/by-name/ImcPartID076
     class core
     user root
     group root
@@ -77,8 +87,8 @@ service setup_fs_nvm /system/bin/setup_fs_nvm /dev/block/by-name/ImcPartID076 /n
 service nvm_uagent /system/bin/nvm_useragent
     class main
     disabled
-    user root
-    group root
+    user radio
+    group radio
 
 service rpc-daemon /system/bin/rpc-daemon
     socket rpc_send stream 660 system radio
