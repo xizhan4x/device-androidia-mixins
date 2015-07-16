@@ -1,12 +1,9 @@
 BOARD_KERNEL_CMDLINE += \
 	idle=halt \
 	debug \
-	notsc \
 	nolapic_pm \
 	apic=sofia \
-	cma={{{cma_size}}} \
-	nolapic_timer \
-	x86_intel_xgold_timer=soctimer_only
+	cma={{{cma_size}}}
 
 ifneq (,$(filter eng userdebug,$(TARGET_BUILD_VARIANT)))
 BOARD_KERNEL_CMDLINE += \
