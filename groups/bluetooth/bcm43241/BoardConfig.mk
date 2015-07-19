@@ -8,4 +8,4 @@ BOARD_HAVE_BLUETOOTH_LINUX := true
 {{/hsu}}
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/intel/common/bluetooth/bcm43241/
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-bt-pan
-
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bluetooth/bcm43241
