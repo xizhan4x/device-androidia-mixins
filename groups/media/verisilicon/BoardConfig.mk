@@ -6,3 +6,7 @@ ifeq ($(TARGET_BOARD_PLATFORM), $(filter $(TARGET_BOARD_PLATFORM), sofia_lte))
 PRODUCT_FEAT_VPU_G1V6_H1V6 :=true
 BOARD_USE_MALI_IMC_GFX := true
 endif
+
+BOARD_SEPOLICY_DIRS += \
+        device/intel/sepolicy/media/common \
+        device/intel/sepolicy/media/verisilicon
