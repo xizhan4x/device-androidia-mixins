@@ -22,6 +22,12 @@ PRODUCT_PACKAGES += \
     ull_v15_fw_css21_2401
 
 {{/enable_acc}}
+{{#enable_fr_service}}
+# Fr service and client
+PRODUCT_PACKAGES += \
+    libfr_service \
+    libfr_client \
+{{/enable_fr_service}}
 # Only include test apps in eng builds.
 PRODUCT_PACKAGES_ENG += \
     TestingCamera \
