@@ -4,6 +4,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libauddriver \
     librpc-ril \
+    CellBroadcastReceiver \
+    Stk \
 
 PRODUCT_PACKAGES += \
     com.msm.android.MSMClientLib \
@@ -14,7 +16,7 @@ PRODUCT_PACKAGES += \
 #OemTelephony for OEM HOOK API
 PRODUCT_PACKAGES += \
     OemTelephonyApp-imc \
-    com.intel.internal.telephony.OemTelephony-imc
+    com.intel.internal.telephony.OemTelephony-imc \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -25,5 +27,5 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/librpc-ril.so \
+    rild.libpath = librpc-ril.so \
 
