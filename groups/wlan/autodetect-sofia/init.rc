@@ -3,8 +3,6 @@ on post-fs-data
     # create config WiFi NVM folder
     mkdir /config/wlan 0770 wifi system
     start wlan_rest_nvm
-    wait /config/wlan/iwl_nvm.bin
-    start load_iwlwifi
 
 setprop wifi.interface wlan0
 
@@ -35,13 +33,6 @@ service dhcpcd_p2p /system/bin/dhcpcd -aABKL
     oneshot
 
 service iprenew_p2p /system/bin/dhcpcd -n
-    disabled
-    oneshot
-
-service load_iwlwifi /system/bin/sh /system/bin/load_iwlwifi.sh
-    class main
-    user root
-    group system wifi
     disabled
     oneshot
 

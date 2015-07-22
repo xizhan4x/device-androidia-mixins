@@ -1,3 +1,4 @@
 [defaults]
 earlyprintk = xgold
 boot_boost = false
+memory_hole = false

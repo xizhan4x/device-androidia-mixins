@@ -1,0 +1,1 @@
+../gen/BoardConfig.mk

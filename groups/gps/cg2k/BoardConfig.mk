@@ -7,3 +7,6 @@ GPS_CLOSE_INACTIVE := {{{uart_close}}}
 GPS_UART_PM := {{{uart_pm}}}
 GPS_SIMU := {{{simu}}}
 GPS_AMIL := {{{amil}}}
+GPS_AMIL_IF := MDM
+
+GNSS_LPM_DIS_TCXO := true

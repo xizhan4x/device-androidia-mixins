@@ -5,6 +5,10 @@ WPA_SUPPLICANT_VERSION := VER_2_1_DEVEL_WCS
 
 # Enabling iwlwifi
 BOARD_USING_INTEL_IWL := true
+INTEL_IWL_MODULE_SUB_FOLDER := {{{iwl_platfrom}}}
+
+COMBO_CHIP_VENDOR := intel
+COMBO_CHIP := lnp
 
 # SoftAp FW reload definitions.
 # we don't really need this, it's to avoid error when the framework
@@ -18,3 +22,5 @@ WIFI_DRIVER_FW_PATH_PARAM := "/dev/null"
 
 # config_wifi_background_scan_support=true:
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-pno
+
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-tcp-buffers

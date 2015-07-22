@@ -1,0 +1,11 @@
+# Select ufo gen9 libs
+UFO_ENABLE_GEN := gen9
+
+# Defines Intel library for GPU accelerated Renderscript:
+OVERRIDE_RS_DRIVER := libRSDriver_intel.so
+
+# Use external/drm-dev
+LIBDRM_VER=dev
+
+# Force atomic modesetting on gen9 and above
+BOARD_KERNEL_CMDLINE += drm.atomic=1 i915.nuclear_pageflip=1

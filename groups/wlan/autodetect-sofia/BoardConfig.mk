@@ -5,6 +5,7 @@ WPA_SUPPLICANT_VERSION := VER_2_1_DEVEL_WCS
 
 # Enabling iwlwifi
 BOARD_USING_INTEL_IWL := true
+INTEL_IWL_MODULE_SUB_FOLDER := sofia/3gr
 
 # SoftAp FW reload definitions.
 # we don't really need this, it's to avoid error when the framework

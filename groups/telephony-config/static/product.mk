@@ -1,0 +1,6 @@
+TELEPHONY_CONFIG ?= {{config}}
+
+TELEPHONY_FOUND_CONFIGS := $(wildcard $(TELEPHONY_CATALOG_DIR)/$(TELEPHONY_CONFIG)/*.xml)
+
+PRODUCT_COPY_FILES += \
+    $(foreach _conf, $(TELEPHONY_FOUND_CONFIGS), $(_conf):$(TELEPHONY_OUT_CATALOG_DIR)/$(patsubst $(TELEPHONY_CATALOG_DIR)/%,%,$(_conf)))

@@ -8,7 +8,7 @@
 # FTLE_ID_SYSTEM
 /dev/block/by-name/ImcPartID068  /system          ext4    ro                                wait,verify
 # FTLE_ID_USERDATA
-/dev/block/by-name/ImcPartID069  /data            ext4    noatime,nosuid,nodev,errors=panic wait,check{{#forceencrypt}},forceencrypt=/dev/block/by-name/ImcPartID127{{/forceencrypt}}
+/dev/block/by-name/ImcPartID069  /data            ext4    noatime,nosuid,nodev,errors=panic wait,check{{#forceencrypt}},forceencrypt=/dev/block/by-name/ImcPartID127{{/forceencrypt}},formattable
 # FTLE_ID_CACHE
 /dev/block/by-name/ImcPartID070  /cache           ext4    noatime,nosuid,nodev,errors=panic wait,check
 # FTLE_ID_BOOT_IMG
@@ -21,4 +21,6 @@
 /dev/block/by-name/ImcPartID126  /persistent      emmc    defaults                          defaults
 # FTLE_ID_METADATA
 /dev/block/by-name/ImcPartID127  /metadata        emmc    defaults                          defaults
+# FTLE_ID_FW_UPDATE
+/dev/block/by-name/ImcPartID122  /fwupdate        emmc    defaults                          defaults
 

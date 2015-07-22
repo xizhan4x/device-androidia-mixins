@@ -1,9 +1,5 @@
 TARGET_UEFI_ARCH := {{{uefi_arch}}}
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    BIOS_VARIANT := release
-else
-    BIOS_VARIANT := debug
-endif
+BIOS_VARIANT := {{{bios_variant}}}
 
 $(call inherit-product,build/target/product/verity.mk)
 
@@ -18,9 +14,15 @@ PRODUCT_COPY_FILES += \
 BOARD_SFU_UPDATE := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT).fv
 EFI_IFWI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_ifwi.bin
 EFI_EMMC_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_emmc.bin
+EFI_AFU_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_afu.bin
 DNXP_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_dnxp_0x1.bin
 CFGPART_XML := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cfgpart.xml
 CSE_SPI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cse_spi.bin
+
+ifneq ($(TARGET_BUILD_VARIANT),user)
+# Allow to add debug ifwi file only on userdebug and eng flashfiles
+EFI_IFWI_DEBUG_BIN := hardware/intel/efi_capsules/debug/$(TARGET_PRODUCT)_ifwi.bin
+endif
 
 ifneq ($(CALLED_FROM_SETUP),true)
 ifeq ($(wildcard $(BOARD_SFU_UPDATE)),)
@@ -34,6 +36,13 @@ endif
 ifeq ($(wildcard $(EFI_IFWI_BIN)),)
 $(warning $(EFI_IFWI_BIN) not found, IFWI binary will not be provided in out/dist/)
 EFI_IFWI_BIN :=
+endif
+ifeq ($(wildcard $(EFI_AFU_BIN)),)
+$(warning $(EFI_AFU_BIN) not found, IFWI binary will not be provided in out/dist/)
+EFI_AFU_BIN :=
+endif
+ifeq ($(wildcard $(EFI_IFWI_DEBUG_BIN)),)
+EFI_IFWI_DEBUG_BIN :=
 endif
 ifeq ($(wildcard $(DNXP_BIN)),)
 DNXP_BIN :=
@@ -55,10 +64,10 @@ KERNELFLINGER_ALLOW_UNSUPPORTED_ACPI_TABLE := true
 # Doesn't work on most boards.
 KERNELFLINGER_USE_POWER_BUTTON := true
 {{/use_power_button}}
-{{#use_watchdog}}
+{{^disable_watchdog}}
 # Allow Kernelflinger to start watchdog prior to boot the kernel
 KERNELFLINGER_USE_WATCHDOG := true
-{{/use_watchdog}}
+{{/disable_watchdog}}
 {{#use_charging_applet}}
 # Allow Kernelflinger to use the non-standard ChargingApplet protocol
 # to get battery and charger status and modify the boot flow in
