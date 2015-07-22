@@ -1,2 +1,1 @@
-PRODUCT_PACKAGES += CwsCellularCoexMgrService
-
+PRODUCT_PACKAGES += CellCoexApp
