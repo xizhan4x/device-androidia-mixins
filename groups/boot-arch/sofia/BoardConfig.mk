@@ -63,3 +63,5 @@ SECURE_PLAYBACK_ENABLE := false
 TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/sofia3gr/
 TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
 
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
+
