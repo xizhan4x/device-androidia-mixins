@@ -13,3 +13,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     dfw_sst.v1
 
+# Ring 1 audio policy configuration file
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+
