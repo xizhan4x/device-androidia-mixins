@@ -13,6 +13,10 @@ BOARD_KERNEL_CMDLINE += \
         bootboost=1
 {{/boot_boost}}
 
+{{#pmsuspend_debug}}
+BOARD_KERNEL_CMDLINE += \
+        pm_suspend_debug=1
+{{/pmsuspend_debug}}
 {{#memory_hole}}
 BOARD_KERNEL_CMDLINE += \
         memmap=4M\$$0x5c400000
