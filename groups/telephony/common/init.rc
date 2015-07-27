@@ -151,6 +151,13 @@ on property:sys.usb.modemevt=1
    write /proc/sys/net/ipv6/conf/usb3/dad_transmits 0
    write /proc/sys/net/ipv6/conf/usb4/dad_transmits 0
 
+# Activate usage of temporary addresses on cellular IPV6 connections
+   write /proc/sys/net/ipv6/conf/usb0/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/usb1/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/usb2/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/usb3/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/usb4/use_tempaddr 2
+
 # Disable Nvm Server
 on property:persist.disable_NVM_Server=1
     stop nvm_manager
