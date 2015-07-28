@@ -13,3 +13,6 @@ GNSS_LPM_DIS_TCXO := true
 BOARD_SEPOLICY_DIRS += \
 		device/intel/sepolicy/gps/common \
 		device/intel/sepolicy/gps/cg2k
+
+BOARD_SEPOLICY_M4DEFS += sepolicy_module_gps=cg2k
+
