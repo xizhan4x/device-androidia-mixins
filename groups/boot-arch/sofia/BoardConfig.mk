@@ -43,7 +43,6 @@ INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(TARGET_DEVICE)/m
 endif
 GEN_PRG_FROM_SRC := false
 
-TARGET_NO_RECOVERY := true
 BOARD_USE_FLS_PREBUILTS := $(TARGET_DEVICE)
 {{/fls_prebuilts}}
 
@@ -62,7 +61,7 @@ HOST_PREFER_32_BIT := true
 
 SECURE_PLAYBACK_ENABLE := false
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/sofia3gr/
+TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/${TARGET_BOARD_PLATFORM}/
 TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
