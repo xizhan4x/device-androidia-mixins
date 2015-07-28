@@ -7,3 +7,4 @@ capsule = true
 reboot = continue
 version = 2.1
 makefile = true
+bts = false

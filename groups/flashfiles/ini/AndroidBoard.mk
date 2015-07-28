@@ -20,16 +20,31 @@ $(hide) $(ACP) $(1) $(2)
 
 endef
 
+define deploy_provdata
+$(eval ff_var := $(subst provdata,,$(basename $(notdir $(1)))))
+$(hide) rm -f $(1)
+$(hide) rm -rf $(ff_intermediates)/root$(ff_var)
+$(hide) mkdir -p $(ff_intermediates)/root$(ff_var)
+$(foreach pair,$(BOARD_FLASHFILES$(ff_var)), \
+	$(call copy-flashfile,$(call word-colon,1,$(pair)),$(ff_intermediates)/root$(ff_var)/$(call word-colon,2,$(pair))))
+$(hide) zip -qj $(1) $(ff_intermediates)/root$(ff_var)/*
+endef
+
+ifneq ($(FLASHFILE_VARIANTS),)
+provdata_zip :=
+$(foreach var,$(FLASHFILE_VARIANTS), \
+	$(eval provdata_zip += $(ff_intermediates)/provdata_$(var).zip) \
+	$(eval BOARD_FLASHFILES_$(var) := $(BOARD_FLASHFILES)) \
+	$(eval BOARD_FLASHFILES_$(var) += $(BOARD_FLASHFILES_FIRMWARE_$(var))))
+$(info $(BOARD_FLASHFILES))
+endif
+
 $(provdata_zip): \
 		$(foreach pair,$(BOARD_FLASHFILES),$(call word-colon,1,$(pair))) \
 		| $(ACP) \
 
-	$(hide) rm -f $(provdata_zip)
-	$(hide) rm -rf $(ff_root)
-	$(hide) mkdir -p $(ff_root)
-	$(foreach pair,$(BOARD_FLASHFILES), \
-		$(call copy-flashfile,$(call word-colon,1,$(pair)),$(ff_root)/$(call word-colon,2,$(pair))))
-	$(hide) zip -qj $@ $(ff_root)/*
+	$(call deploy_provdata,$@)
+
 
 INSTALLED_RADIOIMAGE_TARGET += $(provdata_zip)
 
