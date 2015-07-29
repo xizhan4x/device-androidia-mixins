@@ -31,14 +31,14 @@ on post-fs-data
     chmod 770 /data/telephony
 
 # adding Modem Manager
-service mmgr /system/bin/mmgr
+service mmgr /system/vendor/bin/mmgr
     class main
     socket mmgr stream 660 system radio
     user system
     group radio cache inet misc system usb
 
 # AT proxy service
-service proxy /system/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10
+service proxy /system/vendor/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10
     socket atproxy-status stream 666 root radio system
     class main
     user radio
@@ -46,7 +46,7 @@ service proxy /system/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10
     disabled
 
 # AT proxy tunneling mode service
-service proxy-tunneling /system/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10 -t on
+service proxy-tunneling /system/vendor/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10 -t on
     class main
     user radio
     group radio system cache inet misc
@@ -94,13 +94,13 @@ on property:system.at-proxy.mode=2
 # MTS SERVICES
 
 # mts persistent
-service mtsp /system/bin/mts
+service mtsp /system/vendor/bin/mts
     user system
     group radio log media_rw sdcard_r sdcard_rw inet
     disabled
 
 # mts oneshot
-service mtso /system/bin/mts
+service mtso /system/vendor/bin/mts
     user system
     group radio log media_rw sdcard_rw inet
     oneshot
@@ -115,7 +115,7 @@ on property:persist.service.mtsp.enable=0
     stop mtsp
 
 # service used by AMTL to send SIGUSR1 to mts
-service pti_sigusr1 /system/bin/pti_sigusr1
+service pti_sigusr1 /system/vendor/bin/pti_sigusr1
     user system
     oneshot
     disabled

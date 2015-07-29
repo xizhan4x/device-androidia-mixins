@@ -22,7 +22,7 @@ on post-fs-data
     chmod 770 /cache/telephony
 
 # adding nvm manager
-service nvm_manager /system/bin/nvm_server
+service nvm_manager /system/vendor/bin/nvm_server
     class core
     socket nvm-ctl stream 660 system radio
     user system
