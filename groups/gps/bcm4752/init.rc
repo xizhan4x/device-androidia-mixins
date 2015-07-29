@@ -9,7 +9,7 @@ on boot
     symlink /dev/{{{tty}}} /dev/gps/ttyGPS
     symlink /sys/class/tty/{{{tty}}}/../../power/control /dev/gps/ttyGPSPowerControl
 
-service gpsd /system/bin/gpsd -c /system/etc/gps.xml
+service gpsd /system/vendor/bin/gpsd -c /system/vendor/etc/gps.xml
     class late_start
     user gps
     group system inet radio sdcard_rw
