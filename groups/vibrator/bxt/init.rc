@@ -1,0 +1,5 @@
+on post-fs
+    # Give system access rights to vibrator
+    chown system system /sys/devices/platform/INT34E1:00/vibrator
+    chown system system /sys/devices/platform/INT34E1:00/pwm_baseunit
+    chown system system /sys/devices/platform/INT34E1:00/pwm_ontime_div

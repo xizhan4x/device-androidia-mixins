@@ -39,12 +39,12 @@ TARGET_NO_RECOVERY := false
 {{#fls_prebuilts}}
 INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/modem_cfg_emmc.prg
 ifeq ($(wildcard $(INTEL_PRG_FILE)),)
-INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(TARGET_PRODUCT)/modem_cfg_emmc.prg
+INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(TARGET_DEVICE)/modem_cfg_emmc.prg
 endif
 GEN_PRG_FROM_SRC := false
 
 TARGET_NO_RECOVERY := true
-BOARD_USE_FLS_PREBUILTS := $(TARGET_PRODUCT)
+BOARD_USE_FLS_PREBUILTS := $(TARGET_DEVICE)
 {{/fls_prebuilts}}
 
 PARTITION_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/partition.xml
