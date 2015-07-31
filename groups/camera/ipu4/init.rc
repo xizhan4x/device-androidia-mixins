@@ -1,18 +1,39 @@
+on init
+    # create camera folder
+    mkdir /data/camera
+    mkdir /data/camera/scripts
+
 on boot
     setprop camera.disable_zsl_mode 1
 
-on property:sys.boot_completed=1
-    # Defer loading modules that may require firmware till fs is ready
-    # additional list of modules to load for intel-ipu4
-    insmod /lib/modules/smiapp-pll.ko
-    write /sys/kernel/debug/dynamic_debug/control "module smiapp_pll +p"
-    insmod /lib/modules/smiapp.ko
-    write /sys/kernel/debug/dynamic_debug/control "module smiapp +p"
-    insmod /lib/modules/lib2600-mod.ko
-    insmod /lib/modules/lib2600psys-mod.ko
-    insmod /lib/modules/intel-ipu4-wrapper-2600.ko
-    insmod /lib/modules/intel-ipu4-mod.ko
-    insmod /lib/modules/intel-ipu4-mmu.ko
-    insmod /lib/modules/videobuf2-dma-contig.ko
-    insmod /lib/modules/intel-ipu4-isys-mod.ko
-    insmod /lib/modules/intel-ipu4-psys-mod.ko
+on post-fs
+    ## Defer loading modules that may require firmware till fs is ready
+    ## additional list of modules to load for intel-ipu4
+    ## In A0 modules can't be loaded automatically at least yet
+    insmod /system/lib/modules/smiapp-pll.ko
+    insmod /system/lib/modules/smiapp.ko
+    insmod /system/lib/modules/lm3643.ko
+    insmod /system/lib/modules/dw9714.ko
+    insmod /system/lib/modules/videobuf-core.ko
+    insmod /system/lib/modules/videobuf2-dma-contig.ko
+    insmod /system/lib/modules/intel-ipu4-wrapper.ko
+    insmod /system/lib/modules/lib2600-mod.ko
+    insmod /system/lib/modules/intel-ipu4-mod.ko
+    insmod /system/lib/modules/intel-ipu4-mmu.ko
+    insmod /system/lib/modules/intel-ipu4-isys-mod.ko
+    insmod /system/lib/modules/lib2600psys-mod.ko
+    insmod /system/lib/modules/intel-ipu4-psys-mod.ko
+    #optional debug configuration
+    #echo "module smiapp_pll +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module smiapp +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module lm3643 +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module dw9714 +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module videobuf_core +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module videobuf2_dma_contig +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module intel_ipu4_wrapper +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module lib2600_mod +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module intel_ipu4_mod +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module intel_ipu4_mmu +p" > /sys/kernel/debug/dynamic_debug/control;
+    echo "module intel_ipu4_isys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module lib2600psys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module intel_ipu4_psys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
