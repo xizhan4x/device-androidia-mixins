@@ -12,6 +12,7 @@ PRODUCT_PACKAGES += \
     ipcsd \
     rpcServer \
     rpc-daemon \
+    libstlport \
 {{#fls_prebuilts}}
     mobilevisor.fls \
     mvconfig_smp.fls \
