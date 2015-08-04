@@ -1,0 +1,4 @@
+
+service fg_algo_cos /sbin/fg_algo_cos
+  class charger
+  seclabel u:r:fg_algo_cos:s0

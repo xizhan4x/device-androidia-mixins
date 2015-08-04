@@ -30,4 +30,3 @@ service fg_algo_iface /system/vendor/bin/fg_algo_iface
     group system
     class late_start
     disabled
-
