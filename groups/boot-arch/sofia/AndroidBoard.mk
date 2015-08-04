@@ -11,6 +11,7 @@ BUILD_SECVM_FROM_SRC := false
 BUILD_VMM_FROM_SRC := false
 GEN_VMM_FLS_FILES := false
 MV_CONFIG_DEFAULT_FLS := $(PRODUCT_OUT)/fls/fls/mvconfig_smp.fls
+SOFIA_PROVDATA_FILES += $(MV_CONFIG_DEFAULT_FLS)
 {{/fls_prebuilts}}
 GEN_ANDROID_FLS_FILES := true
 MODEM_PLATFORM := {{{modem_platform}}}
