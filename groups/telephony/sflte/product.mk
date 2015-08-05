@@ -28,6 +28,11 @@ PRODUCT_PACKAGES += \
     OemTelephonyApp \
     com.intel.internal.telephony.OemTelephony
 
+#EnhancedTelephony for HOOK API
+PRODUCT_PACKAGES += \
+    EnhancedTelephonyApp \
+    com.intel.internal.telephony.ex
+
 # AT Proxy
 PRODUCT_PACKAGES += \
     proxy
