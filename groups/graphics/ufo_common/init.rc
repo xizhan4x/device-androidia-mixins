@@ -1,11 +1,11 @@
 # for hardware accelerated graphics
 service msync /system/bin/msync
     class main
-    seclabel u:r:msync:s0
+#    seclabel u:r:msync:s0
 
 service coreu /system/bin/coreu
     class main
-    seclabel u:r:coreu:s0
+#    seclabel u:r:coreu:s0
 
 on post-fs-data
     mkdir /data/system 0770 system system
