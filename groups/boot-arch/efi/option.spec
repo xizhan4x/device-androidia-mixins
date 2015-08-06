@@ -4,6 +4,7 @@ fastbootefi = true
 acpi_permissive = false
 use_power_button = false
 disable_watchdog = false
+watchdog_parameters = false
 use_charging_applet = false
 ignore_rsci = false
 tdos = false

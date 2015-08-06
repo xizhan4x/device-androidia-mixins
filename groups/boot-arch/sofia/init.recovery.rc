@@ -16,7 +16,7 @@ on boot
     write /proc/sys/vm/dirty_ratio 5
     write /proc/sys/vm/dirty_expire_centisecs 15
 
-service watchdog /sbin/watchdogd 60
+service watchdog /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters}}}{{/watchdog_parameters}}
     class core
     oneshot
     seclabel u:r:watchdogd:s0

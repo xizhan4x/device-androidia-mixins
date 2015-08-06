@@ -7,7 +7,7 @@ on fs
 on post-fs
     restorecon /dev/block/by-name/android_persistent
 
-service watchdogd /sbin/watchdogd
+service watchdogd /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters}}}{{/watchdog_parameters}}
     user root
     class core
     oneshot
