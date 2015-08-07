@@ -10,7 +10,8 @@ PRODUCT_PACKAGES += \
 
 #copy modules configuration
 PRODUCT_COPY_FILES += \
-        device/intel/common/wlan/iwlwifi/iwl_3gr.conf:/system/etc/hald/fuse/modprobe.d/iwl_3gr.conf
+        device/intel/common/wlan/iwlwifi/iwl_3gr.conf:/system/etc/hald/fuse/modprobe.d/iwl_3gr.conf \
+        device/intel/common/wlan/iwlwifi/iwl_lte.conf:/system/etc/hald/fuse/modprobe.d/iwl_lte.conf \
 
 #copy iwlwifi wpa config files
 PRODUCT_COPY_FILES += \
@@ -46,6 +47,31 @@ PRODUCT_COPY_FILES += \
 		$(LOCAL_IWL_FW_DIR)/$(ucode):$(TARGET_OUT_WLAN_FW_COMMON)/$(ucode)) \
 	$(foreach file,$(IWL_PAPD_DB_FILES),\
                 $(LOCAL_IWL_FW_DIR)/papd_db/$(file):$(TARGET_OUT_ETC_WIFI)/papd_db/$(file))
+
+#
+# Copy lnp firwmare and config files to system/vendor/wifi/lnp
+# It will be bind-mounted by hald upon device discovery
+TARGET_OUT_WLAN_FW_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/firmware
+TARGET_OUT_ETC_WIFI_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/etc
+LOCAL_IWL_FW_DIR_LNP := vendor/intel/fw/iwl/sofia/lte
+
+IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR_LNP)/*8000*.ucode))
+
+# Copy the nvmData file and all the ucode files to $(TARGET_OUT_WLAN_FW_LNP)
+# copying nvm to firmware is temporary
+PRODUCT_COPY_FILES += \
+	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/nvmData-8000-source:$(TARGET_OUT_ETC_WIFI_LNP)/nvmDataDefault \
+	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/nvmData-8000C-0xA050:$(TARGET_OUT_WLAN_FW_LNP)/iwl_nvm.bin \
+	$(LOCAL_IWL_FW_DIR_LNP)/fw_info.txt:$(TARGET_OUT_WLAN_FW_LNP)/fw_info.txt \
+	$(LOCAL_IWL_FW_DIR_LNP)/iwl-dbg-cfg.ini:$(TARGET_OUT_WLAN_FW_LNP)/iwl-dbg-cfg.ini \
+	$(LOCAL_IWL_FW_DIR_LNP)/softap-dummy-ucode:$(TARGET_OUT_WLAN_FW_LNP)/iwlwifi-softap-dummy.ucode \
+	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/change_mac_address_v1:$(PRODUCT_OUT)/system/bin/change_mac_address \
+	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/nvmData-8000-K0:$(TARGET_OUT_WLAN_FW_COMMON)/nvmData-8000-K0 \
+	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/nvmData-8000B-0x49:$(TARGET_OUT_WLAN_FW_COMMON)/nvmData-8000B \
+	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/nvmData-8000C-0xA050:$(TARGET_OUT_WLAN_FW_COMMON)/nvmData-8000C \
+	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/nvmData-8000C-0xA050:$(TARGET_OUT_WLAN_FW_COMMON)/nvmData-8000-production \
+	$(foreach ucode, $(IWL_UCODE_FILES), \
+		$(LOCAL_IWL_FW_DIR_LNP)/$(ucode):$(TARGET_OUT_WLAN_FW_COMMON)/$(ucode)) \
 
 # Add Manufacturing tool
 PRODUCT_PACKAGES += \
