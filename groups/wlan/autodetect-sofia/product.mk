@@ -24,6 +24,12 @@ PRODUCT_COPY_FILES += \
 # Firmwares with device-specific file names can go to standard firmware folder
 TARGET_OUT_WLAN_FW_COMMON := $(TARGET_OUT)/system/vendor/firmware
 
+# Because system images for LTE and 3GR are almost full, we don't copy all the
+# firmwares on both platforms. Choice is based on iwl_platform mixins parameter.
+IWL_PLATFORM := {{{iwl_platform}}}
+
+ifeq ($(IWL_PLATFORM), sofia/3gr)
+
 #
 # Copy a620 firwmare and config files to system/vendor/wifi/a620
 # It will be bind-mounted by hald upon device discovery
@@ -47,6 +53,10 @@ PRODUCT_COPY_FILES += \
 		$(LOCAL_IWL_FW_DIR)/$(ucode):$(TARGET_OUT_WLAN_FW_COMMON)/$(ucode)) \
 	$(foreach file,$(IWL_PAPD_DB_FILES),\
                 $(LOCAL_IWL_FW_DIR)/papd_db/$(file):$(TARGET_OUT_ETC_WIFI)/papd_db/$(file))
+
+endif
+
+ifeq ($(IWL_PLATFORM), sofia/lte)
 
 #
 # Copy lnp firwmare and config files to system/vendor/wifi/lnp
@@ -72,6 +82,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_IWL_FW_DIR_LNP)/nvmData/nvmData-8000C-0xA050:$(TARGET_OUT_WLAN_FW_COMMON)/nvmData-8000-production \
 	$(foreach ucode, $(IWL_UCODE_FILES), \
 		$(LOCAL_IWL_FW_DIR_LNP)/$(ucode):$(TARGET_OUT_WLAN_FW_COMMON)/$(ucode)) \
+
+endif
 
 # Add Manufacturing tool
 PRODUCT_PACKAGES += \
