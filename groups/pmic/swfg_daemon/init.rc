@@ -1,0 +1,13 @@
+on post-fs-data
+    chown system system /dev/charfg
+
+on property:init.svc.setup_fs_nvm=stopped
+    start swfg_daemon
+
+service swfg_daemon /system/bin/swfg_daemon
+    class main
+    disabled
+    user system
+    group system
+    oneshot
+
