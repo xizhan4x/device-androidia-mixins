@@ -473,8 +473,25 @@ def merge_xml(xmls,product_dir):
                all_dest_lines=all_dest_lines+dest_lines
         dest_lines = amend_xml_file(dest_fn,all_dest_lines,begin_templates,end_template)
 
-def process_spec_file(specfile, dry_run):
+def handle_include(specfile):
+    """ check for include section in a spec file.
+    handle multiple include by recursion.
+    return the list of file in the order they must be parsed."""
+
     cp = read_spec_file(specfile)
+
+    if cp.has_section("include"):
+        relative_path = cp.get("include","file")
+        include_path = os.path.join(os.path.dirname(specfile), relative_path)
+        return handle_include(include_path) + [specfile]
+    return [specfile]
+
+def process_spec_file(specfile, dry_run):
+
+    filelist = handle_include(specfile)
+    cp = None
+    for f in filelist:
+        cp = read_spec_file(f, cp)
 
     if False in (
             check_section("main", cp, specfile),
