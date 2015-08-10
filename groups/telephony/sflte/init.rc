@@ -64,3 +64,40 @@ service crm /system/vendor/bin/crm
     user system
     group radio cache inet misc system usb
 
+# AT proxy service
+service proxy /vendor/bin/proxy -d /dev/mvpipe-at2c -m /dev/mvpipe-at2c -p /dev/ttyGS2
+    socket atproxy-status stream 666 root radio system
+    class main
+    user radio
+    group radio system cache inet misc
+    disabled
+
+# AT proxy tunneling mode service
+service proxy-tunneling /vendor/bin/proxy -d /dev/mvpipe-at2c -m /dev/mvpipe-at2c -p /dev/ttyGS2 -t on
+    class main
+    user radio
+    group radio system cache inet misc
+    disabled
+
+on property:persist.system.at-proxy.mode=*
+    setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
+
+on property:system.at-proxy.mode=0
+    setprop persist.tool_enable ${persist.ipcs_state}
+    stop proxy
+    stop proxy-tunneling
+
+on property:system.at-proxy.mode=1
+    setprop persist.ipcs_state ${persist.tool_enable}
+    setprop persist.tool_enable 0
+    stop proxy-tunneling
+    start proxy
+
+on property:system.at-proxy.mode=2
+    setprop persist.ipcs_state ${persist.tool_enable}
+    setprop persist.tool_enable 0
+    stop proxy
+    start proxy-tunneling
+
+on property:persist.tool_enable=0
+    stop ipcsd

@@ -29,6 +29,10 @@ PRODUCT_PACKAGES += \
     OemTelephonyApp \
     com.intel.internal.telephony.OemTelephony
 
+# AT Proxy
+PRODUCT_PACKAGES += \
+    proxy
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \

@@ -13,3 +13,5 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony \
 # Enable -RIL_IOSM_ENABLED
 RIL_IOSM_ENABLED := true
 {{/ril_iosm}}
+
+BOARD_HAVE_ATPROXY := true
