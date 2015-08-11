@@ -1,0 +1,4 @@
+service otpserver /system/bin/otpserver
+    class main
+    user drmrpc
+    group drmrpc
