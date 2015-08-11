@@ -2,3 +2,5 @@
 earlyprintk = xgold
 boot_boost = false
 memory_hole = false
+relative_sleepstates = false
+pmsuspend_debug = false

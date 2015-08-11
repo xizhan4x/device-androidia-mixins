@@ -17,4 +17,6 @@ PRODUCT_PACKAGES += \
     bddata_A0 \
     370b12060002340e00_selftest.sfi \
     370b10060002220e00_selftest.sfi \
+    nvm_init.sh \
+    .btnvm \
     bluetooth_intel_restore.sh

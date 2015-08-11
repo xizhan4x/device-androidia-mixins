@@ -31,6 +31,8 @@ on fs
     write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
 
 on charger
+    write /sys/class/leds/lcd-backlight/brightness 127
+    write /sys/class/leds/lcd-backlight/trigger backlight
     mount_all /fstab.{{{hardware}}}
     start setup_fs_nvm
     write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
@@ -41,6 +43,9 @@ on init
     mkdir /nvm_fs_partition 0660 misc misc
     restorecon /nvm_fs_partition
 
+    # Symlink for Widevine keybox
+    symlink /nvm_fs_partition/factory /factory
+
 on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/read_ahead_kb 128
 
@@ -48,7 +53,7 @@ on property:sys.boot_completed=1
 # NVM dependent services are disabled by default; start them from here.
 on property:init.svc.setup_fs_nvm=stopped
     # FIXME!: (security)
-    mkdir /nvm_fs_partition/factory 0770 media misc
+    mkdir /nvm_fs_partition/factory 0770 media drm
     mkdir /nvm_fs_partition/nvm 0660 misc misc
     restorecon_recursive /nvm_fs_partition
     start nvm_uagent

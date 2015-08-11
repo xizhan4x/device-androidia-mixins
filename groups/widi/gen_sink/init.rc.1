@@ -1,0 +1,3 @@
+on post-fs-data
+    mkdir /data/misc/dnsmasq 0755 root root
+    restorecon_recursive /data/misc/dnsmasq

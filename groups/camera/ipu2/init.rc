@@ -15,3 +15,4 @@ on charger
 on boot
     setprop camera.disable_zsl_mode 1
     start atomisp-init
+    wait /dev/video0

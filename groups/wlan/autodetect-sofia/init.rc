@@ -11,6 +11,7 @@ service wpa_supplicant /system/bin/sh /system/rt/hal_fuse/wpa_supplicant-start
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+    seclabel u:r:wpa:s0
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABDKL
     class main
@@ -27,6 +28,7 @@ service p2p_supplicant /system/bin/sh /system/rt/hal_fuse/p2p_supplicant-start
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+    seclabel u:r:wpa:s0
 
 service dhcpcd_p2p /system/bin/dhcpcd -aABKL
     disabled
@@ -42,3 +44,8 @@ service wlan_rest_nvm /system/bin/sh /system/bin/wlan_intel_restore.sh
     group system wifi
     disabled
     oneshot
+
+on boot
+    write /proc/sys/net/ipv4/tcp_limit_output_bytes 1500000
+    write /proc/sys/net/core/rmem_max 6291456
+    write /proc/sys/net/core/wmem_max 4194304

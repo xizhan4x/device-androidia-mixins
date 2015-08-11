@@ -14,8 +14,8 @@ PRODUCT_PACKAGES += \
 
 #OemTelephony for OEM HOOK API
 PRODUCT_PACKAGES += \
-    OemTelephonyApp-imc \
-    com.intel.internal.telephony.OemTelephony-imc
+    OemTelephonyApp \
+    com.intel.internal.telephony.OemTelephony
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \

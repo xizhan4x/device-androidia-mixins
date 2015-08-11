@@ -41,3 +41,8 @@ BOARD_CAMERA_USB_SUPPORT := true
 PLATFORM_ACC_SUPPORT := true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp
 {{/enable_acc}}
+{{#enable_fr_service}}
+# the CHT needs to support FR Service
+PLATFORM_FR_SUPPORT := true
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp/fr_service
+{{/enable_fr_service}}

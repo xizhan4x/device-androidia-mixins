@@ -1,0 +1,28 @@
+
+service passpointnative /system/bin/passpointnative
+    class main
+    user system
+    group system wifi inet net_raw net_admin dhcp
+    disabled
+    oneshot
+
+service hs20osuclient /system/bin/hs20-osu-client
+    class main
+    user system
+    group system wifi inet
+    disabled
+    oneshot
+
+service passpoint_script /init.passpoint.sh
+    seclabel u:r:passpoint_script:s0
+    class main
+    user root
+    disabled
+    oneshot
+
+on post-fs-data
+    mkdir /data/misc/passpoint     0777 wifi wifi
+    mkdir /data/misc/passpoint/osu 0777 wifi wifi
+
+on property:vold.decrypt=trigger_restart_framework
+    start passpoint_script

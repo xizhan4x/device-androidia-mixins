@@ -1,3 +1,4 @@
 [defaults]
-config_data_only = false
-config_voice = false
+cht_dataonly = false
+cht_voice = false
+bxt_voice = false

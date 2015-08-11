@@ -17,3 +17,6 @@ WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/brcm/fw_bcmdhd_4356a2_pcie.bin"
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-pno
 
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-tcp-buffers
+
+# Add SIM , AKA and AKA' methods in EAP entries of WiFi UI
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-eap-methods
