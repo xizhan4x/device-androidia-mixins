@@ -2,7 +2,8 @@
 PRODUCT_PACKAGES_DEBUG += \
          tinymix \
          tinyplay \
-         tinycap
+         tinycap \
+         tinyprobe
 
 # SST Firmware
 PRODUCT_PACKAGES += \
@@ -16,3 +17,8 @@ PRODUCT_PACKAGES += \
 # Ring 1 audio policy configuration file
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
+
+# for Pfw Client Simulator
+PRODUCT_PACKAGES_DEBUG += \
+    audio_correlation_tool \
+    test-platform

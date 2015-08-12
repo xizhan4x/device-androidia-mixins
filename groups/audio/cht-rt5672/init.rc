@@ -12,3 +12,8 @@ on boot
     setprop persist.media.pfw.verbose true
 on post-fs-data
     mkdir /mnt/asec/media 0770 media media
+    #Set the WakeOnVoice properties
+    setprop audio.wov.card cherrytrailaud
+    setprop audio.wov.device 5
+    setprop audio.wov.dsp_log 0
+    setprop audio.wov.routed false
