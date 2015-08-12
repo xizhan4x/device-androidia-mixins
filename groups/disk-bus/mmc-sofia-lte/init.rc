@@ -6,3 +6,5 @@ on init
     mkdir /dev/block 0755 root root
     symlink /dev/block/platform/soc0/e0000000.noc/e9014000.l2_noc/e1000000.ahb_per/e1d00000.emmc/by-name /dev/block/by-name
 
+    # Create symlink to access ImcPartID nvm partitions
+    symlink /dev/block/platform/soc0/e0000000.noc/e9014000.l2_noc/e1000000.ahb_per/e1d00000.emmc/by-name /dev/block/platform/soc0/e0000000.noc/by-name
