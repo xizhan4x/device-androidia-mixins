@@ -26,4 +26,5 @@ on boot
 {{#thermal_lite}}
 service thermal_lite /thermal_lite
     class charger
+    seclabel u:r:thermal_lite:s0
 {{/thermal_lite}}
