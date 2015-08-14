@@ -9,7 +9,5 @@ PRODUCT_PACKAGES += \
     libmfxsw32 \
     libmfx_omx_core \
     libmfx_omx_components_hw \
-    libmfx_omx_components_sw \
-    libgabi++-mfx \
-    libstlport-mfx
+    libmfx_omx_components_sw
 
