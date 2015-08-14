@@ -45,3 +45,7 @@ PRODUCT_PACKAGES += \
 # Autocall
 PRODUCT_PACKAGES_DEBUG += \
     Autocall
+
+#SimToolkit app
+PRODUCT_PACKAGES += \
+    Stk

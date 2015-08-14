@@ -2,3 +2,4 @@
 /dev/video*       0660  system  camera
 /dev/media*       0660  system  camera
 /dev/v4l-subdev*  0660  system  camera
+/dev/ipu-psys*    0660  system  camera

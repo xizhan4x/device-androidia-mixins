@@ -1,7 +1,7 @@
 # DS4 HAL modules.
 PRODUCT_PACKAGES += \
 	camera.$(TARGET_BOARD_PLATFORM) \
-	camera.plugin.ds4.$(TARGET_PRODUCT)
+	camera.plugin.ds4.$(TARGET_BOARD_PLATFORM)
 
 # DS4 FW.
 PRODUCT_PACKAGES += \

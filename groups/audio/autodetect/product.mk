@@ -8,7 +8,6 @@ PRODUCT_PACKAGES_DEBUG += \
 # Audio Primary HAL
 PRODUCT_PACKAGES += \
         audio_hal_configurable \
-        audio.primary.irda-aosp \
         parameter-framework.route.coho \
         parameter-framework.audio.coho \
         libremote-processor
