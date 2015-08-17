@@ -4,4 +4,7 @@ PRODUCT_COPY_FILES += \
 	$(call add-to-product-copy-files-if-exists,$(LOCAL_PATH)/../ingredients.conf:system/etc/ingredients.conf)
 PRODUCT_PACKAGES += crashlogd \
 	dumpstate_dropbox.sh
+{{#config}}
+PRODUCT_PACKAGES += crashlog.conf
+{{/config}}
 endif

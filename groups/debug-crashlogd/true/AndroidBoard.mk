@@ -1,0 +1,9 @@
+{{#config}}
+LOCAL_PATH := $(TARGET_DEVICE_DIR)
+include $(CLEAR_VARS)
+LOCAL_MODULE := crashlog.conf
+LOCAL_MODULE_OWNER := intel
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_MODULE_CLASS := ETC
+include $(BUILD_PREBUILT)
+{{/config}}
