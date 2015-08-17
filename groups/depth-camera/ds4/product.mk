@@ -13,6 +13,10 @@ PRODUCT_PACKAGES += \
 	com.intel.camera2.extensions.depthcamera.xml \
 	libinteldepthcamera_jni
 
+# DS4 FW Update Tool.
+PRODUCT_PACKAGES += \
+       FWUpdateR200
+
 # Apps can now be compiled against the add-on without having to
 # manually copy the com.intel.camera2.extensions.depthcamera.jar to the
 # app 'libs' folder, ensuring only the built-in jar file
