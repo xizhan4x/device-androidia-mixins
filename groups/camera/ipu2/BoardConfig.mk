@@ -24,7 +24,8 @@ USE_INTEL_JPEG := false
 ifeq ($(UFO_ENABLE_GEN), gen8)
 ifeq ($(USE_MEDIASDK), true)
 # CHT/GEN8 has hardware JPEG encoder via Media SDK.
-USE_INTEL_JPEG := true
+# disabling H/W encoder. Use S/W JPEG encoding so that still image capture works for now.
+USE_INTEL_JPEG := false
 endif
 endif
 
