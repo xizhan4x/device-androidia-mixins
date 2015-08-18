@@ -7,3 +7,7 @@
 /dev/vpu-enc		0600	media	media
 /dev/vpu-dec		0660	media	graphics
 /dev/mem		0600	media	media
+/dev/vvpu		0660	media	graphics
+/dev/mvpipe-g1		0660	media	graphics
+/dev/mvpipe-h1		0660	media	graphics
+/dev/mvpipe-nonso	0660	media	graphics
