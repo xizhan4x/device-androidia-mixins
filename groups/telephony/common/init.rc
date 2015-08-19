@@ -157,7 +157,9 @@ on property:sys.usb.modemevt=1
    write /proc/sys/net/ipv6/conf/usb2/use_tempaddr 2
    write /proc/sys/net/ipv6/conf/usb3/use_tempaddr 2
    write /proc/sys/net/ipv6/conf/usb4/use_tempaddr 2
+{{#m2}}
 
 # Disable Nvm Server
 on property:persist.disable_NVM_Server=1
     stop nvm_manager
+{{/m2}}
