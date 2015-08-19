@@ -1,6 +1,3 @@
-on boot
-    start intel_prop
-
-service intel_prop /sbin/intel_prop
+service intel_prop /system/vendor/bin/intel_prop
+    class core
     oneshot
-    seclabel u:r:intel_prop:s0
