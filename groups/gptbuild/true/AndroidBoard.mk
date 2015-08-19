@@ -37,7 +37,7 @@ $(GPTIMAGE_BIN): \
 	$(hide) rm -f $(INSTALLED_USERDATAIMAGE_TARGET).raw
 	$(hide) rm -f $(INSTALLED_CACHEIMAGE_TARGET).raw
 
-	$(MAKE_EXT4FS) -b $(BOARD_FLASH_BLOCK_SIZE) \
+	$(MAKE_EXT4FS) \
 		-l $(BOARD_USERDATAIMAGE_PARTITION_SIZE) -L android_data \
 		$(PRODUCT_OUT)/userdata.dummy
 
