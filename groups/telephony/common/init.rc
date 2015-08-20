@@ -67,6 +67,7 @@ on property:sys.usb.config=rndis,acm,adb
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/idVendor 8087
     write /sys/class/android_usb/android0/idProduct 0a64
+    write /sys/class/android_usb/android0/idProduct 0a65
     write /sys/class/android_usb/android0/f_acm/instances 1
     write /sys/class/android_usb/android0/functions ${sys.usb.config}
     write /sys/class/android_usb/android0/enable 1
