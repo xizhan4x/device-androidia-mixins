@@ -8,3 +8,4 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-wifi-display
 
 # WiDi / Miracast Optimisations
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-p2p-connected-stop-scan
