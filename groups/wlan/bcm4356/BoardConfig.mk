@@ -23,3 +23,6 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-tcp-buffers
 
 # Add SIM , AKA and AKA' methods in EAP entries of WiFi UI
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-eap-methods
+
+# WiDi / Miracast Optimisations
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
