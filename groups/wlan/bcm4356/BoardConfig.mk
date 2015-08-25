@@ -27,3 +27,4 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-eap-methods
 # WiDi / Miracast Optimisations
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-p2p-connected-stop-scan
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-force-single-ch
