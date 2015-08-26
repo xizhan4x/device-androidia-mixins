@@ -1,0 +1,1 @@
+../sofia/product.mk
