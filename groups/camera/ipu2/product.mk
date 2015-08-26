@@ -16,15 +16,15 @@ PRODUCT_PACKAGES += \
     libacc_service \
     libacc_client
 
-## Acc SDK
-#PRODUCT_PACKAGES += \
-#    com.intel.acc.extensions \
-#    com.intel.acc.extensions.xml \
-#    libacc_jni
+# Acc SDK
+PRODUCT_PACKAGES += \
+    com.intel.acc.extensions \
+    com.intel.acc.extensions.xml \
+    libacc_jni
 
-## Acc SDK test App
-#PRODUCT_PACKAGES_DEBUG += \
-#    AppAccTest
+# Acc SDK test App
+PRODUCT_PACKAGES_DEBUG += \
+    AppAccTest
 
 # Camera ISP Firmware
 PRODUCT_PACKAGES += \
