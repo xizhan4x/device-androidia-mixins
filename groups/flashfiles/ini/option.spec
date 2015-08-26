@@ -8,3 +8,4 @@ reboot = continue
 version = 2.1
 bts = false
 fastboot_min_battery_level = false
+retry = 1
