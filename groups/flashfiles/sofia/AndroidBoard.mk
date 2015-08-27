@@ -1,5 +1,24 @@
 ff_intermediates := $(call intermediates-dir-for,PACKAGING,flashfiles)
 
+fftf_build_opt := $(ff_intermediates)/fftf_build.opt
+
+$(fftf_build_opt): $(ACP)
+	$(hide) rm -f $(fftf_build_opt)
+	$(eval FFTF_TARGET_TO_FILE = \
+					FASTBOOT_IMG_DIR:$(FASTBOOT_IMG_DIR) \
+					FLSTOOL:$(FLSTOOL) \
+					INTEL_PRG_FILE:$(INTEL_PRG_FILE) \
+					PSI_RAM_FLS:$(PSI_RAM_FLS) \
+					EBL_FLS:$(EBL_FLS) \
+					PSI_RAM_SIGNED_FLS:$(PSI_RAM_SIGNED_FLS) \
+					EBL_SIGNED_FLS:$(EBL_SIGNED_FLS) \
+					SYSTEM_FLS_SIGN_SCRIPT:$(SYSTEM_FLS_SIGN_SCRIPT) \
+					SOC_FIRMWARE_TYPE:$(SOC_FIRMWARE_TYPE) \
+					)
+	$(hide) echo "$(FFTF_TARGET_TO_FILE)" > $@
+
+SOFIA_PROVDATA_FILES += $(fftf_build_opt)
+
 # We need a copy of the flashfiles configuration json in the
 # TFP RADIO/ directory
 ff_config := $(ff_intermediates)/flashfiles_fls.json
@@ -21,23 +40,3 @@ $(provdata_zip): $(SOFIA_PROVDATA_FILES) | $(ACP)
 	zip -qj $@ $(provdata_dir)/*
 
 INSTALLED_RADIOIMAGE_TARGET += $(provdata_zip)
-
-ff_intermediates := $(call intermediates-dir-for,PACKAGING,flashfiles)
-
-fftf_build_opt := $(ff_intermediates)/fftf_build.opt
-
-$(fftf_build_opt): $(ACP)
-	$(hide) rm -f $(fftf_build_opt)
-	$(eval FFTF_TARGET_TO_FILE = \
-					FASTBOOT_IMG_DIR:$(FASTBOOT_IMG_DIR) \
-					FLSTOOL:$(FLSTOOL) \
-					INTEL_PRG_FILE:$(INTEL_PRG_FILE) \
-					PSI_RAM_FLS:$(PSI_RAM_FLS) \
-					EBL_FLS:$(EBL_FLS) \
-					PSI_RAM_SIGNED_FLS:$(PSI_RAM_SIGNED_FLS) \
-					EBL_SIGNED_FLS:$(EBL_SIGNED_FLS) \
-					SYSTEM_FLS_SIGN_SCRIPT:$(SYSTEM_FLS_SIGN_SCRIPT) \
-					)
-	$(hide) echo "$(FFTF_TARGET_TO_FILE)" > $@
-
-INSTALLED_RADIOIMAGE_TARGET += $(fftf_build_opt)
