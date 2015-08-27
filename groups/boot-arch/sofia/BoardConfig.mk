@@ -57,6 +57,8 @@ FEAT_MSM := YES
 
 # HACK to work around lack of PAE kernel override
 override LIBART_IMG_TARGET_BASE_ADDRESS := 0x30000000
+# Force 32-bit host ART to workaround crash due to above change
+HOST_PREFER_32_BIT := true
 
 SECURE_PLAYBACK_ENABLE := false
 
