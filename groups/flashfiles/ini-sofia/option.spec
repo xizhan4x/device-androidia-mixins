@@ -1,0 +1,2 @@
+[defaults]
+bts = false

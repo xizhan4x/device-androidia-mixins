@@ -23,6 +23,10 @@ $(call flashfile_add_blob,extra_script.edify,$(TARGET_DEVICE_DIR)/flashfiles/::v
 # the TFP and put them in RADIO/provdata.zip.
 ff_intermediates := $(call intermediates-dir-for,PACKAGING,flashfiles)
 provdata_zip := $(ff_intermediates)/provdata.zip
+provdata_zip_deps := $(foreach pair,$(BOARD_FLASHFILES),$(call word-colon,1,$(pair)))
+{{#bts}}
+provdata_zip_deps += $(BTSDATA_FILES)
+{{/bts}}
 ff_root := $(ff_intermediates)/root
 
 define copy-flashfile
@@ -45,19 +49,14 @@ provdata_zip :=
 $(foreach var,$(FLASHFILE_VARIANTS), \
 	$(eval provdata_zip += $(ff_intermediates)/provdata_$(var).zip) \
 	$(eval BOARD_FLASHFILES_$(var) := $(BOARD_FLASHFILES)) \
-	$(eval BOARD_FLASHFILES_$(var) += $(BOARD_FLASHFILES_FIRMWARE_$(var))))
-$(info $(BOARD_FLASHFILES))
+	$(eval BOARD_FLASHFILES_$(var) += $(BOARD_FLASHFILES_FIRMWARE_$(var))) \
+	$(eval provdata_zip_deps += $(foreach pair,$(BOARD_FLASHFILES_FIRMWARE_$(var)),$(call word-colon,1,$(pair)))))
 else
 $(eval BOARD_FLASHFILES += $(BOARD_FLASHFILES_FIRMWARE))
+$(eval provdata_zip_deps += $(foreach pair,$(BOARD_FLASHFILES_FIRMWARE),$(call word-colon,1,$(pair))))
 endif
 
-$(provdata_zip): \
-		$(foreach pair,$(BOARD_FLASHFILES),$(call word-colon,1,$(pair))) \
-{{#bts}}
-		$(BTSDATA_FILES) \
-{{/bts}}
-		| $(ACP) \
-
+$(provdata_zip): $(provdata_zip_deps) | $(ACP)
 	$(call deploy_provdata,$@)
 
 
