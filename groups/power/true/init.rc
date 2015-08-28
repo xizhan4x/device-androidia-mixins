@@ -6,11 +6,11 @@ on post-fs
     # Create group to be used by power hal
     mkdir /sys/fs/cgroup/cpuset/power_hal 0770 root system
     write /sys/fs/cgroup/cpuset/power_hal/cgroup.clone_children 1
-    chown system system /sys/fs/cgroup/cpuset/power_hal/cpuset.cpus
+    chown system system /sys/fs/cgroup/cpuset/power_hal/cpus
 
     mkdir /sys/fs/cgroup/cpuset/power_hal/non_interactive 0770 root system
     write /sys/fs/cgroup/cpuset/power_hal/non_interactive/cgroup.clone_children 1
-    chown system system /sys/fs/cgroup/cpuset/power_hal/non_interactive/cpuset.cpus
+    chown system system /sys/fs/cgroup/cpuset/power_hal/non_interactive/cpus
 
 on property:sys.power_hal.niproc=*
     write /sys/fs/cgroup/cpuset/power_hal/non_interactive/cgroup.procs ${sys.power_hal.niproc}
