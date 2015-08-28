@@ -7,3 +7,9 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-hid-kb
 BOARD_SEPOLICY_M4DEFS += bt_lightning_peak_port={{{port}}}
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bluetooth/common \
                        device/intel/sepolicy/bluetooth/lightningpeak
+
+BOARD_HAVE_HCIVSSERVICE := {{{hci_vs_service}}}
+
+{{#hci_vs_service}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bthcivsservice
+{{/hci_vs_service}}
