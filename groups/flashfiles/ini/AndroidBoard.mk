@@ -9,6 +9,12 @@ $(ff_config): $(FLASHFILES_CONFIG) | $(ACP)
 
 INSTALLED_RADIOIMAGE_TARGET += $(ff_config)
 
+{{#bts}}
+# If needed, we have to generate the btsdata files.
+# BTS metadata files are to enable Intel Build Tool Suite to support flashing of devices which support scaling
+-include $(TARGET_DEVICE_DIR)/bts/btsdata.mk
+
+{{/bts}}
 # We take any required images that can't be derived elsewhere in
 # the TFP and put them in RADIO/provdata.zip.
 ff_intermediates := $(call intermediates-dir-for,PACKAGING,flashfiles)
@@ -41,6 +47,9 @@ endif
 
 $(provdata_zip): \
 		$(foreach pair,$(BOARD_FLASHFILES),$(call word-colon,1,$(pair))) \
+{{#bts}}
+		$(BTSDATA_FILES) \
+{{/bts}}
 		| $(ACP) \
 
 	$(call deploy_provdata,$@)
