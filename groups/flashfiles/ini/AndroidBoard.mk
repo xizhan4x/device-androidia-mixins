@@ -1,4 +1,3 @@
-{{#makefile}}
 ff_intermediates := $(call intermediates-dir-for,PACKAGING,flashfiles)
 
 # We need a copy of the flashfiles configuration ini in the
@@ -62,4 +61,3 @@ $(provdata_zip): $(provdata_zip_deps) | $(ACP)
 
 INSTALLED_RADIOIMAGE_TARGET += $(provdata_zip)
 
-{{/makefile}}
