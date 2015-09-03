@@ -14,6 +14,9 @@
 # change group and rights for SSIC IPC interfaces
 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/control 0664 root system
 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}} power/autosuspend_delay_ms 0664 root system
+/sys/bus/usb/devices/{{{bus_id}}}-{{{ssic_port}}} power/wakeup root system
+/sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0 ssic_port_enable 0664 root system
+
 {{#m2}}
 
 # change group and rights for M.2 USB-HS IPC interfaces

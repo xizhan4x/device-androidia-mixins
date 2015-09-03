@@ -6,6 +6,10 @@ on boot
     chmod 0664 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/power/control
     chown root system /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/power/pm_qos_no_power_off
     chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/power/pm_qos_no_power_off
+    chown root system /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
+    chmod 0664 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/usb{{{bus_id}}}/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
+    chown root system /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/ssic_port_enable
+    chmod 0664 /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/power/ssic_port_enable
 
 {{^k4_x}}
     chown root system /sys/bus/usb/devices/{{{bus_id}}}-0:1.0/port{{{ssic_port}}}/usb3_lpm
@@ -18,8 +22,6 @@ on boot
 
     # disable HSIC port
     write /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off 0
-    chown root system /sys/bus/usb/devices/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
-    chmod 0664 /sys/bus/usb/devices/{{{bus_id}}}-{{{ssic_port}}}/power/wakeup
 
 on post-fs-data
 
