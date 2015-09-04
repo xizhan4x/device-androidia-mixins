@@ -30,4 +30,8 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-eap-methods
 
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-dual-band
 
+# WiDi / Miracast Optimisations
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
+
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/wlan/autodetect-sofia
+
