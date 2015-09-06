@@ -6,3 +6,8 @@ service hdcpd /system/bin/hdcpd
     user root
     group graphics drmrpc
     seclabel u:r:hdcpd:s0
+
+# mkdir hdcp data folder here, non system service don't have permission
+# to write in /data/
+on post-fs-data
+    mkdir /data/hdcp 0770 media media
