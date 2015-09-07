@@ -16,3 +16,5 @@ endif # TARGET_BUILD_VARIANT is eng, userdebug
 
 # Device Tree Blob file name:
 BOARD_DTB_FILE ?= {{{board_dtb}}}
+
+YOCTO_TOOLCHAIN_REQUIRED_VERSION := 1.6
