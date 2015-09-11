@@ -1,14 +1,7 @@
 on boot
     setprop audio.offload.capabilities 1
-    setprop audio.offload.disable 0
     setprop audio.offload.min.duration.secs 20
-    setprop offload.compress.device 1
     setprop audio.device.name cherrytrailaud
-    #set scalability to 1 to enable it in system.
-    setprop audio.offload.scalability 1
-    setprop offload.mixer.volume.ctl.name "media0_in volume 0 volume"
-    setprop offload.mixer.mute.ctl.name "media0_in volume 0 mute"
-    setprop offload.mixer.rp.ctl.name "media0_in volume 0 rampduration"
     setprop persist.media.pfw.verbose true
 on post-fs-data
     mkdir /mnt/asec/media 0770 media media
