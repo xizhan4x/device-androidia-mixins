@@ -1,0 +1,14 @@
+on boot
+    insmod ${ro.boot.moduleslocation}/aoh_ipc.ko
+    insmod ${ro.boot.moduleslocation}/aoh_psh.ko
+    chown system system /sys/class/pci_bus/0000:00/device/0000:00:0e.0/ctrl
+    chown system system /sys/class/pci_bus/0000:00/device/0000:00:0e.0/control
+    chown system system /sys/class/pci_bus/0000:00/device/0000:00:0e.0/data
+    chown system system /sys/class/pci_bus/0000:00/device/0000:00:0e.0/data_size
+    chown system system /sys/class/pci_bus/0000:00/device/0000:00:0e.0/fw_version
+
+service sensorhubd /system/vendor/bin/sensorhubd
+    class main
+    user system
+    group system
+    socket sensorhubd stream 660 system system
