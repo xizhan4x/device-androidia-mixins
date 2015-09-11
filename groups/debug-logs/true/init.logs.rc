@@ -15,12 +15,14 @@ on property:persist.service.apklogfs.enable=1
     setprop persist.service.aplogfs.enable 0
     restart ap_log_srv
 
-service apk_logfs /system/vendor/bin/logcat_ep.sh /system/vendor/bin/logcatext -b all -n 20 \
-                  -r5000 -v threadtime -f {{logs_dir}}/aplog
+service apk_logfs /system/vendor/bin/logcat_ep.sh auto \
+        -b main -b system -b radio -b events -b crash -b kernel \
+        -v threadtime -f {{logs_dir}}/aplog
     disabled
 
-service ap_logfs /system/vendor/bin/logcat_ep.sh /system/bin/logcat -b all -n 20 -r5000 \
-                 -v threadtime -f {{logs_dir}}/aplog
+service ap_logfs /system/vendor/bin/logcat_ep.sh auto \
+        -b main -b system -b radio -b events -b crash \
+        -v threadtime -f {{logs_dir}}/aplog
     disabled
 
 # Service called when the configuration is updated through properties
