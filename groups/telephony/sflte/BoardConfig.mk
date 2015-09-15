@@ -5,3 +5,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.ril-daemon.disable=dsds\
 
 BOARD_USE_IMC_OEM_TELEPHONY := false
+
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony \
+                       device/intel/sepolicy/telephony/sflte

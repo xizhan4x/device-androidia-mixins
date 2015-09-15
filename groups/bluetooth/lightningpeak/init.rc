@@ -35,7 +35,7 @@ service iprenew_bt-pan /system/bin/logwrapper /system/bin/dhcpcd -n
     oneshot
 
 {{/hsu}}
-service bt_rest_nvm /system/bin/sh /system/bin/bluetooth_intel_restore.sh
+service bt_rest_nvm /system/bin/bluetooth_intel_restore.sh
     class main
     user bluetooth
     group system bluetooth

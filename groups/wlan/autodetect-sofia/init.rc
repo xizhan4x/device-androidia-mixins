@@ -38,7 +38,7 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service wlan_rest_nvm /system/bin/sh /system/bin/wlan_intel_restore.sh
+service wlan_rest_nvm /system/bin/wlan_intel_restore.sh
     class main
     user wifi
     group system wifi

@@ -30,3 +30,4 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-eap-methods
 
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-dual-band
 
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/wlan/autodetect-sofia
