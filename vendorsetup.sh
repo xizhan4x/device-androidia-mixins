@@ -14,7 +14,6 @@ function lunch
 {
 
     local -a save="${LUNCH_MENU_CHOICES[@]} ${REMOVED_TARGETS[@]}"
-    local -a list=$(awk 'BEGIN{RS=ORS=" "}!a[$0]++' <<<$save)
     local -a removed_targets
 
     local ring=$(grep "One_Android_Ring" .repo/manifest.xml | cut -f2 -d\')
@@ -27,7 +26,7 @@ function lunch
         unset LUNCH_MENU_CHOICES
         unset REMOVED_TARGETS
 
-        for t in ${list[@]}; do
+        for t in ${save[@]}; do
             if [[ ! "$t" =~ r2_* ]]; then
                 [[ "${ring}" =~ [0-1] ]] && LUNCH_MENU_CHOICES+=($t) || removed_targets+=($t)
             else
