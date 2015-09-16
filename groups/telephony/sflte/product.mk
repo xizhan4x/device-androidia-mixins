@@ -20,7 +20,8 @@ PRODUCT_PACKAGES += \
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    device/intel/common/telephony/all/apns-conf.xml:system/etc/apns-conf.xml
+    device/intel/common/telephony/all/apns-conf.xml:system/etc/apns-conf.xml \
+    device/intel/common/telephony/all/old-apns-conf.xml:system/etc/old-apns-conf.xml
 
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
