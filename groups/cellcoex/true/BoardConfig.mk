@@ -13,10 +13,4 @@ endif
 ADDITIONAL_DEFAULT_PROPERTIES += persist.cellcoex.geoloc={{{geoloc}}}
 
 # sepolicy rules enhancement for cellcoex
-BOARD_SEPOLICY_DIRS += device/intel/common/sepolicy/cellcoex/in_system_apk
-BOARD_SEPOLICY_UNION += \
-    hostapd.te \
-    service.te \
-    service_contexts \
-    system_app.te \
-    wpa.te
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/cellcoex/in_system_apk/btcoex_{{{btcoex_role}}}

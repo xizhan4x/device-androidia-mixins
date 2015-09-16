@@ -7,6 +7,9 @@ BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WLAN_DEVICE := bcmdhd
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 
+COMBO_CHIP_VENDOR := bcm
+COMBO_CHIP := bcm4356
+
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-dual-band
 
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd_pcie/parameters/firmware_path"
