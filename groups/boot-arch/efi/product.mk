@@ -90,6 +90,8 @@ TARGET_NO_DEVICE_UNLOCK := true
 # - 0x0000000000000001: unlock is totally prohibited on this device.
 #   The only way to unlock is to use the secured force-unlock
 #   mechasnism.
+# If TARGET_BOOTLOADER_POLICY is equal to 'static' the bootloader
+# policy is not built but is provided statically in the repository.
 TARGET_BOOTLOADER_POLICY := {{bootloader_policy}}
 {{/bootloader_policy}}
 {{^fastbootefi}}

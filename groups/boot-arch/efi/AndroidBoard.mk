@@ -196,6 +196,14 @@ ifneq ($(EFI_AFU_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_AFU_BIN):$(TARGET_PRODUCT)-afu-$(FILE_NAME_TAG).bin)
 endif
 {{#bootloader_policy}}
+ifeq ({{bootloader_policy}},static)
+# The bootloader policy is not built but is provided statically in the
+# repository.
+else
+# Bootloader policy values are generated based on the
+# TARGET_BOOTLOADER_POLICY value and the
+# device/intel/build/testkeys/{odm,OAK} keys.  The OEM must provide
+# its own keys.
 GEN_BLPOLICY_OEMVARS := device/intel/build/generate_blpolicy_oemvars
 TARGET_ODM_KEY_PAIR := device/intel/build/testkeys/odm
 TARGET_OAK_KEY_PAIR := device/intel/build/testkeys/OAK
@@ -204,4 +212,5 @@ $(BOOTLOADER_POLICY_OEMVARS): sign-efi-sig-list
 	$(GEN_BLPOLICY_OEMVARS) -K $(TARGET_ODM_KEY_PAIR) \
 		-O $(TARGET_OAK_KEY_PAIR).x509.pem -B $(TARGET_BOOTLOADER_POLICY) \
 		$(BOOTLOADER_POLICY_OEMVARS)
+endif
 {{/bootloader_policy}}

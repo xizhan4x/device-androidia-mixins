@@ -103,7 +103,9 @@ ifneq ($(CSE_SPI_BIN),)
 BOARD_FLASHFILES += $(CSE_SPI_BIN):cse_spi.bin
 endif
 {{#bootloader_policy}}
+ifneq ({{bootloader_policy}},static)
 BOOTLOADER_POLICY_OEMVARS = $(PRODUCT_OUT)/bootloader_policy-oemvars.txt
 BOARD_FLASHFILES += $(BOOTLOADER_POLICY_OEMVARS):bootloader_policy-oemvars.txt
 BOARD_OEM_VARS += $(BOOTLOADER_POLICY_OEMVARS)
+endif
 {{/bootloader_policy}}
