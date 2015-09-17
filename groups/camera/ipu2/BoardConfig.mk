@@ -46,3 +46,6 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp
 PLATFORM_FR_SUPPORT := true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp/fr_service
 {{/enable_fr_service}}
+
+# atomisp ipu2 service
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu2

@@ -3,7 +3,7 @@
 # of the module init function which will deadlock init.  Load it from
 # a service instead.
 
-service atomisp-init /system/bin/sh /system/etc/init.atomisp.sh
+service atomisp-init /system/etc/init.atomisp.sh
     oneshot
     disabled
 
