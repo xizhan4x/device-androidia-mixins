@@ -28,14 +28,14 @@ on post-fs-data
 
 on fs
     mount_all /fstab.{{{hardware}}}
-    write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
+    write /sys/kernel/debug/watchdog/{{{watchdog_node}}} 0
 
 on charger
     write /sys/class/leds/lcd-backlight/brightness 127
     write /sys/class/leds/lcd-backlight/trigger backlight
     mount_all /fstab.{{{hardware}}}
     start setup_fs_nvm
-    write /sys/kernel/debug/watchdog/vmm_scu_wdt_enable 0
+    write /sys/kernel/debug/watchdog/{{{watchdog_node}}} 0
 
 on init
     chmod 0444 /proc/cmdline

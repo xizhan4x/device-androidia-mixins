@@ -5,3 +5,4 @@ num_cpus=2
 msm=true
 forceencrypt=true
 watchdog_parameters = 60
+watchdog_node = vmm_scu_wdt_enable
