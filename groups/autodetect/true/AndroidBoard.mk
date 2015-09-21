@@ -43,6 +43,10 @@ AUTODETECT_LINK_PAIRS += \
 AUTODETECT_LINK_PAIRS += \
 	$(PRODUCT_OUT)/system/etc/power_profile.xml:../..$(HAL_FUSE_MOUNT_DEFAULT)/power_profile.xml
 
+# Realtek bt config
+AUTODETECT_LINK_PAIRS += \
+	$(PRODUCT_OUT)/system/etc/firmware/bt/rtlbt_config:../../../..$(HAL_FUSE_MOUNT_DEFAULT)/rtlbt_config
+
 AUTODETECT_LINKS := \
 	$(foreach item, $(AUTODETECT_LINK_PAIRS), $(call word-colon, 1, $(item)))
 
