@@ -3,9 +3,6 @@ on post-fs-data
     mkdir /config/bluetooth 0770 bluetooth system
 
 on boot
-{{#hsu}}
-    write /sys/devices/pci0000:00/8086228A:00/power/control on
-{{/hsu}}
     insmod ${ro.boot.moduleslocation}/iptable_raw.ko
     insmod ${ro.boot.moduleslocation}/ip6table_raw.ko
 {{^hsu}}
