@@ -1,2 +1,1 @@
 [defaults]
-toybox-bin = false
