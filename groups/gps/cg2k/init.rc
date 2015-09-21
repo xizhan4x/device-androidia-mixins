@@ -1,6 +1,8 @@
 on post-fs-data
     # Create data folder for GPS
     mkdir /data/gps 0770 gps system
+    # Link to GNSS NVM
+    symlink {{{nvm}}} /data/gps/nvm
 
 on boot
     # GPS GPT factory partition data retrieval
