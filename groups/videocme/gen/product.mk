@@ -7,6 +7,7 @@ PRODUCT_PACKAGES_DEBUG += WebRTCDemo
 # cve video
 PRODUCT_PACKAGES += \
     libvideocme-server \
+    VideoCmeService \
     com.intel.ir94.videocme \
     com.intel.ir94.videocme.xml \
     libvideocme-jni \
