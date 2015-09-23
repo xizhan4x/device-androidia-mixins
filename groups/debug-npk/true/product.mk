@@ -2,7 +2,7 @@
 ifeq ($(MIXIN_DEBUG_LOGS),true)
 
 PRODUCT_COPY_FILES += \
-    device/intel/common/debug/init.npk.rc:root/init.npk.rc
+    $(LOCAL_PATH)/init.npk.rc:root/init.npk.rc
 PRODUCT_PACKAGES += \
     init.npk.sh
 
