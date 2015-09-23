@@ -589,6 +589,11 @@ def process_spec_file(specfile, dry_run):
     basedir = cp.get("main", "mixinsdir")
     selections = split_params(cp.items("groups"))
     mixin_tree = read_mixin_tree(basedir)
+
+    # After this, all default selections should be populated
+    # and the selections should be sane
+    selections = validate_selections(selections, mixin_tree, not dry_run)
+
     product_dir = os.path.dirname(specfile)
     file_map = {}
     retval = True
@@ -608,10 +613,6 @@ def process_spec_file(specfile, dry_run):
 
     if xmls is not None:
         retval=merge_xml(xmls,product_dir,selections,dry_run)
-
-    # After this, all default selections should be populated
-    # and the selections should be sane
-    selections = validate_selections(selections, mixin_tree, not dry_run)
 
     for src, dests in file_map.iteritems():
         for dest in dests:
