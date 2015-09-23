@@ -27,6 +27,9 @@ TARGET_BOOTLOADER_BOARD_NAME := {{{modem_projectname}}}
 BOARD_KERNEL_BASE := 0x0
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x400000 --second_offset 0x600010
+ifeq (${TARGET_BOARD_PLATFORM},sofia_lte)
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x300000 --second_offset 0x600010
+endif
 
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
