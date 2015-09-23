@@ -10,6 +10,9 @@ PRODUCT_PACKAGES += \
 # to fetch.
 
 HAL_AUTODETECT := true
+{{^autodetect_properties}}
+HAL_AUTODETECT_PROPERTIES_DISABLED := true
+{{/autodetect_properties}}
 
 HAL_BIND_MOUNT := true
 HAL_TELEMETRY := true
