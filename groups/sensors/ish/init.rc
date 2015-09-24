@@ -1,4 +1,4 @@
-service sensorhubd /system/bin/sensorhubd
+service sensorhubd /system/vendor/bin/sensorhubd
     class main
     user root
     group root
