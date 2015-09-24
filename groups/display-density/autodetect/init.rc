@@ -1,0 +1,3 @@
+on post-fs-data
+    # Autodetect LCD dpi
+    exec - system system -- /system/bin/autodetect_dpi
