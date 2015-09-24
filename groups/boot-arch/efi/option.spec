@@ -18,3 +18,4 @@ bios_variant = release
 data_encryption = true
 bootloader_policy = false
 ignore_not_applicable_reset = false
+verity_warning = true

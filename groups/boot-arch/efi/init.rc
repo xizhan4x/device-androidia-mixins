@@ -12,3 +12,18 @@ service watchdogd /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters
 
 on charger
     start watchdogd
+{{#verity_warning}}
+
+on init
+   # Load persistent dm-verity state and detect if a restart was
+   # triggered after dm-verity detected a corrupted block
+   verity_load_state
+
+on fs
+   # Update dm-verity persistent state and set partition.*.verified
+   # properties
+   verity_update_state
+
+on verity-logging
+    exec u:r:slideshow:s0 -- /sbin/slideshow warning/verity_red_1 warning/verity_red_2
+{{/verity_warning}}

@@ -66,3 +66,8 @@ TARGET_USE_USERFASTBOOT := true
 # when setting the bootreason
 KERNELFLINGER_IGNORE_NOT_APPLICABLE_RESET := true
 {{/ignore_not_applicable_reset}}
+{{#verity_warning}}
+PRODUCT_PACKAGES += \
+	slideshow \
+	verity_warning_images
+{{/verity_warning}}
