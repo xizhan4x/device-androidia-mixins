@@ -1,6 +1,5 @@
 # AA
 PRODUCT_PACKAGES += \
-    com.intel.config \
     aware_bundle \
     adaptive_authentication \
     libaware_client \
