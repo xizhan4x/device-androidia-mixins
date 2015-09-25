@@ -17,8 +17,6 @@ PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_cpd_a0.bin:system/etc/firmware/i
 #Camera cpd file
 PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_cpd_b0.bin:system/etc/firmware/ipu4_cpd_b0.bin
 
-PRODUCT_COPY_FILES += vendor/intel/camera/camera3hal/config/broxton/bxt_rvp/camera3_profiles.xml:system/etc/camera3_profiles.xml
-
 ifeq ($(TARGET_BOARD_PLATFORM),)
     $(error Please define TARGET_BOARD_PLATFORM in product-level Makefile)
 endif
