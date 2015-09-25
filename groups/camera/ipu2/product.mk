@@ -42,3 +42,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_ENG += \
     TestingCamera \
     TestingCamera2
+
+# Camera: Format set up for graphics
+PRODUCT_PROPERTY_OVERRIDES += ro.ycbcr.pixel_format = 0x10F
