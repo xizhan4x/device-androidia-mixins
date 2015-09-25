@@ -19,19 +19,6 @@ on boot
     wait /config/bluetooth/bd_addr.conf
 {{/hsu}}
 
-{{#hsu}}
-service dhcpcd_bt-pan /system/bin/logwrapper /system/bin/dhcpcd -ABKL
-    class main
-    group bluetooth wifi system dhcp
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/logwrapper /system/bin/dhcpcd -n
-    group bluetooth system dhcp
-    disabled
-    oneshot
-
-{{/hsu}}
 service bt_rest_nvm /system/bin/bluetooth_intel_restore.sh
     class main
     user bluetooth
@@ -41,10 +28,12 @@ service bt_rest_nvm /system/bin/bluetooth_intel_restore.sh
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
    class main
+   group bluetooth wifi system dhcp
    disabled
    oneshot
 
 service iprenew_bt-pan /system/bin/dhcpcd -n
    class main
+   group bluetooth system dhcp
    disabled
    oneshot

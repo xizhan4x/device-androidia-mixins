@@ -24,13 +24,13 @@ service rfkill_bt /system/bin/sh /rfkill_bt.sh
     user root
     oneshot
 
-service dhcpcd_bt-pan /system/bin/logwrapper /system/bin/dhcpcd -ABKL
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
     group bluetooth wifi system dhcp
     disabled
     oneshot
 
-service iprenew_bt-pan /system/bin/logwrapper /system/bin/dhcpcd -n
+service iprenew_bt-pan /system/bin/dhcpcd -n
     group bluetooth system dhcp
     disabled
     oneshot
