@@ -25,5 +25,7 @@
 {{/m2}}
 
 # Telephony GPT factory partition block device
-/dev/block/platform/*/*/by-name/modem1_cal 0660 radio system
-/dev/block/platform/*/*/by-name/modem2_cal 0660 radio system
+/dev/block/platform/pci0000:00/80860F14:00/by-name/modem1_cal 0660 radio system
+/dev/block/platform/pci0000:00/80860F14:00/by-name/modem2_cal 0660 radio system
+/dev/block/pci/pci0000:00/0000:00:1d.0/by-name/modem1_cal 0660 radio system
+/dev/block/pci/pci0000:00/0000:00:1d.0/by-name/modem2_cal 0660 radio system
