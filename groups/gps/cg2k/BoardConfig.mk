@@ -8,6 +8,7 @@ GPS_UART_PM := {{{uart_pm}}}
 GPS_SIMU := {{{simu}}}
 GPS_AMIL := {{{amil}}}
 GPS_AMIL_IF := MDM
+GPS_AMIL_FA_WITH_GPIO_PIN_CONTROL := {{{fa_gpio}}}
 GNSS_PULSAR := {{{pulsar}}}
 GPS_LPM := {{{gps_lpm}}}
 
