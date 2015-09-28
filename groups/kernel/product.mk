@@ -61,12 +61,6 @@ ifneq ($(TARGET_PREBUILT_KERNEL),)
     endif
   endif # $(LOCAL_KERNEL_MODULE_TREE_PATH)
 
-  # Copy kernel into place and modules
-  PRODUCT_COPY_FILES += \
-	$(LOCAL_KERNEL):kernel \
-	$(foreach f, $(LOCAL_KERNEL_MODULE_FILES), $(f):$(KERNEL_MODULES_ROOT)/$(notdir $(f))) \
-	$(foreach f, $(LOCAL_KERNEL_MODULE_TREE_FILES), $(LOCAL_KERNEL_PATH)/lib/modules/$(f):$(KERNEL_MODULES_ROOT)/$(f))
-
 endif # $(TARGET_PREBUILT_KERNEL)
 {{/useprebuilt}}
 
@@ -83,3 +77,10 @@ endif
 KERNEL_MODULES_ROOT := system/lib/modules
 ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/system/lib/modules
 {{/modules_in_bootimg}}
+{{#useprebuilt}}
+# Copy kernel into place and modules
+PRODUCT_COPY_FILES += \
+	$(LOCAL_KERNEL):kernel \
+	$(foreach f, $(LOCAL_KERNEL_MODULE_FILES), $(f):$(KERNEL_MODULES_ROOT)/$(notdir $(f))) \
+	$(foreach f, $(LOCAL_KERNEL_MODULE_TREE_FILES), $(LOCAL_KERNEL_PATH)/lib/modules/$(f):$(KERNEL_MODULES_ROOT)/$(f))
+{{/useprebuilt}}
