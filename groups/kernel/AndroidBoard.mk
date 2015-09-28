@@ -20,10 +20,11 @@ endif
 {{/use_iwlwifi}}
 
 ifeq ($(TARGET_BUILD_VARIANT), user)
-KERNEL_DEFCONFIG := $(TARGET_KERNEL_ARCH)_defconfig
+KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_defconfig
 else
-KERNEL_DEFCONFIG := $(TARGET_KERNEL_ARCH)_debug_defconfig
+KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_debug_defconfig
 endif
+KERNEL_CONFIG := $(LOCAL_KERNEL_PATH)/.config
 
 KERNEL_MAKE_OPTIONS := \
     -C $(LOCAL_KERNEL_SRC) \
@@ -39,6 +40,21 @@ KERNEL_MAKE_OPTIONS_IWLWIFI := \
     KLIB_BUILD=../../../../$(LOCAL_KERNEL_PATH) \
     O=../../../../$(LOCAL_KERNEL_PATH)
 {{/use_iwlwifi}}
+
+KERNEL_CONFIG_DEPS := $(strip $(KERNEL_DEFCONFIG))
+KERNEL_CONFIG_MK := $(LOCAL_KERNEL_PATH)/config.mk
+-include $(KERNEL_CONFIG_MK)
+
+ifneq ($(KERNEL_CONFIG_DEPS),$(KERNEL_CONFIG_PREV_DEPS))
+.PHONY: $(KERNEL_CONFIG)
+endif
+
+$(KERNEL_CONFIG): $(KERNEL_CONFIG_DEPS) | yoctotoolchain
+	$(hide) mkdir -p $(@D)
+	$(hide) echo "KERNEL_CONFIG_PREV_DEPS := $^" > $(KERNEL_CONFIG_MK)
+	$(hide) cat $^ > $@
+	@echo "Generating Kernel configuration, using $^"
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) $(YOCTO_CROSSCOMPILE) oldconfig
 
 $(PRODUCT_OUT)/kernel: $(LOCAL_KERNEL) copy_modules
 	cp $(LOCAL_KERNEL) $@
@@ -60,7 +76,7 @@ copy_modules: $(LOCAL_KERNEL)
 	$(hide) cd $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT) && for f in `find . -name '*.ko'` ; do ln -sf $$f; done
 	$(hide) cd $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT) && for f in `find . -name 'modules.*'` ; do ln -sf $$f; done
 
-$(LOCAL_KERNEL): yoctotoolchain $(MINIGZIP) $(LOCAL_KERNEL_PATH)/.config $(BOARD_DTB)
+$(LOCAL_KERNEL): yoctotoolchain $(MINIGZIP) $(KERNEL_CONFIG) $(BOARD_DTB)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) $(YOCTO_CROSSCOMPILE)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) $(YOCTO_CROSSCOMPILE) modules
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) $(YOCTO_CROSSCOMPILE) INSTALL_MOD_STRIP=1 modules_install
@@ -85,14 +101,14 @@ $(LOCAL_KERNEL): yoctotoolchain $(MINIGZIP) $(LOCAL_KERNEL_PATH)/.config $(BOARD
 {{/use_bcmdhd}}
 
 {{#build_dtbs}}
-$(BOARD_DTB): yoctotoolchain $(LOCAL_KERNEL_PATH)/.config
+$(BOARD_DTB): yoctotoolchain $(KERNEL_CONFIG)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) $(YOCTO_CROSSCOMPILE) dtbs
-	cp $(LOCAL_KERNEL_PATH)/arch/x86/boot/dts/{{{board_dtb}}} $(LOCAL_KERNEL_PATH)
+	cp $(LOCAL_KERNEL_PATH)/arch/x86/boot/dts/{{{board_dtb}}} $@
 {{/build_dtbs}}
 
-$(LOCAL_KERNEL_PATH)/.config: yoctotoolchain $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(KERNEL_DEFCONFIG)
-	$(hide) mkdir -p $(LOCAL_KERNEL_PATH)
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) $(YOCTO_CROSSCOMPILE) KBUILD_DEFCONFIG=$(KERNEL_DEFCONFIG) defconfig
+# Add a kernel target, so "make kernel" will build the kernel
+.PHONY: kernel
+kernel: copy_modules
 
 endif
 {{/useprebuilt}}
