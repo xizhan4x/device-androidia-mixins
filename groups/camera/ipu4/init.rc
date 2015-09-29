@@ -12,6 +12,7 @@ on post-fs
     ## In A0 modules can't be loaded automatically at least yet
     insmod ${ro.boot.moduleslocation}/smiapp-pll.ko
     insmod ${ro.boot.moduleslocation}/smiapp.ko
+    insmod ${ro.boot.moduleslocation}/crlmodule.ko
     insmod ${ro.boot.moduleslocation}/lm3643.ko
     insmod ${ro.boot.moduleslocation}/dw9714.ko
     insmod ${ro.boot.moduleslocation}/videobuf-core.ko
