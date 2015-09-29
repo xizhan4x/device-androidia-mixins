@@ -79,11 +79,11 @@ copy_modules: $(LOCAL_KERNEL)
 	$(hide) mkdir -p $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
 	$(hide) cd $(LOCAL_KERNEL_PATH)/lib/modules/ && for f in `find . -name '*.ko'`; do \
 		mkdir -p $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(dirname $$f) ; \
-		cp $$f $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(dirname $$f) ; \
+		cp $$f $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(dirname $$f) || exit 1; \
 		done
 	$(hide) cd $(LOCAL_KERNEL_PATH)/lib/modules/ && for f in `find . -name 'modules.*'`; do \
 		mkdir -p $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(dirname $$f) ; \
-		cp $$f $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(dirname $$f) ; \
+		cp $$f $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(dirname $$f) || exit 1; \
 		done
 	$(hide) cd $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT) && for f in `find . -name '*.ko'` ; do cp $$f . ; done
 	$(hide) cd $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT) && for f in `find . -name 'modules.*'` ; do cp $$f . ; done
@@ -94,8 +94,8 @@ $(LOCAL_KERNEL): yoctotoolchain $(MINIGZIP) $(KERNEL_CONFIG) $(BOARD_DTB)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) INSTALL_MOD_STRIP=1 modules_install
 	for dir in $(EXTERNAL_MODULES) ; do \
 		mkdir -p $(LOCAL_KERNEL_PATH)/../modules/$$dir ;\
-		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir modules;\
-		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir INSTALL_MOD_STRIP=1 modules_install;\
+		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir modules || exit 1;\
+		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir INSTALL_MOD_STRIP=1 modules_install || exit 1;\
 	done
 {{#build_dtbs}}
 	cp $(LOCAL_KERNEL_PATH)/scripts/dtc/dtc $(LOCAL_KERNEL_PATH)
