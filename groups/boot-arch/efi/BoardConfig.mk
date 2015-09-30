@@ -75,33 +75,6 @@ BOARD_FLASHFILES += $(BOARD_GPT_INI):gpt.ini
 INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_INI)
 {{/fastbootefi}}
 
-ifneq ($(EFI_EMMC_BIN),)
-BOARD_FLASHFILES += $(EFI_EMMC_BIN):firmware.bin
-endif
-
-ifneq ($(EFI_IFWI_BIN),)
-BOARD_FLASHFILES += $(EFI_IFWI_BIN):ifwi.bin
-endif
-
-ifneq ($(EFI_AFU_BIN),)
-BOARD_FLASHFILES += $(EFI_AFU_BIN):afu.bin
-endif
-
-ifneq ($(EFI_IFWI_DEBUG_BIN),)
-BOARD_FLASHFILES += $(EFI_IFWI_DEBUG_BIN):ifwi_debug.bin
-endif
-
-ifneq ($(DNXP_BIN),)
-BOARD_FLASHFILES += $(DNXP_BIN):dnxp_0x1.bin
-endif
-
-ifneq ($(CFGPART_XML),)
-BOARD_FLASHFILES += $(CFGPART_XML):cfgpart.xml
-endif
-
-ifneq ($(CSE_SPI_BIN),)
-BOARD_FLASHFILES += $(CSE_SPI_BIN):cse_spi.bin
-endif
 {{#bootloader_policy}}
 ifneq ({{bootloader_policy}},static)
 BOOTLOADER_POLICY_OEMVARS = $(PRODUCT_OUT)/bootloader_policy-oemvars.txt

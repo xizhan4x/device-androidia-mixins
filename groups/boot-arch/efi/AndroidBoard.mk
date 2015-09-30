@@ -77,6 +77,46 @@ BOARD_EXTRA_EFI_MODULES :=
 USERFASTBOOT_2NDBOOTLOADER :=
 endif
 
+$(call flashfile_add_blob,capsule.fv,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/capsule.fv,,BOARD_SFU_UPDATE)
+$(call flashfile_add_blob,ifwi.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/ifwi.bin,,EFI_IFWI_BIN)
+$(call flashfile_add_blob,firmware.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/emmc.bin,,EFI_EMMC_BIN)
+$(call flashfile_add_blob,afu.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/afu.bin,,EFI_AFU_BIN)
+$(call flashfile_add_blob,dnxp_0x1.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/dnxp_0x1.bin,,DNXP_BIN)
+$(call flashfile_add_blob,cfgpart.xml,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/cfgpart.xml,,CFGPART_XML)
+$(call flashfile_add_blob,cse_spi.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/cse_spi.bin,,CSE_SPI_BIN)
+
+ifneq ($(TARGET_BUILD_VARIANT),user)
+# Allow to add debug ifwi file only on userdebug and eng flashfiles
+$(call flashfile_add_blob,ifwi_debug.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/debug/ifwi.bin,,EFI_IFWI_DEBUG_BIN)
+endif
+
+ifneq ($(EFI_IFWI_BIN),)
+$(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
+endif
+
+ifneq ($(EFI_AFU_BIN),)
+$(call dist-for-goals,droidcore,$(EFI_AFU_BIN):$(TARGET_PRODUCT)-afu-$(FILE_NAME_TAG).bin)
+endif
+
+ifneq ($(BOARD_SFU_UPDATE),)
+$(call dist-for-goals,droidcore,$(BOARD_SFU_UPDATE):$(TARGET_PRODUCT)-sfu-$(FILE_NAME_TAG).fv)
+endif
+
+ifneq ($(CALLED_FROM_SETUP),true)
+ifeq ($(wildcard $(BOARD_SFU_UPDATE)),)
+$(warning BOARD_SFU_UPDATE not found, OTA updates will not provide a firmware capsule)
+endif
+ifeq ($(wildcard $(EFI_EMMC_BIN)),)
+$(warning EFI_EMMC_BIN not found, flashfiles will not include 2nd stage EMMC firmware)
+endif
+ifeq ($(wildcard $(EFI_IFWI_BIN)),)
+$(warning EFI_IFWI_BIN not found, IFWI binary will not be provided in out/dist/)
+endif
+ifeq ($(wildcard $(EFI_AFU_BIN)),)
+$(warning EFI_AFU_BIN not found, AFU IFWI binary will not be provided in out/dist/)
+endif
+endif
+
 # We stash a copy of BIOSUPDATE.fv so the FW sees it, applies the
 # update, and deletes the file. Follows Google's desire to update
 # all bootloader pieces with a single "fastboot flash bootloader"
@@ -164,10 +204,6 @@ userfastboot-usb: $(fastboot_usb_bin)
 
 $(call dist-for-goals,droidcore,$(fastboot_usb_bin):$(TARGET_PRODUCT)-fastboot-usb-$(FILE_NAME_TAG).img)
 
-ifneq ($(BOARD_SFU_UPDATE),)
-$(call dist-for-goals,droidcore,$(BOARD_SFU_UPDATE):$(TARGET_PRODUCT)-sfu-$(FILE_NAME_TAG).fv)
-endif
-
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/testkeys_lockdown.txt:test-keys_efi_lockdown.txt)
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/unlock.txt:efi_unlock.txt)
 
@@ -187,14 +223,6 @@ $(BOARD_GPT_BIN): $(BOARD_GPT_INI)
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
 {{/fastbootefi}}
 
-
-ifneq ($(EFI_IFWI_BIN),)
-$(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
-endif
-
-ifneq ($(EFI_AFU_BIN),)
-$(call dist-for-goals,droidcore,$(EFI_AFU_BIN):$(TARGET_PRODUCT)-afu-$(FILE_NAME_TAG).bin)
-endif
 {{#bootloader_policy}}
 ifeq ({{bootloader_policy}},static)
 # The bootloader policy is not built but is provided statically in the

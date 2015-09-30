@@ -8,49 +8,6 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/by-name/android_system
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
-BOARD_SFU_UPDATE := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT).fv
-EFI_IFWI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_ifwi.bin
-EFI_EMMC_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_emmc.bin
-EFI_AFU_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_afu.bin
-DNXP_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_dnxp_0x1.bin
-CFGPART_XML := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cfgpart.xml
-CSE_SPI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cse_spi.bin
-
-ifneq ($(TARGET_BUILD_VARIANT),user)
-# Allow to add debug ifwi file only on userdebug and eng flashfiles
-EFI_IFWI_DEBUG_BIN := hardware/intel/efi_capsules/debug/$(TARGET_PRODUCT)_ifwi.bin
-endif
-
-ifneq ($(CALLED_FROM_SETUP),true)
-ifeq ($(wildcard $(BOARD_SFU_UPDATE)),)
-$(warning $(BOARD_SFU_UPDATE) not found, OTA updates will not provide a firmware capsule)
-BOARD_SFU_UPDATE :=
-endif
-ifeq ($(wildcard $(EFI_EMMC_BIN)),)
-$(warning $(EFI_EMMC_BIN) not found, flashfiles will not include 2nd stage EMMC firmware)
-EFI_EMMC_BIN :=
-endif
-ifeq ($(wildcard $(EFI_IFWI_BIN)),)
-$(warning $(EFI_IFWI_BIN) not found, IFWI binary will not be provided in out/dist/)
-EFI_IFWI_BIN :=
-endif
-ifeq ($(wildcard $(EFI_AFU_BIN)),)
-$(warning $(EFI_AFU_BIN) not found, IFWI binary will not be provided in out/dist/)
-EFI_AFU_BIN :=
-endif
-ifeq ($(wildcard $(EFI_IFWI_DEBUG_BIN)),)
-EFI_IFWI_DEBUG_BIN :=
-endif
-ifeq ($(wildcard $(DNXP_BIN)),)
-DNXP_BIN :=
-endif
-ifeq ($(wildcard $(CFGPART_XML)),)
-CFGPART_XML :=
-endif
-ifeq ($(wildcard $(CSE_SPI_BIN)),)
-CSE_SPI_BIN :=
-endif
-endif
 {{#acpi_permissive}}
 # Kernelflinger won't check the ACPI table oem_id, oem_table_id and
 # revision fields
