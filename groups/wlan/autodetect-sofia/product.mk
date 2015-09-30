@@ -44,8 +44,8 @@ IWL_PAPD_DB_FILES := $(notdir $(shell find $(LOCAL_IWL_FW_DIR)/papd_db -type f))
 # Others firmware files are copied to $(TARGET_OUT_WLAN_FW) and $(TARGET_OUT_ETC_WIFI)
 # copying nvm to firmware is temporary
 PRODUCT_COPY_FILES += \
-	$(LOCAL_IWL_FW_DIR)/nvmData/nvmData-a620:$(TARGET_OUT_WLAN_FW)/iwl_nvm.bin \
-	$(LOCAL_IWL_FW_DIR)/nvmData/nvmData-a620:$(TARGET_OUT_ETC_WIFI)/nvmDataDefault \
+	$(LOCAL_IWL_FW_DIR)/nvmData-a620:$(TARGET_OUT_WLAN_FW)/iwl_nvm.bin \
+	$(LOCAL_IWL_FW_DIR)/nvmData-a620:$(TARGET_OUT_ETC_WIFI)/nvmDataDefault \
 	$(LOCAL_IWL_FW_DIR)/fw_info.txt:$(TARGET_OUT_WLAN_FW)/fw_info.txt \
 	$(LOCAL_IWL_FW_DIR)/iwl-dbg-cfg.ini:$(TARGET_OUT_WLAN_FW)/iwl-dbg-cfg.ini \
 	$(LOCAL_IWL_FW_DIR)/softap-dummy-ucode:$(TARGET_OUT_WLAN_FW)/iwlwifi-softap-dummy.ucode \
