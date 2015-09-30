@@ -12,3 +12,4 @@ path =
 external_modules =
 extmod_platform =
 useprebuilt = true
+firmware_path = /system/etc/firmware
