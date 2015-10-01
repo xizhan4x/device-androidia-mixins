@@ -6,7 +6,8 @@ BOARD_KERNEL_CMDLINE += \
 	apic=sofia \
 	cma={{{cma_size}}} \
 	nolapic_timer \
-	x86_intel_xgold_timer=soctimer_only
+	x86_intel_xgold_timer=soctimer_only \
+	slub_max_order=0
 
 ifneq (,$(filter eng userdebug,$(TARGET_BUILD_VARIANT)))
 BOARD_KERNEL_CMDLINE += \
