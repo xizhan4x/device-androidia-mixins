@@ -9,3 +9,4 @@ service coreu /system/vendor/bin/coreu
 
 on post-fs-data
     mkdir /data/system 0770 system system
+    mkdir /data/coreu 0770 media media
