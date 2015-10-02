@@ -13,6 +13,13 @@ sys.path.append('external/pystache')
 import pystache
 pystache.defaults.MISSING_TAGS='strict'
 
+import atexit
+import errno
+import fcntl
+import signal
+import tempfile
+import time
+
 # We're assuming '#' is valid to start a comment in all the configs we are amending
 # which so far is true.
 _MIXIN_HEADER = "# ----------------- BEGIN MIX-IN DEFINITIONS -----------------\n"
@@ -661,8 +668,228 @@ def find_all_spec_files(basepath):
             ret.append(os.path.join(root, _PRODUCT_SPEC_FN))
     return ret
 
+
+class LockScript(object):
+    """Perform simple exclusive locking for script execution.
+
+    Uses fcntl locking with a lock file in the same directory as the script.
+    Attempts to remove lock file when done.
+    The lock will disappear when file is closed (e.g., on exit if not already
+    released).
+
+    Requires modules:
+      import sys
+      import os
+      import atexit
+      import errno
+      import fcntl
+      import signal
+      import time
+    """
+
+    _proc_name = os.path.basename(sys.argv[0])
+
+    def se_msg(self, msg):
+        """Label the message and send it to stderr."""
+        outstr = "{}({}): {}\n".format(self._proc_name,os.getpid(),msg)
+        sys.stderr.write(outstr)
+        sys.stderr.flush()
+
+    def se_msg_info(self, msg):
+        msgstr = "info: " + msg
+        self.se_msg(msgstr)
+
+    def se_msg_warning(self, msg):
+        msgstr = "warning: " + msg
+        self.se_msg(msgstr)
+
+    def se_msg_error(self, msg):
+        msgstr = "error: " + msg
+        self.se_msg(msgstr)
+
+    def __init__(self):
+        # For the following, python 3 would also accept: super().__init__()
+        super(LockScript, self).__init__()
+        self._seconds_before_lock_timeout = 600
+        self._seconds_before_lock_warning = 10
+
+        self._lock_fd = -1
+        self._lock_obtained = 0
+        self._lock_sync_removal = 0
+        self._use_tmpdir = 1
+
+        proc_abspath = os.path.abspath(sys.argv[0])
+        proc_head = os.path.splitext(proc_abspath)[0]
+
+        self._lock_file = proc_head + ".lock"
+
+        if self._use_tmpdir:
+            # Force the lockfile to be under the tmp directory.
+            # This may be required if automation does "git clean" with
+            # parallel builds.
+
+            # It is acknowleged that transforming the file path by changing all
+            # "/" to "_" can produce the same result for different inputs.
+            file_path = ""
+            for one_char in self._lock_file:
+                if one_char == "/":
+                    one_char = "_"
+                file_path += one_char
+
+            tmpdir = tempfile.gettempdir()
+            file_path = tmpdir + "/" + file_path
+            self._lock_file = os.path.normpath(file_path)
+            if False:
+                self.se_msg_info("lockfile: {}".format(self._lock_file))
+
+        atexit.register(self.cleanup)
+        self.add_signals()
+
+    @staticmethod
+    def time_in_seconds():
+        """Return the time in seconds"""
+        try:
+            # This attribute is not present until python 3.3
+            return getattr(time, "CLOCK_MONOTONIC")
+        except AttributeError:
+            pass
+
+        # Setting system time can make time.time() non-monotonic, so avoid it.
+
+        with open('/proc/uptime', 'r') as fd_pu:
+            uptime_seconds = float(fd_pu.readline().split()[0])
+
+        return uptime_seconds
+
+    def lock_acquire(self):
+        """Acquire a file-based lock.
+
+        Function return values:
+           1 - Lock acquired.  File is open and locked.
+           0 - Lock acquisition timeout
+          -1 - error. - e.g., permission error
+        """
+        if self._lock_obtained:
+            self.se_msg_error("lock redundant acquisition attempted: {}"
+                    .format(self._lock_file))
+            return -1
+
+        lock_time_start = LockScript.time_in_seconds()
+        lock_timeout_limit = lock_time_start + self._seconds_before_lock_timeout
+        lock_time_warning = lock_time_start + self._seconds_before_lock_warning
+
+        msg_given_for_waiting = 0
+        self._lock_fd = -1
+        while True:
+            self._lock_obtained = 0
+            try:
+                flags = os.O_CREAT | os.O_RDWR
+                self._lock_fd = os.open(self._lock_file, flags, 0o600)
+            except OSError as err:
+                self.se_msg_error("lock file open failed: {}".format(err))
+                return -1
+            try:
+                fcntl.lockf(self._lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except IOError as err:
+                if err.errno != errno.EAGAIN:
+                    raise
+            except OSError as err:
+                self.se_msg_error("lock file fcntl failed: {}".format(err))
+                os.close(self._lock_fd)
+                return -1
+            else:
+                self._lock_obtained = 1
+
+            if self._lock_obtained:
+                os.ftruncate(self._lock_fd, 0)
+
+                # In case someone wants to know which process holds the lock:
+                # Get the purported system hostname (second item from uname).
+                un_sysname = os.uname()[1]
+                process_info = ("host:" + un_sysname
+                                + " " + "pid:" + repr(os.getpid())
+                                +" " + time.strftime("%Y-%m-%d %H:%M:%S")
+                                + "\n")
+                bstring = process_info.encode()
+                try:
+                    os.write(self._lock_fd, bstring)
+                except OSError as err:
+                    self.se_msg_error("lock file write failed: {}".format(err))
+                    self._lock_obtained = 0
+                    os.close(self._lock_fd)
+                    return -1
+                break
+
+            else:
+                # Lock not obtained
+                secs_time = LockScript.time_in_seconds()
+                if secs_time > lock_timeout_limit:
+                    secs_waited = secs_time - lock_time_start
+                    self.se_msg_warning("lock timeout after {} seconds: {}"
+                            .format(secs_waited, self._lock_file))
+                    return 0
+                if not msg_given_for_waiting and secs_time > lock_time_warning:
+                    self.se_msg_info("lock wait: {}".format(self._lock_file))
+                    msg_given_for_waiting = 1
+                time.sleep(1)
+
+        if msg_given_for_waiting:
+            secs_time = LockScript.time_in_seconds()
+            secs_waited = secs_time - lock_time_start
+            self.se_msg_info("lock acquired after {} seconds: {}"
+                            .format(secs_waited, self._lock_file))
+        return 1
+
+
+    def lock_release(self):
+        """Release the previously acquired lock."""
+
+        # _lock_sync_removal is to ameliorate a removal-in-progress
+        # being interrupted and being repeated via a call from cleanup.
+        if self._lock_obtained and not self._lock_sync_removal:
+            self._lock_sync_removal = 1
+            try:
+                os.close(self._lock_fd)
+            except OSError as err:
+                self.se_msg_warning("lock file close failed: {}".format(err))
+            try:
+                os.remove(self._lock_file)
+            except OSError as err:
+                if err.errno == errno.ENOENT:
+                    self.se_msg_error("lock file disappeared: {}"
+                            .format(self._lock_file))
+                else:
+                    self.se_msg_warning("lock file removal failed: {}"
+                            .format(err))
+            self._lock_obtained = 0
+            self._lock_sync_removal = 0
+
+    def cleanup(self):
+        """Called by atexit to remove lock file, if any."""
+        self.lock_release()
+
+    class MyExceptionSignal(Exception):
+        """Exception for signals such as SIGTERM"""
+        pass
+
+    def sig_receive_term(self, signum, frame):
+        """Receive OS signals and raise appropriate exceptions."""
+        raise self.MyExceptionSignal("SIGTERM", signum, frame)
+
+    def add_signals(self):
+        """Enable signals which are desirable to be caught."""
+        signal.signal(signal.SIGTERM, self.sig_receive_term)
+        signal.siginterrupt(signal.SIGTERM, False)
+
+
 def main(dry_run=False, sfiles=None, warn_only=False):
     global abort_on_errors
+
+    script_lock = LockScript()
+
+    slret = script_lock.lock_acquire()
+    if slret < 0:
+        return 1
 
     ret = 0
     abort_on_errors = not warn_only
@@ -682,6 +909,10 @@ def main(dry_run=False, sfiles=None, warn_only=False):
     if policy_errors_found:
         warning("Some spec files have policy issues")
         ret = 2
+
+    # Release the lock only if we actually acquired it.
+    if (slret > 0):
+        script_lock.lock_release()
 
     return ret
 
