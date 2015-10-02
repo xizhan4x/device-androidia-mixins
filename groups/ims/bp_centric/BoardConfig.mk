@@ -2,6 +2,8 @@
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/ims/overlay
 
 # IMS Properties
+{{#ims_enabled}}
 ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.ims_support=1
+{{/ims_enabled}}
 
