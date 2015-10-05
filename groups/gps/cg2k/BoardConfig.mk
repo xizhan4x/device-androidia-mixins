@@ -5,12 +5,18 @@ GPS_POWER := {{{power}}}
 GPS_TRANS := {{{trans}}}
 GPS_CLOSE_INACTIVE := {{{uart_close}}}
 GPS_UART_PM := {{{uart_pm}}}
+GPS_LPM := {{{gps_lpm}}}
 GPS_SIMU := {{{simu}}}
+GNSS_PULSAR := {{{pulsar}}}
+
+{{#rpc_ril}}
+GPS_AMIL_RPC := {{{amil}}}
+{{/rpc_ril}}
+{{^rpc_ril}}
 GPS_AMIL := {{{amil}}}
 GPS_AMIL_IF := MDM
 GPS_AMIL_FA_WITH_GPIO_PIN_CONTROL := {{{fa_gpio}}}
-GNSS_PULSAR := {{{pulsar}}}
-GPS_LPM := {{{gps_lpm}}}
+{{/rpc_ril}}
 
 ifeq ($(GPS_LPM),true)
 GNSS_LPM_EN_TCXO := true
