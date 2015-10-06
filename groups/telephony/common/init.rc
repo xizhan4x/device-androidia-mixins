@@ -22,6 +22,10 @@ on boot
 
     # disable HSIC port
     write /sys/bus/usb/devices/{{{hsic_port}}}/power/pm_qos_no_power_off 0
+    # disable SSIC port
+    write /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/power/control on
+    write /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/ssic_port_enable 0
+    write /sys/devices/pci0000:00/0000:00:{{{pci_id}}}.0/power/control auto
 
 on post-fs-data
 
