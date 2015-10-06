@@ -45,8 +45,8 @@ PRODUCT_PACKAGES += \
     mts
 
 # Autocall
-#PRODUCT_PACKAGES_DEBUG += \
-#    Autocall
+PRODUCT_PACKAGES_DEBUG += \
+    Autocall
 
 #SimToolkit app
 PRODUCT_PACKAGES += \
