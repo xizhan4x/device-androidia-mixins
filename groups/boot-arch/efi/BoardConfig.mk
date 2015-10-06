@@ -76,9 +76,11 @@ INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_INI)
 {{/fastbootefi}}
 
 {{#bootloader_policy}}
+{{#blpolicy_use_efi_var}}
 ifneq ({{bootloader_policy}},static)
 BOOTLOADER_POLICY_OEMVARS = $(PRODUCT_OUT)/bootloader_policy-oemvars.txt
 BOARD_FLASHFILES += $(BOOTLOADER_POLICY_OEMVARS):bootloader_policy-oemvars.txt
 BOARD_OEM_VARS += $(BOOTLOADER_POLICY_OEMVARS)
 endif
+{{/blpolicy_use_efi_var}}
 {{/bootloader_policy}}

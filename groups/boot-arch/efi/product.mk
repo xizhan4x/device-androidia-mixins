@@ -40,8 +40,8 @@ KERNELFLINGER_IGNORE_RSCI := true
 TARGET_NO_DEVICE_UNLOCK := true
 {{/tdos}}
 {{#bootloader_policy}}
-# It makes kernelflinger relies on the BOOTLOADER POLICY EFI
-# variables.  TARGET_BOOTLOADER_POLICY is the desired bitmask for this
+# It activates the Bootloader policy and RMA refurbishing
+# features. TARGET_BOOTLOADER_POLICY is the desired bitmask for this
 # device.
 # * bit 0:
 #   - 0: GVB class B.
@@ -56,6 +56,13 @@ TARGET_NO_DEVICE_UNLOCK := true
 # If TARGET_BOOTLOADER_POLICY is equal to 'static' the bootloader
 # policy is not built but is provided statically in the repository.
 TARGET_BOOTLOADER_POLICY := {{bootloader_policy}}
+# If the following variable is set to false, the bootloader policy and
+# RMA refurbishing features does not use time-based authenticated EFI
+# variables to store the BPM and OAK values.  The BPM value is defined
+# compilation time by the TARGET_BOOTLOADER_POLICY variable.
+# userfastboot retrieves the OAK SHA256 value from the fastboot.img
+# ramdisk.
+TARGET_BOOTLOADER_POLICY_USE_EFI_VAR := {{blpolicy_use_efi_var}}
 {{/bootloader_policy}}
 {{^fastbootefi}}
 TARGET_STAGE_USERFASTBOOT := true

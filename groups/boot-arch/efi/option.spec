@@ -17,6 +17,7 @@ magic_key_timeout = false
 bios_variant = release
 data_encryption = true
 bootloader_policy = false
+blpolicy_use_efi_var = true
 ignore_not_applicable_reset = false
 verity_warning = true
 txe_bind_root_of_trust = true

@@ -224,6 +224,7 @@ INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
 {{/fastbootefi}}
 
 {{#bootloader_policy}}
+{{#blpolicy_use_efi_var}}
 ifeq ({{bootloader_policy}},static)
 # The bootloader policy is not built but is provided statically in the
 # repository.
@@ -241,4 +242,5 @@ $(BOOTLOADER_POLICY_OEMVARS): sign-efi-sig-list
 		-O $(TARGET_OAK_KEY_PAIR).x509.pem -B $(TARGET_BOOTLOADER_POLICY) \
 		$(BOOTLOADER_POLICY_OEMVARS)
 endif
+{{/blpolicy_use_efi_var}}
 {{/bootloader_policy}}
