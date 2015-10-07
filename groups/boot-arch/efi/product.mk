@@ -86,10 +86,16 @@ TARGET_NO_DEVICE_UNLOCK := true
 # It makes kernelflinger relies on the BOOTLOADER POLICY EFI
 # variables.  TARGET_BOOTLOADER_POLICY is the desired bitmask for this
 # device.
-# - 0x0000000000000000: no policy, the device behaves as usual
-# - 0x0000000000000001: unlock is totally prohibited on this device.
-#   The only way to unlock is to use the secured force-unlock
-#   mechasnism.
+# * bit 0:
+#   - 0: GVB class B.
+#   - 1: GVB class A.  Device unlock is not permitted.  The only way
+#     to unlock is to use the secured force-unlock mechanism.
+# * bit 1 and 2 defines the minimal boot state required to boot the
+#   device:
+#   - 0x0: BOOT_STATE_RED (GVB default behavior)
+#   - 0x1: BOOT_STATE_ORANGE
+#   - 0x2: BOOT_STATE_YELLOW
+#   - 0x3: BOOT_STATE_GREEN
 # If TARGET_BOOTLOADER_POLICY is equal to 'static' the bootloader
 # policy is not built but is provided statically in the repository.
 TARGET_BOOTLOADER_POLICY := {{bootloader_policy}}
