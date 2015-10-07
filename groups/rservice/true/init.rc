@@ -3,4 +3,5 @@ service rservice /system/bin/rservice
    class main
    user  radio
    group inet wifi bluetooth gps misc system cache audio nfc
+   disabled
 

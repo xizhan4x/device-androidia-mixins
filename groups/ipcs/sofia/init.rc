@@ -1,0 +1,11 @@
+# IPCS daemon configuration
+on property:persist.tool_enable=1
+    start ipcsd
+    start rservice
+
+service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS2 --mex=TTY,/dev/mvpipe-GTI
+    class main
+    user radio
+    group radio inet system cache misc
+    disabled
+

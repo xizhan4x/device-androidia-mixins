@@ -5,11 +5,6 @@ PRODUCT_PACKAGES += \
     nvm_useragent \
     nvmtest \
     nvm_init.sh \
-    libipcs \
-    libipcservice_tcpip_plugin \
-    libipcservice_tty_plugin \
-    libipcservice_uds_plugin \
-    ipcsd \
     rpcServer \
     rpc-daemon \
     libstlport \

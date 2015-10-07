@@ -1,0 +1,2 @@
+/dev/ttyGS2    0660    radio  radio
+/dev/mvpipe-GTI 0660 radio radio
