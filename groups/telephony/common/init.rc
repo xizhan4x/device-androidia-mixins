@@ -121,6 +121,12 @@ on property:persist.service.mtsp.enable=1
 on property:persist.service.mtsp.enable=0
     stop mtsp
 
+on property:persist.service.mtso.enable=1
+    start mtso
+
+on property:persist.service.mtso.enable=0
+    stop mtso
+
 # service used by AMTL to send SIGUSR1 to mts
 service pti_sigusr1 /system/vendor/bin/pti_sigusr1
     user system
