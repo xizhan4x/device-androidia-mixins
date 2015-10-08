@@ -20,3 +20,6 @@ PRODUCT_PACKAGES += \
     nvm_init.sh \
     .btnvm \
     bluetooth_intel_restore.sh
+
+PRODUCT_PACKAGES_DEBUG += \
+    BleScanTest
