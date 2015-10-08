@@ -70,6 +70,15 @@ $(KERNEL_CONFIG): $(KERNEL_CONFIG_DEPS) | yoctotoolchain
 $(PRODUCT_OUT)/kernel: $(LOCAL_KERNEL) copy_modules
 	cp $(LOCAL_KERNEL) $@
 
+{{#modules_in_bootimg}}
+# kernel modules must be copied before ramdisk is generated
+$(PRODUCT_OUT)/ramdisk.img: copy_modules
+{{/modules_in_bootimg}}
+{{^modules_in_bootimg}}
+# kernel modules must be copied before systemimage is generated
+$(PRODUCT_OUT)/system.img: copy_modules
+{{/modules_in_bootimg}}
+
 # Copy modules in directory pointed by $(KERNEL_MODULES_ROOT)
 # First copy modules keeping directory hierarchy lib/modules/`uname-r`for libkmod
 # Second, create flat hierarchy for insmod linking to previous hierarchy
