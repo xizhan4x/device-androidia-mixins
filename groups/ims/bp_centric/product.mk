@@ -2,5 +2,7 @@
 ifneq ($(wildcard frameworks/opt/telephony/src/java/com/android/internal/telephony/OemPhoneCreator*),)
 PRODUCT_PACKAGES += \
     com.intel.internal.telephony.imsconverged \
-    IMSConfigUI
+    IMSConfigUI \
+    ImsService \
+    imsstackservice
 endif
