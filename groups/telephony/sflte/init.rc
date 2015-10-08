@@ -11,3 +11,31 @@ on post-fs-data
 on boot
     setprop ro.telephony.tcs.hw_name SF_LTE_CONF_1
 
+# MTS SERVICES
+
+# mts persistent
+service mtsp /system/vendor/bin/mts
+    user system
+    group radio log media_rw sdcard_r sdcard_rw inet
+    disabled
+
+# mts oneshot
+service mtso /system/vendor/bin/mts
+    user system
+    group radio log media_rw sdcard_rw inet
+    oneshot
+    disabled
+
+# MTS Properties, events trigging service
+
+on property:persist.service.mtsp.enable=1
+    start mtsp
+
+on property:persist.service.mtsp.enable=0
+    stop mtsp
+
+# service used by AMTL to send SIGUSR1 to mts
+service pti_sigusr1 /system/vendor/bin/pti_sigusr1
+    user system
+    oneshot
+    disabled

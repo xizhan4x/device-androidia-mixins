@@ -12,6 +12,16 @@ PRODUCT_PACKAGES += \
     MSMClient \
     libmsm_library_jni
 
+# Modem Trace Server (MTS)
+PRODUCT_PACKAGES += \
+    mts
+
+# AMTL : Android Modem Traces and Logs
+PRODUCT_PACKAGES_DEBUG += \
+    Amtl \
+    libamtl_jni \
+    librpc_jni
+
 #OemTelephony for OEM HOOK API
 PRODUCT_PACKAGES += \
     OemTelephonyApp \
