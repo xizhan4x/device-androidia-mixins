@@ -1,3 +1,0 @@
-    <permission name="com.intel.cellcoex.permission.CELLCOEX_WIFI" >
-        <group gid="wifi" />
-    </permission>
