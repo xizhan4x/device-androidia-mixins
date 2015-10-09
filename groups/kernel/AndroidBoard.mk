@@ -26,11 +26,14 @@ IWL_DEFCONFIG := iwlwifi-public
 endif
 {{/use_iwlwifi}}
 
-ifeq ($(TARGET_BUILD_VARIANT), user)
 KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}defconfig
-else
+ifneq ($(TARGET_BUILD_VARIANT), user)
+ifneq ($(wildcard $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}debug_diffconfig),)
+KERNEL_DIFFCONFIG += $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}debug_diffconfig
+else # wildcard debug_diffconfig
 KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}debug_defconfig
-endif
+endif # wildcard debug_diffconfig
+endif # variant not eq USER
 KERNEL_CONFIG := $(LOCAL_KERNEL_PATH)/.config
 
 KERNEL_MAKE_OPTIONS = \
@@ -52,7 +55,7 @@ KERNEL_MAKE_OPTIONS_IWLWIFI = \
     CCACHE_SLOPPINESS=$(KERNEL_CCSLOP)
 {{/use_iwlwifi}}
 
-KERNEL_CONFIG_DEPS := $(strip $(KERNEL_DEFCONFIG))
+KERNEL_CONFIG_DEPS := $(strip $(KERNEL_DEFCONFIG) $(KERNEL_DIFFCONFIG))
 KERNEL_CONFIG_MK := $(LOCAL_KERNEL_PATH)/config.mk
 -include $(KERNEL_CONFIG_MK)
 
