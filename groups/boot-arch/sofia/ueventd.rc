@@ -1,3 +1,4 @@
 /dev/tee_rpc    0660    system  drmrpc
 /dev/block/mmcblk0p{{{persistent_part}}} 0660 system system
+/dev/block/mmcblk0p{{{metadata_part}}} 0660 system system
 /dev/nvmdev 0660 radio radio

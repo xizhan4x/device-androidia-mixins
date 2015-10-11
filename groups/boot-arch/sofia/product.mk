@@ -42,3 +42,9 @@ PRODUCT_COPY_FILES += \
 
 #Include verity.mk for GVB and DM_VERITY feature
 $(call inherit-product,build/target/product/verity.mk)
+
+{{#verity_warning}}
+PRODUCT_PACKAGES += \
+    slideshow \
+    verity_warning_images
+{{/verity_warning}}

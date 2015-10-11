@@ -6,7 +6,7 @@
 # See hardware/intel/mrd-3gr-sofia/modem/mhw_drv_src/nv_memory_driver/inc/ftle_def.h
 
 # FTLE_ID_SYSTEM
-/dev/block/by-name/ImcPartID068  /system          ext4    ro                                wait,{{{dm_verity}}}
+/dev/block/by-name/ImcPartID068  /system          ext4    ro                                wait,{{{dm_verity}}}{{#verity_warning}}=/dev/block/by-name/ImcPartID127{{/verity_warning}}
 # FTLE_ID_USERDATA
 /dev/block/by-name/ImcPartID069  /data            ext4    noatime,nosuid,nodev,errors=panic wait,check{{#forceencrypt}},forceencrypt=/dev/block/by-name/ImcPartID127{{/forceencrypt}}{{#encryptable}},encryptable=footer{{/encryptable}},formattable
 # FTLE_ID_CACHE
