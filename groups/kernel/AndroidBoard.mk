@@ -82,7 +82,7 @@ $(PRODUCT_OUT)/system.img: copy_modules
 # Copy modules in directory pointed by $(KERNEL_MODULES_ROOT)
 # First copy modules keeping directory hierarchy lib/modules/`uname-r`for libkmod
 # Second, create flat hierarchy for insmod linking to previous hierarchy
-copy_modules: $(LOCAL_KERNEL)
+copy_modules: $(LOCAL_KERNEL) build_external_modules
 	@echo Copy modules from $(LOCAL_KERNEL_PATH)/lib/modules into $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
 	$(hide) rm -rf $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
 	$(hide) mkdir -p $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
@@ -101,25 +101,36 @@ $(LOCAL_KERNEL): yoctotoolchain $(MINIGZIP) $(KERNEL_CONFIG) $(BOARD_DTB)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) modules
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) INSTALL_MOD_STRIP=1 modules_install
+{{#build_dtbs}}
+	cp $(LOCAL_KERNEL_PATH)/scripts/dtc/dtc $(LOCAL_KERNEL_PATH)
+{{/build_dtbs}}
+
+build_external_modules: $(LOCAL_KERNEL)
 	for dir in $(EXTERNAL_MODULES) ; do \
 		mkdir -p $(LOCAL_KERNEL_PATH)/../modules/$$dir ;\
 		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir modules || exit 1;\
 		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir INSTALL_MOD_STRIP=1 modules_install || exit 1;\
 	done
-{{#build_dtbs}}
-	cp $(LOCAL_KERNEL_PATH)/scripts/dtc/dtc $(LOCAL_KERNEL_PATH)
-{{/build_dtbs}}
+
 {{#use_iwlwifi}}
+copy_modules: build_iwlwifi
+build_iwlwifi: build_external_modules
 	$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) clean
 	$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) defconfig-$(IWL_DEFCONFIG)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) modules
 	-$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) INSTALL_MOD_STRIP=1 modules_install
 {{/use_iwlwifi}}
+
 {{#use_bcmdhd}}
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=y CONFIG_BCMDHD_SDIO= modules
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=y CONFIG_BCMDHD_SDIO= INSTALL_MOD_STRIP=1 modules_install
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=  CONFIG_BCMDHD_SDIO=y  modules
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=  CONFIG_BCMDHD_SDIO=y INSTALL_MOD_STRIP=1 modules_install
+copy_modules: build_bcmdhd
+build_bcmdhd: build_external_modules
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} clean
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCM4356=m CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=y CONFIG_BCMDHD_SDIO= modules
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCM4356=m CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=y CONFIG_BCMDHD_SDIO= modules
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} INSTALL_MOD_STRIP=1 modules_install
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} clean
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCM43241=m CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=  CONFIG_BCMDHD_SDIO=y  modules
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} INSTALL_MOD_STRIP=1 modules_install
 {{/use_bcmdhd}}
 
 {{#build_dtbs}}
