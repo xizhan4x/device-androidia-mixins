@@ -4,14 +4,12 @@ import argparse
 import ConfigParser
 import sys
 import os
-import os.path
 import re
 import argparse
 import collections
-import string
 sys.path.append('external/pystache')
 import pystache
-pystache.defaults.MISSING_TAGS='strict'
+pystache.defaults.MISSING_TAGS = 'strict'
 
 # We're assuming '#' is valid to start a comment in all the configs we are amending
 # which so far is true.
@@ -61,7 +59,7 @@ class ReadTrackingDict(dict):
 
 
 def warning(s):
-    sys.stderr.write(s + "\n");
+    sys.stderr.write(s + "\n")
     sys.stderr.flush()
 
 
@@ -133,7 +131,11 @@ def read_mixin_tree(basedir, mixin_tree=None):
             mixin_tree[group]["options"][option] = {}
             cur_opt = mixin_tree[group]["options"][option]
 
-            cur_opt["optiondir"] = os.path.join(groupdir, option)
+            opt_dir = os.path.join(groupdir, option)
+            if os.path.isdir(opt_dir):
+                cur_opt["listdir"] = os.listdir(opt_dir)
+            cur_opt["optiondir"] = opt_dir
+
             cur_opt["deps"] = set()
             cur_opt["defaults"] = {}
 
@@ -147,7 +149,7 @@ def read_mixin_tree(basedir, mixin_tree=None):
                     cur_opt["deps"] = set(cp.get("mixinfo", "deps").split())
 
                 if cp.has_section("defaults"):
-                    for k,v in cp.items("defaults"):
+                    for k, v in cp.items("defaults"):
                         cur_opt["defaults"][k] = v
 
     return mixin_tree
@@ -267,10 +269,12 @@ warn_vars = [
         "PRODUCT_PROPERTY_OVERRIDES",
         ]
 
+
 def get_file_type(fname):
     if fname.endswith(".xml"):
         return "xml"
     return None
+
 
 def amend_file(dlines, src, mixinsbase, params):
     """Augment the destination lines list with data from the source file provided.
@@ -278,36 +282,35 @@ def amend_file(dlines, src, mixinsbase, params):
     with open(src) as sfile:
         src_contents = sfile.read()
         try:
-            slines = pystache.render(src_contents, params).splitlines(True)
+            slines = pystache.render(src_contents, params)
         except pystache.context.KeyNotFoundError as e:
             policy_error("{} depends on undefined mixin parameter '{}'".format(src, e.key))
 
     # sanity checks
-    for line in slines:
-        if mixinsbase in line:
-            policy_error("build-time references to paths inside mixin directory are not allowed; {} is invalid".format(src))
-        m = re.search("(\w*)\s*[:][=]", line)
-        if m:
-            vname = m.groups()[0]
-            if vname in warn_vars:
-                warning("Non-accumulative assignment to '{}' found in {}".format(vname, src))
+    if slines.find(mixinsbase) >= 0:
+        policy_error("build-time references to paths inside mixin directory are not allowed; {} is invalid".format(src))
+
+    # much faster than previous regexp (\w*)
+    m = re.findall('(' + '|'.join(warn_vars) + ')\s*:=', slines)
+    if m:
+        warning("Non-accumulative assignment to '{}' found in {}".format(m[0], src))
 
     ftype = get_file_type(src)
-    output = []
-    for line in dlines:
-        if line == template[ftype]["footer"]:
-            output.append(template[ftype]["line"])
-            output.append(template[ftype]["source"].format(src))
-            output.append(template[ftype]["line"])
-            output.extend(slines)
-        output.append(line)
-
+    idx = dlines.index(template[ftype]["footer"])
+    output = dlines[:idx]
+    output.insert(idx, template[ftype]["line"])
+    output.insert(idx, template[ftype]["source"].format(src))
+    output.insert(idx, template[ftype]["line"])
+    output.extend(slines.splitlines(True))
+    output.extend(dlines[idx:])
     return output
+
 
 def coerce_boolean(d):
     for k in d:
         if type(d[k]) == str and d[k].lower() == 'false':
             d[k] = False
+
 
 def split_params(selections):
     res = []
@@ -322,11 +325,13 @@ def split_params(selections):
             res.append((group, option_params, ReadTrackingDict()))
     return res
 
+
 def check_section(section, cp, specfile):
     if not cp.has_section(section):
         policy_error('specfile missing {} section: {}'.format(section, specfile))
         return False
     return True
+
 
 def extrafiles_from_selections(basedir, selections):
 
@@ -349,6 +354,7 @@ def extrafiles_from_selections(basedir, selections):
 
     return extrafiles
 
+
 def handle_include(specfile):
     """ check for include section in a spec file.
     handle multiple include by recursion.
@@ -357,12 +363,13 @@ def handle_include(specfile):
     cp = read_spec_file(specfile)
 
     if cp.has_section("include"):
-        relative_path = cp.get("include","file")
+        relative_path = cp.get("include", "file")
         include_path = os.path.join(os.path.dirname(specfile), relative_path)
         return handle_include(include_path) + [specfile]
     return [specfile]
 
-def process_spec_file(specfile, dry_run):
+
+def process_spec_file(specfile, dry_run, mixin_tree):
 
     filelist = handle_include(specfile)
     cp = None
@@ -377,7 +384,6 @@ def process_spec_file(specfile, dry_run):
 
     basedir = cp.get("main", "mixinsdir")
     selections = split_params(cp.items("groups"))
-    mixin_tree = read_mixin_tree(basedir)
 
     # After this, all default selections should be populated
     # and the selections should be sane
@@ -397,8 +403,7 @@ def process_spec_file(specfile, dry_run):
             file_map[fname] = [fname]
 
     if not dry_run:
-        warning("processing {}".format(specfile))
-
+        print("processing {}".format(specfile))
 
     for src, dests in file_map.iteritems():
         for dest in dests:
@@ -412,7 +417,6 @@ def process_spec_file(specfile, dry_run):
                 cur_opt = mixin_tree[group]["options"][option]
 
                 optdir = cur_opt["optiondir"]
-                src_fn = os.path.join(optdir, src)
 
                 # Any given file can have multiple fragments. We first
                 # look for <frag>.1, <frag>.2, ... <frag>.9, <frag>
@@ -420,27 +424,32 @@ def process_spec_file(specfile, dry_run):
                 # the same data except for maybe a few lines; you can
                 # avoid copypasting a lot of stuff by using this feature
                 # and symbolic links for the common bits.
-                frags = [src_fn + "." + str(i) for i in range(10)]
-                frags.append(src_fn)
-
-                for frag in frags:
-                    if os.path.exists(frag):
-                        dest_lines = amend_file(dest_lines, frag, basedir, params)
+                flist = [f for f in cur_opt["listdir"] if f.startswith(src)]
+                fraglist = [f for f in flist if len(f) == len(src) + 2 and f[-2] == '.' and f[-1].isdigit()]
+                if fraglist:
+                    fraglist.sort()
+                    for f in fraglist:
+                        dest_lines = amend_file(dest_lines, os.path.join(optdir, f), basedir, params)
+                if src in flist:
+                    dest_lines = amend_file(dest_lines, os.path.join(optdir, src), basedir, params)
 
             if dry_run:
                 if cmp(dest_lines, orig_dest_lines) != 0:
                     warning("{} is out of date".format(dest_fn))
                     retval = False
             else:
-                with open(dest_fn, "w") as fp:
-                    fp.writelines(dest_lines)
+                if cmp(dest_lines, orig_dest_lines) != 0:
+                    print("updating {}".format(dest_fn))
+                    with open(dest_fn, "w") as fp:
+                        fp.writelines(dest_lines)
 
     for group, option, params in selections:
         unused = params.unused_keys()
         if unused:
-            policy_error('Unnecessary parameters {} given for mixin option'\
+            policy_error('Unnecessary parameters {} given for mixin option'
                          ' "{}: {}"'.format(unused, group, option))
     return retval
+
 
 def find_all_spec_files(basepath):
     """find all the mixin spec files underneath the specified
@@ -452,6 +461,7 @@ def find_all_spec_files(basepath):
             ret.append(os.path.join(root, _PRODUCT_SPEC_FN))
     return ret
 
+
 def main(dry_run=False, sfiles=None, warn_only=False):
     global abort_on_errors
 
@@ -462,8 +472,9 @@ def main(dry_run=False, sfiles=None, warn_only=False):
     if not sfiles:
         sfiles = find_all_spec_files("device/intel")
 
+    mixin_tree = read_mixin_tree('device/intel/mixins/groups')
     for sf in sfiles:
-        if not process_spec_file(sf, dry_run):
+        if not process_spec_file(sf, dry_run, mixin_tree):
             out_of_sync = True
 
     if out_of_sync:
@@ -475,6 +486,7 @@ def main(dry_run=False, sfiles=None, warn_only=False):
         ret = 2
 
     return ret
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Update board configurations with mixin data based on spec file")
