@@ -1,2 +1,9 @@
 on post-fs-data
     setprop rpcd.start 1
+
+    # Modem network settings
+    write /sys/class/net/{{{nw_if_name}}}0/queues/rx-0/rps_cpus d
+    write /sys/class/net/{{{nw_if_name}}}0/queues/tx-0/xps_cpus d
+
+    write /sys/class/net/{{{nw_if_name}}}1/queues/rx-0/rps_cpus d
+    write /sys/class/net/{{{nw_if_name}}}1/queues/tx-0/xps_cpus d
