@@ -7,3 +7,7 @@ on post-fs-data
 
     write /sys/class/net/{{{nw_if_name}}}1/queues/rx-0/rps_cpus d
     write /sys/class/net/{{{nw_if_name}}}1/queues/tx-0/xps_cpus d
+
+on boot
+    setprop ro.telephony.tcs.hw_name SF_LTE_CONF_1
+
