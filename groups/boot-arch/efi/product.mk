@@ -71,3 +71,8 @@ PRODUCT_PACKAGES += \
 	slideshow \
 	verity_warning_images
 {{/verity_warning}}
+{{#txe_bind_root_of_trust}}
+# It makes kernelflinger bind the device state to the root of trust
+# using the TXE.
+KERNELFLINGER_TXE_BIND_ROOT_TRUST := true
+{{/txe_bind_root_of_trust}}
