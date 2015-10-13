@@ -4,3 +4,12 @@ on boot
     chown media camera /sys/class/gpio/gpio342/value
     chmod 0644 /sys/class/gpio/gpio342/value
 
+on property:sys.ds4.claim_gpio=1
+    chown system camera /sys/class/gpio/gpio342/value
+    chmod 0644 /sys/class/gpio/gpio342/value
+    write /sys/class/gpio/gpio342/value 1
+
+on property:sys.ds4.claim_gpio=0
+    chown media camera /sys/class/gpio/gpio342/value
+    chmod 0644 /sys/class/gpio/gpio342/value
+    write /sys/class/gpio/gpio342/value 0

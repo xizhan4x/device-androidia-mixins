@@ -17,6 +17,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
        FWUpdateR200
 
+# DSAPI property default value
+PRODUCT_PROPERTY_OVERRIDES += \
+	sys.ds4.claim_gpio=0
+
 # Apps can now be compiled against the add-on without having to
 # manually copy the com.intel.camera2.extensions.depthcamera.jar to the
 # app 'libs' folder, ensuring only the built-in jar file
