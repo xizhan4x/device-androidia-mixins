@@ -23,6 +23,7 @@ service rfkill_bt /system/bin/sh /rfkill_bt.sh
     class core
     user root
     oneshot
+    seclabel u:r:rfkill:s0
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     class main
