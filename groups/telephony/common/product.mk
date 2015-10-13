@@ -21,7 +21,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     mmgr \
     libmdmcli_mmgr \
-    com.intel.internal.telephony.MmgrClient \
+    libmdmcli_jni \
     libmodemupdate{{#m2}} \
     fwswitching{{/m2}}
 
@@ -30,7 +30,8 @@ PRODUCT_PACKAGES += \
     proxy
 
 PRODUCT_PACKAGES_DEBUG += \
-    mmgr-debug \
+    mmgr-test \
+    ModemClientJavaTest \
     run_test_ipc.sh \
     mcd-test \
     ipcbox

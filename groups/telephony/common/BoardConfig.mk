@@ -13,8 +13,6 @@ BOARD_MODEM_LIST := {{{modems}}}
 ADDITIONAL_DEFAULT_PROPERTIES += \
     rild.libpath=librapid-ril-core.so \
     ro.telephony.default_network=9 \
-    sys.mdmcli.jarPath=/system/framework/com.intel.internal.telephony.MmgrClient.jar \
-    sys.mdmcli.className=com.intel.internal.telephony.mmgr.MmgrModemStatusMonitor \
     persist.tel.hot_swap.support=true
 
 # Telephony common overlay folder
