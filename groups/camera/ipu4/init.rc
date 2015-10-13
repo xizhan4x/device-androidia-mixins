@@ -18,11 +18,11 @@ on post-fs
     insmod ${ro.boot.moduleslocation}/videobuf-core.ko
     insmod ${ro.boot.moduleslocation}/videobuf2-dma-contig.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-wrapper.ko
+    insmod ${ro.boot.moduleslocation}/lib2600psys-mod.ko
     insmod ${ro.boot.moduleslocation}/lib2600-mod.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-mod.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-mmu.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-isys-mod.ko
-    insmod ${ro.boot.moduleslocation}/lib2600psys-mod.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-psys-mod.ko
     #optional debug configuration
     #echo "module smiapp_pll +p" > /sys/kernel/debug/dynamic_debug/control;
