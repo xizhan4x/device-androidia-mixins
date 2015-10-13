@@ -16,7 +16,22 @@ function lunch
     local -a save="${LUNCH_MENU_CHOICES[@]} ${REMOVED_TARGETS[@]}"
     local -a removed_targets
 
-    local ring=$(grep "One_Android_Ring" .repo/manifest.xml | cut -f2 -d\')
+    local ring
+    if [ -d .repo/ ]; then
+        # .repo folder will be present in root of environment when 1A manifest is synced
+        # using repo tool. Usecase: 1A dev/build host
+        ring=$(grep "One_Android_Ring" .repo/manifest.xml | cut -f2 -d\')
+    elif [ -d .hive/ ]; then
+        # .hive folder will be present in root of environment when 1A manifest is synced
+        # using bee tool. Usecase: OC6 dev/build host
+        ring=$(grep -r "<default " ./.hive/default.xml | cut -f2 -d\" | cut -f4 -d\/)
+    elif [ -d ../.hive/ ]; then
+        # .hive folder will be present in root of environment when OC6 manifest is synced
+        # using bee tool. But there is "android" folder from where "lunch" is invoked.
+        # Hence need to check one level above (parent) for presence of .hive folder.
+        # Usecase: OC6 dev/build host
+        ring=$(grep -r "<default " ../.hive/manifest/aosp-1a-* | cut -f4 -d\" | cut -f4 -d\/)
+    fi
 
     local t
 
