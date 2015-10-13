@@ -7,6 +7,7 @@ on post-fs-data
 on boot
     # GPS GPT factory partition data retrieval
     mkdir /config/gnss 0770 gps system
+    restorecon_recursive /config/gnss
     start gnss_rest_wpc
     start gnss_rest_mec
 

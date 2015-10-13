@@ -1,6 +1,7 @@
 on post-fs-data
     # create config BT NVM folder
     mkdir /config/bluetooth 0770 bluetooth system
+    restorecon_recursive /config/bluetooth
 
 on boot
     insmod ${ro.boot.moduleslocation}/iptable_raw.ko

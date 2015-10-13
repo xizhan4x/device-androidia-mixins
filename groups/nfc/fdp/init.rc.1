@@ -5,6 +5,7 @@ on boot
 on post-fs-data
     # create config NFC NVM folder
     mkdir /config/nfc 0770 nfc system
+    restorecon_recursive /config/nfc
     start nfc_rest_nvm
 
 service nfc_rest_nvm /system/bin/sh /system/bin/nfc_intel_restore.sh
