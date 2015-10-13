@@ -20,8 +20,11 @@ PRODUCT_PACKAGES += \
     NfcNci
 
 ifeq ($(FLAG_GMS_AVAILABLE),yes)
+ifneq ($(FLAG_GMS_PACKAGES), minimal)
 PRODUCT_PACKAGES += \
+    AndroidPay \
     TagGoogle
+endif
 else
 PRODUCT_PACKAGES += \
     Tag

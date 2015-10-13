@@ -10,6 +10,7 @@ PRODUCT_PACKAGES += \
 ifeq ($(FLAG_GMS_AVAILABLE),yes)
 ifneq ($(FLAG_GMS_PACKAGES), minimal)
 PRODUCT_PACKAGES += \
+    AndroidPay \
     TagGoogle
 endif
 else
