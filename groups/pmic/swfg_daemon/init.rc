@@ -7,7 +7,5 @@ on property:nvm_partition=mounted
 service swfg_daemon /system/bin/swfg_daemon
     class main
     disabled
-    user system
-    group system
     oneshot
 
