@@ -1,0 +1,2 @@
+[defaults]
+digmic = true
