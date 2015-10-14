@@ -3,7 +3,8 @@ BOARD_KERNEL_CMDLINE += \
 	debug \
 	nolapic_pm \
 	apic=sofia \
-	cma={{{cma_size}}}
+	cma={{{cma_size}}} \
+	slub_max_order=0
 
 ifneq (,$(filter eng userdebug,$(TARGET_BUILD_VARIANT)))
 BOARD_KERNEL_CMDLINE += \
