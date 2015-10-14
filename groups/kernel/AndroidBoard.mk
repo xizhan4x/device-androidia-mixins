@@ -17,7 +17,7 @@ KERNEL_CCSLOP := $(subst $(space),$(comma),$(KERNEL_CCSLOP))
 BOARD_DTB := $(LOCAL_KERNEL_PATH)/{{{board_dtb}}}
 {{/build_dtbs}}
 LOCAL_KERNEL_SRC := {{{src_path}}}
-EXTERNAL_MODULES := {{{external_modules}}} {{{debug_modules}}}
+EXTERNAL_MODULES := {{{external_modules}}}
 EXTMOD_SRC := ../modules
 {{#use_iwlwifi}}
 IWL_DEFCONFIG := {{{iwl_defconfig}}}
@@ -33,6 +33,7 @@ KERNEL_DIFFCONFIG += $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_
 else # wildcard debug_diffconfig
 KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}debug_defconfig
 endif # wildcard debug_diffconfig
+EXTERNAL_MODULES += {{{debug_modules}}}
 endif # variant not eq USER
 KERNEL_CONFIG := $(LOCAL_KERNEL_PATH)/.config
 
