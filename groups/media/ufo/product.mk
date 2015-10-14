@@ -1,5 +1,4 @@
 # libstagefrighthw
-BUILD_WITH_FULL_STAGEFRIGHT := true
 PRODUCT_PACKAGES += \
     libstagefrighthw
 
