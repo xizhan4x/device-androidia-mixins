@@ -1,0 +1,5 @@
+service swfg_daemon /system/bin/swfg_daemon
+    class main
+    group system misc
+    oneshot
+
