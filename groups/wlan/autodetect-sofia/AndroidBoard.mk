@@ -41,3 +41,5 @@ $(AUTODETECT_LINKS):
 ALL_DEFAULT_INSTALLED_MODULES += $(AUTODETECT_LINKS)
 
 endif
+
+copy_modules: iwlwifi

@@ -20,12 +20,7 @@ BOARD_DTB := $(LOCAL_KERNEL_PATH)/{{{board_dtb}}}
 LOCAL_KERNEL_SRC := {{{src_path}}}
 EXTERNAL_MODULES := {{{external_modules}}}
 EXTMOD_SRC := ../modules
-{{#use_iwlwifi}}
-IWL_DEFCONFIG := {{{iwl_defconfig}}}
-ifeq ($(IWL_DEFCONFIG), )
-IWL_DEFCONFIG := iwlwifi-public
-endif
-{{/use_iwlwifi}}
+
 
 KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}defconfig
 ifneq ($(TARGET_BUILD_VARIANT), user)
@@ -47,19 +42,6 @@ KERNEL_MAKE_OPTIONS = \
     CROSS_COMPILE="$(KERNEL_CCACHE) $(YOCTO_CROSSCOMPILE)" \
     CCACHE_SLOPPINESS=$(KERNEL_CCSLOP)
 
-{{#use_iwlwifi}}
-KERNEL_MAKE_OPTIONS_IWLWIFI = \
-    -C kernel/modules/iwlwifi/{{{extmod_platform}}} \
-    ARCH=$(TARGET_KERNEL_ARCH) \
-{{#use_gcc_option_o1}}
-    EXTRA_CFLAGS=-O1 \
-{{/use_gcc_option_o1}}
-    INSTALL_MOD_PATH=$(KERNEL_INSTALL_MOD_PATH) \
-    KLIB_BUILD=../../../../$(LOCAL_KERNEL_PATH) \
-    O=../../../../$(LOCAL_KERNEL_PATH) \
-    CROSS_COMPILE="$(KERNEL_CCACHE) $(YOCTO_CROSSCOMPILE)" \
-    CCACHE_SLOPPINESS=$(KERNEL_CCSLOP)
-{{/use_iwlwifi}}
 
 KERNEL_CONFIG_DEPS := $(strip $(KERNEL_DEFCONFIG) $(KERNEL_DIFFCONFIG))
 KERNEL_CONFIG_MK := $(LOCAL_KERNEL_PATH)/config.mk
@@ -120,16 +102,6 @@ build_external_modules: $(LOCAL_KERNEL)
 		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir modules || exit 1;\
 		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir INSTALL_MOD_STRIP=1 modules_install || exit 1;\
 	done
-
-{{#use_iwlwifi}}
-copy_modules: build_iwlwifi
-build_iwlwifi: build_external_modules
-	$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) clean
-	$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) defconfig-$(IWL_DEFCONFIG)
-	$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) modules
-	-$(MAKE) $(KERNEL_MAKE_OPTIONS_IWLWIFI) INSTALL_MOD_STRIP=1 modules_install
-{{/use_iwlwifi}}
-
 {{#use_bcmdhd}}
 copy_modules: build_bcmdhd
 build_bcmdhd: build_external_modules
