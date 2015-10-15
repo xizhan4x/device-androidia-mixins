@@ -12,5 +12,5 @@ on boot
 service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     class late_start
     user gps
-    group system inet radio sdcard_rw net_admin
+    group system inet radio sdcard_rw
 
