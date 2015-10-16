@@ -1,3 +1,8 @@
+[mixinfo]
+# fstab is using shortcut /dev/block/by-name that is created by
+# disk-bus mixin.
+deps = disk-bus
+
 [defaults]
 uefi_arch = x86_64
 fastbootefi = true
