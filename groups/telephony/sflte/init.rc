@@ -39,3 +39,11 @@ service pti_sigusr1 /system/vendor/bin/pti_sigusr1
     user system
     oneshot
     disabled
+
+# adding CRM
+service crm /system/vendor/bin/crm
+    class main
+    socket crm1 stream 660 system radio
+    user system
+    group radio cache inet misc system usb
+

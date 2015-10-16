@@ -9,6 +9,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.msm.android.MSMClientLib \
     com.msm.android.MSMClientLib.xml \
+    crm_sofia \
     MSMClient \
     libmsm_library_jni
 
