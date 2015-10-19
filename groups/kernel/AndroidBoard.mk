@@ -28,13 +28,14 @@ endif
 
 KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}defconfig
 ifneq ($(TARGET_BUILD_VARIANT), user)
-ifneq ($(wildcard $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}debug_diffconfig),)
-KERNEL_DIFFCONFIG += $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}debug_diffconfig
-else # wildcard debug_diffconfig
+KERNEL_DEBUG_DIFFCONFIG += $(wildcard $(LOCAL_KERNEL_SRC)/arch/x86/configs/debug_diffconfig)
+ifneq ($(KERNEL_DEBUG_DIFFCONFIG),)
+KERNEL_DIFFCONFIG += $(KERNEL_DEBUG_DIFFCONFIG)
+else
 KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}debug_defconfig
-endif # wildcard debug_diffconfig
+endif
 EXTERNAL_MODULES += {{{debug_modules}}}
-endif # variant not eq USER
+endif # variant not eq user
 KERNEL_CONFIG := $(LOCAL_KERNEL_PATH)/.config
 
 KERNEL_MAKE_OPTIONS = \
