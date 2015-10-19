@@ -29,7 +29,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../media_codecs.xml:system/etc/media_codecs.xml \
-
+    $(LOCAL_PATH)/../media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
 
 #Add persistent property to enable factory protection
 PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/ImcPartID126
