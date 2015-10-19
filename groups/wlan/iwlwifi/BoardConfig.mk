@@ -34,3 +34,5 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-dual-band
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-p2p-connected-stop-scan
 
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/wlan/load_iwlwifi
+
