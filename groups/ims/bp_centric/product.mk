@@ -5,5 +5,6 @@ PRODUCT_PACKAGES += \
     com.intel.internal.telephony.imsconverged \
     IMSConfigUI \
     ImsService \
-    imsstackservice
+    imsstackservice \
+    IntelIms
 endif
