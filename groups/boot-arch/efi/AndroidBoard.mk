@@ -138,9 +138,8 @@ $(bootloader_zip): \
 	$(hide) rm -f $@
 	$(hide) mkdir -p $(efi_root)/capsules
 	$(hide) mkdir -p $(efi_root)/EFI/BOOT
-ifneq ($(BOARD_EXTRA_EFI_MODULES),)
-	$(hide) $(ACP) $(BOARD_EXTRA_EFI_MODULES) $(efi_root)/
-endif
+	$(foreach EXTRA,$(BOARD_EXTRA_EFI_MODULES), \
+		$(hide) $(ACP) $(EXTRA) $(efi_root)/)
 ifneq ($(BOARD_SFU_UPDATE),)
 	$(hide) $(ACP) $(BOARD_SFU_UPDATE) $(efi_root)/BIOSUPDATE.fv
 	$(hide) $(ACP) $(BOARD_SFU_UPDATE) $(efi_root)/capsules/current.fv
