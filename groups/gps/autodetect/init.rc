@@ -6,5 +6,5 @@ on post-fs-data
 service gpsd /system/bin/gpsd -c /system/rt/hal_fuse/gps_bcm4752.xml
     disabled
     user gps
-    group system inet radio sdcard_rw net_admin
+    group system inet radio sdcard_rw net_bt_stack
 
