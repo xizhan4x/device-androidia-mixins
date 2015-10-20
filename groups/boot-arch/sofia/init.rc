@@ -67,7 +67,7 @@ on property:init.svc.setup_fs_nvm=stopped
 
     mkdir /nvm_fs_partition/factory 0770 media drm
     mkdir /nvm_fs_partition/nvm 0660 misc misc
-    mkdir /nvm_fs_partition/bluetooth 0664 bluetooth bluetooth
+    mkdir /nvm_fs_partition/bluetooth 0774 bluetooth bluetooth
     start nvm_uagent
 
 service rpcServer /system/bin/rpcServer
