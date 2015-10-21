@@ -17,9 +17,13 @@ on boot
     insmod ${ro.boot.moduleslocation}/6lowpan_iphc.ko
     insmod ${ro.boot.moduleslocation}/lnp_ldisc.ko
     start bt_rest_nvm
-{{^hsu}}
-    wait /config/bluetooth/bd_addr.conf
-{{/hsu}}
+
+{{#usif}}
+    wait /nvm_fs_partition/bluetooth/.btnvm
+{{/usif}}
+{{^usif}}
+    wait /config/bluetooth/.btnvm
+{{/usif}}
 
 service bt_rest_nvm /system/bin/bluetooth_intel_restore.sh
     class main
