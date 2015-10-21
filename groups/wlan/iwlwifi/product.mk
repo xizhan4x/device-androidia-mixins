@@ -26,6 +26,8 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product-if-exists, vendor/intel/fw/iwl/{{{iwl_platfrom}}}/iwl-fw-{{{chip_id}}}.mk)
 
+{{#gpp}}
 # Add Manufacturing tool
 PRODUCT_PACKAGES += \
     wlan_intel_restore.sh
+{{/gpp}}

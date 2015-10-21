@@ -7,3 +7,4 @@ amil=true
 fa_gpio=false
 simu=false
 pulsar=false
+gpp = false

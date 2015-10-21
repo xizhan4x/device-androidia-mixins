@@ -1,5 +1,7 @@
 PRODUCT_PACKAGES += \
+{{#gpp}}
     cws_manu \
+{{/gpp}}
     gps.$(TARGET_BOARD_PLATFORM) \
     gnssCG2000 \
     libgnssconf \

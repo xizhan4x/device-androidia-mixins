@@ -36,3 +36,8 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-p2p-connected-stop-s
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/wlan/load_iwlwifi
 
+{{#gpp}}
+ifeq ($(findstring cws_manu,$(BOARD_SEPOLICY_DIRS)),)
+    BOARD_SEPOLICY_DIRS += device/intel/sepolicy/cws_manu
+endif
+{{/gpp}}

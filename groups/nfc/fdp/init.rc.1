@@ -6,12 +6,16 @@ on post-fs-data
     # create config NFC NVM folder
     mkdir /config/nfc 0770 nfc system
     restorecon_recursive /config/nfc
+{{#gpp}}
     start nfc_rest_nvm
+{{/gpp}}
 
-service nfc_rest_nvm /system/bin/sh /system/bin/nfc_intel_restore.sh
+{{#gpp}}
+service nfc_rest_nvm /system/bin/nfc_intel_restore.sh
     class main
     user nfc
     group system nfc
     disabled
     oneshot
+{{/gpp}}
 

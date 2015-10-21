@@ -19,7 +19,9 @@ PRODUCT_PACKAGES += \
     370b10060002220e00_selftest.sfi \
     nvm_init.sh \
     .btnvm \
+{{#gpp}}
     bluetooth_intel_restore.sh
+{{/gpp}}
 
 PRODUCT_PACKAGES_DEBUG += \
     BleScanTest

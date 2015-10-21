@@ -3,8 +3,10 @@ on post-fs-data
     # create config WiFi NVM folder
     mkdir /config/wlan 0770 wifi system
     restorecon_recursive /config/wlan
+{{#gpp}}
     start wlan_rest_nvm
     wait /config/wlan/iwl_nvm.bin
+{{/gpp}}
     start load_iwlwifi
 
 setprop wifi.interface wlan0
@@ -53,9 +55,11 @@ service load_iwlwifi /system/bin/load_iwlwifi.sh
     disabled
     oneshot
 
-service wlan_rest_nvm /system/bin/sh /system/bin/wlan_intel_restore.sh
+{{#gpp}}
+service wlan_rest_nvm /system/bin/wlan_intel_restore.sh
     class main
     user wifi
     group system wifi
     disabled
     oneshot
+{{/gpp}}

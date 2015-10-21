@@ -85,6 +85,3 @@ PRODUCT_COPY_FILES += \
 
 endif
 
-# Add Manufacturing tool
-PRODUCT_PACKAGES += \
-    wlan_intel_restore.sh

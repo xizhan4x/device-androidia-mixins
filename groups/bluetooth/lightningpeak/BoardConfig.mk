@@ -13,3 +13,9 @@ BOARD_HAVE_HCIVSSERVICE := {{{hci_vs_service}}}
 {{#hci_vs_service}}
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bthcivsservice
 {{/hci_vs_service}}
+
+{{#gpp}}
+ifeq ($(findstring cws_manu,$(BOARD_SEPOLICY_DIRS)),)
+    BOARD_SEPOLICY_DIRS += device/intel/sepolicy/cws_manu
+endif
+{{/gpp}}

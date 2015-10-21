@@ -16,6 +16,7 @@ on boot
 {{/hsu}}
     insmod ${ro.boot.moduleslocation}/6lowpan_iphc.ko
     insmod ${ro.boot.moduleslocation}/lnp_ldisc.ko
+{{#gpp}}
     start bt_rest_nvm
 
 {{#usif}}
@@ -24,13 +25,16 @@ on boot
 {{^usif}}
     wait /config/bluetooth/.btnvm
 {{/usif}}
+{{/gpp}}
 
+{{#gpp}}
 service bt_rest_nvm /system/bin/bluetooth_intel_restore.sh
     class main
     user bluetooth
     group system bluetooth
     disabled
     oneshot
+{{/gpp}}
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
    class main
