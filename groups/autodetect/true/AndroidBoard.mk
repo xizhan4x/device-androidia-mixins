@@ -30,6 +30,7 @@ AUTODETECT_LINK_PAIRS += \
 	$(PRODUCT_OUT)/system/etc/media_codecs.xml:../..$(HAL_BM_TARGET_MEDIA)/etc/media_codecs.xml \
 	$(PRODUCT_OUT)/system/etc/media_codecs_google_audio.xml:../..$(HAL_BM_TARGET_MEDIA)/etc/media_codecs_google_audio.xml \
 	$(PRODUCT_OUT)/system/etc/media_codecs_google_video.xml:../..$(HAL_BM_TARGET_MEDIA)/etc/media_codecs_google_video.xml \
+	$(PRODUCT_OUT)/system/etc/media_codecs_performance.xml:../..$(HAL_BM_TARGET_MEDIA)/etc/media_codecs_performance.xml \
 	$(PRODUCT_OUT)/system/etc/media_profiles_template.xml:../..$(HAL_BM_TARGET_MEDIA)/etc/media_profiles_template.xml \
 	$(PRODUCT_OUT)/system/etc/media_profiles_config.xml:../..$(HAL_BM_TARGET_MEDIA)/etc/media_profiles_config.xml \
 	$(PRODUCT_OUT)/system/etc/camera_profiles_config.xml:../..$(HAL_BM_TARGET_MEDIA)/etc/camera_profiles_config.xml
