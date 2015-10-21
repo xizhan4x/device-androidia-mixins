@@ -65,5 +65,8 @@ SECURE_PLAYBACK_ENABLE := false
 TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/${TARGET_BOARD_PLATFORM}/
 TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
 
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
+# All sofia devices depend on this mixin group currently due to symlink
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/common
 
+# Define this to not use the common stable human readable names aka by-name/recovery
+BOARD_SEPOLICY_M4DEFS += sepolicy_use_raw_block_devices=true
