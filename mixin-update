@@ -385,6 +385,9 @@ def process_spec_file(specfile, dry_run, mixin_tree):
     basedir = cp.get("main", "mixinsdir")
     selections = split_params(cp.items("groups"))
 
+    if not dry_run:
+        print("processing {}".format(specfile))
+
     # After this, all default selections should be populated
     # and the selections should be sane
     selections = validate_selections(selections, mixin_tree, not dry_run)
@@ -401,9 +404,6 @@ def process_spec_file(specfile, dry_run, mixin_tree):
             file_map[fname] = cp.get("mapping", fname).split()
         else:
             file_map[fname] = [fname]
-
-    if not dry_run:
-        print("processing {}".format(specfile))
 
     for src, dests in file_map.iteritems():
         for dest in dests:
