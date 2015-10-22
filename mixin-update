@@ -194,6 +194,14 @@ def validate_selections(selections, mixin_tree, verbose=False):
         for k, v in defaults.iteritems():
             if k not in params:
                 params[k] = v
+
+        # Inherit the dependency parameters
+        for dep_group, dep_option, dep_params in returned_selections:
+            if dep_group in deps:
+                for k, v in dep_params.iteritems():
+                    if k not in params:
+                        params[k] = v
+
         coerce_boolean(params)
         returned_selections.append((group, option, params))
 
