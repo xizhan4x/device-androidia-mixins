@@ -1,4 +1,4 @@
-on early-fs
+on init
     # Android creates by-name disk links with the disk controller
     # in the generated path, so that the names pulled out of the GPT
     # can be associated with the correct disk. Create a shortcut to
