@@ -18,4 +18,8 @@ endif # TARGET_BUILD_VARIANT is eng, userdebug
 # Device Tree Blob file name:
 BOARD_DTB_FILE ?= {{{board_dtb}}}
 
+# Device cache size value:
+BOARD_SHARED_CACHE_SIZE := 512*1024
+BOARD_DATA_CACHE_SIZE := 16*1024
+
 YOCTO_TOOLCHAIN_REQUIRED_VERSION := 1.6
