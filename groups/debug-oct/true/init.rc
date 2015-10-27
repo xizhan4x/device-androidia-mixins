@@ -1,4 +1,4 @@
 service oct_daemon /system/bin/oct_daemon
 	class late_start
-	user root
+	user system
 	oneshot
