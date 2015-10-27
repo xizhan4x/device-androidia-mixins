@@ -8,6 +8,17 @@ on post-fs-data
     write /sys/class/net/{{{nw_if_name}}}1/queues/rx-0/rps_cpus d
     write /sys/class/net/{{{nw_if_name}}}1/queues/tx-0/xps_cpus d
 
+    # Access rights for CRM
+    chown root radio /sys/class/misc/vmodem/modem_state
+    chown root radio /dev/vmodem
+    chown root radio /dev/vdump
+    chown root radio /dev/mvpipe-atc
+
+    chmod 660 /sys/class/misc/vmodem/modem_state
+    chmod 660 /dev/vmodem
+    chmod 660 /dev/vdump
+    chmod 660 /dev/mvpipe-atc
+
 on boot
     setprop ro.telephony.tcs.hw_name SF_LTE_CONF_1
 
