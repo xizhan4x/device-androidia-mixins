@@ -8,6 +8,7 @@ BOARD_KERNEL_CMDLINE += \
 
 ifneq (,$(filter eng userdebug,$(TARGET_BUILD_VARIANT)))
 BOARD_KERNEL_CMDLINE += \
+	console=tdcons \
 	console=ttyS0,115200n8 \
 	earlyprintk={{{earlyprintk}}}
 endif # TARGET_BUILD_VARIANT is eng, userdebug
