@@ -44,3 +44,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Autocall
 PRODUCT_PACKAGES_DEBUG += \
     Autocall
+
+PRODUCT_PACKAGES_DEBUG += \
+    iperf
