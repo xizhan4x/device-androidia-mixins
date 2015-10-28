@@ -1,9 +1,6 @@
 # AA
 PRODUCT_PACKAGES += \
-    aware_bundle \
-    adaptive_authentication \
-    libaware_client \
-    com.intel.aware.aaservice
+    aware_bundle
 
 
 # Aware HAL
