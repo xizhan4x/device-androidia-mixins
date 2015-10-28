@@ -37,6 +37,9 @@ endif
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 
+{{#imc_build_rules}}
+USE_IMC_BUILD_RULES ?= true
+{{/imc_build_rules}}
 # Flash partition layout:
 {{^fls_prebuilts}}
 INTEL_PRG_FILE ?= device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg

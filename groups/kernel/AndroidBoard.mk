@@ -17,6 +17,7 @@ KERNEL_CCSLOP := $(subst $(space),$(comma),$(KERNEL_CCSLOP))
 {{#build_dtbs}}
 BUILD_DTBS := true
 BOARD_DTB := $(LOCAL_KERNEL_PATH)/{{{board_dtb}}}
+DTB ?= $(BOARD_DTB)
 {{/build_dtbs}}
 LOCAL_KERNEL_SRC := {{{src_path}}}
 EXTERNAL_MODULES := {{{external_modules}}}

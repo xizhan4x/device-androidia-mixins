@@ -18,3 +18,4 @@ metadata_part=9
 no_watchdog=true
 dm_verity=
 verity_warning = false
+imc_build_rules=false
