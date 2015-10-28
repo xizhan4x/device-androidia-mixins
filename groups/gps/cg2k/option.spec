@@ -2,6 +2,7 @@
 power=rfkill
 gpio=false
 nvm=/config/gnss
+xtal=TCXO
 uart_close=false
 uart_pm=true
 gps_lpm=true

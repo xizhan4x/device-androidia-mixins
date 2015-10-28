@@ -19,9 +19,9 @@ GPS_AMIL_FA_WITH_GPIO_PIN_CONTROL := {{{fa_gpio}}}
 {{/rpc_ril}}
 
 ifeq ($(GPS_LPM),true)
-GNSS_LPM_EN_TCXO := true
+GNSS_LPM_EN_{{{xtal}}} := true
 else
-GNSS_LPM_DIS_TCXO := true
+GNSS_LPM_DIS_{{{xtal}}} := true
 endif
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/gps/cg2k
