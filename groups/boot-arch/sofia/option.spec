@@ -8,3 +8,4 @@ encryptable=false
 watchdog_parameters = 60
 watchdog_node = vmm_scu_wdt_enable
 persistent_part=15
+no_watchdog=true

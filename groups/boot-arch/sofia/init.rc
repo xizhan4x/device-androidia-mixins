@@ -34,7 +34,10 @@ on charger
     write /sys/class/leds/lcd-backlight/trigger backlight
     mount_all /fstab.{{{hardware}}}
     start setup_fs_nvm
+    start watchdog
+{{#no_watchdog}}
     write /sys/kernel/debug/watchdog/{{{watchdog_node}}} 0
+{{/no_watchdog}}
 
 on init
     chmod 0444 /proc/cmdline
