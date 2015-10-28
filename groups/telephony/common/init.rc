@@ -165,9 +165,14 @@ on property:sys.usb.modemevt=1
    write /proc/sys/net/ipv6/conf/usb2/use_tempaddr 2
    write /proc/sys/net/ipv6/conf/usb3/use_tempaddr 2
    write /proc/sys/net/ipv6/conf/usb4/use_tempaddr 2
-{{#m2}}
 
+{{#m2}}
+#Currently M2 support in unavailable in BIOS. Hence, introduced new variable m2_config
+#to set the config path. It has bo be removed, once the BIOS settings are ready for M2.
 # Disable Nvm Server
 on property:persist.disable_NVM_Server=1
     stop nvm_manager
+    {{#m2_config}}
+    setprop persist.tcs.hw_filename /system/vendor/etc/telephony/{{m2_config}}.xml
+    {{/m2_config}}
 {{/m2}}
