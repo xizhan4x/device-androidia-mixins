@@ -64,7 +64,6 @@ on property:init.svc.setup_fs_nvm=stopped
 
     mkdir /nvm_fs_partition/factory 0770 media drm
     mkdir /nvm_fs_partition/nvm 0770 misc misc
-    restorecon_recursive /nvm_fs_partition
 
     # Set this property to enable nvm partition dependent services
     setprop nvm_partition mounted
@@ -89,7 +88,7 @@ service nvm_uagent /system/bin/nvm_useragent
     class main
     disabled
     user radio
-    group radio
+    group radio misc
 
 service rpc-daemon /system/bin/rpc-daemon
     socket rpc_send stream 660 system radio
