@@ -18,4 +18,6 @@ PRODUCT_COPY_FILES += \
     hardware/imc/gnss/lbs/config_files/sf3g/LbsPltConfig.cfg:system/etc/LbsPltConfig.cfg
 PRODUCT_COPY_FILES += \
     hardware/imc/gnss/lbs/lbsd.sh:system/bin/lbsd.sh
+PRODUCT_COPY_FILES += \
+    hardware/imc/gnss/lbs/config_files/sf3g/cacert.txt:system/etc/cacert.txt
 
