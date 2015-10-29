@@ -15,3 +15,4 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.s2b_support=1
 {{/s2b_enabled}}
 endif
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bp_centric/
