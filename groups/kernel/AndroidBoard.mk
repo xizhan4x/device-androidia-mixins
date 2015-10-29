@@ -87,6 +87,16 @@ copy_modules: $(LOCAL_KERNEL) build_external_modules
 		done
 	$(hide) cd $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT) && for f in `find . -name '*.ko'` ; do cp $$f . ; done
 	$(hide) cd $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT) && for f in `find . -name 'modules.*'` ; do cp $$f . ; done
+{{#camera_cos_hack}}
+ifeq ($(KERNEL_MODULES_ROOT),system/lib/modules)
+	$(hide) mkdir -p $(PRODUCT_OUT)/root/system/lib/modules/
+	$(hide) for f in atomisp-css2401a0_v21.ko videobuf-core.ko videobuf-vmalloc.ko; do \
+		find $(LOCAL_KERNEL_PATH)/lib/modules/ -name $$f -exec cp {} $(PRODUCT_OUT)/root/system/lib/modules/ \; ;\
+		done
+
+$(PRODUCT_OUT)/ramdisk.img: copy_modules
+endif
+{{/camera_cos_hack}}
 
 $(LOCAL_KERNEL): yoctotoolchain $(MINIGZIP) $(KERNEL_CONFIG) $(BOARD_DTB)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS)
