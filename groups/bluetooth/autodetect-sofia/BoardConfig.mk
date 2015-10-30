@@ -5,4 +5,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := hardware/intel/libbt-vendor-intel
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-bt-pan
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-hid-kb
 # Sofia uses ag620 as indicated above via BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bluetooth/ag620
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bluetooth/common \
+                       device/intel/sepolicy/bluetooth/ag620 \
+                       device/intel/sepolicy/bluetooth/sofia_nvm

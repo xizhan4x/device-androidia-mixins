@@ -62,12 +62,13 @@ on property:init.svc.setup_fs_nvm=stopped
     chown misc misc /nvm_fs_partition
     chmod 0775 /nvm_fs_partition
 
+    mkdir /nvm_fs_partition/factory 0770 media drm
+    mkdir /nvm_fs_partition/nvm 0660 misc misc
+    restorecon_recursive /nvm_fs_partition
+
     # Set this property to enable nvm partition dependent services
     setprop nvm_partition mounted
 
-    mkdir /nvm_fs_partition/factory 0770 media drm
-    mkdir /nvm_fs_partition/nvm 0660 misc misc
-    mkdir /nvm_fs_partition/bluetooth 0774 bluetooth bluetooth
     start nvm_uagent
 
 service rpcServer /system/bin/rpcServer

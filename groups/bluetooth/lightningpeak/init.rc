@@ -1,7 +1,9 @@
+{{#gpp}}
 on post-fs-data
-    # create config BT NVM folder
+    # create BT NVM folder
     mkdir /config/bluetooth 0770 bluetooth system
     restorecon_recursive /config/bluetooth
+{{/gpp}}
 
 on boot
     insmod ${ro.boot.moduleslocation}/iptable_raw.ko
@@ -16,25 +18,20 @@ on boot
 {{/hsu}}
     insmod ${ro.boot.moduleslocation}/6lowpan_iphc.ko
     insmod ${ro.boot.moduleslocation}/lnp_ldisc.ko
-{{#gpp}}
-    start bt_rest_nvm
+{{^gpp}}
 
-{{#usif}}
-    wait /nvm_fs_partition/bluetooth/.btnvm
-{{/usif}}
-{{^usif}}
-    wait /config/bluetooth/.btnvm
-{{/usif}}
+on property:nvm_partition=mounted
+    mkdir /nvm_fs_partition/bluetooth 0770 bluetooth system
+    restorecon_recursive /nvm_fs_partition/bluetooth
 {{/gpp}}
+    start init_bt_nvm
 
-{{#gpp}}
-service bt_rest_nvm /system/bin/bluetooth_intel_restore.sh
+service init_bt_nvm /system/vendor/bin/bt_nvm_init.sh
     class main
     user bluetooth
     group system bluetooth
     disabled
     oneshot
-{{/gpp}}
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
    class main

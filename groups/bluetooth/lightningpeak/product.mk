@@ -17,10 +17,10 @@ PRODUCT_PACKAGES += \
     bddata_A0 \
     370b12060002340e00_selftest.sfi \
     370b10060002220e00_selftest.sfi \
-    nvm_init.sh \
+    bt_nvm_init.sh \
     .btnvm \
 {{#gpp}}
-    bluetooth_intel_restore.sh
+    cws_manu
 {{/gpp}}
 
 PRODUCT_PACKAGES_DEBUG += \

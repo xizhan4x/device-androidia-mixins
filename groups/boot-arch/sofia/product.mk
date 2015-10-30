@@ -4,7 +4,7 @@ PRODUCT_PACKAGES += \
     libnvmmodule \
     nvm_useragent \
     nvmtest \
-    nvm_init.sh \
+    bt_nvm_init.sh \
     rpcServer \
     rpc-daemon \
     libstlport \

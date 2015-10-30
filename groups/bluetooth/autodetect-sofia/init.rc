@@ -6,7 +6,14 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service init_bt_nvm /system/bin/sh /system/etc/bluetooth/nvm_init.sh
+on property:nvm_partition=mounted
+    mkdir /nvm_fs_partition/bluetooth 0770 bluetooth system
+    restorecon_recursive /nvm_fs_partition/bluetooth
+    start init_bt_nvm
+
+service init_bt_nvm /system/vendor/bin/bt_nvm_init.sh
     class main
+    user bluetooth
+    group system bluetooth
     disabled
     oneshot
