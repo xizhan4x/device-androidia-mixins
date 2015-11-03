@@ -1,2 +1,4 @@
 on init
+    #create /lib folder if it does not exist
+    mkdir /lib
     symlink /system/vendor/firmware /lib/firmware
