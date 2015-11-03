@@ -16,7 +16,7 @@ service hs20osuclient /system/bin/hs20-osu-client
 service passpoint_script /init.passpoint.sh
     seclabel u:r:passpoint_script:s0
     class main
-    user root
+    user system
     disabled
     oneshot
 
