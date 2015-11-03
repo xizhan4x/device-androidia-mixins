@@ -14,6 +14,6 @@ path =
 external_modules =
 extmod_platform =
 useprebuilt = true
-firmware_path = /system/etc/firmware
+firmware_path = /system/vendor/firmware
 kdefconfig =
 use_gcc_option_o1 = true
