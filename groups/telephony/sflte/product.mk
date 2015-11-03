@@ -20,6 +20,7 @@ PRODUCT_PACKAGES += \
 
 # AMTL : Android Modem Traces and Logs
 PRODUCT_PACKAGES_DEBUG += \
+    crm_dbg \
     Amtl \
     libamtl_jni \
     librpc_jni
