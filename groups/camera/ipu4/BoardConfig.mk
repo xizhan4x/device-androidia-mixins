@@ -27,3 +27,5 @@ USE_INTEL_JPEG := false
 # depencencies will remove themselves from the build...
 USE_CAMERA_STUB := false
 
+PLATFORM_FR_SUPPORT := true
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp/fr_service
