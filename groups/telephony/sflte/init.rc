@@ -101,3 +101,16 @@ on property:system.at-proxy.mode=2
 
 on property:persist.tool_enable=0
     stop ipcsd
+
+{{#dsds}}
+service ril-daemon2 /system/bin/rild -c 2
+   class main
+   socket rild2 stream 660 root radio
+   socket rild-debug2 stream 660 radio system
+   user root
+   group radio cache inet misc audio log
+   disabled
+
+on property:persist.radio.multisim.config=dsds
+   start ril-daemon2
+{{/dsds}}
