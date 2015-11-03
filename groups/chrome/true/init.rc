@@ -1,0 +1,4 @@
+on post-fs-data
+    # Link chrome-command-line file
+    symlink /system/etc/chrome-command-line /data/local/chrome-command-line
+    chmod 0664 /data/local/chrome-command-line
