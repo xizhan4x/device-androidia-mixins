@@ -51,6 +51,9 @@ KERNEL_MAKE_OPTIONS = \
 KERNEL_MAKE_OPTIONS_IWLWIFI = \
     -C kernel/modules/iwlwifi/{{{extmod_platform}}} \
     ARCH=$(TARGET_KERNEL_ARCH) \
+{{#use_gcc_option_o1}}
+    EXTRA_CFLAGS=-O1 \
+{{/use_gcc_option_o1}}
     INSTALL_MOD_PATH=$(KERNEL_INSTALL_MOD_PATH) \
     KLIB_BUILD=../../../../$(LOCAL_KERNEL_PATH) \
     O=../../../../$(LOCAL_KERNEL_PATH) \

@@ -14,3 +14,4 @@ extmod_platform =
 useprebuilt = true
 firmware_path = /system/etc/firmware
 kdefconfig =
+use_gcc_option_o1 = false
