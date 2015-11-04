@@ -5,7 +5,7 @@ WPA_SUPPLICANT_VERSION := VER_2_1_DEVEL_WCS
 
 # Enabling iwlwifi
 BOARD_USING_INTEL_IWL := true
-INTEL_IWL_MODULE_SUB_FOLDER := {{{iwl_platfrom}}}
+INTEL_IWL_MODULE_SUB_FOLDER := {{{iwl_platform}}}
 
 COMBO_CHIP_VENDOR := intel
 COMBO_CHIP := lnp

@@ -1,4 +1,4 @@
 [defaults]
 tdls_auto = true
-iwl_platfrom = cht
+iwl_platform = cht
 gpp = false
