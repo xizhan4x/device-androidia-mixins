@@ -224,9 +224,9 @@ INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
 
 {{#bootloader_policy}}
 {{#blpolicy_use_efi_var}}
-ifeq ({{bootloader_policy}},static)
+ifeq ($(TARGET_BOOTLOADER_POLICY),$(filter $(TARGET_BOOTLOADER_POLICY),static external))
 # The bootloader policy is not built but is provided statically in the
-# repository.
+# repository or in $(PRODUCT_OUT)/.
 else
 # Bootloader policy values are generated based on the
 # TARGET_BOOTLOADER_POLICY value and the

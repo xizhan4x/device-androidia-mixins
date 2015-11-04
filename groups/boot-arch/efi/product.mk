@@ -55,6 +55,9 @@ TARGET_NO_DEVICE_UNLOCK := true
 #   - 0x3: BOOT_STATE_GREEN
 # If TARGET_BOOTLOADER_POLICY is equal to 'static' the bootloader
 # policy is not built but is provided statically in the repository.
+# If TARGET_BOOTLOADER_POLICY is equal to 'external' the bootloader
+# policy OEMVARS should be installed manually in
+# $(BOOTLOADER_POLICY_OEMVARS).
 TARGET_BOOTLOADER_POLICY := {{bootloader_policy}}
 # If the following variable is set to false, the bootloader policy and
 # RMA refurbishing features does not use time-based authenticated EFI
