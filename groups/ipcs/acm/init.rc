@@ -1,0 +1,45 @@
+# IPCS daemon configuration
+
+service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS0
+    class main
+    user radio
+    group radio inet system cache misc
+    disabled
+
+service ipcsd-modem /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS0 --mex=TTY,/dev/gsmtty10
+    class main
+    user radio
+    group radio inet system cache misc
+    disabled
+
+on property:persist.system.ipcs.mode=*
+    setprop system.ipcs.mode ${persist.system.ipcs.mode}
+
+# Stop IPCS android gateway daemon (AGWD)
+on property:system.ipcs.mode=0
+    stop ipcsd
+    stop ipcsd-modem
+    stop rservice
+    start atproxy_usbreset
+
+# Setup ACM only to IPCS android gateway daemon (AGWD)
+on property:system.ipcs.mode=1
+    stop ad_proxy
+    stop ipcsd-modem
+    stop rservice
+    stop proxy
+    stop proxy-tunneling
+    setprop sys.usb.config rndis,acm,adb
+    start ipcsd
+    start rservice
+
+#Setup ACM to IPCS android gateway daemon(AGWD) and to modem (CP)
+on property:system.ipcs.mode=2
+    stop ad_proxy
+    stop ipcsd
+    stop rservice
+    stop proxy
+    stop proxy-tunneling
+    setprop sys.usb.config rndis,acm,adb
+    start ipcsd-modem
+    start rservice
