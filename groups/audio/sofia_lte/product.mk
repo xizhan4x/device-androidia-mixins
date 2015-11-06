@@ -1,10 +1,13 @@
 # Audio logging property for audio driver
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 PRODUCT_PROPERTY_OVERRIDES += persist.audio.log=2
+PRODUCT_PROPERTY_OVERRIDES += persist.tool_enable=1
 else ifeq ($(TARGET_BUILD_VARIANT),userdebug)
 PRODUCT_PROPERTY_OVERRIDES += persist.audio.log=1
+PRODUCT_PROPERTY_OVERRIDES += persist.tool_enable=1
 else
 PRODUCT_PROPERTY_OVERRIDES += persist.audio.log=0
+PRODUCT_PROPERTY_OVERRIDES += persist.tool_enable=0
 endif
 {{#digmic}}
 # Use digital microphone
