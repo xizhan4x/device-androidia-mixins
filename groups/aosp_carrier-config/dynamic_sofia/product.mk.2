@@ -1,5 +1,6 @@
 AOSP_CARRIER_CONFIG ?= {{user_build_aosp}}
 
 {{#carrier_cmcc}}
+PRODUCT_PACKAGES += com.intel.telephony.extend
 INTEL_FEATURE_TELEPHONY_DECOUPLING := true
 {{/carrier_cmcc}}
