@@ -15,6 +15,9 @@ INSTALLED_RADIOIMAGE_TARGET += $(ff_config)
 
 $(call flashfile_add_blob,btsdata.ini,$(PRODUCT_OUT)/::variant::/btsdata.ini,mandatory)
 {{/bts}}
+{{#firmware_info}}
+$(call flashfile_add_blob,firmware-info.txt,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/firmware-info.txt,mandatory)
+{{/firmware_info}}
 
 $(call flashfile_add_blob,extra_script.edify,$(TARGET_DEVICE_DIR)/flashfiles/::variant::/extra_script.edify)
 
