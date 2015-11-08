@@ -4,6 +4,7 @@ BOARD_KERNEL_CMDLINE += \
 	nolapic_pm \
 	apic=sofia \
 	cma={{{cma_size}}} \
+	vmalloc=288M \
 	slub_max_order=0
 
 ifneq (,$(filter eng userdebug,$(TARGET_BUILD_VARIANT)))
