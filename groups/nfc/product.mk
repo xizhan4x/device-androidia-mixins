@@ -7,8 +7,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     NfcNci
 
-ifeq ($(FLAG_GMS_AVAILABLE),yes)
-ifneq ($(FLAG_GMS_PACKAGES), minimal)
+ifeq ($(FLAG_GMS_AVAILABLE),true)
+ifneq ($(FLAG_GMS_MINIMAL), true)
+GMS_PATH := vendor/google/gms
+PRODUCT_COPY_FILES += \
+    $(GMS_PATH)/apps/AndroidPay/lib/armeabi/libbarhopper.so:system/app/AndroidPay/lib/arm/libbarhopper.so \
+    $(GMS_PATH)/apps/AndroidPay/lib/armeabi/libframesequence.so:system/app/AndroidPay/lib/arm/libframesequence.so \
+    $(GMS_PATH)/apps/AndroidPay/lib/armeabi/libgoogle-ocrclient.so:system/app/AndroidPay/lib/arm/libgoogle-ocrclient.so
+
 PRODUCT_PACKAGES += \
     AndroidPay \
     TagGoogle
