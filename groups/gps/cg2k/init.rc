@@ -13,6 +13,12 @@ on boot
     start gnss_rest_mec
 {{/gpp}}
 
+{{#gpio}}
+    write /sys/class/gpio/export {{{gpio}}}
+    write /sys/class/gpio/gpio{{{gpio}}}/direction out
+    chmod 0660 /sys/class/gpio/gpio{{{gpio}}}/value
+    chown gps system /sys/class/gpio/gpio{{{gpio}}}/value
+{{/gpio}}
     chmod 0660 /sys/class/tty/{{{trans}}}/../../power/control
     chown gps gps /sys/class/tty/{{{trans}}}/../../power/control
     mkdir /dev/gps 0770 gps gps

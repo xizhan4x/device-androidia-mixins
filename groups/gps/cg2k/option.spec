@@ -1,4 +1,6 @@
 [defaults]
+power=rfkill
+gpio=false
 nvm=/config/gnss
 uart_close=false
 uart_pm=true
