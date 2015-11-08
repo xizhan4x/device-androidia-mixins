@@ -1,0 +1,13 @@
+on post-fs-data
+    # Setup and start silentlake service
+    mkdir /data/silent_lake
+    chown system system /data/silent_lake
+    chmod 0777 /data/silent_lake
+    start sl_si_service
+
+service sl_si_service /system/vendor/bin/sl_si_service d=1
+    user system
+    group system
+    socket silentlake stream 666 system system
+    disabled
+    oneshot
