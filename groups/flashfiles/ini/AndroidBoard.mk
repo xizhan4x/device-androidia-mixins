@@ -6,6 +6,8 @@ ff_config := $(ff_intermediates)/flashfiles.ini
 $(ff_config): $(FLASHFILES_CONFIG) | $(ACP)
 	$(copy-file-to-target)
 
+$(call add_variant_flashfiles,$(ff_intermediates))
+
 INSTALLED_RADIOIMAGE_TARGET += $(ff_config)
 
 {{#bts}}

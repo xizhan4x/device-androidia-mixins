@@ -13,6 +13,19 @@ $(foreach VARIANT,$(FLASHFILE_VARIANTS), \
         $(if $(3), $(error $(blob) does not exist))))
 endef
 
+define add_variant_flashfiles
+$(foreach VARIANT,$(FLASHFILE_VARIANTS), \
+    $(eval var_flashfile := $(TARGET_DEVICE_DIR)/flashfiles/$(VARIANT)/flashfiles.ini) \
+    $(if $(wildcard $(var_flashfile)), \
+        $(eval $(call add_var_flashfile,$(VARIANT),$(var_flashfile),$(1)))))
+endef
+
+define add_var_flashfile
+INSTALLED_RADIOIMAGE_TARGET += $(3)/flashfiles_$(1).ini
+$(3)/flashfiles_$(1).ini: $(2) | $(ACP)
+	$$(copy-file-to-target)
+endef
+
 # Define ROOT_VARIANTS and VARIANTS in variants-$(TARGET_PRODUCT).mk
 include $(TARGET_DEVICE_DIR)/variants-$(TARGET_PRODUCT).mk
 
