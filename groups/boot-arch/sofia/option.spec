@@ -6,7 +6,7 @@ deps = disk-bus
 [defaults]
 throttle_cpu_during_boot = false
 firmware_src_path=$(CURDIR)
-num_cpus=2
+num_cpus=4
 msm=true
 forceencrypt=true
 encryptable=false
