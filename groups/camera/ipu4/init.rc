@@ -1,8 +1,3 @@
-on init
-    # create camera folder
-    mkdir /data/camera
-    mkdir /data/camera/scripts
-
 on boot
     setprop camera.disable_zsl_mode 1
 
@@ -35,6 +30,6 @@ on post-fs
     #echo "module lib2600_mod +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module intel_ipu4_mod +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module intel_ipu4_mmu +p" > /sys/kernel/debug/dynamic_debug/control;
-    echo "module intel_ipu4_isys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
+    #echo "module intel_ipu4_isys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module lib2600psys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module intel_ipu4_psys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
