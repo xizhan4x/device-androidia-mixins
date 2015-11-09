@@ -84,3 +84,7 @@ BOARD_OEM_VARS += $(BOOTLOADER_POLICY_OEMVARS)
 endif
 {{/blpolicy_use_efi_var}}
 {{/bootloader_policy}}
+
+{{#run_tco_on_shutdown}}
+BOARD_KERNEL_CMDLINE += iTCO_wdt.stop_on_shutdown=0
+{{/run_tco_on_shutdown}}
