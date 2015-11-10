@@ -40,3 +40,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.audio.monitorRotation=true
 
+# Number of warmup cycles when using Fast Track
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	af.fast_mixer_max_warmup=3
