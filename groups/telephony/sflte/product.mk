@@ -36,8 +36,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     device/intel/common/telephony/all/apns-conf.xml:system/etc/apns-conf.xml \
-    device/intel/common/telephony/all/old-apns-conf.xml:system/etc/old-apns-conf.xml
-
+    device/intel/common/telephony/all/old-apns-conf.xml:system/etc/old-apns-conf.xml \
+    device/intel/common/telephony/sarconfig_{{{sar_type_id}}}.xml:system/etc/sarconfig.xml
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
         rild.libpath=librpc-ril.so \
@@ -50,3 +50,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 PRODUCT_PACKAGES_DEBUG += \
     iperf
+
+#SARManager
+PRODUCT_PACKAGES += \
+    SARManager
