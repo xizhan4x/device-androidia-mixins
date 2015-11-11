@@ -1,3 +1,7 @@
+on boot
+    # Insert silentlake vidt
+    insmod ${ro.boot.moduleslocation}/vidt_driver.ko
+
 on post-fs-data
     # Setup and start silentlake service
     mkdir /data/silent_lake
