@@ -26,6 +26,14 @@ on post-fs-data
     chown system system /sys/module/lowmemorykiller/parameters/minfree_force
     write /sys/module/lowmemorykiller/parameters/minfree_force "6536,7536,9536,18536,25536,35536"
 
+    mkdir /data/telephony
+    chown radio radio /data/telephony
+    chmod 770 /data/telephony
+    mkdir /data/telephony/crm
+    chown radio radio /data/telephony/crm
+    chmod 770 /data/telephony/crm
+
+
 on fs
     mount_all /fstab.{{{hardware}}}
 
@@ -98,9 +106,9 @@ service rpc-daemon /system/bin/rpc-daemon
     class core
     user root
     disabled
-
-on property:rpcd.start=1
-    start rpc-daemon
+    onrestart rm /data/telephony/crm/rpcd_stopped
+    onrestart write /data/telephony/crm/rpcd_stopped 0
+    onrestart stop rpc-daemon
 
 service watchdog /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters}}}{{/watchdog_parameters}}
     class core
