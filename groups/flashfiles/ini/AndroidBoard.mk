@@ -29,7 +29,7 @@ provdata_zip_deps += $(BTSDATA_FILES)
 ff_root := $(ff_intermediates)/root
 
 define copy-flashfile
-$(hide) $(ACP) $(1) $(2)
+$(hide) $(ACP) -fp $(1) $(2)
 
 endef
 
