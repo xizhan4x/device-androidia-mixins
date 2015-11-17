@@ -11,4 +11,5 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.ril-daemon.disable=dsds \
     ro.telephony.default_network=0,1
 
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony/sf3g
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony \
+                       device/intel/sepolicy/telephony/sf3g

@@ -10,10 +10,10 @@ service ril-daemon2 /system/bin/rild -c 2
    socket rild-debug2 stream 660 radio system
    user root
    group radio cache inet misc audio log root
-   disabled
 
 on property:persist.ril-daemon.disable=0
+    stop ril-daemon
     stop ril-daemon2
 
-on property:persist.ril-daemon.disable=dsds
-    start ril-daemon2
+#on property:persist.ril-daemon.disable=dsds
+#    start ril-daemon2
