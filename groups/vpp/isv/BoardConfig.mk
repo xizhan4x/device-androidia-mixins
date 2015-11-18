@@ -10,3 +10,5 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 INTEL_FEATURE_VIDEO_EXT_MODE := true
 
 PRODUCT_BOOT_JARS += com.intel.extmode
+
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/vpp/isv
