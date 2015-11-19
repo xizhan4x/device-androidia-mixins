@@ -42,7 +42,7 @@ on charger
 on init
     chmod 0444 /proc/cmdline
     # FIXME!: (security)
-    mkdir /nvm_fs_partition 0660 misc misc
+    mkdir /nvm_fs_partition 0770 misc misc
     restorecon /nvm_fs_partition
 
     # Symlink for Widevine keybox
@@ -63,7 +63,7 @@ on property:init.svc.setup_fs_nvm=stopped
     chmod 0775 /nvm_fs_partition
 
     mkdir /nvm_fs_partition/factory 0770 media drm
-    mkdir /nvm_fs_partition/nvm 0660 misc misc
+    mkdir /nvm_fs_partition/nvm 0770 misc misc
     restorecon_recursive /nvm_fs_partition
 
     # Set this property to enable nvm partition dependent services
