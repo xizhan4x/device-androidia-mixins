@@ -32,3 +32,9 @@ ifeq ($(MODEM_SILENT_RESET_ENABLED),true)
 endif
 
 BOARD_HAVE_ATPROXY := true
+
+{{#intel_dualsim_dvp}}
+INTEL_FEATURE_DUALSIM_DVP := true
+# Overlay for eDVP feature
+DEVICE_PACKAGE_OVERLAYS += vendor/intel/featsetres_tel/dualsim/edvp/overlay
+{{/intel_dualsim_dvp}}
