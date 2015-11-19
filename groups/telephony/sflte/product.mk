@@ -37,6 +37,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     proxy
 
+#Framework extended jar file
+PRODUCT_PACKAGES += \
+    com.intel.telephony.extend \
+    com.intel.telephony.decoupling
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
