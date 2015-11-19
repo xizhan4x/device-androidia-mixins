@@ -10,8 +10,6 @@ service coreu /system/vendor/bin/coreu
 on post-fs-data
     mkdir /data/system 0770 system system
     mkdir /data/coreu 0770 media root
-    chown media root /sys/devices/pci0000\:00/0000\:00\:02.0/resource0
-    chmod 0660 /sys/devices/pci0000\:00/0000\:00\:02.0/resource0
 
 on boot
     #Give permission to system to use i915_videostatus sysfs interface
