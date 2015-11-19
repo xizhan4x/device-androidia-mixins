@@ -28,14 +28,14 @@ TARGET_OUT_WLAN_FW_COMMON := $(TARGET_OUT)/system/vendor/firmware
 # firmwares on both platforms. Choice is based on iwl_platform mixins parameter.
 IWL_PLATFORM := {{{iwl_platform}}}
 
-ifeq ($(IWL_PLATFORM), sofia/3gr)
+ifeq ($(IWL_PLATFORM), sofia_3gr)
 
 #
 # Copy a620 firwmare and config files to system/vendor/wifi/a620
 # It will be bind-mounted by hald upon device discovery
 TARGET_OUT_WLAN_FW := $(TARGET_OUT)/system/vendor/wifi/a620/firmware
 TARGET_OUT_ETC_WIFI := $(TARGET_OUT)/system/vendor/wifi/a620/etc
-LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/sofia/3gr
+LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/sofia_3gr
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR)/*a620*.ucode))
 IWL_PAPD_DB_FILES := $(notdir $(shell find $(LOCAL_IWL_FW_DIR)/papd_db -type f))
@@ -56,14 +56,14 @@ PRODUCT_COPY_FILES += \
 
 endif
 
-ifeq ($(IWL_PLATFORM), sofia/lte)
+ifeq ($(IWL_PLATFORM), sofia_lte)
 
 #
 # Copy lnp firwmare and config files to system/vendor/wifi/lnp
 # It will be bind-mounted by hald upon device discovery
 TARGET_OUT_WLAN_FW_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/firmware
 TARGET_OUT_ETC_WIFI_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/etc
-LOCAL_IWL_FW_DIR_LNP := vendor/intel/fw/iwl/sofia/lte
+LOCAL_IWL_FW_DIR_LNP := vendor/intel/fw/iwl/sofia_lte
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR_LNP)/*8000*.ucode))
 
