@@ -15,6 +15,7 @@ $(fftf_build_opt): $(ACP)
 					EBL_SIGNED_FLS:$(EBL_SIGNED_FLS) \
 					SYSTEM_FLS_SIGN_SCRIPT:$(SYSTEM_FLS_SIGN_SCRIPT) \
 					SOC_FIRMWARE_TYPE:$(SOC_FIRMWARE_TYPE) \
+					SECPACK_IN_SLB:$(SECPACK_IN_SLB) \
 					)
 	$(hide) echo "$(FFTF_TARGET_TO_FILE)" > $@
 
