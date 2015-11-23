@@ -1,0 +1,10 @@
+# sec_daemon configuration
+service sec_daemon /system/bin/sec_daemon
+    class main
+    user system
+    group system
+    disabled
+
+on property:init.svc.ipcsd=running
+    start sec_daemon
+
