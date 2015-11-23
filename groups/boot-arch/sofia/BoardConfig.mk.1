@@ -1,1 +1,21 @@
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
+PREBUILT_FLS ?= $(CURDIR)/hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(subst r2_,,$(TARGET_DEVICE))
+{{^fls_prebuilts}}
+ifeq "$(wildcard $(ANDROID_BUILD_TOP)/../soclib/)" ""
+INTEL_PRG_FILE ?= $(PREBUILT_FLS)/modem_cfg_emmc.prg
+GEN_PRG_FROM_SRC := true
+BUILD_MODEM := 0
+SOFIA_PROVDATA_FILES += $(FLSTOOL)
+endif
+{{/fls_prebuilts}}
+{{#fls_prebuilts}}
+# Flash partition layout:
+INTEL_PRG_FILE := $(CURDIR)/hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/modem_cfg_emmc.prg
+ifeq ($(wildcard $(INTEL_PRG_FILE)),)
+INTEL_PRG_FILE := $(CURDIR)/hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(subst r2_,,$(TARGET_DEVICE))/modem_cfg_emmc.prg
+endif
+GEN_PRG_FROM_SRC := false
+
+BOARD_USE_FLS_PREBUILTS := $(TARGET_DEVICE)
+{{/fls_prebuilts}}
+

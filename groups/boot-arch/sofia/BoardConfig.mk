@@ -40,27 +40,17 @@ TARGET_USERIMAGES_USE_EXT4 := true
 {{#imc_build_rules}}
 USE_IMC_BUILD_RULES ?= true
 {{/imc_build_rules}}
-# Flash partition layout:
-{{^fls_prebuilts}}
-INTEL_PRG_FILE ?= device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
-GEN_PRG_FROM_SRC := true
-TARGET_NO_RECOVERY := false
-ifeq ($(USE_IMC_BUILD_RULES),true)
-include device/intel-imc/common/check_source.mk
-endif
-{{/fls_prebuilts}}
-{{#fls_prebuilts}}
-INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/modem_cfg_emmc.prg
-ifeq ($(wildcard $(INTEL_PRG_FILE)),)
-INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(TARGET_DEVICE)/modem_cfg_emmc.prg
-endif
-GEN_PRG_FROM_SRC := false
 
-BOARD_USE_FLS_PREBUILTS := $(TARGET_DEVICE)
-{{/fls_prebuilts}}
-
-PARTITION_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/partition.xml
-RAMLAYOUT_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
+ifneq ($(wildcard  $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/partition.xml),)
+PARTITION_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/partition.xml
+else
+PARTITION_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/partition.xml
+endif
+ifneq ($(wildcard  $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/8192_ram_layout.xml),)
+RAMLAYOUT_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/8192_ram_layout.xml
+else
+RAMLAYOUT_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
+endif
 
 {{#msm}}
 # Enable -DFEAT_RPC_SERVICE for various IMC services
