@@ -20,6 +20,10 @@ endif
 # to access the USB device via libusb.
 PRODUCT_PACKAGES += add-sr300-to-usb-group
 
+# SR300 FW Update Tool.
+PRODUCT_PACKAGES += \
+	FWUpdateSR300
+
 # Apps can now be compiled against the add-on without having to
 # manually copy the com.intel.camera2.extensions.depthcamera.jar to the
 # app 'libs' folder, ensuring only the built-in jar file
