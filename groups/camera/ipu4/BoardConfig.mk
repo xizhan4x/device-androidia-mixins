@@ -3,6 +3,8 @@
 # for these.  Set only one.  And we'll just ignore the inconsistent _.
 USE_CAMERA_HAL2 := false
 USE_CAMERA_HAL_3 := true
+IPU_SYSVER := {{{ipu4_version}}}
+IPU_CAMERA_PROFILES := {{{camera_profiles}}}
 
 # BXT IPU hardware generation, camera3hal builds different code for
 # different IPUs
