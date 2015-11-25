@@ -10,3 +10,6 @@ USE_CAMERA_SR300 := true
 
 # Build camera3hal as system lib instead as camera HAL module.
 USE_CAMERA_ATOMISP_EMBED := true
+
+# Use the SR300 libusb specific SELinux rules
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/depth-camera/sr300
