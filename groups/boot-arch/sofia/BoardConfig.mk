@@ -39,6 +39,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 INTEL_PRG_FILE ?= device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
 GEN_PRG_FROM_SRC := true
 TARGET_NO_RECOVERY := false
+ifeq ($(USE_IMC_BUILD_RULES),true)
+include device/intel-imc/common/check_source.mk
+endif
 {{/fls_prebuilts}}
 {{#fls_prebuilts}}
 INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/modem_cfg_emmc.prg
