@@ -34,3 +34,7 @@ ifeq ($(findstring cws_manu,$(BOARD_SEPOLICY_DIRS)),)
     BOARD_SEPOLICY_DIRS += device/intel/sepolicy/cws_manu
 endif
 {{/gpp}}
+
+ifneq (, $(filter r2_%, $(TARGET_PRODUCT)))
+    ADDITIONAL_DEFAULT_PROPERTIES += ro.gnss.sv.status=true
+endif

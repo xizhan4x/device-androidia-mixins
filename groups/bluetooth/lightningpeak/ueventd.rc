@@ -3,5 +3,5 @@
 {{{port}}}                                   0660 bluetooth bluetooth
 {{#gpp}}
 # Bluetooth GPT factory partition block device
-/dev/block/platform/*/*/by-name/bluetooth_nvm 0660 bluetooth system
+/dev/block/*/*/*/by-name/bluetooth_nvm 0660 bluetooth system
 {{/gpp}}

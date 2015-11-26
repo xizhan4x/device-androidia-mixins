@@ -2,5 +2,5 @@
 /dev/nfcc                                  0660 nfc nfc
 
 # NFC GPT factory partition block device
-/dev/block/platform/*/*/by-name/nfc_nvm 0660 nfc system
+/dev/block/*/*/*/by-name/nfc_nvm 0660 nfc system
 
