@@ -6,6 +6,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 BOARD_USE_IMC_OEM_TELEPHONY := false
 
+BOARD_HAVE_MODEM := true
+
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony \
                        device/intel/sepolicy/telephony/sflte
 

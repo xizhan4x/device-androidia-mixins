@@ -28,3 +28,25 @@ service thermal_lite /thermal_lite
     class charger
     seclabel u:r:thermal_lite:s0
 {{/thermal_lite}}
+
+
+{{#reset_policy}}
+# reset thermal policy when zygote restart or stopped
+on property:init.svc.zygote=restarting
+    write /sys/devices/virtual/thermal/thermal_zone0/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone1/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone2/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone3/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone4/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone5/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone6/policy step_wise
+on property:init.svc.zygote=stopped
+    write /sys/devices/virtual/thermal/thermal_zone0/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone1/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone2/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone3/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone4/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone5/policy step_wise
+    write /sys/devices/virtual/thermal/thermal_zone6/policy step_wise
+{{/reset_policy}}
+

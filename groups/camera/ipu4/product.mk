@@ -1,21 +1,18 @@
 
 #Camera isys firmware
-PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_isys_bxt_fw_a0.bin:system/etc/firmware/ipu4_isys_bxt_fw_a0.bin
-
-#Camera isys firmware
-PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_isys_bxt_fw_b0.bin:system/etc/firmware/ipu4_isys_bxt_fw_b0.bin
-
-#Camera psys firmware
-PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_psys_bxt_fw_a0.bin:system/etc/firmware/ipu4_psys_bxt_fw_a0.bin
+PRODUCT_PACKAGES += \
+    ipu4_isys_bxt_fw_a0.bin \
+    ipu4_isys_bxt_fw_b0.bin
 
 #Camera psys firmware
-PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_psys_bxt_fw_b0.bin:system/etc/firmware/ipu4_psys_bxt_fw_b0.bin
+PRODUCT_PACKAGES += \
+    ipu4_psys_bxt_fw_a0.bin \
+    ipu4_psys_bxt_fw_b0.bin
 
 #Camera cpd file
-PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_cpd_a0.bin:system/etc/firmware/ipu4_cpd_a0.bin
-
-#Camera cpd file
-PRODUCT_COPY_FILES += vendor/intel/fw/ipu4/ipu4_cpd_b0.bin:system/etc/firmware/ipu4_cpd_b0.bin
+PRODUCT_PACKAGES += \
+    ipu4_cpd_a0.bin \
+    ipu4_cpd_b0.bin
 
 ifeq ($(TARGET_BOARD_PLATFORM),)
     $(error Please define TARGET_BOARD_PLATFORM in product-level Makefile)

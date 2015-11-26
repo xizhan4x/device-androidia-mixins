@@ -112,3 +112,9 @@ service ril-daemon2 /system/bin/rild -c 2
 on property:persist.radio.multisim.config=dsds
    start ril-daemon2
 {{/dsds}}
+
+service oemhook_launch /system/vendor/bin/ril_start_oemhook.sh
+    class main
+    user system
+    oneshot
+    disabled

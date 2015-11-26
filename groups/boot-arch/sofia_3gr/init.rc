@@ -100,8 +100,14 @@ service rpc-daemon /system/bin/rpc-daemon
     user root
     disabled
 
+{{^msm}}
 on property:rpcd.start=1
     start rpc-daemon
+{{/msm}}
+{{#msm}}
+on property:msm.start=true
+    start rpc-daemon
+{{/msm}}
 
 service watchdog /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters}}}{{/watchdog_parameters}}
     class core
