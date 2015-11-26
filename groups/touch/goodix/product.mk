@@ -3,3 +3,4 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
 PRODUCT_PACKAGES += gt9157.fw
+PRODUCT_PACKAGES += gt9271.fw
