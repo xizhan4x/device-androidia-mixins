@@ -13,4 +13,7 @@ DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_002
 {{#carrier_vzw}}
 DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_003
 {{/carrier_vzw}}
+{{#carrier_cmcc}}
+DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_004
+{{/carrier_cmcc}}
 endif
