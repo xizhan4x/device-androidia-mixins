@@ -43,3 +43,11 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-p2p-connected-stop-scan
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-force-single-ch
 
+{{#softap_dualband_allow}}
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.wifi.softap_dualband_allow=true
+{{/softap_dualband_allow}}
+{{^softap_dualband_allow}}
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.wifi.softap_dualband_allow=false
+{{/softap_dualband_allow}}
