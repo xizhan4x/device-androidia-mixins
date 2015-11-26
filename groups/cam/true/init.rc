@@ -1,0 +1,14 @@
+
+service offloaddaemon /system/bin/offloaddaemon
+    class main
+    user system
+    group system wifi inet net_raw net_admin dhcp
+    disabled
+    oneshot
+
+on property:persist.s2b_native=0
+    restart offloaddaemon
+
+on boot
+    restart offloaddaemon
+
