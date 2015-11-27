@@ -1,0 +1,5 @@
+{{#log}}
+on boot
+    setprop persist.media.pfw.verbose true
+{{/log}}
+
