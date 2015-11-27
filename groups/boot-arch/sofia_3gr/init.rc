@@ -54,8 +54,8 @@ on property:sys.boot_completed=1
 # Once nvm partition is setup, create directory structure and set permissions.
 # NVM dependent services are disabled by default; start them from here.
 on property:init.svc.setup_fs_nvm=stopped
-    wait /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID076
-    mount ext4 /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID076 /nvm_fs_partition nosuid nodev data=journal
+    wait /dev/block/by-name/ImcPartID076
+    mount ext4 /dev/block/by-name/ImcPartID076 /nvm_fs_partition nosuid nodev data=journal
     restorecon_recursive /nvm_fs_partition
 
     # After mount, owner is root
@@ -63,7 +63,7 @@ on property:init.svc.setup_fs_nvm=stopped
     chmod 0775 /nvm_fs_partition
 
     mkdir /nvm_fs_partition/factory 0770 media drm
-    mkdir /nvm_fs_partition/nvm 0660 misc misc
+    mkdir /nvm_fs_partition/nvm 0770 misc misc
     restorecon_recursive /nvm_fs_partition
 
     # Set this property to enable nvm partition dependent services

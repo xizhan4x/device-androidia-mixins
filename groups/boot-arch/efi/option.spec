@@ -22,3 +22,4 @@ ignore_not_applicable_reset = false
 verity_warning = true
 txe_bind_root_of_trust = true
 run_tco_on_shutdown = false
+hung_task_timeout_secs = 120
