@@ -1,4 +1,9 @@
+{{#use_lte_sepolicy}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
+{{/use_lte_sepolicy}}
+{{^use_lte_sepolicy}}
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia3gr
+{{/use_lte_sepolicy}}
 TARGET_NO_RECOVERY := false
 {{^fls_prebuilts}}
 INTEL_PRG_FILE ?= $(CURDIR)/device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
