@@ -1,5 +1,9 @@
-{{#gpp}}
 on post-fs-data
+{{#bt_usc}}
+    chown bluetooth bluetooth /system/vendor/bin/btnvmmerge
+    chmod 0770 /system/vendor/bin/btnvmmerge
+{{/bt_usc}}
+{{#gpp}}
     # create BT NVM folder
     mkdir /config/bluetooth 0770 bluetooth system
     restorecon_recursive /config/bluetooth
