@@ -8,6 +8,7 @@ on property:ro.camera.hardware.ipu4=*
     insmod ${ro.boot.moduleslocation}/smiapp-pll.ko
     insmod ${ro.boot.moduleslocation}/smiapp.ko
     insmod ${ro.boot.moduleslocation}/crlmodule.ko
+    insmod ${ro.boot.moduleslocation}/lc898122.ko
     insmod ${ro.boot.moduleslocation}/lm3643.ko
     insmod ${ro.boot.moduleslocation}/dw9714.ko
     insmod ${ro.boot.moduleslocation}/videobuf-core.ko
