@@ -5,9 +5,8 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_sf3g
 BOARD_USE_3G_RPCRIL := true
 BOARD_USE_IMC_OEM_TELEPHONY := false
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
+ADDITIONAL_BUILD_PROPERTIES += \
     persist.radio.multisim.config = dsds \
-    persist.tel.hot_swap.support=true \
     persist.ril-daemon.disable=dsds \
     ro.telephony.default_network=0,1
 

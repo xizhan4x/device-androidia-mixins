@@ -10,10 +10,9 @@ CRASHLOGD_MODULE_MODEM ?= true
 BOARD_MODEM_LIST := {{{modems}}}
 
 # System Properties
-ADDITIONAL_DEFAULT_PROPERTIES += \
+ADDITIONAL_BUILD_PROPERTIES += \
     rild.libpath=librapid-ril-core.so \
     ro.telephony.default_network=9 \
-    persist.tel.hot_swap.support=true \
     persist.tel.stk.apbip=true
 
 # Telephony common overlay folder
