@@ -37,21 +37,6 @@ endif
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_USERIMAGES_USE_EXT4 := true
 
-{{#imc_build_rules}}
-USE_IMC_BUILD_RULES ?= true
-{{/imc_build_rules}}
-
-ifneq ($(wildcard  $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/partition.xml),)
-PARTITION_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/partition.xml
-else
-PARTITION_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/partition.xml
-endif
-ifneq ($(wildcard  $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/8192_ram_layout.xml),)
-RAMLAYOUT_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/$(TARGET_DEVICE)/8192_ram_layout.xml
-else
-RAMLAYOUT_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
-endif
-
 {{#msm}}
 # Enable -DFEAT_RPC_SERVICE for various IMC services
 FEAT_MSM := YES
