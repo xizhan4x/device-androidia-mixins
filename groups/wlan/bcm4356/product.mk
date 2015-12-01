@@ -12,3 +12,5 @@ PRODUCT_PACKAGES += wpa_supplicant \
     fw_bcmdhd_4356a2_pcie_apsta.bin \
     nvram_pcie_4356_a2.cal
 
+
+PRODUCT_PACKAGES_DEBUG += dhdutil_1.201.90

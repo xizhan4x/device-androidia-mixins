@@ -5,3 +5,7 @@ on boot
     setprop widi.abr.enable true
     setprop widi.setsocketsize.enable false
     setprop widi.socketpriority.enable false
+
+on post-fs-data
+    mkdir /data/misc/dnsmasq 0755 root root
+    mkdir /data/misc/dnsmasq/dalvik-cache 0755 root root

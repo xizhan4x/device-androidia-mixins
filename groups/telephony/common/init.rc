@@ -77,6 +77,19 @@ on property:sys.usb.config=rndis,acm,adb
     wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
     write /sys/class/net/rndis0/queues/rx-0/rps_cpus F
 
+# USB ACM second configuration, with rndis and adb
+on property:sys.usb.config=rndis,acm,acm,adb
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 8087
+    write /sys/class/android_usb/android0/idProduct 0a66
+    write /sys/class/android_usb/android0/f_acm/instances 2
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+    wait /sys/class/net/rndis0/queues/rx-0/rps_cpus 1
+    write /sys/class/net/rndis0/queues/rx-0/rps_cpus F
+
 on property:persist.system.at-proxy.mode=*
     setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
 
@@ -165,9 +178,14 @@ on property:sys.usb.modemevt=1
    write /proc/sys/net/ipv6/conf/usb2/use_tempaddr 2
    write /proc/sys/net/ipv6/conf/usb3/use_tempaddr 2
    write /proc/sys/net/ipv6/conf/usb4/use_tempaddr 2
-{{#m2}}
 
+{{#m2}}
+#Currently M2 support in unavailable in BIOS. Hence, introduced new variable m2_config
+#to set the config path. It has bo be removed, once the BIOS settings are ready for M2.
 # Disable Nvm Server
 on property:persist.disable_NVM_Server=1
     stop nvm_manager
+    {{#m2_config}}
+    setprop persist.tcs.hw_filename /system/vendor/etc/telephony/{{m2_config}}.xml
+    {{/m2_config}}
 {{/m2}}

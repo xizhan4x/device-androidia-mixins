@@ -1,6 +1,6 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=false \
-    ro.telephony.default_network=9
+    ro.telephony.default_network=9,1
 
 PRODUCT_PACKAGES += \
     librpc-ril \

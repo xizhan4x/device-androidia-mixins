@@ -18,4 +18,4 @@ on charger_adb
     write /sys/class/android_usb/android0/functions adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state adb
+    setprop persist.sys.usb.config adb
