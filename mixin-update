@@ -7,7 +7,7 @@ import os
 import re
 import argparse
 import collections
-sys.path.append('external/pystache')
+sys.path.insert(1,'external/pystache')
 import pystache
 pystache.defaults.MISSING_TAGS = 'strict'
 
