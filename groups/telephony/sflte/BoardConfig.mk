@@ -16,4 +16,16 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony \
 RIL_IOSM_ENABLED := true
 {{/ril_iosm}}
 
+{{#modem_silent_reset}}
+# Enable -MODEM_SILENT_RESET_ENABLED
+MODEM_SILENT_RESET_ENABLED := true
+{{/modem_silent_reset}}
+
+# unstub CRM only if modem silent reset is enabled
+ifeq ($(MODEM_SILENT_RESET_ENABLED),true)
+  ADDITIONAL_DEFAULT_PROPERTIES += \
+      persist.sys.crm0.load_stub=false \
+      persist.sys.crm1.load_stub=false
+endif
+
 BOARD_HAVE_ATPROXY := true
