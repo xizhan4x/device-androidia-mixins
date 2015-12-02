@@ -4,6 +4,7 @@
 deps = disk-bus
 
 [defaults]
+target_board_platform = gmin
 uefi_arch = x86_64
 acpi_permissive = false
 use_power_button = false
