@@ -1,1 +1,7 @@
 AOSP_CARRIER_CONFIG ?= {{carrier}}
+
+ifeq ($(AOSP_CARRIER_CONFIG), VZW)
+# DataActivationManager
+PRODUCT_PACKAGES += \
+    DataActivationManager
+endif
