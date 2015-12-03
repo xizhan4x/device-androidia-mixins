@@ -13,7 +13,8 @@ BOARD_MODEM_LIST := {{{modems}}}
 ADDITIONAL_DEFAULT_PROPERTIES += \
     rild.libpath=librapid-ril-core.so \
     ro.telephony.default_network=9 \
-    persist.tel.hot_swap.support=true
+    persist.tel.hot_swap.support=true \
+    persist.tel.stk.apbip=true
 
 # Telephony common overlay folder
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
