@@ -1,1 +1,2 @@
-../iwlwifi/ueventd.rc
+# WLAN GPT factory partition block device
+/dev/block/*/*/*/by-name/wlan_nvm 0660 wifi system
