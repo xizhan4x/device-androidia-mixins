@@ -149,12 +149,13 @@ endif
 	$(hide) echo "Android-IA=\\EFI\\BOOT\\$(efi_default_name)" > $(efi_root)/manifest.txt
 	$(hide) (cd $(efi_root) && zip -qry ../$(notdir $@) .)
 
-bootloader_metadata := $(intermediates)/bootloader-size.txt
-$(bootloader_metadata):
+bootloader_info := $(intermediates)/bootloader_image_info.txt
+$(bootloader_info):
 	$(hide) mkdir -p $(dir $@)
-	$(hide) echo $(BOARD_BOOTLOADER_PARTITION_SIZE) > $@
+	$(hide) echo "size=$(BOARD_BOOTLOADER_PARTITION_SIZE)" > $@
+	$(hide) echo "block_size=$(BOARD_BOOTLOADER_BLOCK_SIZE)" >> $@
 
-INSTALLED_RADIOIMAGE_TARGET += $(bootloader_zip) $(bootloader_metadata)
+INSTALLED_RADIOIMAGE_TARGET += $(bootloader_zip) $(bootloader_info)
 
 # Rule to create $(OUT)/bootloader image, binaries within are signed with
 # testing keys
@@ -170,6 +171,7 @@ $(bootloader_bin): \
 
 	$(hide) device/intel/build/bootloader_from_zip \
 		--size $(BOARD_BOOTLOADER_PARTITION_SIZE) \
+		--block-size $(BOARD_BOOTLOADER_BLOCK_SIZE) \
 		$(BOOTLOADER_ADDITIONAL_ARGS) \
 		--zipfile $(bootloader_zip) \
 		$@
