@@ -19,6 +19,12 @@ on property:ro.camera.hardware.ipu4=*
     insmod ${ro.boot.moduleslocation}/intel-ipu4-mmu-${ro.camera.hardware.ipu4}.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-isys-mod-${ro.camera.hardware.ipu4}.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-psys-mod-${ro.camera.hardware.ipu4}.ko
+
+    # WA until we find good solution
+    stop media
+    start media
+    # WA ends
+
     #optional debug configuration
     #echo "module smiapp_pll +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module smiapp +p" > /sys/kernel/debug/dynamic_debug/control;
