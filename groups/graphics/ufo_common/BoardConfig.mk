@@ -18,3 +18,4 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.ufo.use_coreu=1
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/color_config
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/ufo_common
