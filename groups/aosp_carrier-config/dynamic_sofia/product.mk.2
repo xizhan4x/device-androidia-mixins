@@ -3,6 +3,7 @@ AOSP_CARRIER_CONFIG ?= {{user_build_aosp}}
 ifeq ($(TARGET_BUILD_VARIANT),user)
 
 ifeq ($(AOSP_CARRIER_CONFIG), CMCC)
+PRODUCT_PACKAGES += SpeedDial
 PRODUCT_PACKAGES += com.intel.telephony.extend
 
 PRODUCT_PACKAGES += \
@@ -29,6 +30,7 @@ endif
 else
 
 {{#carrier_cmcc}}
+PRODUCT_PACKAGES += SpeedDial
 PRODUCT_PACKAGES += com.intel.telephony.extend
 
 PRODUCT_PACKAGES += \
