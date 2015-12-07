@@ -1,0 +1,5 @@
+
+
+on post-fs
+  setprop media.wfd.video-bitrate 2500000
+
