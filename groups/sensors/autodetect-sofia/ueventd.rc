@@ -130,6 +130,7 @@
 #####################################################
 # Proximity
 #####################################################
+/sys/devices/soc*/*/*/*/*/*/*/iio:device* in_proximity_en		0660    system  system
 /sys/devices/soc*/*/*/*/*/*/*/iio:device* in_proximity_raw		0660    system  system
 /sys/devices/soc*/*/*/*/*/*/*/iio:device* in_proximity0_raw		0660    system  system
 /sys/devices/soc*/*/*/*/*/*/*/iio:device* in_proximity1_raw		0660    system  system
@@ -161,6 +162,7 @@
 #####################################################
 # Light
 #####################################################
+/sys/devices/soc*/*/*/*/*/*/*/iio:device* in_illuminance_en				0660    system  system
 /sys/devices/soc*/*/*/*/*/*/*/iio:device* in_illuminance_calibscale			0660    system  system
 /sys/devices/soc*/*/*/*/*/*/*/iio:device* in_illuminance_input				0660    system  system
 /sys/devices/soc*/*/*/*/*/*/*/iio:device* in_illuminance_integration_time		0660    system  system
