@@ -3,6 +3,10 @@ on property:persist.tool_enable=1
     start ipcsd
     start rservice
 
+on property:persist.tool_enable=0
+    stop ipcsd
+    stop rservice
+
 service ipcsd /system/bin/ipcsd --apint=UDSOCKS_,gateway --ext=TTY,/dev/ttyGS2 --mex=TTY,/dev/mvpipe-GTI
     class main
     user radio

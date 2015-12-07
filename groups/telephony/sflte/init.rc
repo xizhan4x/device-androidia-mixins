@@ -97,9 +97,6 @@ on property:system.at-proxy.mode=2
     stop proxy
     start proxy-tunneling
 
-on property:persist.tool_enable=0
-    stop ipcsd
-
 {{#dsds}}
 service ril-daemon2 /system/bin/rild -c 2
    class main
