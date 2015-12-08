@@ -81,6 +81,9 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.Intel.amrwb.decoder" type="audio/amr-wb" />
         <MediaCodec name="OMX.Intel.aac.decoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.Intel.vorbis.decoder" type="audio/vorbis" />
+{{#wma}}
+        <MediaCodec name="OMX.Intel.wma.decoder" type="audio/x-ms-wma" />
+{{/wma}}
         <MediaCodec name="OMX.Intel.hw_vd.h264" type="video/avc" >
             <!-- profiles and levels:  ProfileBaseline : Level51 -->
             <Limit name="size" min="64x64" max="3840x2160" />

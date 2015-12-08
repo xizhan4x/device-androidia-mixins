@@ -12,3 +12,9 @@ PRODUCT_PACKAGES += \
     libstagefright_soft_amrenc_mdp \
     libstagefright_soft_amrdec_mdp
 
+{{#wma}}
+#Build OMX wrapper codecs for wma
+PRODUCT_PACKAGES += \
+    libstagefright_soft_wmadec_mdp
+
+{{/wma}}

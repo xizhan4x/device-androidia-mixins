@@ -9,3 +9,4 @@ ifneq (,$(wildcard $(LOCAL_PATH)/../media_codecs_performance.xml))
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 endif
+
