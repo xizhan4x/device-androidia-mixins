@@ -1,4 +1,5 @@
-FLAG_GMS_AVAILABLE := true
+FLAG_GMS_AVAILABLE ?= true
+ifeq ($(FLAG_GMS_AVAILABLE),true)
 {{#minimal}}
 FLAG_GMS_MINIMAL := true
 {{/minimal}}
@@ -15,3 +16,4 @@ FLAG_GMS_WITH_STUB_APPS := true
 FLAG_GMS_WITH_BUGLE_FORCE := true
 {{/force_bugle}}
 $(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
+endif

@@ -1,7 +1,0 @@
-on boot
-    setprop audio.offload.capabilities 1
-    setprop audio.offload.min.duration.secs 20
-    setprop audio.device.name cherrytrailaud
-    setprop persist.media.pfw.verbose true
-on post-fs-data
-    mkdir /mnt/asec/media 0770 media media

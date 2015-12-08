@@ -50,3 +50,12 @@ ifeq ($(findstring cws_manu,$(BOARD_SEPOLICY_DIRS)),)
     BOARD_SEPOLICY_DIRS += device/intel/sepolicy/cws_manu
 endif
 {{/gpp}}
+
+{{#softap_dualband_allow}}
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.wifi.softap_dualband_allow=true
+{{/softap_dualband_allow}}
+{{^softap_dualband_allow}}
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.wifi.softap_dualband_allow=false
+{{/softap_dualband_allow}}

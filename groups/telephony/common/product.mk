@@ -22,6 +22,7 @@ PRODUCT_PACKAGES += \
     mmgr \
     libmdmcli_mmgr \
     libmdmcli_jni \
+    libmdmcli_stub \
     libmodemupdate{{#m2}} \
     fwswitching{{/m2}}
 

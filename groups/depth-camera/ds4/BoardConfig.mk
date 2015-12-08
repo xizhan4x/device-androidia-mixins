@@ -11,3 +11,6 @@ USE_CAMERA_DS4_FW := true
 
 # Build camera3hal as system lib instead as camera HAL module.
 USE_CAMERA_ATOMISP_EMBED := true
+
+# Allow DSAPI access
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/ds4

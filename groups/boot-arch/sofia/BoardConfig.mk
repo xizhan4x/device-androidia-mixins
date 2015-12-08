@@ -26,7 +26,10 @@ TARGET_BOOTLOADER_BOARD_NAME := {{{modem_projectname}}}
 
 BOARD_KERNEL_BASE := 0x0
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x400000 --second_offset 0x600010
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x400000 --second_offset 0x680010
+
+#REVERTME: need align this configure of sofia3gr on sofialte
+#revert is tracked in https://jira01.devtools.intel.com/browse/OAM-6593
 ifeq (${TARGET_BOARD_PLATFORM},sofia_lte)
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x300000 --second_offset 0x600010
 endif
@@ -42,6 +45,9 @@ USE_IMC_BUILD_RULES ?= true
 INTEL_PRG_FILE ?= device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
 GEN_PRG_FROM_SRC := true
 TARGET_NO_RECOVERY := false
+ifeq ($(USE_IMC_BUILD_RULES),true)
+include device/intel-imc/common/check_source.mk
+endif
 {{/fls_prebuilts}}
 {{#fls_prebuilts}}
 INTEL_PRG_FILE := hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/modem_cfg_emmc.prg

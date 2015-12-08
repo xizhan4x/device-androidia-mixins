@@ -13,3 +13,4 @@ extmod_platform =
 useprebuilt = true
 firmware_path = /system/etc/firmware
 kdefconfig =
+camera_cos_hack = false

@@ -64,7 +64,6 @@ on property:init.svc.setup_fs_nvm=stopped
 
     mkdir /nvm_fs_partition/factory 0770 media drm
     mkdir /nvm_fs_partition/nvm 0770 misc misc
-    restorecon_recursive /nvm_fs_partition
 
     # Set this property to enable nvm partition dependent services
     setprop nvm_partition mounted
@@ -89,7 +88,7 @@ service nvm_uagent /system/bin/nvm_useragent
     class main
     disabled
     user radio
-    group radio
+    group radio misc
 
 service rpc-daemon /system/bin/rpc-daemon
     socket rpc_send stream 660 system radio
@@ -113,4 +112,20 @@ service watchdog /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters}
     class core
     oneshot
     seclabel u:r:watchdogd:s0
+
+{{#verity_warning}}
+
+on init
+    # Load persistent dm-verity state and detect if a restart was
+    # triggered after dm-verity detected a corrupted block
+    verity_load_state
+
+on fs
+    # Update dm-verity persistent state and set partition.*.verified
+    # properties
+    verity_update_state
+
+on verity-logging
+    exec u:r:slideshow:s0 -- /sbin/slideshow warning/verity_red_1 warning/verity_red_2
+{{/verity_warning}}
 

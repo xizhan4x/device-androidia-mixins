@@ -1,5 +1,0 @@
-on post-fs-data
-    mkdir /mnt/asec/media 0770 media media
-
-on boot
-    setprop persist.media.pfw.verbose true
