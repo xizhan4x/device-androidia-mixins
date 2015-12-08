@@ -27,3 +27,9 @@ USE_INTEL_JPEG := false
 # depencencies will remove themselves from the build...
 USE_CAMERA_STUB := false
 
+{{#restrict_preview}}
+# If set to true a patch is applied to the camera service that
+# ensures that the maximum preview size is no greater than the
+# maximum screen size when using the camera 1 api.
+RESTRICT_PREVIEW_BY_SCREEN := true
+{{/restrict_preview}}
