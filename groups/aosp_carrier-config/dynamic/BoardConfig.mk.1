@@ -11,9 +11,9 @@ BOARD_FLASHFILES += $(foreach prop,$(AOSP_CARRIER_OEMVARS),$(addprefix $(OEMVARS
 {{#carrier_att}}
 DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_001
 {{/carrier_att}}
-{{#carrier_dcm}}
+{{#carrier_ntt}}
 DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_002
-{{/carrier_dcm}}
+{{/carrier_ntt}}
 {{#carrier_vzw}}
 DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_003
 {{/carrier_vzw}}
