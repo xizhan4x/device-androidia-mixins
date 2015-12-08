@@ -20,3 +20,4 @@ dm_verity=
 verity_warning = false
 lte_interactive_fastboot_ui_feature=false
 use_lte_sepolicy=false
+lte_gvb_feature=false

@@ -31,6 +31,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/../media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/../media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
 
+{{#lte_gvb_feature}}
+#if lte gvb feature enabled, export a flag
+#so as that bootloader and prg generation can be controlled
+export GVB_FEATURE_ENABLE := true
+{{/lte_gvb_feature}}
+
 #Add persistent property to enable factory protection
 PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/ImcPartID126
 
