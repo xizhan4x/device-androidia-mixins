@@ -21,6 +21,9 @@ RIL_IOSM_ENABLED := true
 MODEM_SILENT_RESET_ENABLED := true
 {{/modem_silent_reset}}
 
+{{#intel_cta}}
+DEVICE_PACKAGE_OVERLAYS += vendor/intel/featsetres_tel/cta
+{{/intel_cta}}
 # unstub CRM only if modem silent reset is enabled
 ifeq ($(MODEM_SILENT_RESET_ENABLED),true)
   ADDITIONAL_DEFAULT_PROPERTIES += \
