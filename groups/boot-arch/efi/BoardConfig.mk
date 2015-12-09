@@ -89,3 +89,5 @@ endif
 {{#run_tco_on_shutdown}}
 BOARD_KERNEL_CMDLINE += iTCO_wdt.stop_on_shutdown=0
 {{/run_tco_on_shutdown}}
+
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/efi
