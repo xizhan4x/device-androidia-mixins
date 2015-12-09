@@ -5,3 +5,4 @@ carrier_ntt = false
 carrier_vzw = false
 carrier_cmcc = false
 libims_registration = false
+libsysclock_utctime = false
