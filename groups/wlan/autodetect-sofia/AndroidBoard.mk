@@ -21,6 +21,7 @@ ifeq ($(HAL_BIND_MOUNT), true)
 AUTODETECT_LINK_PAIRS := \
 	$(PRODUCT_OUT)/system/etc/wifi/nvmDataDefault:../../..$(HAL_BM_TARGET_WIFI)/etc/nvmDataDefault \
 	$(PRODUCT_OUT)/system/vendor/firmware/iwl_nvm.bin:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwl_nvm.bin \
+	$(PRODUCT_OUT)/system/vendor/firmware/nvmData:../../../nvm_fs_partition/wlan/nvmData \
 	$(PRODUCT_OUT)/system/vendor/firmware/fw_info.txt:../../..$(HAL_BM_TARGET_WIFI)/firmware/fw_info.txt \
 	$(PRODUCT_OUT)/system/vendor/firmware/iwl-dbg-cfg.ini:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwl-dbg-cfg.ini \
 	$(PRODUCT_OUT)/system/vendor/firmware/iwlwifi-softap-dummy.ucode:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwlwifi-softap-dummy.ucode \
