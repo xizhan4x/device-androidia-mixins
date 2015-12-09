@@ -39,13 +39,13 @@ service gnss_rest_mec /system/bin/cws_manu -G -n1 -r/config/gnss/GNSS_MEC.bin
     disabled
 {{/gpp}}
 
-service gnssCG2000 /system/bin/gnssCG2000
+service gnssCG2000 /system/vendor/bin/gnssCG2000
     class late_start
     user gps
     group system radio net_admin
     socket gnss stream 0660 gps system
 
-service gnssRxN /system/bin/RXN_IntApp
+service gnssRxN /system/vendor/bin/RXN_IntApp
     class late_start
     user gps
     group system radio
