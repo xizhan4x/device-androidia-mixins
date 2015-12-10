@@ -1,13 +1,9 @@
 ifeq ($(TARGET_BUILD_VARIANT),user)
-# For security concerns, the software scalability based on EFI
-# variable is disabled on USER build.  Static configuration
-# is selected instead
+# For security concerns, the software scalability is disabled on USER build.
+# Static configuration is selected instead.
 DEVICE_PACKAGE_OVERLAYS += $(OVERLAY_AOSP_$(AOSP_CARRIER_CONFIG))
 ADDITIONAL_DEFAULT_PROPERTIES += $(shell cat $(AOSP_CARRIER_PROP_DIR)/$(AOSP_CARRIER_CONFIG).prop)
 else
-OEMVARS_OUT ?= $(PRODUCT_OUT)/oemvars
-AOSP_CARRIER_OEMVARS := $(subst .prop,.txt,$(notdir $(wildcard $(AOSP_CARRIER_PROP_DIR)/*.prop)))
-BOARD_FLASHFILES += $(foreach prop,$(AOSP_CARRIER_OEMVARS),$(addprefix $(OEMVARS_OUT)/oemvars-aosp-carrier-,$(prop)):oemvars-aosp-carrier-$(prop))
 {{#carrier_att}}
 DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_001
 {{/carrier_att}}
