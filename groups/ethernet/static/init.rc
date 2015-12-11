@@ -1,3 +1,12 @@
 on post-fs
-        ifconfig eth0 192.168.42.1 255.255.255.0
-        ifup eth0
+	start staticip
+
+{{#static-ip}}
+service staticip /system/bin/ifconfig eth0 {{static-ip}} 255.255.255.0
+{{/static-ip}}
+{{^static-ip}}
+service staticip /system/bin/ifconfig eth0 192.168.42.1 255.255.255.0
+{{/static-ip}}
+     class main
+     disabled
+     oneshot
