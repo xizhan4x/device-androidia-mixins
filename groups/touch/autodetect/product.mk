@@ -25,3 +25,4 @@ PRODUCT_PACKAGES += t15_gsl3692.fw
 
 # goodix touch fw
 PRODUCT_PACKAGES += gt9157.fw
+PRODUCT_PACKAGES += gt9271.fw

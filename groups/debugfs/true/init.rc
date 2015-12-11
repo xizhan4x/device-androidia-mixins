@@ -8,3 +8,5 @@ on early-boot
     # Needed by surfaceflinger to enable it to open trace_marker
     # on start without file permissions error.
     chmod 0222 /sys/kernel/debug/tracing/trace_marker
+    # tracefs is mounted after 1st access to it
+    chmod 0755 /sys/kernel/debug/tracing

@@ -1,0 +1,48 @@
+# Assign all energy management sysfs attributes to group system,
+# set read and write access to writable entries and
+# read access to read-only attributes.
+/sys/devices/virtual/misc/swfg_iface	acc_err				0444 system system
+/sys/devices/virtual/misc/swfg_iface	batt_dc_rs_table		0444 system system
+/sys/devices/virtual/misc/swfg_iface	batt_hw_status			0444 system system
+/sys/devices/virtual/misc/swfg_iface	batt_id				0664 system system
+/sys/devices/virtual/misc/swfg_iface	batt_manufacturer		0664 system system
+/sys/devices/virtual/misc/swfg_iface	batt_model_name			0664 system system
+/sys/devices/virtual/misc/swfg_iface	batt_present			0664 system system
+/sys/devices/virtual/misc/swfg_iface	batt_serial_number		0664 system system
+/sys/devices/virtual/misc/swfg_iface	batt_status			0664 system system
+/sys/devices/virtual/misc/swfg_iface	batt_type			0664 system system
+/sys/devices/virtual/misc/swfg_iface	battery_fixed			0444 system system
+/sys/devices/virtual/misc/swfg_iface	clr_latched_ibat_avg		0664 system system
+/sys/devices/virtual/misc/swfg_iface	cp_1st_internal_impedance	0444 system system
+/sys/devices/virtual/misc/swfg_iface	cp_2nd_internal_impedance	0444 system system
+/sys/devices/virtual/misc/swfg_iface	cycle_count			0664 system system
+/sys/devices/virtual/misc/swfg_iface	delta_q				0444 system system
+/sys/devices/virtual/misc/swfg_iface	delta_thr			0664 system system
+/sys/devices/virtual/misc/swfg_iface	down_cc				0444 system system
+/sys/devices/virtual/misc/swfg_iface	fcc				0664 system system
+/sys/devices/virtual/misc/swfg_iface	ibat_boot			0444 system system
+/sys/devices/virtual/misc/swfg_iface	ibat_long_avg			0444 system system
+/sys/devices/virtual/misc/swfg_iface	ibat_long_avg_ocv		0444 system system
+/sys/devices/virtual/misc/swfg_iface	ibat_short_avg			0444 system system
+/sys/devices/virtual/misc/swfg_iface	ibat_short_avg_ocv		0444 system system
+/sys/devices/virtual/misc/swfg_iface	nac				0664 system system
+/sys/devices/virtual/misc/swfg_iface	ocv_accuracy			0444 system system
+/sys/devices/virtual/misc/swfg_iface	qmax				0664 system system
+/sys/devices/virtual/misc/swfg_iface	reset_acc_err			0664 system system
+/sys/devices/virtual/misc/swfg_iface	rp_1st_internal_impedance	0444 system system
+/sys/devices/virtual/misc/swfg_iface	rp_2nd_internal_impedance	0444 system system
+/sys/devices/virtual/misc/swfg_iface	rs_empty			0444 system system
+/sys/devices/virtual/misc/swfg_iface	rs_full				0444 system system
+/sys/devices/virtual/misc/swfg_iface	soc_array			0664 system system
+/sys/devices/virtual/misc/swfg_iface	swfg_event			0444 system system
+/sys/devices/virtual/misc/swfg_iface	tbat				0444 system system
+/sys/devices/virtual/misc/swfg_iface	uevent				0664 system system
+/sys/devices/virtual/misc/swfg_iface	up_cc				0444 system system
+/sys/devices/virtual/misc/swfg_iface	user_side_status		0664 system system
+/sys/devices/virtual/misc/swfg_iface	vbat_eoc			0444 system system
+/sys/devices/virtual/misc/swfg_iface	vbat_table			0444 system system
+/sys/devices/virtual/misc/swfg_iface	version				0444 system system
+/sys/devices/virtual/misc/swfg_iface	voltage_boot			0444 system system
+/sys/devices/virtual/misc/swfg_iface	voltage_ocv			0444 system system
+/sys/devices/virtual/misc/swfg_iface	voltage_typ			0444 system system
+

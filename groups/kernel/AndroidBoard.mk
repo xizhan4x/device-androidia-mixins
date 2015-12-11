@@ -15,6 +15,7 @@ KERNEL_CCSLOP := $(filter-out time_macros,$(subst $(comma), ,$(CCACHE_SLOPPINESS
 KERNEL_CCSLOP := $(subst $(space),$(comma),$(KERNEL_CCSLOP))
 
 {{#build_dtbs}}
+BUILD_DTBS := true
 BOARD_DTB := $(LOCAL_KERNEL_PATH)/{{{board_dtb}}}
 DTB ?= $(BOARD_DTB)
 {{/build_dtbs}}
@@ -126,6 +127,19 @@ build_bcmdhd: build_external_modules
 $(BOARD_DTB): yoctotoolchain $(KERNEL_CONFIG)
 	$(MAKE) $(KERNEL_MAKE_OPTIONS) dtbs
 	cp $(LOCAL_KERNEL_PATH)/arch/x86/boot/dts/{{{board_dtb}}} $@
+{{/build_dtbs}}
+
+{{#build_dtbs}}
+define board_dtb_per_variant
+BOARD_DTB.$(1) := $(LOCAL_KERNEL_PATH)/$$(BOARD_DTB_FILE.$(1))
+
+ifneq ({{{board_dtb}}}, $$(BOARD_DTB_FILE.$(1)))
+$$(BOARD_DTB.$(1)): $(BOARD_DTB)
+	cp $(LOCAL_KERNEL_PATH)/arch/x86/boot/dts/$$(BOARD_DTB_FILE.$(1)) $$@
+endif
+endef
+
+$(foreach v,$(BOARD_DTB_VARIANTS),$(eval $(call board_dtb_per_variant,$(v))))
 {{/build_dtbs}}
 
 # Add a kernel target, so "make kernel" will build the kernel

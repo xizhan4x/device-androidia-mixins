@@ -1,4 +1,6 @@
 PRODUCT_PACKAGES += \
+	fmapp \
+	radio.fm.$(TARGET_BOARD_PLATFORM)\
 	rds-decoder \
 	libfm_jni \
 	pekallfmrserver \

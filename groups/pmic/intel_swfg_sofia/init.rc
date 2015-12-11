@@ -1,6 +1,3 @@
-on post-fs-data
-    chown system system /dev/charfg
-
 on property:nvm_partition=mounted
     start swfg_daemon
 

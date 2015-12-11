@@ -3,6 +3,7 @@ ff_intermediates := $(call intermediates-dir-for,PACKAGING,flashfiles)
 fftf_build_opt := $(ff_intermediates)/fftf_build.opt
 
 $(fftf_build_opt): $(ACP)
+	$(hide) mkdir -p $(ff_intermediates)
 	$(hide) rm -f $(fftf_build_opt)
 	$(eval FFTF_TARGET_TO_FILE = \
 					FASTBOOT_IMG_DIR:$(FASTBOOT_IMG_DIR) \
