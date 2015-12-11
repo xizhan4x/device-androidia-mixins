@@ -5,6 +5,7 @@ USE_CAMERA_HAL2 := false
 USE_CAMERA_HAL_3 := true
 IPU_SYSVER := {{{ipu4_version}}}
 IPU_CAMERA_PROFILES := {{{camera_profiles}}}
+IPU_CAMERA_CONFIG := {{{camera_config}}}
 
 # BXT IPU hardware generation, camera3hal builds different code for
 # different IPUs
