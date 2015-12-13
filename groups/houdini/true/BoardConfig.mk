@@ -1,5 +1,5 @@
 # Install Native Bridge
-ifeq ($(WITH_NATIVE_BRIDGE),true)
+WITH_NATIVE_BRIDGE := true
 
 # Enable ARM codegen for x86 with Native Bridge
 BUILD_ARM_FOR_X86 := true
@@ -39,6 +39,4 @@ else
   TARGET_CPU_ABI_LIST_32_BIT ?= $(TARGET_CPU_ABI) $(TARGET_CPU_ABI2)
   TARGET_CPU_ABI_LIST_32_BIT += $(NB_ABI_LIST_32_BIT)
   TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_32_BIT)
-endif
-
 endif

@@ -5,6 +5,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
 {{#bt_usc}}
     libbtuscplugin \
+    btnvmmerge \
 {{/bt_usc}}
     bt_vendor.conf \
     370b12060002340e00.sfi \

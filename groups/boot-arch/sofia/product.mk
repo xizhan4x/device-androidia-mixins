@@ -34,6 +34,11 @@ PRODUCT_COPY_FILES += \
 #Add persistent property to enable factory protection
 PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/ImcPartID126
 
+{{#lte_interactive_fastboot_ui_feature}}
+# if interactive fastboot ui feature enabled
+# enable interactive UI flag
+INTERACTIVE_FASTBOOT_UI := true
+{{/lte_interactive_fastboot_ui_feature}}
 #Build a verified /system partition
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID068
 #Declare feature android.software.verified_boot

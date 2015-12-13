@@ -18,5 +18,6 @@ metadata_part=9
 no_watchdog=true
 dm_verity=
 verity_warning = false
+lte_interactive_fastboot_ui_feature=false
 imc_build_rules=false
 use_lte_sepolicy=false
