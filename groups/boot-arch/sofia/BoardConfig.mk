@@ -79,6 +79,3 @@ TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_${TARGET_BOARD_PL
 
 # All sofia devices depend on this mixin group currently due to symlink
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/common
-
-# Define this to not use the common stable human readable names aka by-name/recovery
-BOARD_SEPOLICY_M4DEFS += sepolicy_use_raw_block_devices=true
