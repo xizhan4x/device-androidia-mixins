@@ -1,6 +1,5 @@
 BOARD_KERNEL_CMDLINE += \
 	idle=halt \
-	debug \
 	nolapic_pm \
 	apic=sofia \
 	vmalloc=288M \
