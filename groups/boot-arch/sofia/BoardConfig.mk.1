@@ -1,3 +1,4 @@
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x300000 --second_offset 0x600010
 SECURE_PLAYBACK_ENABLE := false
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
 PREBUILT_FLS ?= $(CURDIR)/hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(subst r2_,,$(TARGET_DEVICE))
