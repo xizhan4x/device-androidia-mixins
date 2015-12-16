@@ -14,3 +14,9 @@ PRODUCT_PACKAGES += \
     libjpeghwdec \
     libjpeghwenc \
     libapedec
+
+ifeq ($(SECURE_PLAYBACK_ENABLE),true)
+PRODUCT_PACKAGES += \
+    libcodec_intel_sec \
+    libsecmem_intel
+endif
