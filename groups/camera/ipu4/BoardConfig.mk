@@ -23,8 +23,8 @@ USE_INTEL_CAMERA_EXTRAS := true
 # Selects which subdirectory to pick in libmfldadvci/ia_imaging/ia_panorama/
 IA_PANORAMA_VERSION := 1.0
 
-# No hardware JPEG encode on BXT (yet)
-USE_INTEL_JPEG := false
+# Use hardware JPEG encode on BXT
+USE_INTEL_JPEG := true
 
 # Must be "false" (NOT simply unset!) or else lots of camera
 # depencencies will remove themselves from the build...
