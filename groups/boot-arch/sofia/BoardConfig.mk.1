@@ -8,6 +8,8 @@ GEN_PRG_FROM_SRC := false
 SOFIA_PROVDATA_FILES += $(INTEL_PRG_FILE)
 BUILD_MODEM := 0
 SOFIA_PROVDATA_FILES += $(FLSTOOL)
+else
+GEN_PRG_FROM_SRC := true
 endif
 {{/fls_prebuilts}}
 {{#fls_prebuilts}}
