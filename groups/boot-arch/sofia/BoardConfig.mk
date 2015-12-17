@@ -49,8 +49,5 @@ HOST_PREFER_32_BIT := true
 
 SECURE_PLAYBACK_ENABLE := false
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/${TARGET_BOARD_PLATFORM}/
-TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
-
 # All sofia devices depend on this mixin group currently due to symlink
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/common

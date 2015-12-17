@@ -33,3 +33,7 @@ else
 RAMLAYOUT_XML_PATH := $(CURDIR)/device/$(PRODUCT_BRAND)/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
 endif
 
+TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/${TARGET_BOARD_PLATFORM}/
+TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_${TARGET_BOARD_PLATFORM}_intel
+
+

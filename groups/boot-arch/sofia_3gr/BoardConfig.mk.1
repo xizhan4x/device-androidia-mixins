@@ -13,3 +13,7 @@ GEN_PRG_FROM_SRC := true
 PARTITION_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/partition.xml
 RAMLAYOUT_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
 
+TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/${TARGET_BOARD_PLATFORM}/
+TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
+
+
