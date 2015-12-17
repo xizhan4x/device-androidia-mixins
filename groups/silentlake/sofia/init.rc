@@ -1,13 +1,19 @@
-on boot
-    # Insert silentlake vidt
+on fs
+    # Setup and start silentlake service
     insmod ${ro.boot.moduleslocation}/vidt_driver.ko
+    mkdir /cache/silent_lake
+    chown system system /cache/silent_lake
+    chmod 0777 /cache/silent_lake
+    wait /dev/vidt
+    start sl_si_service
 
 on post-fs-data
-    # Setup and start silentlake service
     mkdir /data/silent_lake
     chown system system /data/silent_lake
-    chmod 0777 /data/silent_lake
-    start sl_si_service
+    chmod 0777 /data/silent_lake/
+    mkdir /data/silent_lake/secure_storage
+    chown system system /data/silent_lake/secure_storage
+    chmod 0777 /data/silent_lake/secure_storage
 
 service sl_si_service /system/vendor/bin/sl_si_service d=1
     user system

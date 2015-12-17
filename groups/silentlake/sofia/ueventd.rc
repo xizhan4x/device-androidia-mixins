@@ -1,2 +1,2 @@
 # Set permissions for silentlake driver.
-/dev/vidt                   0660 system silentlake
+/dev/vidt                   0660 system drmrpc
