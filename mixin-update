@@ -405,6 +405,13 @@ def process_spec_file(specfile, dry_run, mixin_tree):
     retval = True
     extrafiles = extrafiles_from_selections(basedir, selections)
 
+    # If a file is in [extrafiles] section of mixins.spec
+    # but not already in _FILE_LIST or extrafiles, add it to extrafile list
+    if cp.has_section("extrafiles"):
+        for newfile, comment in cp.items("extrafiles"):
+            if newfile not in extrafiles + _FILE_LIST:
+                extrafiles.append(newfile)
+
     # Set up the file map since the config files in the product directory
     # may have slightly different names than what is in _FILE_LIST
     for fname in _FILE_LIST + extrafiles:
@@ -432,14 +439,15 @@ def process_spec_file(specfile, dry_run, mixin_tree):
                 # the same data except for maybe a few lines; you can
                 # avoid copypasting a lot of stuff by using this feature
                 # and symbolic links for the common bits.
-                flist = [f for f in cur_opt["listdir"] if f.startswith(src)]
-                fraglist = [f for f in flist if len(f) == len(src) + 2 and f[-2] == '.' and f[-1].isdigit()]
+                dsrc, fsrc = os.path.split(src)
+                flist = [f for f in cur_opt["listdir"] if f.startswith(fsrc) and (dsrc in optdir)]
+                fraglist = [f for f in flist if len(f) == len(fsrc) + 2 and f[-2] == '.' and f[-1].isdigit()]
                 if fraglist:
                     fraglist.sort()
                     for f in fraglist:
                         dest_lines = amend_file(dest_lines, os.path.join(optdir, f), basedir, params)
-                if src in flist:
-                    dest_lines = amend_file(dest_lines, os.path.join(optdir, src), basedir, params)
+                if fsrc in flist:
+                    dest_lines = amend_file(dest_lines, os.path.join(optdir, fsrc), basedir, params)
 
             if dry_run:
                 if cmp(dest_lines, orig_dest_lines) != 0:
