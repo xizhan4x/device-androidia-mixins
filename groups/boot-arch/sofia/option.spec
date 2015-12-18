@@ -21,3 +21,5 @@ verity_warning = false
 lte_interactive_fastboot_ui_feature=false
 use_lte_sepolicy=false
 lte_gvb_feature=false
+system_partition_size = 2048
+userdata_partition_size = 4358
