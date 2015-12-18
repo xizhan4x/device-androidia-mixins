@@ -1,3 +1,4 @@
+
 BOARD_KERNEL_CMDLINE += vga=current i915.modeset=1 drm.vblankoffdelay=1 i915.fastboot=1
 USE_OPENGL_RENDERER := true
 USE_INTEL_UFO_DRIVER := true
@@ -7,6 +8,9 @@ INTEL_VA := true
 BOARD_GRAPHIC_IS_GEN := true
 
 INTEL_HWC_BUILD_CONTROL_PANEL := true
+
+# Conditional assignment to allow a target to over-ride this default
+TARGET_USE_GPU_TLS_SLOTS ?= true
 
 # System's VSYNC phase offsets in nanoseconds
 VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
