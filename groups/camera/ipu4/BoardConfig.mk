@@ -30,6 +30,6 @@ USE_INTEL_JPEG := false
 USE_CAMERA_STUB := false
 
 PLATFORM_FR_SUPPORT := true
-BOARD_SEPOLICY_DIRS += \
-	device/intel/sepolicy/atomisp/fr_service \
-	device/intel/sepolicy/camera/ipu4
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu_common
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu4

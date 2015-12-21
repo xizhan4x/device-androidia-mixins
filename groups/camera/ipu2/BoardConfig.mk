@@ -44,8 +44,9 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp
 {{#enable_fr_service}}
 # the CHT needs to support FR Service
 PLATFORM_FR_SUPPORT := true
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/atomisp/fr_service
+BOARD_SEPOLICY_M4DEFS += camera_ipu2_enable_fr_service=true
 {{/enable_fr_service}}
 
-# atomisp ipu2 service
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu_common
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu2

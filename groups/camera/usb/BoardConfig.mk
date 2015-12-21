@@ -28,3 +28,5 @@ USE_CAMERA_STUB := false
 # USB Camera Support
 BOARD_CAMERA_USB_SUPPORT := true
 BOARD_CAMERA_USB_STANDALONE := true
+
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera

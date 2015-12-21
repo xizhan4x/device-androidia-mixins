@@ -33,3 +33,5 @@ USE_CAMERA_STUB := false
 # maximum screen size when using the camera 1 api.
 RESTRICT_PREVIEW_BY_SCREEN := true
 {{/restrict_preview}}
+
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera
