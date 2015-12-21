@@ -6,4 +6,4 @@ PRODUCT_PACKAGES += houdini64
 PRODUCT_PROPERTY_OVERRIDES += ro.dalvik.vm.isa.arm64=x86_64 ro.enable.native.bridge.exec64=1
 endif
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES := ro.dalvik.vm.native.bridge=libhoudini.so $(PRODUCT_DEFAULT_PROPERTY_OVERRIDES)
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.dalvik.vm.native.bridge=libhoudini.so
