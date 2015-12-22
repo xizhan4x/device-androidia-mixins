@@ -198,6 +198,8 @@ def validate_selections(selections, mixin_tree, verbose=False):
         # Inherit the dependency parameters
         for dep_group, dep_option, dep_params in returned_selections:
             if dep_group in deps:
+                dep_params[group] = option
+                coerce_boolean(dep_params)
                 for k, v in dep_params.iteritems():
                     if k not in params:
                         params[k] = v
