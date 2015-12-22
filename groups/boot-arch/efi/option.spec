@@ -23,5 +23,5 @@ verity_warning = true
 txe_bind_root_of_trust = false
 run_tco_on_shutdown = false
 bootloader_block_size = 512
-vendor = false
 hung_task_timeout_secs = 120
+vendor-partition = false
