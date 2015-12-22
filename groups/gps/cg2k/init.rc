@@ -5,14 +5,30 @@ on post-fs-data
     symlink {{nvm}} /data/gps/nvm
 
 on boot
-    # GPS GPT factory partition data retrieval
+{{#gps_driver}}
+    insmod ${ro.boot.moduleslocation}/gnss_drv.ko
+    restorecon_recursive /sys/devices/gnss
+{{/gps_driver}}
+{{#gpp}}
     mkdir {{nvm}} 0770 gps system
     restorecon_recursive {{nvm}}
-{{#gpp}}
     start gnss_rest_wpc
     start gnss_rest_mec
 {{/gpp}}
-
+    mkdir /dev/gps 0770 gps gps
+    symlink /dev/{{{trans}}} /dev/gps/ttyGPS
+{{#gps_driver}}
+    chown gps system /sys/devices/gnss/state
+    symlink /sys/devices/gnss/state /dev/gps/ttyGPSPowerControl
+    chmod 0660 /sys/devices/gnss/state
+    chown gps system /sys/devices/gnss/reset
+    symlink /sys/devices/gnss/reset /dev/gps/ttyGPSResetState
+    chmod 0660 /sys/devices/gnss/reset
+    chown gps system /sys/devices/gnss/wake_lock
+    symlink /sys/devices/gnss/wake_lock /dev/gps/ttyGPSWakeLock
+    chmod 0660 /sys/devices/gnss/wake_lock
+{{/gps_driver}}
+{{^gps_driver}}
 {{#gpio}}
     write /sys/class/gpio/export {{{gpio}}}
     write /sys/class/gpio/gpio{{{gpio}}}/direction out
@@ -21,9 +37,14 @@ on boot
 {{/gpio}}
     chmod 0660 /sys/class/tty/{{{trans}}}/../../power/control
     chown gps gps /sys/class/tty/{{{trans}}}/../../power/control
-    mkdir /dev/gps 0770 gps gps
-    symlink /dev/{{{trans}}} /dev/gps/ttyGPS
     symlink /sys/class/tty/{{{trans}}}/../../power/control /dev/gps/ttyGPSPowerControl
+{{/gps_driver}}
+
+{{^gpp}}
+on property:nvm_partition=mounted
+    mkdir {{{nvm}}} 0770 gps system
+    restorecon_recursive {{{nvm}}}
+{{/gpp}}
 
 {{#gpp}}
 service gnss_rest_wpc /system/bin/cws_manu -G -n0 -r{{nvm}}/GNSS_WPC.bin

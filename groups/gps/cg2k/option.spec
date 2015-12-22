@@ -1,4 +1,5 @@
 [defaults]
+gps_driver=false
 power=rfkill
 gpio=false
 nvm=/oem_config/gnss
