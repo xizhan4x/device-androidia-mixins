@@ -22,6 +22,7 @@ MODEM_SILENT_RESET_ENABLED := true
 {{/modem_silent_reset}}
 
 {{#intel_cta}}
+INTEL_FEATURE_CTA := true
 DEVICE_PACKAGE_OVERLAYS += vendor/intel/featsetres_tel/cta
 {{/intel_cta}}
 # unstub CRM only if modem silent reset is enabled
