@@ -19,4 +19,3 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/color_config
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/ufo_common
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/ufo_gen9
