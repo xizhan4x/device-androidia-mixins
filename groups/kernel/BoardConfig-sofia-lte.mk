@@ -16,3 +16,7 @@ endif # TARGET_BUILD_VARIANT is eng, userdebug
 BOARD_DTB_FILE ?= {{{board_dtb}}}
 
 YOCTO_TOOLCHAIN_REQUIRED_VERSION := 1.6
+
+{{#interactive_governor}}
+APP_LAUNCH_BOOST := true
+{{/interactive_governor}}
