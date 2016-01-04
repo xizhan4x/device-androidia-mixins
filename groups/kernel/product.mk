@@ -66,17 +66,13 @@ endif # $(TARGET_PREBUILT_KERNEL)
 
 {{#modules_in_bootimg}}
 ifneq ($(TARGET_BUILD_VARIANT),user)
-  KERNEL_MODULES_ROOT := root/lib/modules
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/lib/modules
-else
-  KERNEL_MODULES_ROOT := system/lib/modules
-  ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/system/lib/modules
+  KERNEL_MODULES_ROOT_PATH := lib/modules
+  KERNEL_MODULES_ROOT := root/$(KERNEL_MODULES_ROOT_PATH)
 endif
 {{/modules_in_bootimg}}
-{{^modules_in_bootimg}}
-KERNEL_MODULES_ROOT := system/lib/modules
-ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/system/lib/modules
-{{/modules_in_bootimg}}
+KERNEL_MODULES_ROOT_PATH ?= system/lib/modules
+KERNEL_MODULES_ROOT ?= $(KERNEL_MODULES_ROOT_PATH)
+ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/$(KERNEL_MODULES_ROOT_PATH)
 {{#useprebuilt}}
 # Copy kernel into place and modules
 PRODUCT_COPY_FILES += \
