@@ -1,1 +1,0 @@
-../sofia_lte/product.mk

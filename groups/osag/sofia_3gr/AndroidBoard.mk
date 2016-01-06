@@ -1,4 +1,3 @@
-{{^fls_prebuilts}}
 ifneq ($(BUILD_MODEM_FROM_SRC), true)
 BUILT_MODEM := $(SOFIA_FW_SRC_BASE)/modem/prebuilt/$(MODEM_PLATFORM)/$(MODEM_PROJECTNAME).ihex
 else
@@ -10,6 +9,3 @@ endif
 NON_IMC_BUILD := true
 export NON_IMC_BUILD
 include device/intel/common/boot/sofia/sofia-base.mk
-
-{{/fls_prebuilts}}
-
