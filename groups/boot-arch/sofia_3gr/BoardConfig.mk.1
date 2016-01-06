@@ -7,10 +7,6 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia3gr
 {{/use_lte_sepolicy}}
 TARGET_NO_RECOVERY := false
-{{^fls_prebuilts}}
-INTEL_PRG_FILE ?= $(CURDIR)/device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
-GEN_PRG_FROM_SRC := true
-{{/fls_prebuilts}}
 
 PARTITION_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/partition.xml
 RAMLAYOUT_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/8192_ram_layout.xml
