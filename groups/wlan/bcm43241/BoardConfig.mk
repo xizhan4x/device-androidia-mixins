@@ -16,3 +16,5 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-pno
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-p2p-connected-stop-scan
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-force-single-ch
+
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/wlan/bcm
