@@ -17,6 +17,9 @@ PRODUCT_PROPERTY_OVERRIDES += persist.audio.low_latency=1
 #Enable deep buffer for video playback
 PRODUCT_PROPERTY_OVERRIDES += media.stagefright.audio.deep=true
 
+#Enable awesome player for audio playback
+PRODUCT_PROPERTY_OVERRIDES += media.awesome-local-audio=1
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_deep.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
