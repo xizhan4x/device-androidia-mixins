@@ -1,5 +1,5 @@
 # Specify location of board-specific kernel headers
-TARGET_BOARD_KERNEL_HEADERS := {{{path}}}/kernel-headers
+TARGET_BOARD_KERNEL_HEADERS := device/intel/common/{{{src_path}}}/kernel-headers
 
 KERNEL_LOGLEVEL ?= {{{loglevel}}}
 

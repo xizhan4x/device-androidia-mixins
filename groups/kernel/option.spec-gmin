@@ -14,3 +14,6 @@ useprebuilt = true
 firmware_path = /system/etc/firmware
 kdefconfig =
 camera_cos_hack = false
+binary_name = bzImage
+interactive_governor=true
+loglevel = 5

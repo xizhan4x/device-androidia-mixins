@@ -15,3 +15,6 @@ useprebuilt = true
 firmware_path = /system/vendor/firmware
 kdefconfig =
 camera_cos_hack = false
+binary_name = vmlinux.bin
+interactive_governor = true
+loglevel = 5
