@@ -6,6 +6,12 @@ on post-fs-data
     start wlan_rest_nvm
     wait /config/wlan/iwl_nvm.bin
 {{/gpp}}
+{{^gpp}}
+
+on property:nvm_partition=mounted
+    start wlan_rest_nvm
+    restorecon_recursive /nvm_fs_partition/wlan
+{{/gpp}}
     start load_iwlwifi
 
 setprop wifi.interface wlan0
@@ -56,6 +62,14 @@ service load_iwlwifi /system/bin/load_iwlwifi.sh
 
 {{#gpp}}
 service wlan_rest_nvm /system/bin/wlan_intel_restore.sh
+    class main
+    user wifi
+    group system wifi
+    disabled
+    oneshot
+{{/gpp}}
+{{^gpp}}
+service wlan_rest_nvm /system/vendor/bin/wlan_nvm_init.sh
     class main
     user wifi
     group system wifi
