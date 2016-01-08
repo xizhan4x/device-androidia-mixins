@@ -1,6 +1,5 @@
 [defaults]
 installer = false
-dldr = false
 oemvars = true
 timeout = 60000
 capsule = true
