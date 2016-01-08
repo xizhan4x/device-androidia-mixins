@@ -43,3 +43,10 @@ HOST_PREFER_32_BIT := true
 
 # All sofia devices depend on this mixin group currently due to symlink
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/common
+
+# parallel preload
+INTEL_FEATURE_PARALLEL_PRELOAD := true
+# parallel package scan
+INTEL_FEATURE_PARALLEL_SCAN := true
+# Support partial memory copy when unzip
+SUPPORT_PARTIAL_COPY := true
