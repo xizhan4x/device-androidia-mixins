@@ -1,1 +1,2 @@
 /dev/radio0                                    0660 audio audio
+/dev/input/*                                   0666 root input

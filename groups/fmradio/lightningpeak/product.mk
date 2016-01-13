@@ -5,5 +5,5 @@ PRODUCT_PACKAGES += \
 	libfmrservice \
 	fmr_test \
 	fmr_rxmain \
-	fmr_rxnvm \
+	fmr_rxnvm
 

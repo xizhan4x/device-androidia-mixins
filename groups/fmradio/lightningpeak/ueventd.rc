@@ -1,1 +1,2 @@
 /dev/radio0   0660    bluetooth bluetooth
+/dev/input/*  0666    root input
