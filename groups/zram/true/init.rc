@@ -1,3 +1,0 @@
-
-on fs
-    swapon_all /fstab
