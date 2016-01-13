@@ -6,7 +6,7 @@ ifneq ($(wildcard frameworks/opt/telephony/src/java/com/android/internal/telepho
 # IMS Properties
 {{#ims_enabled}}
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    persist.ims_support=1
+    persist.ims_support=2
 {{/ims_enabled}}
 
 # IMS Properties
