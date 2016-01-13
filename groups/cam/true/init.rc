@@ -9,6 +9,6 @@ service offloaddaemon /system/bin/offloaddaemon
 on property:persist.s2b_native=0
     restart offloaddaemon
 
-on boot
+on property:vold.decrypt=trigger_restart_framework
     restart offloaddaemon
 
