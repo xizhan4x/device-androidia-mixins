@@ -8,10 +8,12 @@ PRODUCT_PACKAGES += \
     btnvmmerge \
 {{/bt_usc}}
     bt_vendor.conf \
+    370b12060002340e00_B.sfi \
     370b12060002340e00.sfi \
     370b10060002220e00.sfi \
     370b000600020d0e00.sfi \
     370b00060002280d00.seq \
+    bddata_B2_C0_B \
     bddata_B2_C0 \
     bddata_B0 \
     bddata_K0 \
