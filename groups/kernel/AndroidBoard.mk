@@ -139,7 +139,7 @@ $(foreach v,$(BOARD_DTB_VARIANTS),$(eval $(call board_dtb_per_variant,$(v))))
 
 # Add a kernel target, so "make kernel" will build the kernel
 .PHONY: kernel
-kernel: copy_modules
+kernel: copy_modules $(PRODUCT_OUT)/kernel
 
 endif
 {{/useprebuilt}}
