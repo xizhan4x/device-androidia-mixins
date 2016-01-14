@@ -1,4 +1,5 @@
 UX_MISSCALL_FEATURE := true
+UX_CLOCK_FEATURE := true
 
 DEVICE_PACKAGE_OVERLAYS += \
         vendor/intel/ux_enhancement/overlay-screenshot \
@@ -12,4 +13,14 @@ DEVICE_PACKAGE_OVERLAYS += \
 ifneq ($(UX_CLOCK_FEATURE), true)
 DEVICE_PACKAGE_OVERLAYS += \
         vendor/intel/ux_enhancement/Keyguard_MissedDialerAndMsg/overlay-single
+endif
+
+ifeq ($(UX_CLOCK_FEATURE), true)
+ifneq ($(UX_MISSCALL_FEATURE), true)
+DEVICE_PACKAGE_OVERLAYS += \
+        vendor/intel/ux_enhancement/SystemUI/systemui-overlay-date-feature
+else
+DEVICE_PACKAGE_OVERLAYS += \
+        vendor/intel/ux_enhancement/SystemUI/keyguard-system-overlay-merge
+endif
 endif
