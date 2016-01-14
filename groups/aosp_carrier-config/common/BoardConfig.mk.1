@@ -18,3 +18,7 @@ DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_004
 PRODUCT_BOOT_JARS += com.intel.telephony.extend
 {{/carrier_cmcc}}
 endif
+
+{{#carrier_cmcc}}
+PUBLISH_CMCC_IMG := true
+{{/carrier_cmcc}}
