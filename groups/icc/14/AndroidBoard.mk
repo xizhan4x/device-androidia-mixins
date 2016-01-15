@@ -26,6 +26,8 @@ else
        INTEL_LICENSE_FILE := ${INTEL_LICENSE_FILE}:$(ICC_LICENSE_FILE)
 endif
 
+# Check if 1A Environment, then set the variables
+ifneq ($(wildcard $(ANDROID_BUILD_TOP)/.repo/),)
 {{#icc_include_path}}
 export INCLUDE
 {{/icc_include_path}}
@@ -33,4 +35,4 @@ export PATH
 export LD_LIBRARY_PATH
 export LIBRARY_PATH
 export INTEL_LICENSE_FILE
-
+endif
