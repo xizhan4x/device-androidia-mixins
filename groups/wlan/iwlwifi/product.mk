@@ -28,6 +28,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
         device/intel/common/wlan/iwlwifi/load_iwlwifi.sh:system/bin/load_iwlwifi.sh
 
+#Do not auto-load iwlwifi when autodetect is part of the build
+PRODUCT_COPY_FILES += \
+        device/intel/common/wlan/iwlwifi/iwl_no_autodetect.conf:/system/etc/modprobe.d/iwl.conf
+
 {{#gpp}}
 # Add Manufacturing tool
 PRODUCT_PACKAGES += \
