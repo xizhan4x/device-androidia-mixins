@@ -17,4 +17,5 @@ kdefconfig =
 camera_cos_hack = false
 binary_name = vmlinux.bin
 interactive_governor = true
+intel_pstate = false
 loglevel = 5
