@@ -26,3 +26,10 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 BOARD_SEPOLICY_M4DEFS += module_ufo_common=true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/color_config
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/ufo_common
+
+# Enable gfx debug daemon
+ifneq ($(TARGET_BUILD_VARIANT),user)
+    ADDITIONAL_DEFAULT_PROPERTIES += persist.gen_gfxd.enable=1
+else
+    ADDITIONAL_DEFAULT_PROPERTIES += persist.gen_gfxd.enable=0
+endif
