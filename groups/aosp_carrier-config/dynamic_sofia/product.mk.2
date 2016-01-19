@@ -20,6 +20,9 @@ INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM := ../../../vendor/intel/featsetclass_t
 INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS := ../../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
 INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS := ../../../vendor/intel/featsetclass_tel/MainCardSettings/src
 INTEL_FEATURE_PREFEREDNETWORK_ENHANCEDTELEPHONY := ../../../vendor/intel/featsetclass_tel/PreferedNetworkDisplay/src
+NTEL_FEATURE_CONTACTS := ../../../vendor/intel/featsetclass_tel/packages/apps/Contacts/src
+INTEL_FEATURE_CONTACTSCOMMON := ../../../vendor/intel/featsetclass_tel/packages/apps/ContactsCommon/src
+INTEL_FEATURE_CONTACTSPROVIDER := ../../../vendor/intel/featsetclass_tel/packages/providers/ContactsProvider/src
 endif
 
 ifeq ($(AOSP_CARRIER_CONFIG), VZW)
@@ -47,6 +50,9 @@ INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM := ../../../vendor/intel/featsetclass_t
 INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS := ../../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
 INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS := ../../../vendor/intel/featsetclass_tel/MainCardSettings/src
 INTEL_FEATURE_PREFEREDNETWORK_ENHANCEDTELEPHONY := ../../../vendor/intel/featsetclass_tel/PreferedNetworkDisplay/src
+INTEL_FEATURE_CONTACTS := ../../../vendor/intel/featsetclass_tel/packages/apps/Contacts/src
+INTEL_FEATURE_CONTACTSCOMMON := ../../../vendor/intel/featsetclass_tel/packages/apps/ContactsCommon/src
+INTEL_FEATURE_CONTACTSPROVIDER := ../../../vendor/intel/featsetclass_tel/packages/providers/ContactsProvider/src
 {{/carrier_cmcc}}
 
 {{#carrier_vzw}}
@@ -64,3 +70,6 @@ INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM ?= ../../../device/intel/common/telepho
 INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS ?= ../../../../device/intel/common/telephony/carrier/stub/EnhancedTelecomm/src
 INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS ?= ../../../device/intel/common/telephony/carrier/stub/MainCardSettings/src
 INTEL_FEATURE_PREFEREDNETWORK_ENHANCEDTELEPHONY ?= ../../../device/intel/common/telephony/carrier/stub/PreferedNetworkDisplay/src
+INTEL_FEATURE_CONTACTS ?= ../../../device/intel/common/telephony/carrier/stub/Contacts/src
+INTEL_FEATURE_CONTACTSCOMMON ?= ../../../device/intel/common/telephony/carrier/stub/ContactsCommon/src
+INTEL_FEATURE_CONTACTSPROVIDER ?= ../../../device/intel/common/telephony/carrier/stub/providers/ContactsProvider/src
