@@ -8,7 +8,8 @@ DEVICE_PACKAGE_OVERLAYS += \
         vendor/intel/ux_enhancement/Browser_AddHomePage/overlay \
         device/intel/common/navigationbar/overlay \
         vendor/intel/ux_enhancement/BatteryPercentShow/SystemUI/overlay \
-        vendor/intel/ux_enhancement/Keyguard_MissedDialerAndMsg/overlay
+        vendor/intel/ux_enhancement/Keyguard_MissedDialerAndMsg/overlay \
+        vendor/intel/ux_enhancement/Music/overlay
 
 ifneq ($(UX_CLOCK_FEATURE), true)
 DEVICE_PACKAGE_OVERLAYS += \
