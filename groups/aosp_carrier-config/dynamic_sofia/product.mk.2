@@ -8,3 +8,11 @@ INTEL_FEATURE_PREFEREDNETWORK_DISPLAY := true
 INTEL_FEATURE_AUTO_ADAPTER_MAINCARD := true
 INTEL_FEATURE_DATA_TRAFFIC := true
 {{/carrier_cmcc}}
+
+{{#carrier_vzw}}
+INTEL_FEATURE_IMS_EXT := true
+EXT_IMS_PACKAGES_SRC_FILES_PATH := ../../../vendor/intel/featsetclass_tel/ims/packages/apps/Settings/src
+{{/carrier_vzw}}
+
+INTEL_FEATURE_IMS_EXT ?= {{ims_ext_volte_vt_wfc}}
+EXT_IMS_PACKAGES_SRC_FILES_PATH ?= ../../../device/intel/common/telephony/carrier/imsstub/packages/apps/Settings/src
