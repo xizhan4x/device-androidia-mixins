@@ -1,3 +1,7 @@
+ifneq ($(BOARD_WIDEVINE_OEMCRYPTO_LEVEL),3)
+    $(error Incompatible Widevine parameters check boot-arch AND widevine mixins)
+endif
+
 #enable Widevine drm
 PRODUCT_PROPERTY_OVERRIDES += drm.service.enabled=true
 
@@ -11,16 +15,9 @@ PRODUCT_PACKAGES += com.google.widevine.software.drm.xml \
     libdrmwvmplugin \
     libwvm \
     libdrmdecrypt \
-    libWVStreamControlAPI_L1 \
-    libwvdrm_L1
+    libwvdrmengine \
+    libWVStreamControlAPI_L3 \
+    libwvdrm_L3
 
-PRODUCT_PACKAGES_ENG += WidevineSamplePlayer
-
-# WV Modular
-PRODUCT_PACKAGES += libwvdrmengine
-
-PRODUCT_PACKAGES_ENG += ExoPlayerDemo
-
-PRODUCT_PACKAGES += liboemcrypto
-
-BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 3
+PRODUCT_PACKAGES_ENG += WidevineSamplePlayer \
+                        ExoPlayerDemo

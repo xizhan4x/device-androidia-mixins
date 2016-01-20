@@ -2,4 +2,10 @@
 
 on post-fs
   setprop media.wfd.video-bitrate 2500000
+{{#enc1080p}}
+  setprop OMX.hantro.H1.video.encoder.avc.maxprofilelevel 4096
+{{/enc1080p}}
+{{^enc1080p}}
+  setprop OMX.hantro.H1.video.encoder.avc.maxprofilelevel 512
+{{/enc1080p}}
 

@@ -18,9 +18,27 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ueventd.rc:root/ueventd.{{{hardware}}}.rc \
     $(LOCAL_PATH)/fstab:root/fstab.{{{hardware}}} \
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/../media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/../media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+{{#wv_level3}}
+{{#enc1080p}}
+    PRODUCT_COPY_FILES += $(LOCAL_PATH)/../media_codecs_WV_L3.xml:system/etc/media_codecs.xml
+{{/enc1080p}}
+{{^enc1080p}}
+    PRODUCT_COPY_FILES += $(LOCAL_PATH)/../media_codecs_WV_L3_enc720p.xml:system/etc/media_codecs.xml
+{{/enc1080p}}
+    BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 3
+{{/wv_level3}}
+
+{{^wv_level3}}
+{{#enc1080p}}
+    PRODUCT_COPY_FILES += $(LOCAL_PATH)/../media_codecs.xml:system/etc/media_codecs.xml
+{{/enc1080p}}
+{{^enc1080p}}
+    PRODUCT_COPY_FILES += $(LOCAL_PATH)/../media_codecs_enc720p.xml:system/etc/media_codecs.xml
+{{/enc1080p}}
+    BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 1
+{{/wv_level3}}
+
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/../media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
 {{#lte_gvb_feature}}
 #if lte gvb feature enabled, export a flag
