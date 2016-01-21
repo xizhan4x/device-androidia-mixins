@@ -4,4 +4,7 @@ ifeq ($(AOSP_CARRIER_CONFIG), VZW)
 # DataActivationManager
 PRODUCT_PACKAGES += \
     DataActivationManager
+# VZW specific TLV apply on boot time
+ADDITIONAL_BUILD_PROPERTIES += \
+    persist.config.specific=vzw
 endif

@@ -18,7 +18,7 @@ on post-fs-data
     chmod 660 /dev/mvpipe-atc
 
 on boot
-    setprop ro.telephony.tcs.hw_name SF_LTE_CONF_1
+    setprop ro.telephony.tcs.hw_name {{tcs_hw}}
 
 # MTS SERVICES
 

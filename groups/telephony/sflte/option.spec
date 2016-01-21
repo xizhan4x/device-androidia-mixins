@@ -6,3 +6,4 @@ sar_type_id=prox_0
 modem_silent_reset=false
 modem_silent_active=false
 intel_cta=false
+tcs_hw=SF_LTE_CONF_1
