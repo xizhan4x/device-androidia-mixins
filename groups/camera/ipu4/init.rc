@@ -13,6 +13,7 @@ on property:ro.camera.hardware.ipu4=*
     insmod ${ro.boot.moduleslocation}/dw9714.ko
     insmod ${ro.boot.moduleslocation}/videobuf-core.ko
     insmod ${ro.boot.moduleslocation}/videobuf2-dma-contig.ko
+    insmod ${ro.boot.moduleslocation}/intel-ipu4-acpi.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-wrapper-${ro.camera.hardware.ipu4}.ko
     insmod ${ro.boot.moduleslocation}/lib2600psys-mod-${ro.camera.hardware.ipu4}.ko
     insmod ${ro.boot.moduleslocation}/lib2600-mod-${ro.camera.hardware.ipu4}.ko
