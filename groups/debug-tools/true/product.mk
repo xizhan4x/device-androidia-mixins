@@ -2,4 +2,5 @@ PRODUCT_PACKAGES_DEBUG += \
     AndroidTerm \
     libjackpal-androidterm4 \
     peeknpoke \
-    pytimechart-record
+    pytimechart-record \
+    lspci
