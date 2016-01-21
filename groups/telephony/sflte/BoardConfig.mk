@@ -20,6 +20,11 @@ RIL_IOSM_ENABLED := true
 MODEM_SILENT_RESET_ENABLED := true
 {{/modem_silent_reset}}
 
+{{#modem_silent_active}}
+# Enable -MODEM_SILENT_RESET_ACTIVE
+MODEM_SILENT_RESET_ACTIVE := true
+{{/modem_silent_active}}
+
 {{#intel_cta}}
 INTEL_FEATURE_CTA := true
 DEVICE_PACKAGE_OVERLAYS += vendor/intel/featsetres_tel/cta
@@ -29,6 +34,12 @@ ifeq ($(MODEM_SILENT_RESET_ENABLED),true)
   ADDITIONAL_DEFAULT_PROPERTIES += \
       persist.sys.crm0.load_stub=false \
       persist.sys.crm1.load_stub=false
+endif
+
+ifeq ($(MODEM_SILENT_RESET_ACTIVE),true)
+  ADDITIONAL_DEFAULT_PROPERTIES += \
+      persist.sys.crm0.silent_reset=true \
+      persist.sys.crm1.silent_reset=true
 endif
 
 BOARD_HAVE_ATPROXY := true
