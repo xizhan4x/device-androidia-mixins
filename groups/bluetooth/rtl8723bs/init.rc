@@ -20,6 +20,7 @@ on early-boot
     setprop ro.bt.bdaddr_path "/config/bt/bd_addr.conf"
 
 service rfkill_bt /system/bin/sh /system/bin/rfkill_bt.sh
+    seclabel u:r:rfkill:s0
     class core
     user root
     oneshot
