@@ -6,6 +6,7 @@ on post-fs
     setprop persist.thermal.shutdown.tone 1
     setprop persist.thermal.display.msg 1
     setprop persist.thermal.display.vibra 1
+    setprop sys.powerctl.criticalshutdown 0
 
     # Permissions for Thermal Management
     chown system system /sys/class/mali/pm/max_freq_level
@@ -29,7 +30,11 @@ service thermal_lite /thermal_lite
     seclabel u:r:thermal_lite:s0
 {{/thermal_lite}}
 
+{{#change_vbus_det_type}}
+on property:sys.powerctl.criticalshutdown=1
+    write /sys/class/misc/pmic/vbus_det_type edge
 
+{{/change_vbus_det_type}}
 {{#reset_policy}}
 # reset thermal policy when zygote restart or stopped
 on property:init.svc.zygote=restarting
