@@ -2,7 +2,7 @@ on property:nvm_partition=mounted
     start swfg_daemon
 
 service swfg_daemon /system/bin/swfg_daemon
-    class main
+    class core
     disabled
     group system misc
     oneshot
