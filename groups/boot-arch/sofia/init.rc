@@ -1,4 +1,5 @@
 on early-init
+    setprop persist.tool_enable 0
     write /sys/block/mmcblk0/queue/read_ahead_kb 256
 
 {{#throttle_cpu_during_boot}}
@@ -14,8 +15,6 @@ on boot
     # fs dirty writeback parameters
     write /proc/sys/vm/dirty_writeback_centisecs 300
     write /proc/sys/vm/dirty_ratio 5
-
-    setprop persist.tool_enable 1
 
  # Tweak background writeout
     write /proc/sys/vm/dirty_expire_centisecs 15
