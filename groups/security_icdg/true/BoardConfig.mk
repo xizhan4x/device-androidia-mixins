@@ -1,2 +1,2 @@
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/security
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/security_icdg
 
