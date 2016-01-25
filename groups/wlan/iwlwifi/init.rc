@@ -12,7 +12,6 @@ on property:nvm_partition=mounted
     start wlan_rest_nvm
     restorecon_recursive /nvm_fs_partition/wlan
 {{/gpp}}
-    start load_iwlwifi
 
 setprop wifi.interface wlan0
 
@@ -57,7 +56,6 @@ service load_iwlwifi /system/bin/load_iwlwifi.sh
     class main
     user root
     group system wifi
-    disabled
     oneshot
 
 {{#gpp}}
