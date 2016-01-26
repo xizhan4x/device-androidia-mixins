@@ -5,8 +5,6 @@ PRODUCT_PACKAGES += \
     nvm_useragent \
     nvmtest \
     bt_nvm_init.sh \
-    rpcServer \
-    rpc-daemon \
     libstlport
 
 TARGET_BOARD_PLATFORM := {{{board_platform}}}

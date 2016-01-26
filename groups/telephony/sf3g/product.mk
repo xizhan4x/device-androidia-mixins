@@ -30,3 +30,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath = librpc-ril.so \
 
+PRODUCT_PACKAGES += \
+    rpcServer \
+    rpc-daemon

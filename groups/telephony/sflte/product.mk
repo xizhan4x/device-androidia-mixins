@@ -54,3 +54,6 @@ PRODUCT_PACKAGES_DEBUG += \
 #SARManager
 PRODUCT_PACKAGES += \
     SARManager
+
+PRODUCT_PACKAGES += \
+    rpc-daemon
