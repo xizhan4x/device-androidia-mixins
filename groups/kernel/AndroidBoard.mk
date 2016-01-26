@@ -52,8 +52,35 @@ ifneq ($(KERNEL_CONFIG_DEPS),$(KERNEL_CONFIG_PREV_DEPS))
 .PHONY: $(KERNEL_CONFIG)
 endif
 
-$(KERNEL_CONFIG): $(KERNEL_CONFIG_DEPS) | yoctotoolchain
-	$(hide) mkdir -p $(@D)
+CHECK_CONFIG_SCRIPT := $(LOCAL_KERNEL_SRC)/scripts/diffconfig
+CHECK_CONFIG_LOG :=  $(LOCAL_KERNEL_PATH)/.config.check
+
+# Before building final defconfig with debug diffconfigs
+# Check that base defconfig is correct. Check is performed
+# by comparing generated .config with .config.old
+# If differences are observed, display a help message
+# and stop kernel build.
+# If a .config is already present, save it before processing
+# the check and restore it at the end
+checkdefconfig: $(KERNEL_DEFCONFIG)
+	$(hide) dirname $(KERNEL_CONFIG) | xargs mkdir -p
+	$(hide) if [[ -e $(KERNEL_CONFIG) ]] ; then mv -f $(KERNEL_CONFIG) $(KERNEL_CONFIG).save; fi
+	$(hide) cat $^ > $(KERNEL_CONFIG)
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) olddefconfig
+	$(hide) $(CHECK_CONFIG_SCRIPT) $(KERNEL_CONFIG).old $(KERNEL_CONFIG) > $(CHECK_CONFIG_LOG)
+	$(hide) if [[ -e $(KERNEL_CONFIG).save ]] ; then mv -f $(KERNEL_CONFIG).save $(KERNEL_CONFIG); fi
+	$(hide) if [[ -s $(CHECK_CONFIG_LOG) ]] ; then \
+	  echo "CHECK KERNEL DEFCONFIG FATAL ERROR :" ; \
+	  echo "Kernel config copied from $(KERNEL_DEFCONFIG) has some config issue." ; \
+	  echo "Final '.config' and '.config.old' differ. This should never happen." ; \
+	  echo "Observed diffs are :" ; \
+	  cat $(CHECK_CONFIG_LOG) ; \
+	  echo "Root cause is probably that a dependancy declared in Kconfig is not respected" ; \
+	  echo "or config was added in Kconfig but value not explicitly added to defconfig." ; \
+	  echo "Recommanded method to generate defconfig is menuconfig tool instead of manual edit." ; \
+	  exit 1;  fi;
+
+$(KERNEL_CONFIG): $(KERNEL_CONFIG_DEPS) | yoctotoolchain checkdefconfig
 	$(hide) echo "KERNEL_CONFIG_PREV_DEPS := $^" > $(KERNEL_CONFIG_MK)
 	$(hide) cat $^ > $@
 	@echo "Generating Kernel configuration, using $^"
