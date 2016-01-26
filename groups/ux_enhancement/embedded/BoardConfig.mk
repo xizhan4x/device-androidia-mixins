@@ -10,7 +10,8 @@ DEVICE_PACKAGE_OVERLAYS += \
         device/intel/common/navigationbar/overlay \
         vendor/intel/ux_enhancement/BatteryPercentShow/SystemUI/overlay \
         vendor/intel/ux_enhancement/Keyguard_MissedDialerAndMsg/overlay \
-        vendor/intel/ux_enhancement/Music/overlay
+        vendor/intel/ux_enhancement/Music/overlay \
+        vendor/intel/ux_enhancement/Dialer/overlay
 ifeq ($(UX_CLOCK_FEATURE)$(UX_MISSCALL_FEATURE), truetrue)
 DEVICE_PACKAGE_OVERLAYS += \
         vendor/intel/ux_enhancement/SystemUI/keyguard-system-overlay-merge
