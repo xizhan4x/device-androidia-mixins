@@ -5,7 +5,6 @@ service hdcpd /system/vendor/bin/hdcpd
     class main
     user root
     group graphics drmrpc
-    seclabel u:r:hdcpd:s0
 
 # mkdir hdcp data folder here, non system service don't have permission
 # to write in /data/
