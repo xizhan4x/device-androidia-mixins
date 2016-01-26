@@ -5,7 +5,8 @@ WPA_SUPPLICANT_VERSION := VER_2_1_DEVEL_WCS
 
 # Enabling iwlwifi
 BOARD_USING_INTEL_IWL := true
-INTEL_IWL_MODULE_SUB_FOLDER := {{{iwl_platform}}}
+INTEL_IWL_MODULE_SUB_FOLDER := {{{iwl_sub_folder}}}
+INTEL_IWL_PLATFORM := {{{iwl_platform}}}
 INTEL_IWL_BOARD_CONFIG := {{{iwl_defconfig}}}
 INTEL_IWL_PNVM_HW := {{{iwl_pnvm_hw}}}
 INTEL_IWL_USE_COMPAT_INSTALL := y

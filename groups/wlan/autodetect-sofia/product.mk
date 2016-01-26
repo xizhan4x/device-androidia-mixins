@@ -35,7 +35,7 @@ ifeq ($(IWL_PLATFORM), sofia_3gr)
 # It will be bind-mounted by hald upon device discovery
 TARGET_OUT_WLAN_FW := $(TARGET_OUT)/system/vendor/wifi/a620/firmware
 TARGET_OUT_ETC_WIFI := $(TARGET_OUT)/system/vendor/wifi/a620/etc
-LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/sofia_3gr
+LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/lhp
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR)/*a620*.ucode))
 IWL_PAPD_DB_FILES := $(notdir $(shell find $(LOCAL_IWL_FW_DIR)/papd_db -type f))
@@ -63,7 +63,7 @@ ifeq ($(IWL_PLATFORM), sofia_lte)
 # It will be bind-mounted by hald upon device discovery
 TARGET_OUT_WLAN_FW_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/firmware
 TARGET_OUT_ETC_WIFI_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/etc
-LOCAL_IWL_FW_DIR_LNP := vendor/intel/fw/iwl/sofia_lte
+LOCAL_IWL_FW_DIR_LNP := vendor/intel/fw/iwl/rel
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR_LNP)/*8000*.ucode))
 
