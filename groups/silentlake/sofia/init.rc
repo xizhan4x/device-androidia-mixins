@@ -4,7 +4,6 @@ on fs
     mkdir /cache/silent_lake
     chown system system /cache/silent_lake
     chmod 0777 /cache/silent_lake
-    wait /dev/vidt
     start sl_si_service
 
 on post-fs-data
