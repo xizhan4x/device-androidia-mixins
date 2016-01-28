@@ -50,6 +50,9 @@ HAL_BM_TARGETS := :$(HAL_BM_TARGET_GFX):$(HAL_BM_TARGET_MEDIA):$(HAL_BM_TARGET_A
 
 HAL_KMSG_NAME := /dev/__hal_kmsg__
 
+# Explicitly disable pnp tweaks
+HAL_AUTODETECT_PNP_TWEAK_DISABLED := true
+
 # Forcing these directories to live post zip update
 PRODUCT_COPY_FILES += \
         $(LOCAL_PATH)/virtual.txt:system/etc/firmware/virtual/virtual.txt \
