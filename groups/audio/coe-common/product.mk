@@ -20,3 +20,9 @@ PRODUCT_PACKAGES += \
        sound_trigger.primary.$(TARGET_BOARD_PLATFORM)
 {{/wov}}
 
+{{#aware}}
+# Aware HAL
+PRODUCT_PACKAGES += \
+    libaware_client \
+    aware.primary.$(TARGET_BOARD_PLATFORM)
+{{/aware}}

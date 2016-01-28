@@ -27,3 +27,8 @@ on boot
     setprop audio.wov.notif "hwd_in hwd 0 notif params"
 {{/wov}}
 
+{{#aware}}
+on boot
+    setprop audio.aware.mixer "aware_out classifier 0 mdl params"
+    setprop audio.aware.card   wm8998audio
+{{/aware}}
