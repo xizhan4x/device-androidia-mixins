@@ -5,4 +5,5 @@ INTEL_FEATURE_UX_ENHANCEMENT := true
 PRODUCT_PACKAGES += \
         StorageManagerEx \
         VideoLive \
-        AudioProfile
+        AudioProfile \
+        FileManager
