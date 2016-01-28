@@ -9,4 +9,4 @@ endif
 BUILD_OSAS := 1
 NON_IMC_BUILD := true
 export NON_IMC_BUILD
-include device/intel/common/boot/sofia/sofia-base.mk
+

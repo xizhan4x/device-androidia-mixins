@@ -1,5 +1,6 @@
 TARGET_LOAD_MODEM_DATA_EXTRACT := true
 TARGET_LOAD_MODEM_SECURE_BLOCK := true
+MODEM_SILENT_RESET_ENABLED := true
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_sf3g
 
 BOARD_USE_3G_RPCRIL := true

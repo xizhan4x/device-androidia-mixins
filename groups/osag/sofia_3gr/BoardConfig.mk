@@ -1,2 +1,3 @@
-INTEL_PRG_FILE ?= $(CURDIR)/device/intel/$(TARGET_BOARD_PLATFORM)/modem_cfg_emmc.prg
+USE_IMC_BUILD_RULES ?= true
 GEN_PRG_FROM_SRC := true
+SOFIA_PROVDATA_FILES += $(FLSTOOL)
