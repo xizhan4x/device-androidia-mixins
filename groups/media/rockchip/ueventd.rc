@@ -1,4 +1,4 @@
-/dev/mvpipe-rga 0660	system	system
+/dev/mvpipe-rga 0660	media	 graphics
 /dev/mvpipe-vpu	0660    media    graphics
 /dev/mvpipe-vpu_pp 0660    media   graphics
 /dev/mvpipe-oec_dat    0660    media    media
