@@ -85,7 +85,7 @@ service setup_fs_nvm /system/bin/setup_fs_nvm /dev/block/by-name/ImcPartID076
     oneshot
 
 service nvm_uagent /system/bin/nvm_useragent
-    class main
+    class core
     disabled
     user radio
     group radio misc
