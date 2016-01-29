@@ -25,6 +25,7 @@ GNSS_LPM_DIS_{{{xtal}}} := true
 endif
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/gps/cg2k
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/gps
 
 BOARD_SEPOLICY_M4DEFS += sepolicy_module_gps=cg2k \
     gps_cg2k_trans=/dev/{{{trans}}}
