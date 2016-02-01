@@ -1,4 +1,5 @@
 PREBUILT_FLS ?= $(CURDIR)/hardware/intel/$(TARGET_BOARD_PLATFORM)-fls/$(TARGET_DEVICE)
+MODEM_PREBUILT_FLS ?= $(CURDIR)/vendor/intel/fw/modem/IMC/$(TARGET_BOARD_PLATFORM)/$(PRODUCT_MODEL)
 
 USE_IMC_BUILD_RULES ?= true
 ifeq "$(wildcard $(ANDROID_BUILD_TOP)/../soclib/)" ""
