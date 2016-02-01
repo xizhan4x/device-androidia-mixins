@@ -36,6 +36,7 @@ endif # variant not eq user
 KERNEL_CONFIG := $(LOCAL_KERNEL_PATH)/.config
 
 KERNEL_MAKE_OPTIONS = \
+    SHELL=/bin/bash \
     -C $(LOCAL_KERNEL_SRC) \
     O=$(LOCAL_KERNEL_PATH) \
     ARCH=$(TARGET_KERNEL_ARCH) \
@@ -130,20 +131,36 @@ $(LOCAL_KERNEL): yoctotoolchain $(MINIGZIP) $(KERNEL_CONFIG) $(BOARD_DTB)
 	cp $(LOCAL_KERNEL_PATH)/scripts/dtc/dtc $(LOCAL_KERNEL_PATH)
 {{/build_dtbs}}
 
-build_external_modules: $(LOCAL_KERNEL)
-	for dir in $(EXTERNAL_MODULES) ; do \
-		mkdir -p $(LOCAL_KERNEL_PATH)/../modules/$$dir ;\
-		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir modules || exit 1;\
-		$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$$dir INSTALL_MOD_STRIP=1 modules_install || exit 1;\
-	done
+
+# modules can be built in parallel, but due to depmod
+# they should be installed one at a time.
+
+PREVIOUS_KERNEL_MODULE := $(LOCAL_KERNEL)
+
+define bld_external_module
+build_$(1): $(LOCAL_KERNEL)
+	@echo BUILDING $(1)
+	@mkdir -p $(LOCAL_KERNEL_PATH)/../modules/$(1) ;
+	+$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$(1) $(ADDITIONAL_ARGS_$(subst /,_,$(1))) modules
+
+install_$(1): build_$(1) $(PREVIOUS_KERNEL_MODULE)
+	@echo INSTALLING $(1)
+	+$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$(1) INSTALL_MOD_STRIP=1 modules_install
+
+build_external_modules: install_$(1)
+
+$(eval PREVIOUS_KERNEL_MODULE := install_$(1))
+endef
+
 {{#use_bcmdhd}}
-copy_modules: build_bcmdhd
-build_bcmdhd: build_external_modules
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCM4356=m CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=y CONFIG_BCMDHD_SDIO= modules
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} INSTALL_MOD_STRIP=1 modules_install
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} CONFIG_BCM43241=m CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=  CONFIG_BCMDHD_SDIO=y  modules
-	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/bcm43xx/{{{extmod_platform}}} INSTALL_MOD_STRIP=1 modules_install
+EXTERNAL_MODULES += bcm43xx/{{{extmod_platform}}} bcm43xx/{{{extmod_platform}}}_pcie
+ADDITIONAL_ARGS_bcm43xx_{{{extmod_platform}}} := CONFIG_BCM43241=m CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=  CONFIG_BCMDHD_SDIO=y
+ADDITIONAL_ARGS_bcm43xx_{{{extmod_platform}}}_pcie := CONFIG_BCM4356=m CONFIG_BCMDHD=m CONFIG_BCMDHD_PCIE=y CONFIG_BCMDHD_SDIO=
 {{/use_bcmdhd}}
+
+$(foreach m,$(EXTERNAL_MODULES),$(eval $(call bld_external_module,$(m))))
+
+build_external_modules: $(LOCAL_KERNEL)
 
 {{#build_dtbs}}
 $(BOARD_DTB): yoctotoolchain $(KERNEL_CONFIG)
