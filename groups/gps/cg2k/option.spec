@@ -12,3 +12,4 @@ fa_gpio=false
 simu=false
 pulsar=false
 gpp = false
+gps_dsds = false

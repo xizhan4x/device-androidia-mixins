@@ -9,6 +9,8 @@ GPS_LPM := {{{gps_lpm}}}
 GPS_SIMU := {{{simu}}}
 GNSS_PULSAR := {{{pulsar}}}
 
+GPS_DSDS := {{{gps_dsds}}}
+
 {{#rpc_ril}}
 GPS_AMIL_RPC := {{{amil}}}
 {{/rpc_ril}}
