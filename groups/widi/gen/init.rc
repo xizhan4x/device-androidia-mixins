@@ -7,7 +7,20 @@ on boot
     setprop widi.abr.enable true
     setprop widi.setsocketsize.enable false
     setprop widi.socketpriority.enable false
+
+    {{#wfdx_support}}
+    # Enable wfdx_video_formats RTSP extension by default for widi
+    setprop widi.wfdx.video.enable true
+    {{/wfdx_support}}
 {{/source}}
+
+{{#sink}}
+{{#wfdx_support}}
+# WiDi Sink (Receiver)
+    # Enable wfdx_video_formats RTSP extension by default for widi
+    setprop widi.sink.wfdx.video.enable true
+{{/wfdx_support}}
+{{/sink}}
 
 on post-fs-data
     mkdir /data/misc/dnsmasq 0755 root root
