@@ -1,5 +1,7 @@
-# enable ui_enhancement
-INTEL_FEATURE_UX_ENHANCEMENT := true
+# Default value for INTEL_FEATURE_UX_ENHANCEMENT
+# This flag can be overriden by make command line
+INTEL_FEATURE_UX_ENHANCEMENT := {{{activated}}}
+ifeq ($(INTEL_FEATURE_UX_ENHANCEMENT), true)
 INTEL_FEATURE_DATA_TRAFFIC := true
 INTEL_FEATURE_ENHANCED_CALL := true
 INTEL_FEATURE_CONTACTS := true
@@ -10,7 +12,6 @@ PRODUCT_PACKAGES += \
         VideoLive \
         AudioProfile \
         FileManager
-
 ifeq ($(INTEL_FEATURE_DATA_TRAFFIC), true)
 PRODUCT_PACKAGES += \
         SystemUIDataarrowOverlay
@@ -25,4 +26,5 @@ PRODUCT_PACKAGES += \
         ContactsSim \
         ContactsProviderOverlay \
         ContactsSimService
-endif
+endif #INTEL_FEATURE_CONTACTS eq true
+endif #INTEL_FEATURE_UX_ENHANCEMENT eq true
