@@ -14,3 +14,9 @@ PRODUCT_PACKAGES_DEBUG += \
 # Audio HALs
 PRODUCT_PACKAGES += meta.package.audio
 
+{{#wov}}
+# Sound Trigger HAL
+PRODUCT_PACKAGES += \
+       sound_trigger.primary.$(TARGET_BOARD_PLATFORM)
+{{/wov}}
+

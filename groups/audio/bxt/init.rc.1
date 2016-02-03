@@ -16,3 +16,14 @@ on boot
      insmod ${ro.boot.moduleslocation}/snd-soc-dmic.ko
      insmod ${ro.boot.moduleslocation}/snd-soc-hdac-hdmi.ko
      insmod ${ro.boot.moduleslocation}/snd-soc-bxt_mrgfld_dpcm_florida.ko
+
+{{#wov}}
+# Set the WakeOnVoice properties
+on boot
+    setprop audio.wov.card wm8998audio
+    setprop audio.wov.device 0
+    setprop audio.wov.switch "hwd_in Switch"
+    setprop audio.wov.params "hwd_in hwd 0 mdl params"
+    setprop audio.wov.notif "hwd_in hwd 0 notif params"
+{{/wov}}
+
