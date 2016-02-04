@@ -291,6 +291,9 @@ def amend_file(dlines, src, mixinsbase, params):
     Assumes we have run clear_file() on dlines at some point beforehand"""
     with open(src) as sfile:
         src_contents = sfile.read()
+        if src_contents[-1] != '\n':
+            policy_error("No Newline at the end of {}".format(src))
+
         try:
             slines = pystache.render(src_contents, params)
         except pystache.context.KeyNotFoundError as e:
