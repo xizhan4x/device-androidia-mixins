@@ -1,12 +1,12 @@
 
-service passpointnative /system/bin/passpointnative
+service passpointnative /system/vendor/bin/passpointnative
     class main
     user system
     group system wifi inet net_raw net_admin dhcp
     disabled
     oneshot
 
-service hs20osuclient /system/bin/hs20-osu-client
+service hs20osuclient /system/vendor/bin/hs20-osu-client
     class main
     user system
     group system wifi inet
