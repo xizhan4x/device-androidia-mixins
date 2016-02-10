@@ -1,5 +1,28 @@
 AOSP_CARRIER_CONFIG ?= {{user_build_aosp}}
 
+ifeq ($(TARGET_BUILD_VARIANT),user)
+
+ifeq ($(AOSP_CARRIER_CONFIG), CMCC)
+PRODUCT_PACKAGES += com.intel.telephony.extend
+INTEL_FEATURE_TELEPHONY_DECOUPLING := true
+INTEL_FEATURE_ENHANCED_CALL := true
+INTEL_FEATURE_PREFEREDNETWORK_DISPLAY := true
+INTEL_FEATURE_AUTO_ADAPTER_MAINCARD := true
+INTEL_FEATURE_DATA_TRAFFIC := true
+INTEL_FEATURE_TELEPHONYPROVIDER := ../../../vendor/intel/featsetclass_tel/custom_TelephonyProvider/packages/providers/TelephonyProvider
+INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM := ../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
+INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS := ../../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
+INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS := ../../../vendor/intel/featsetclass_tel/MainCardSettings/src
+INTEL_FEATURE_PREFEREDNETWORK_ENHANCEDTELEPHONY := ../../../vendor/intel/featsetclass_tel/PreferedNetworkDisplay/src
+endif
+
+ifeq ($(AOSP_CARRIER_CONFIG), VZW)
+INTEL_FEATURE_IMS_EXT := true
+EXT_IMS_PACKAGES_SRC_FILES_PATH := ../../../vendor/intel/featsetclass_tel/ims/packages/apps/Settings/src
+endif
+
+else
+
 {{#carrier_cmcc}}
 PRODUCT_PACKAGES += com.intel.telephony.extend
 INTEL_FEATURE_TELEPHONY_DECOUPLING := true
@@ -18,6 +41,9 @@ INTEL_FEATURE_PREFEREDNETWORK_ENHANCEDTELEPHONY := ../../../vendor/intel/featset
 INTEL_FEATURE_IMS_EXT := true
 EXT_IMS_PACKAGES_SRC_FILES_PATH := ../../../vendor/intel/featsetclass_tel/ims/packages/apps/Settings/src
 {{/carrier_vzw}}
+
+endif
+
 
 INTEL_FEATURE_IMS_EXT ?= {{ims_ext_volte_vt_wfc}}
 EXT_IMS_PACKAGES_SRC_FILES_PATH ?= ../../../device/intel/common/telephony/carrier/imsstub/packages/apps/Settings/src
