@@ -3,10 +3,6 @@ MODEM_PREBUILT_FLS ?= $(CURDIR)/vendor/intel/fw/modem/IMC/$(TARGET_BOARD_PLATFOR
 
 USE_IMC_BUILD_RULES ?= true
 ifeq "$(wildcard $(ANDROID_BUILD_TOP)/../soclib/)" ""
-INTEL_PRG_FILE ?= $(PREBUILT_FLS)/modem_cfg_emmc.prg
-GEN_PRG_FROM_SRC := true
 BUILD_MODEM := 0
 SOFIA_PROVDATA_FILES += $(FLSTOOL)
-else
-GEN_PRG_FROM_SRC := true
 endif
