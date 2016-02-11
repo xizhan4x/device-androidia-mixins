@@ -326,12 +326,13 @@ def coerce_boolean(d):
 
 
 def split_params(selections):
+    regx_val = re.compile(r"(?<!\\),")  # param's value can contain comma (escaped with backslash)
     res = []
     for group, option_params in selections:
         m = re.match('([^\s(]+)\s*\(([^)]*)\)\s*$', option_params)
         if m is not None:
             option = m.group(1)
-            params = dict(map(str.strip, x.split('=', 1)) for x in m.group(2).split(','))
+            params = dict(map(str.strip, x.replace('\,',',').split('=', 1)) for x in regx_val.split(m.group(2)))
             coerce_boolean(params)
             res.append((group, option, ReadTrackingDict(params)))
         else:
