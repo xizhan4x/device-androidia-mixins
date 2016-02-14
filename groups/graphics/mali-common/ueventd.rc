@@ -8,4 +8,4 @@
 /dev/vbpipe6    0666    system  system
 /dev/mali   0666    system  graphics
 /dev/mali0  0666    system  system
-
+/dev/sw_sync    0660    system  system
