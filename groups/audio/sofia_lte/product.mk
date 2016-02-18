@@ -39,3 +39,8 @@ PRODUCT_PACKAGES += \
     audio_daemon \
     audio.usb.default
 
+#Enable imas_gti tool
+ifeq ($(TARGET_BUILD_VARIANT),eng userdebug)
+PRODUCT_PACKAGES_DEBUG += imas_gti
+endif
+
