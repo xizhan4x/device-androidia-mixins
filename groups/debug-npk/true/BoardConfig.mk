@@ -10,7 +10,7 @@ ifeq ($(PSTORE_CONFIG),PRAM)
 
 # Default configuration for dumps to pstore
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    persist.npk.cfg=pstore,fw
+    persist.npk.cfg={{default_cfg}}
 
 # Increase pstore dump size to fit MSC buffers
 BOARD_KERNEL_CMDLINE += \
