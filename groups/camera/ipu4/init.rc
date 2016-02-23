@@ -20,7 +20,7 @@ on property:ro.camera.hardware.ipu4=*
     insmod ${ro.boot.moduleslocation}/lib2600-mod-${ro.camera.hardware.ipu4}.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-mod-${ro.camera.hardware.ipu4}.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-mmu-${ro.camera.hardware.ipu4}.ko
-    insmod ${ro.boot.moduleslocation}/intel-ipu4-isys-mod-${ro.camera.hardware.ipu4}.ko
+    insmod ${ro.boot.moduleslocation}/intel-ipu4-isys-mod-${ro.camera.hardware.ipu4}.ko num_stream_support=2
     insmod ${ro.boot.moduleslocation}/intel-ipu4-psys-mod-${ro.camera.hardware.ipu4}.ko
     #optional debug configuration
     #echo "module smiapp_pll +p" > /sys/kernel/debug/dynamic_debug/control;
