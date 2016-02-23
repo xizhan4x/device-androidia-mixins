@@ -13,11 +13,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += ContactsEx
 
 INTEL_FEATURE_TELEPHONY_DECOUPLING := true
-INTEL_FEATURE_ENHANCED_CALL := true
-INTEL_FEATURE_PREFEREDNETWORK_DISPLAY := true
-INTEL_FEATURE_AUTO_ADAPTER_MAINCARD := true
 INTEL_FEATURE_DATA_TRAFFIC := true
 INTEL_FEATURE_TELEPHONYPROVIDER := ../../../vendor/intel/featsetclass_tel/custom_TelephonyProvider/packages/providers/TelephonyProvider
+INTEL_FEATURE_ENHANCEDDIALER := ../../../vendor/intel/featsetclass_tel/EnhancedDialer/src
 INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM := ../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
 INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS := ../../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
 INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS := ../../../vendor/intel/featsetclass_tel/MainCardSettings/src
@@ -45,11 +43,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += ContactsEx
 
 INTEL_FEATURE_TELEPHONY_DECOUPLING := true
-INTEL_FEATURE_ENHANCED_CALL := true
-INTEL_FEATURE_PREFEREDNETWORK_DISPLAY := true
-INTEL_FEATURE_AUTO_ADAPTER_MAINCARD := true
 INTEL_FEATURE_DATA_TRAFFIC := true
 INTEL_FEATURE_TELEPHONYPROVIDER := ../../../vendor/intel/featsetclass_tel/custom_TelephonyProvider/packages/providers/TelephonyProvider
+INTEL_FEATURE_ENHANCEDDIALER := ../../../vendor/intel/featsetclass_tel/EnhancedDialer/src
 INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM := ../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
 INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS := ../../../../vendor/intel/featsetclass_tel/EnhancedTelecomm/src
 INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS := ../../../vendor/intel/featsetclass_tel/MainCardSettings/src
@@ -69,11 +65,12 @@ endif
 
 INTEL_FEATURE_IMS_EXT ?= {{ims_ext_volte_vt_wfc}}
 EXT_IMS_PACKAGES_SRC_FILES_PATH ?= ../../../device/intel/common/telephony/carrier/imsstub/packages/apps/Settings/src
-INTEL_FEATURE_TELEPHONYPROVIDER ?= ../../../device/intel/common/telephony/carrier/stub/custom_TelephonyProvider/packages/providers/TelephonyProvider
-INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM ?= ../../../device/intel/common/telephony/carrier/stub/EnhancedTelecomm/src
-INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS ?= ../../../../device/intel/common/telephony/carrier/stub/EnhancedTelecomm/src
-INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS ?= ../../../device/intel/common/telephony/carrier/stub/MainCardSettings/src
-INTEL_FEATURE_PREFEREDNETWORK_ENHANCEDTELEPHONY ?= ../../../device/intel/common/telephony/carrier/stub/PreferedNetworkDisplay/src
 INTEL_FEATURE_CONTACTS ?= ../../../device/intel/common/telephony/carrier/stub/Contacts/src
 INTEL_FEATURE_CONTACTSCOMMON ?= ../../../device/intel/common/telephony/carrier/stub/ContactsCommon/src
 INTEL_FEATURE_CONTACTSPROVIDER ?= ../../../device/intel/common/telephony/carrier/stub/providers/ContactsProvider/src
+INTEL_FEATURE_ENHANCEDDIALER ?= ../../../device/intel/common/telephony/carrier/EnhancedDialer/src
+INTEL_FEATURE_TELEPHONYPROVIDER ?= ../../../device/intel/common/telephony/carrier/custom_TelephonyProvider/packages/providers/TelephonyProvider
+INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM ?= ../../../device/intel/common/telephony/carrier/EnhancedTelecomm/src
+INTEL_FEATURE_BLACKLIST_ENHANCEDTELECOMM_TESTS ?= ../../../../device/intel/common/telephony/carrier/EnhancedTelecomm/src
+INTEL_FEATURE_MAINCARD_ENHANCEDSETTINGS ?= ../../../device/intel/common/telephony/carrier/MainCardSettings/src
+INTEL_FEATURE_PREFEREDNETWORK_ENHANCEDTELEPHONY ?= ../../../device/intel/common/telephony/carrier/PreferedNetworkDisplay/src
