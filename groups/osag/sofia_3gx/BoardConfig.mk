@@ -1,0 +1,1 @@
+../sofia_lte/BoardConfig.mk.1
