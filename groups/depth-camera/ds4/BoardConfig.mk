@@ -13,4 +13,4 @@ USE_CAMERA_DS4_FW := true
 USE_CAMERA_ATOMISP_EMBED := true
 
 # Allow DSAPI access
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/ds4
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/depth-camera/ds4
