@@ -46,11 +46,20 @@ on post-fs-data
     chmod 770 /data/telephony
 
 # adding Modem Manager
+{{#use_crm}}
+service crm /system/vendor/bin/crm
+    class main
+    socket crm1 stream 660 system radio
+    user root
+    group radio cache inet misc system usb
+{{/use_crm}}
+{{^use_crm}}
 service mmgr /system/vendor/bin/mmgr
     class main
     socket mmgr stream 660 system radio
     user system
     group radio cache inet misc system usb
+{{/use_crm}}
 
 # AT proxy service
 service proxy /system/vendor/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10

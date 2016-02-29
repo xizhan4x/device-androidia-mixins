@@ -15,6 +15,12 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.telephony.default_network=9 \
     persist.tel.stk.apbip=true
 
+{{#use_crm}}
+{{#pcie}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony/pcie
+{{/pcie}}
+{{/use_crm}}
+
 # Telephony common overlay folder
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
 
