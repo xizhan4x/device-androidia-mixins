@@ -24,8 +24,3 @@ else
   TARGET_CPU_ABI_LIST_32_BIT += $(NB_ABI_LIST_32_BIT)
   TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_32_BIT)
 endif
-
-ifeq ($(ENABLE_UNITY_REPLACEMENT),true)
-  INTEL_FEATURE_UNITY_REPLACEMENT := true
-  BOARD_SEPOLICY_DIRS += device/intel/sepolicy/houdini/extra/
-endif
