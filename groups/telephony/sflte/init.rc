@@ -1,5 +1,3 @@
-on boot
-    setprop ro.telephony.tcs.hw_name {{tcs_hw}}
 
 # MTS SERVICES
 

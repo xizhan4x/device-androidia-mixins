@@ -11,6 +11,10 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
     PRODUCT_COPY_FILES += \
         device/intel/sofia_lte/ptest/init.bluetooth.ptest.rc:root/init.bluetooth.ptest.rc
 
+    #telephony: copy init
+    PRODUCT_COPY_FILES += \
+        device/intel/sofia_lte/ptest/init.telephony.ptest.rc:root/init.telephony.ptest.rc
+
     # SBEE Configuration files
     PRODUCT_COPY_FILES += \
         hardware/imc/gnss/lbs/lbs_core/lbsd/sbee/license/config/MSLConfig.txt:system/etc/MSLConfig.txt

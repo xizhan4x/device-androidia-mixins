@@ -48,5 +48,8 @@ ifeq ($(MODEM_SILENT_RESET_ACTIVE),true)
       persist.sys.crm1.silent_reset=true
 endif
 
+ADDITIONAL_DEFAULT_PROPERTIES += \
+      ro.telephony.tcs.hw_name={{tcs_hw}}
+
 BOARD_HAVE_ATPROXY := true
 BOARD_HAVE_MODEM_USING_SECPACK := true
