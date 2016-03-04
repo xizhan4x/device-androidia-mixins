@@ -15,3 +15,9 @@ on boot
     chown system system /sys/class/powercap/intel-rapl:0/constraint_0_power_limit_uw
     chown system system /sys/class/backlight/intel_backlight/brightness
     restorecon_recursive /sys/class/powercap
+
+{{#thermal_lite}}
+service thermal_lite /thermal_lite
+    class charger
+    seclabel u:r:thermal_lite:s0
+{{/thermal_lite}}
