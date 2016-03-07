@@ -141,11 +141,11 @@ define bld_external_module
 build_$(1): $(LOCAL_KERNEL)
 	@echo BUILDING $(1)
 	@mkdir -p $(LOCAL_KERNEL_PATH)/../modules/$(1) ;
-	+$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$(1) $(ADDITIONAL_ARGS_$(subst /,_,$(1))) modules
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$(1) $(ADDITIONAL_ARGS_$(subst /,_,$(1))) modules
 
 install_$(1): build_$(1) $(PREVIOUS_KERNEL_MODULE)
 	@echo INSTALLING $(1)
-	+$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$(1) INSTALL_MOD_STRIP=1 modules_install
+	$(MAKE) $(KERNEL_MAKE_OPTIONS) M=$(EXTMOD_SRC)/$(1) INSTALL_MOD_STRIP=1 modules_install
 
 build_external_modules: install_$(1)
 
