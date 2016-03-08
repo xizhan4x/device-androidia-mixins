@@ -86,3 +86,8 @@ PRODUCT_PACKAGES += \
 # using the TXE.
 KERNELFLINGER_TXE_BIND_ROOT_TRUST := true
 {{/txe_bind_root_of_trust}}
+{{#os_secure_boot}}
+# Kernelfligner will set the global variable OsSecureBoot
+# The BIOS must support this variable to enable this feature
+KERNELFLINGER_OS_SECURE_BOOT := true
+{{/os_secure_boot}}
