@@ -1,6 +1,6 @@
 INSTALLED_CONFIGIMAGE_TARGET := $(PRODUCT_OUT)/config.img
 
-selinux_fc := $(TARGET_ROOT_OUT)/file_contexts
+selinux_fc := $(TARGET_ROOT_OUT)/file_contexts.bin
 
 $(INSTALLED_CONFIGIMAGE_TARGET) : PRIVATE_SELINUX_FC := $(selinux_fc)
 $(INSTALLED_CONFIGIMAGE_TARGET) : $(MKEXTUSERIMG) $(MAKE_EXT4FS) $(E2FSCK) $(selinux_fc)
