@@ -1,0 +1,16 @@
+# The unity replacment feature
+
+This feature is designed to improve the performance
+of arm apps developed with unity engine in PRC market.
+The basic idea is to prepare authorized x86 unity libraries
+under verdor partition. When running the permitted apps, the
+x86 unity engine is loaded, instead of arm alternatives in app
+APKs.
+When installing the apps with unity, this feature in PackageManager
+will compare the MD5 values of arm untiy libraries. If authorized,
+and the package name of this app is permitted in the list under
+/vendor/lib(64)/.u.check.list, the soft links to x86 unity
+libraries is created under app lib directory, instead of copying
+the arm unit libraries out of APK.
+NOTE: The feature will be disabled if the GooglePlay Store is found
+on the device.

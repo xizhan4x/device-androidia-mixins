@@ -1,0 +1,35 @@
+# The PRC compatibility feature
+
+In PRC market, some APKs are packed in non-standard way, that is,
+the x86(_64) libraries aren't workable although they're found in the APK.
+This patch intends to relieve the impact from below 2 defects,
+which is based-on the heuristic algorithm.
+
+1. Missing x86(_64) libraries: The x86(_64) libraries are ported and
+   existing in the APK. But it's incomplete, and not workable.
+2. Mixed arm(64) libraries: Several libraries are existing in lib/x86(_64)/
+   directory in the APK. But some of them are arm(64) libraries,
+   instead of x86(_64) ones.
+
+All of above always cause APP crash if installed x86(_64) libraries
+by PackageManager.
+
+This patch aims to improve PackageManager to figure out these defects
+and install arm(64) libraries to run the APP with houdini support.
+The basic idea is to compare x86(_64) libraries with arm(64) alternatives
+to determine which one should be workable.
+
+To customize it for specific APPs, 3 lists are provided under
+/system/vendor/etc/misc/ on the device.
+
+1. /system/vendor/etc/misc/.OEMWhiteList:
+   This patch will be disabled for the apps contained in the OEMWhiteList.
+2. /system/vendor/etc/misc/.OEMBlackList:
+   The APPs are enforced to install the arm(64) libraries if existed
+   in OEMBlacklList.
+3. /system/vendor/etc/misc/.ThirdPartySO:
+   This is another list which contains the names of all 3rd-party libraries,
+   which will impact on the final decision of APP installation. It should be
+   maintained according to the status quo by adding new finding 3rd-party
+   libraries or removing obsoleted ones.
+
