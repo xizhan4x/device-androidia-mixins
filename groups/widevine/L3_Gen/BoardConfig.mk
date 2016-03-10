@@ -1,0 +1,2 @@
+BOARD_USE_INTEL_OEMCRYPTO := true
+
