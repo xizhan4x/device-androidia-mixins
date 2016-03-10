@@ -186,6 +186,54 @@ on property:sys.usb.modemevt=1
    write /proc/sys/net/ipv6/conf/usb4/use_tempaddr 2
 {{/pcie}}
 
+# Activate RPS and disable duplicate address detection
+# for PCIe devices
+{{#pcie}}
+on property:sys.usb.modemevt=1
+   write /sys/class/net/inm0/queues/rx-0/rps_cpus F
+   write /sys/class/net/inm1/queues/rx-0/rps_cpus F
+   write /sys/class/net/inm2/queues/rx-0/rps_cpus F
+   write /sys/class/net/inm3/queues/rx-0/rps_cpus F
+   write /sys/class/net/inm4/queues/rx-0/rps_cpus F
+   write /sys/class/net/inm5/queues/rx-0/rps_cpus F
+   write /sys/class/net/inm6/queues/rx-0/rps_cpus F
+   write /sys/class/net/inm7/queues/rx-0/rps_cpus F
+   write /sys/class/net/inlwad0/queues/rx-0/rps_cpus F
+
+   write /proc/sys/net/ipv6/conf/inm0/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inm1/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inm2/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inm3/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inm4/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inm5/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inm6/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inm7/accept_dad 0
+   write /proc/sys/net/ipv6/conf/inlwad0/accept_dad 0
+
+   write /proc/sys/net/ipv6/conf/inm0/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inm1/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inm2/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inm3/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inm4/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inm5/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inm6/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inm7/dad_transmits 0
+   write /proc/sys/net/ipv6/conf/inlwad0/dad_transmits 0
+
+# Activate usage of temporary addresses on cellular IPV6 connections
+   write /proc/sys/net/ipv6/conf/inm0/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inm1/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inm2/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inm3/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inm4/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inm5/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inm6/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inm7/use_tempaddr 2
+   write /proc/sys/net/ipv6/conf/inlwad0/use_tempaddr 2
+
+   setprop sys.usb.modemevt 0
+{{/pcie}}
+
 {{#m2}}
 #Currently M2 support in unavailable in BIOS. Hence, introduced new variable m2_config
 #to set the config path. It has bo be removed, once the BIOS settings are ready for M2.
