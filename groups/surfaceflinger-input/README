@@ -1,0 +1,7 @@
+                             surfaceflinger-input
+                             ====================
+In order to support Intel extended on Widi display we need to receive touch
+events in hwcomposer. This means we need to add input group permission to
+the surfaceflinger service.
+This group is needed in order to:
+    open event files in /dev/input
