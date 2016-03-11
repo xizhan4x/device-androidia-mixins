@@ -4,6 +4,7 @@ ifeq ($(MIXIN_DEBUG_LOGS),true)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.npk.rc:root/init.npk.rc
 PRODUCT_PACKAGES += \
-    init.npk.sh
+    init.npk.sh \
+    logcatext
 
 endif #MIXIN_DEBUG_LOGS

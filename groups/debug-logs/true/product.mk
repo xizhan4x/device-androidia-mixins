@@ -17,7 +17,9 @@ endif
 ifeq ($(MIXIN_DEBUG_LOGS),true)
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/init.logs.rc:root/init.logs.rc
 PRODUCT_PACKAGES += \
-    logcatext \
+{{#logger_pack}}
+    {{logger_pack}} \
+{{/logger_pack}}
     elogs.sh \
     start_log_srv.sh \
     logcat_ep.sh

@@ -26,3 +26,15 @@ As per build variant (eng, userdebug, user) dedicated files feature is
 not available with mixins, per option files are provided in
 'device/intel/common/debug/' folder and will be included at build time
 regarding selected option.
+
+Available options
+-------------------
+
+eng_only          - Enable the features on engineering builds only
+                    (Default: false)
+logs_dir          - Root working directory (Default: /data/logs)
+logger_pack       - Additional package that will provide the configured logger
+                    (Default: None)
+logger            - The logger (Default: /system/bin/logcat)
+logger_rot_cnt    - Maximum log rotation files count (Default: 20)
+logger_rot_size   - Log rotation file size in kB (Default: 5000)
