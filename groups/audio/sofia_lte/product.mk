@@ -20,8 +20,11 @@ PRODUCT_PROPERTY_OVERRIDES += media.stagefright.audio.deep=true
 #Enable awesome player for audio playback
 PRODUCT_PROPERTY_OVERRIDES += media.awesome-local-audio=0
 
-#Enable Dmic swap for HF mode
-PRODUCT_PROPERTY_OVERRIDES += persist.audio.dmic_path_select=3
+#Route Mic 1 to DigMic2 and  Mic 2 to DigMic1
+#This is specific to SoFIA LTE MRD platforms
+ifneq (,$(findstring sltmrd,$(TARGET_PRODUCT)))
+    PRODUCT_PROPERTY_OVERRIDES += persist.audio.dmic_path_select=3
+endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_deep.conf:system/etc/audio_policy.conf \
