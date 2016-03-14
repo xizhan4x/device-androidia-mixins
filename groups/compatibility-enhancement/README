@@ -1,0 +1,13 @@
+# The Compatiblity Enhancement feature
+
+This feature is created for some corner cases of
+app compatibility issue. Currently, it aims to
+handle below issues:
+
+1. All native libraries are put under assets directory.
+Some apps put their libraries under the assets directory
+in their APKs, instead of lib directory. It is not a
+problem if the ABI of app libs is matched with platform
+default ABI. But for apps with other ABIs, this feature
+must be enabled to call native bridge for help.
+
