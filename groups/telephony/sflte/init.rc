@@ -1,16 +1,3 @@
-on post-fs-data
-
-    # Access rights for CRM
-    chown root radio /sys/class/misc/vmodem/modem_state
-    chown root radio /dev/vmodem
-    chown root radio /dev/vdump
-    chown root radio /dev/mvpipe-atc
-
-    chmod 660 /sys/class/misc/vmodem/modem_state
-    chmod 660 /dev/vmodem
-    chmod 660 /dev/vdump
-    chmod 660 /dev/mvpipe-atc
-
 on boot
     setprop ro.telephony.tcs.hw_name {{tcs_hw}}
 

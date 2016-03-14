@@ -3,3 +3,11 @@
 # modem tty node change to radio user can read and write
 /dev/mvpipe-at2c    0660    root    radio
 
+# CRM nedeed permissions
+/sys/devices/virtual/misc/vmodem    modem_state    0660    root    radio
+/dev/vmodem    0660    root    radio
+/dev/vdump    0660    root    radio
+/dev/mvpipe-atc    0660    root    radio
+/dev/block/mmcblk0gp0p1    0660    root    radio
+/dev/block/mmcblk0gp0p2    0660    root    radio
+/dev/block/mmcblk0gp0p3    0660    root    radio
