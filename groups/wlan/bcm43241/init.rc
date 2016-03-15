@@ -1,6 +1,6 @@
-service wlan_prov /system/bin/wlan_prov
+service wlan_prov /system/vendor/bin/wlan_prov
     class main
-    user root
+    user system
     group system wifi
     disabled
     oneshot

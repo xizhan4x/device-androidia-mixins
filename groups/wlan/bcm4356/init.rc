@@ -1,6 +1,6 @@
-service wlan_prov /system/bin/wlan_prov
+service wlan_prov /system/vendor/bin/wlan_prov
     class main
-    user root
+    user system
     group system wifi
     disabled
     oneshot
@@ -59,7 +59,6 @@ on charger
     insmod ${ro.boot.moduleslocation}/bcmdhd_pcie.ko firmware_path=/system/vendor/firmware/brcm/fw_bcmdhd_4356a2_pcie.bin nvram_path=/system/vendor/firmware/brcm/nvram_pcie_4356_a2.cal
 
 on post-fs-data
-    mkdir /oem_config/wlan
     start wlan_prov
     wait /oem_config/wifi/mac.txt
     insmod ${ro.boot.moduleslocation}/cfg80211.ko
