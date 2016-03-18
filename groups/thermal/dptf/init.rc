@@ -1,3 +1,6 @@
+on post-fs
+    setprop persist.thermal.mode dptf
+
 service esif_ufd /system/vendor/bin/esif_ufd -n
     user system
     group system
