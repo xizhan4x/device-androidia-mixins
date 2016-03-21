@@ -29,6 +29,12 @@ MODEM_SILENT_RESET_ACTIVE := true
 INTEL_FEATURE_CTA := true
 DEVICE_PACKAGE_OVERLAYS += vendor/intel/featsetres_tel/cta
 {{/intel_cta}}
+
+{{#dsds}}
+ADDITIONAL_BUILD_PROPERTIES += \
+    persist.radio.multisim.config=dsds
+{{/dsds}}
+
 # unstub CRM only if modem silent reset is enabled
 ifeq ($(MODEM_SILENT_RESET_ENABLED),true)
   ADDITIONAL_DEFAULT_PROPERTIES += \
