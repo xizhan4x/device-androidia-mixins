@@ -34,6 +34,10 @@ on init
     write /sys/devices/pci0000:00/0000:00:{{{xhci_pci_id}}}.0/ssic_port_enable 0
     write /sys/devices/pci0000:00/0000:00:{{{xhci_pci_id}}}.0/power/control auto
 
+{{#pcie}}
+    insmod /lib/modules/imc_ipc.ko
+{{/pcie}}
+
 on post-fs-data
 
 # create PinCaching folder
