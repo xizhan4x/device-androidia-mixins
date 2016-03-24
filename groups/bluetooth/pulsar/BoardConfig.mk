@@ -5,3 +5,6 @@ BOARD_USE_IBT_STACK := {{{use_ibt}}}
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := hardware/intel/libbt-vendor-intel/conf/intel/{{{vendor_conf}}}/
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-bt-pan
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-hid-kb
+BOARD_SEPOLICY_M4DEFS += bt_pulsar_port={{{port}}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bluetooth/common \
+                       device/intel/sepolicy/bluetooth/pulsar

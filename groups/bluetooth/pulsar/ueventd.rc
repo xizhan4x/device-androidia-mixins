@@ -1,3 +1,4 @@
-/dev/ttyS3                                  0660 bluetooth bluetooth
 #Bluedroid uhid support
 /dev/uhid                                    0660 bluetooth bluetooth
+#Bluetooth port permission
+{{{port}}}                                   0660 bluetooth audio
