@@ -1,2 +1,2 @@
 on post-fs
-    insmod ${ro.boot.moduleslocation}/silead.ko
+    insmod ${ro.boot.moduleslocation}/silead-ts.ko
