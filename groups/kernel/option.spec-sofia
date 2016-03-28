@@ -19,3 +19,4 @@ binary_name = vmlinux.bin
 interactive_governor = true
 intel_pstate = false
 loglevel = 5
+user_loglevel = 2

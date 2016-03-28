@@ -18,3 +18,4 @@ binary_name = bzImage
 interactive_governor=false
 intel_pstate=true
 loglevel = 5
+user_loglevel = 2

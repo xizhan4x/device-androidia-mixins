@@ -1,7 +1,11 @@
 # Specify location of board-specific kernel headers
 TARGET_BOARD_KERNEL_HEADERS := device/intel/common/{{{src_path}}}/kernel-headers
 
+ifneq ($(TARGET_BUILD_VARIANT),user)
 KERNEL_LOGLEVEL ?= {{{loglevel}}}
+else
+KERNEL_LOGLEVEL ?= {{{user_loglevel}}}
+endif
 
 BOARD_KERNEL_CMDLINE += \
         loglevel=$(KERNEL_LOGLEVEL) \
