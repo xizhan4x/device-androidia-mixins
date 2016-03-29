@@ -5,9 +5,12 @@ on post-fs
     setprop ro.iio.anglvel.vendor "Bosch Sensortec"
     setprop ro.iio.anglvel.max_range 17.45
     setprop ro.iio.anglvel.resolution 0.001
-    setprop ro.iio.anglvel.power 18
+    setprop ro.iio.anglvel.power 5
     setprop ro.iio.anglvel.scale 0.000532
     setprop ro.iio.anglvel.quirks "continuous,noisy,spotty"
     setprop ro.iio.anglvel.max_freq {{{max_freq}}}
     setprop ro.iio.temp.bmg160.name "BMG160 Temperature Sensor"
     setprop ro.iio.temp.bmg160.vendor "Bosch Sensortec"
+    setprop ro.iio.temp.bmg160.max_range 85
+    setprop ro.iio.temp.bmg160.resolution 0.01
+    setprop ro.iio.temp.bmg160.power 0.1
