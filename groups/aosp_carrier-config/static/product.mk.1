@@ -1,1 +1,9 @@
-../common/product.mk.1
+AOSP_CARRIER_CONFIG ?= {{carrier}}
+
+ifeq ($(AOSP_CARRIER_CONFIG), VZW)
+
+# VZW specific TLV apply on boot time
+ADDITIONAL_BUILD_PROPERTIES += \
+    persist.config.specific=vzw
+endif
+

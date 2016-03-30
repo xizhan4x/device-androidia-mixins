@@ -1,1 +1,6 @@
-../common/product.mk.1
+AOSP_CARRIER_CONFIG ?= {{user_build_aosp}}
+
+ifneq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_COPY_FILES += device/intel/common/aosp_carrier-config/init.aosp-config.rc:root/init.aosp-config.rc
+endif
+
