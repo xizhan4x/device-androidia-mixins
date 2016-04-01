@@ -118,10 +118,6 @@ service ril-daemon2 /system/bin/rild -c 2
    socket rild-debug2 stream 660 radio system
    user root
    group radio cache inet misc audio log
-   disabled
-
-on property:persist.radio.multisim.config=dsds
-   start ril-daemon2
 {{/dsds}}
 
 service oemhook_launch /system/vendor/bin/ril_start_oemhook.sh
