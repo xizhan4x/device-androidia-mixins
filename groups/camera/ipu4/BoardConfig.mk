@@ -11,6 +11,9 @@ IPU_CAMERA_CONFIG := {{{camera_config}}}
 # different IPUs
 BOARD_CAMERA_IPU4_SUPPORT = true
 
+# Define slow jpeg mode threshold to match sensor max frame rate at max jpeg size
+SLOWJPEGMODETHRESHOLD := 41666666
+
 # Face Engine can be either PVL or IA.
 BOARD_CAMERA_FACE_ENGINE = {{{face_engine}}}
 
