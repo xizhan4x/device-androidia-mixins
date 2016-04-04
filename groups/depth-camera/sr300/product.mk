@@ -24,6 +24,13 @@ PRODUCT_PACKAGES += add-sr300-to-usb-group
 PRODUCT_PACKAGES += \
 	FWUpdateSR300
 
+# Add recalibration tools and scripts
+PRODUCT_PACKAGES += \
+	SR300RecalibCaptureData \
+	SR300RecalibWriteData \
+	capture_recalib_data.sh \
+	write_recalib_data.sh \
+
 # Apps can now be compiled against the add-on without having to
 # manually copy the com.intel.camera2.extensions.depthcamera.jar to the
 # app 'libs' folder, ensuring only the built-in jar file

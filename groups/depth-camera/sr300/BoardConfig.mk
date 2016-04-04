@@ -8,6 +8,9 @@ USE_CAMERA_REALSENSE := true
 # and will relay calls to camera3hal for other cameras in the system.
 USE_CAMERA_SR300 := true
 
+# Enable SR300 additional tools
+USE_CAMERA_SR300_OEM_TOOLS := true
+
 # Build camera3hal as system lib instead as camera HAL module.
 USE_CAMERA_ATOMISP_EMBED := true
 
