@@ -7,7 +7,6 @@ $(OEMVARS_OUT)/oemvars-aosp-carrier-%.txt: $(AOSP_CARRIER_PROP_DIR)/%.prop
 	$(hide) mkdir -p $(PRODUCT_OUT)/oemvars
 	$(hide) echo -e "GUID = fb7e31f5-21de-4c4c-9eb7-163051bb06db\n" > $@
 	$(hide) echo -n "AospCarrierConfig    " >> $@
-	$(hide) $(foreach line,$(shell cat $<), \
-		echo -n "$(line)%0A" >> $@;)
+	$(hide) while read line; do echo -n "$$line%0A" >> $@; done < $<
 endif
 

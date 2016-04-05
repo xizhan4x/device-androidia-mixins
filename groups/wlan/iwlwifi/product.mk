@@ -37,3 +37,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     wlan_intel_restore.sh
 {{/gpp}}
+
+{{#libwifi-hal}}
+# Add wifi HAL
+PRODUCT_PACKAGES +=   \
+    libwifi-hal-intel \
+    halutil_intel
+{{/libwifi-hal}}

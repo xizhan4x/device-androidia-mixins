@@ -6,3 +6,4 @@ gpp = false
 iwl_defconfig = cht_hr
 softap_dualband_allow = false
 iwl_sub_folder = rel
+libwifi-hal = false

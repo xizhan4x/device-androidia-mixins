@@ -1,0 +1,33 @@
+on boot
+    insmod ${ro.boot.moduleslocation}/lnp_ldisc.ko
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
+on property:nvm_partition=mounted
+    mkdir /nvm_fs_partition/bluetooth 0770 bluetooth system
+    restorecon_recursive /nvm_fs_partition/bluetooth
+
+    start init_bt_nvm
+
+service init_bt_nvm /system/bin/sh /system/etc/bluetooth/bt_nvm_init.sh
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+   class main
+   group bluetooth wifi system dhcp
+   disabled
+   oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+   class main
+   group bluetooth system dhcp
+   disabled
+   oneshot

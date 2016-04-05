@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
     370b10060002220e00_selftest.sfi \
     bt_nvm_init.sh \
     .btnvm \
+    bt_first_boot \
 {{#gpp}}
     cws_manu
 {{/gpp}}

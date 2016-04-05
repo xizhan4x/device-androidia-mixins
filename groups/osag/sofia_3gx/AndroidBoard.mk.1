@@ -1,0 +1,1 @@
+../sofia_lte/AndroidBoard.mk

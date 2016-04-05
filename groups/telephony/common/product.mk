@@ -10,46 +10,43 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 PRODUCT_COPY_FILES += \
     device/intel/common/telephony/atproxy_usbreset:system/bin/atproxy_usbreset
 
-# Modem related packages
+
+{{#use_crm}}
+{{#pcie}}
 PRODUCT_PACKAGES += \
-    mdm_fw_pkg
+    crm_pcie
+{{/pcie}}
 
 PRODUCT_PACKAGES_DEBUG += \
-    miu-app
+    crm_dbg
+{{/use_crm}}
 
-# Modem Manager related packages
+{{^use_crm}}
 PRODUCT_PACKAGES += \
     mmgr \
     libmdmcli_mmgr \
     libmdmcli_jni \
     libmdmcli_stub \
+    mdm_fw_pkg \
     libmodemupdate{{#m2}} \
     fwswitching{{/m2}}
 
-# AT Proxy
-PRODUCT_PACKAGES += \
-    proxy
-
 PRODUCT_PACKAGES_DEBUG += \
     mmgr-test \
-    ModemClientJavaTest \
+    ModemClientJavaTest
+{{/use_crm}}
+
+PRODUCT_PACKAGES += \
+    proxy \
+    mts \
+    librapid-ril-core \
+    librapid-ril-util \
+    Stk
+
+PRODUCT_PACKAGES_DEBUG += \
+    miu-app \
     run_test_ipc.sh \
     mcd-test \
-    ipcbox
-
-# Rapid RIL packages
-PRODUCT_PACKAGES += \
-    librapid-ril-core \
-    librapid-ril-util
-
-# Modem Trace Server (MTS)
-PRODUCT_PACKAGES += \
-    mts
-
-# Autocall
-PRODUCT_PACKAGES_DEBUG += \
+    ipcbox \
     Autocall
 
-#SimToolkit app
-PRODUCT_PACKAGES += \
-    Stk

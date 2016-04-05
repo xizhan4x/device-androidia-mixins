@@ -1,0 +1,22 @@
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0800000 --ramdisk_offset 0x300000 --second_offset 0x600010
+SECURE_PLAYBACK_ENABLE := true
+{{#use_lte_sepolicy}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia
+{{/use_lte_sepolicy}}
+{{^use_lte_sepolicy}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/sofia3gr
+{{/use_lte_sepolicy}}
+TARGET_NO_RECOVERY := false
+
+PARTITION_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/partition.xml
+RAMLAYOUT_XML_PATH = $(CURDIR)/device/intel/${TARGET_BOARD_PLATFORM}/16384_ram_layout.xml
+
+ifneq ($(RAMLAYOUT_XML_PATH),)
+# Enable mobilevisor build customisation based on ram defines generated from ram layout xml
+GEN_MV_RAM_DEFS_FROM_XML := true
+endif
+
+TARGET_RELEASETOOLS_EXTENSIONS := device/intel/common/recovery/${TARGET_BOARD_PLATFORM}/
+TARGET_RECOVERY_UPDATER_LIBS := libcommon_recovery librecovery_sofia3g_intel
+
+

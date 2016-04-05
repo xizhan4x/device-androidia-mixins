@@ -12,6 +12,7 @@
 /sys/devices/virtual/misc/swfg_iface	batt_status			0664 system system
 /sys/devices/virtual/misc/swfg_iface	batt_type			0664 system system
 /sys/devices/virtual/misc/swfg_iface	battery_fixed			0444 system system
+/sys/devices/virtual/misc/swfg_iface	parasitic_resistance 		0444 system system
 /sys/devices/virtual/misc/swfg_iface	clr_latched_ibat_avg		0664 system system
 /sys/devices/virtual/misc/swfg_iface	cp_1st_internal_impedance	0444 system system
 /sys/devices/virtual/misc/swfg_iface	cp_2nd_internal_impedance	0444 system system

@@ -1,0 +1,8 @@
+on post-fs
+    insmod ${ro.boot.moduleslocation}/ltr501.ko
+
+    setprop ro.iio.illuminance.name "Lite-On 303 Ambient Light Sensor"
+    setprop ro.iio.illuminance.vendor "Lite-On"
+    setprop ro.iio.illuminance.max_range "64K"
+    setprop ro.iio.illuminance.resolution 0.500
+    setprop ro.iio.illuminance.power .008

@@ -1,3 +1,7 @@
+# sensorhub config xml file
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/sensors/sensors_config.xml:system/etc/sensors_config.xml
+
 # ISH sensorhubd modules
 PRODUCT_PACKAGES += \
     sensorhubd      \
