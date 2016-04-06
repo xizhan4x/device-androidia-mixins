@@ -5,3 +5,8 @@ ifeq (${TARGET_BOARD_PLATFORM},sofia_lte)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/camera/camera3_profiles.xml:$(HAL_FUSE_PREFIX_DEFAULT)/camera3_profiles_sofialte.xml
 endif
+
+ifeq (${TARGET_BOARD_PLATFORM},sofia3gx)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/camera/camera3_profiles.xml:$(HAL_FUSE_PREFIX_DEFAULT)/camera3_profiles_sofia3gx.xml
+endif
