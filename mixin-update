@@ -140,6 +140,11 @@ def read_mixin_tree(basedir, mixin_tree=None):
             cur_opt["defaults"] = {}
 
             optioninfo = os.path.join(cur_opt["optiondir"], _OPTION_SPEC_FN)
+            if option == "default" and os.path.islink(cur_opt["optiondir"]):
+                cur_opt["realname"] = os.path.basename(os.path.realpath(cur_opt["optiondir"]))
+            else:
+                cur_opt["realname"] = option
+
             if os.path.exists(optioninfo):
                 cp = read_spec_file(optioninfo)
 
@@ -192,6 +197,7 @@ def sort_selections(selections, mixin_tree, verbose):
 
     return sorted_selections
 
+
 def validate_selections(selections, mixin_tree, verbose=False):
     """enforce that the set of mixin selections is sane by checking
     the following:
@@ -206,6 +212,22 @@ def validate_selections(selections, mixin_tree, verbose=False):
     groups_seen = []
     returned_selections = []
     default_groups = []
+
+    # The spec file may have omitted some groups. If so, pull in their
+    # default options, or generate an error if there is no default
+    selected = []
+    for (group, option, params) in selections:
+        selected.append(group)
+    unspecified_groups = sorted(set(mixin_tree.keys()) - set(selected))
+    for group in unspecified_groups:
+        default_groups.append(group)
+        if "default" not in mixin_tree[group]["options"]:
+            if verbose:
+                policy_error("group {} doesn't have a default option!".format(group))
+        else:
+            params = mixin_tree[group]["options"]["default"]["defaults"]
+            coerce_boolean(params)
+            selections.append((group, "default", ReadTrackingDict(params)))
 
     selections = sort_selections(selections, mixin_tree, verbose)
 
@@ -237,27 +259,15 @@ def validate_selections(selections, mixin_tree, verbose=False):
         # Inherit the dependency parameters
         for dep_group, dep_option, dep_params in returned_selections:
             if dep_group in deps:
-                dep_params[group] = option
+                dep_params[group] = mixin_tree[group]["options"][option]["realname"]
                 coerce_boolean(dep_params)
                 for k, v in dep_params.iteritems():
                     if k not in params:
                         params[k] = v
+                params[dep_group] = mixin_tree[dep_group]["options"][dep_option]["realname"]
 
         coerce_boolean(params)
         returned_selections.append((group, option, params))
-
-    # The spec file may have omitted some groups. If so, pull in their
-    # default options, or generate an error if there is no default
-    unspecified_groups = sorted(set(mixin_tree.keys()) - set(groups_seen))
-    for group in unspecified_groups:
-        default_groups.append(group)
-        if "default" not in mixin_tree[group]["options"]:
-            if verbose:
-                policy_error("group {} doesn't have a default option!".format(group))
-        else:
-            params = mixin_tree[group]["options"]["default"]["defaults"]
-            coerce_boolean(params)
-            returned_selections.append((group, "default", ReadTrackingDict(params)))
 
     return returned_selections
 
