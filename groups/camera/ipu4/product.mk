@@ -28,6 +28,6 @@ PRODUCT_PACKAGES += \
 
 # Camera: Format set up for graphics
 PRODUCT_PROPERTY_OVERRIDES += ro.camera.pixel_format = 0x10F
-PRODUCT_PROPERTY_OVERRIDES += ro.camera.rec.pixel_format = 0x100
+PRODUCT_PROPERTY_OVERRIDES += ro.camera.rec.pixel_format = 0x10F
 PRODUCT_PROPERTY_OVERRIDES += ro.camera.zsl.pixel_format = 0x20
 PRODUCT_PROPERTY_OVERRIDES += ro.ycbcr.pixel_format = 0x10F
