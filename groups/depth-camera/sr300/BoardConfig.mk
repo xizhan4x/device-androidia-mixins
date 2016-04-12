@@ -27,3 +27,6 @@ USE_CAMERA_ATOMISP_EMBED := true
 BOARD_SEPOLICY_DIRS +=  \
 	device/intel/sepolicy/depth-camera/common \
 	device/intel/sepolicy/depth-camera/sr300
+
+# Increase number of urb buffers to 16
+BOARD_KERNEL_CMDLINE += uvcvideo.uvc_urbs=16
