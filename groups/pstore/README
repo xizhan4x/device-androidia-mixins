@@ -49,6 +49,22 @@ should be determined using a usable memory area from memory map, then
 ram_dummy mixin options should be adjusted to fit it. It will mark the
 area as reserved and will be used by the dummy driver.
 
+Available options
++---------------+---------+
+| Name          | Default |
++---------------+---------+
+| record_size   |    4096 |
++---------------+---------+
+| console_size  |    4096 |
++---------------+---------+
+| ftrace_size   |    4096 |
++---------------+---------+
+| dump_oops     |       1 |
++---------------+---------+
+| ecc           |       0 |
++---------------+---------+
+Defaults based on <kernel>/fs/pstore/ram.c
+
 ram_pram
 --------
 
@@ -60,3 +76,19 @@ variable (GUID ecb54cd9-e5ae-4fdc-a971-e877756068f7). Accepted values
 for variable are 0, 1, 2 and 3 as ASCII string; will configure PRAM
 feature respectively as Disabled, 4 MB, 16 MB and 64 MB. This EFI
 variable could be set at flashing time by using oemvars.txt.
+
+Available options
++---------------+----------+
+| Name          |  Default |
++---------------+----------+
+| record_size   |   0x1000 |
++---------------+----------+
+| console_size  | 0x200000 |
++---------------+----------+
+| ftrace_size   |   0x2000 |
++---------------+----------+
+| dump_oops     |        1 |
++---------------+----------+
+| ecc           |        0 |
++---------------+----------+
+Defaults based on <kernel>/drivers/platform/x86/intel_pstore_pram.c
