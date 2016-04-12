@@ -9,3 +9,7 @@ bts = false
 fastboot_min_battery_level = false
 retry = 1
 firmware_info = false
+flash=true
+clearrpmb_emmc=true
+clearrpmb_ufs=true
+startover=true

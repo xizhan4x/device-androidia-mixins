@@ -26,6 +26,7 @@ BOARD_EXTRA_EFI_MODULES :=
 
 $(call flashfile_add_blob,capsule.fv,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/capsule.fv,,BOARD_SFU_UPDATE)
 $(call flashfile_add_blob,ifwi.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/ifwi.bin,,EFI_IFWI_BIN)
+$(call flashfile_add_blob,ifwi_dnx.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/ifwi_dnx.bin,,EFI_IFWI_DNX_BIN)
 $(call flashfile_add_blob,firmware.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/emmc.bin,,EFI_EMMC_BIN)
 $(call flashfile_add_blob,afu.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/afu.bin,,EFI_AFU_BIN)
 $(call flashfile_add_blob,dnxp_0x1.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/dnxp_0x1.bin,,DNXP_BIN)
@@ -35,10 +36,15 @@ $(call flashfile_add_blob,cse_spi.bin,hardware/intel/efi_capsules/$(TARGET_PRODU
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Allow to add debug ifwi file only on userdebug and eng flashfiles
 $(call flashfile_add_blob,ifwi_debug.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/debug/ifwi.bin,,EFI_IFWI_DEBUG_BIN)
+$(call flashfile_add_blob,ifwi_debug_dnx.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/debug/ifwi_dnx.bin,,EFI_IFWI_DEBUG_DNX_BIN)
 endif
 
 ifneq ($(EFI_IFWI_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
+endif
+
+ifneq ($(EFI_IFWI_DNX_BIN),)
+$(call dist-for-goals,droidcore,$(EFI_IFWI_DNX_BIN):$(TARGET_PRODUCT)-ifwi_dnx-$(FILE_NAME_TAG).bin)
 endif
 
 ifneq ($(EFI_AFU_BIN),)
