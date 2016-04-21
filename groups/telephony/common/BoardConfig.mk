@@ -25,3 +25,7 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony/pcie
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony
+
+{{#use_crm}}
+INTEL_TELEPHONY_USE_CRM := true
+{{/use_crm}}

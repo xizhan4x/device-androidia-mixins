@@ -50,6 +50,7 @@ on post-fs-data
 service crm /system/vendor/bin/crm
     class main
     socket crm1 stream 660 system radio
+    socket crmctrl1 stream 660 system radio
     user root
     group radio cache inet misc system usb
 {{/use_crm}}
