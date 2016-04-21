@@ -5,6 +5,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.npk.rc:root/init.npk.rc
 PRODUCT_PACKAGES += \
     init.npk.sh \
-    logcatext
+    logd2sven
 
 endif #MIXIN_DEBUG_LOGS

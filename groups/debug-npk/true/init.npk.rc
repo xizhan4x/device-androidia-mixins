@@ -16,8 +16,7 @@ service init_npk /system/vendor/bin/init.npk.sh
     class late_start
     oneshot
 
-service ap_lognpk /system/vendor/bin/logcat_ep.sh /system/vendor/bin/logcatext -b main -b system \
-                  -b radio -b events -b crash -x
+service ap_lognpk /system/vendor/bin/logd2sven
     disabled
 
 on property:npk.cfg.update=*
