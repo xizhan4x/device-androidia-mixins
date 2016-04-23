@@ -21,25 +21,8 @@ else
 FILE_NAME_TAG := $(BUILD_NUMBER)
 endif
 
-LOADER_PREBUILT := hardware/intel/efi_prebuilts/
-
-kernelflinger := $(PRODUCT_OUT)/efi/kernelflinger.efi
-
-ifeq ($(BOARD_USE_UEFI_SHIM),true)
-
-# EFI binaries that go in the installed device's EFI system partition
-BOARD_FIRST_STAGE_LOADER := \
-    $(LOADER_PREBUILT)/uefi_shim/$(LOADER_TYPE)/shim.efi
-
-BOARD_EXTRA_EFI_MODULES := \
-    $(LOADER_PREBUILT)/uefi_shim/$(LOADER_TYPE)/MokManager.efi \
-    $(kernelflinger)
-
-else # !BOARD_USE_UEFI_SHIM
-
-BOARD_FIRST_STAGE_LOADER := $(kernelflinger)
+BOARD_FIRST_STAGE_LOADER := $(PRODUCT_OUT)/efi/kernelflinger.efi
 BOARD_EXTRA_EFI_MODULES :=
-endif
 
 $(call flashfile_add_blob,capsule.fv,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/capsule.fv,,BOARD_SFU_UPDATE)
 $(call flashfile_add_blob,ifwi.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/ifwi.bin,,EFI_IFWI_BIN)
