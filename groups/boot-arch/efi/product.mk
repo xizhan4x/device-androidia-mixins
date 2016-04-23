@@ -34,11 +34,6 @@ KERNELFLINGER_USE_CHARGING_APPLET := true
 # the table reports incorrect data
 KERNELFLINGER_IGNORE_RSCI := true
 {{/ignore_rsci}}
-{{#tdos}}
-# TDOS design requires that the device can't be unlocked
-# as that would defeat it.
-TARGET_NO_DEVICE_UNLOCK := true
-{{/tdos}}
 {{#bootloader_policy}}
 # It activates the Bootloader policy and RMA refurbishing
 # features. TARGET_BOOTLOADER_POLICY is the desired bitmask for this
