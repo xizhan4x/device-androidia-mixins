@@ -35,15 +35,10 @@ BOARD_EXTRA_EFI_MODULES := \
     $(LOADER_PREBUILT)/uefi_shim/$(LOADER_TYPE)/MokManager.efi \
     $(kernelflinger)
 
-# We need kernelflinger.efi packaged inside the fastboot boot image to be
-# able to work with MCG's EFI fastboot stub
-USERFASTBOOT_2NDBOOTLOADER := $(kernelflinger)
-
 else # !BOARD_USE_UEFI_SHIM
 
 BOARD_FIRST_STAGE_LOADER := $(kernelflinger)
 BOARD_EXTRA_EFI_MODULES :=
-USERFASTBOOT_2NDBOOTLOADER :=
 endif
 
 $(call flashfile_add_blob,capsule.fv,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/capsule.fv,,BOARD_SFU_UPDATE)
@@ -87,11 +82,10 @@ endif
 endif
 
 # We stash a copy of BIOSUPDATE.fv so the FW sees it, applies the
-# update, and deletes the file. Follows Google's desire to update
-# all bootloader pieces with a single "fastboot flash bootloader"
-# command. We place the fastboot.img in the ESP for the same reason.
-# Since it gets deleted we can't do incremental updates of it, we
-# keep a copy as capsules/current.fv for this purpose.
+# update, and deletes the file. Follows Google's desire to update all
+# bootloader pieces with a single "fastboot flash bootloader" command.
+# Since it gets deleted we can't do incremental updates of it, we keep
+# a copy as capsules/current.fv for this purpose.
 intermediates := $(call intermediates-dir-for,PACKAGING,bootloader_zip)
 bootloader_zip := $(intermediates)/bootloader.zip
 $(bootloader_zip): intermediates := $(intermediates)
@@ -151,47 +145,14 @@ droidcore: $(bootloader_bin)
 bootloader: $(bootloader_bin)
 $(call dist-for-goals,droidcore,$(bootloader_bin):$(TARGET_PRODUCT)-bootloader-$(FILE_NAME_TAG))
 
-fastboot_usb_bin := $(PRODUCT_OUT)/fastboot-usb.img
-$(fastboot_usb_bin): \
-		$(bootloader_zip) \
-		$(MKDOSFS) \
-		$(MCOPY) \
-		$(BOOTLOADER_ADDITIONAL_DEPS) \
-		device/intel/build/bootloader_from_zip \
-
-	$(hide) device/intel/build/bootloader_from_zip \
-		$(BOOTLOADER_ADDITIONAL_ARGS) \
-		--zipfile $(bootloader_zip) \
-		--extra-size 10485760 \
-		--bootable \
-		$@
-
-# Build when 'make' is run with no args
-droidcore: $(fastboot_usb_bin)
-
-.PHONY: userfastboot-usb
-userfastboot-usb: $(fastboot_usb_bin)
-
-$(call dist-for-goals,droidcore,$(fastboot_usb_bin):$(TARGET_PRODUCT)-fastboot-usb-$(FILE_NAME_TAG).img)
-
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/testkeys_lockdown.txt:test-keys_efi_lockdown.txt)
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/unlock.txt:efi_unlock.txt)
-
-{{#fastbootefi}}
-# For fastboot-uefi we need to parse gpt.ini into
-# a binary format.
 
 GPT_INI2BIN := ./device/intel/common/gpt_bin/gpt_ini2bin.py
 
 $(BOARD_GPT_BIN): $(BOARD_GPT_INI)
 	$(hide) $(GPT_INI2BIN) $< > $@
 	$(hide) echo GEN $(notdir $@)
-
-{{/fastbootefi}}
-{{^fastbootefi}}
-# for userfastboot, we need the userfastboot image in the bootloader partition.
-INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
-{{/fastbootefi}}
 
 {{#bootloader_policy}}
 {{#blpolicy_use_efi_var}}

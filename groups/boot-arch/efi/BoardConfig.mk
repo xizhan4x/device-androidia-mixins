@@ -2,8 +2,7 @@
 # -- OTA RELATED DEFINES --
 #
 
-# tell build system where to get the recovery.fstab. Userfastboot
-# uses this too.
+# tell build system where to get the recovery.fstab.
 TARGET_RECOVERY_FSTAB ?= $(TARGET_DEVICE_DIR)/fstab
 
 # Used by ota_from_target_files to add platform-specific directives
@@ -19,7 +18,6 @@ TARGET_RECOVERY_UPDATER_LIBS := libupdater_esp
 TARGET_RECOVERY_UPDATER_EXTRA_LIBS := libcommon_recovery libgpt_static libefivar
 
 # By default recovery minui expects RGBA framebuffer
-# also affects UI in Userfastboot
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 
 
@@ -50,32 +48,15 @@ TARGET_BOOTLOADER_BOARD_NAME := $(TARGET_DEVICE)
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/boot/overlay
 ADDITIONAL_DEFAULT_PROPERTIES += ro.frp.pst=/dev/block/by-name/android_persistent
 
-{{#fastbootefi}}
-# For fastboot-uefi we need to parse gpt.ini into
-# a binary format.
-
 #can't use := here, as PRODUCT_OUT is not defined yet
 BOARD_GPT_BIN = $(PRODUCT_OUT)/gpt.bin
 BOARD_FLASHFILES += $(BOARD_GPT_BIN):gpt.bin
 INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_BIN)
 
-# For fastboot-uefi we offer the possibility to flash from a USB
-# storage device using the "installer" EFI application
+# We offer the possibility to flash from a USB storage device using
+# the "installer" EFI application
 BOARD_FLASHFILES += $(PRODUCT_OUT)/efi/installer.efi
 BOARD_FLASHFILES += device/intel/common/boot/startup.nsh
-
-{{/fastbootefi}}
-{{^fastbootefi}}
-
-#
-# USERFASTBOOT Configuration
-#
-BOOTLOADER_ADDITIONAL_DEPS += $(PRODUCT_OUT)/fastboot.img
-BOOTLOADER_ADDITIONAL_ARGS += --fastboot $(PRODUCT_OUT)/fastboot.img
-
-BOARD_FLASHFILES += $(BOARD_GPT_INI):gpt.ini
-INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_INI)
-{{/fastbootefi}}
 
 {{#bootloader_policy}}
 {{#blpolicy_use_efi_var}}

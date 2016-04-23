@@ -58,14 +58,8 @@ TARGET_BOOTLOADER_POLICY := {{bootloader_policy}}
 # RMA refurbishing features does not use time-based authenticated EFI
 # variables to store the BPM and OAK values.  The BPM value is defined
 # compilation time by the TARGET_BOOTLOADER_POLICY variable.
-# userfastboot retrieves the OAK SHA256 value from the fastboot.img
-# ramdisk.
 TARGET_BOOTLOADER_POLICY_USE_EFI_VAR := {{blpolicy_use_efi_var}}
 {{/bootloader_policy}}
-{{^fastbootefi}}
-TARGET_STAGE_USERFASTBOOT := true
-TARGET_USE_USERFASTBOOT := true
-{{/fastbootefi}}
 {{#ignore_not_applicable_reset}}
 # Allow Kernelflinger to ignore the RSCI reset source "not_applicable"
 # when setting the bootreason
