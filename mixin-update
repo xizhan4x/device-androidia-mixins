@@ -155,6 +155,43 @@ def read_mixin_tree(basedir, mixin_tree=None):
     return mixin_tree
 
 
+def get_deps(mixin_tree, group, option):
+    return list(mixin_tree[group]["deps"] | mixin_tree[group]["options"][option]["deps"])
+
+
+def sort_selections(selections, mixin_tree, verbose):
+    """sort a group selection based on their dependencies.  Parent groups
+    are moved before their childs."""
+    sorted_selections = []
+
+    # Re-order the selections so that the "parent" groups appear
+    # before their childs. This sort algorithm is stable.
+    while selections:
+        (group, option, params) = selections.pop(0)
+        deps = get_deps(mixin_tree, group, option)
+        missing_parents = []
+        while deps:
+            dep = deps.pop()
+            parent_group = [x for x in selections if x[0] == dep]
+            if not parent_group:
+                continue
+            parent_group = parent_group[0]
+            missing_parents.append(parent_group)
+            for d in get_deps(mixin_tree, parent_group[0], parent_group[1]):
+                if d not in deps:
+                    deps.append(d)
+
+        while missing_parents:
+            parent = missing_parents.pop()
+            if verbose:
+                print "moving %s before %s" % (parent[0], group)
+            sorted_selections.append(parent)
+            selections.remove(parent)
+
+        sorted_selections.append((group, option, params))
+
+    return sorted_selections
+
 def validate_selections(selections, mixin_tree, verbose=False):
     """enforce that the set of mixin selections is sane by checking
     the following:
@@ -169,6 +206,8 @@ def validate_selections(selections, mixin_tree, verbose=False):
     groups_seen = []
     returned_selections = []
     default_groups = []
+
+    selections = sort_selections(selections, mixin_tree, verbose)
 
     for (group, option, params) in selections:
         if group in groups_seen:
@@ -185,7 +224,7 @@ def validate_selections(selections, mixin_tree, verbose=False):
             policy_error("unknown option {} for group {}".format(option, group))
             continue
 
-        deps = mixin_tree[group]["deps"] | mixin_tree[group]["options"][option]["deps"]
+        deps = get_deps(mixin_tree, group, option)
         for dep in deps:
             if dep not in groups_seen:
                 policy_error("group {} option {} requires that group {} be selected first".format(group, option, dep))

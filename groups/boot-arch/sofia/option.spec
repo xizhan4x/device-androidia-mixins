@@ -25,3 +25,5 @@ userdata_partition_size = 4358
 mrd_variant=false
 wv_level3=false
 enc1080p=true
+vp_build = false
+

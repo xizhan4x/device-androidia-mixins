@@ -5,7 +5,9 @@ CRASHLOGD_LOGS_PATH := "/data/logs"
 CRASHLOGD_APLOG := true
 CRASHLOGD_FULL_REPORT := true
 CRASHLOGD_MODULE_MODEM ?= true
-CRASHLOGD_MODULE_BTDUMP := true
+{{#btdump}}
+CRASHLOGD_MODULE_BTDUMP := {{{btdump}}}
+{{/btdump}}
 CRASHLOGD_USE_SD := false
 {{#arch}}
 CRASHLOGD_ARCH := {{{arch}}}

@@ -58,8 +58,10 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc0/e0000000.noc/by-name
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
+{{#dm_verity}}
 #Include verity.mk for GVB and DM_VERITY feature
 $(call inherit-product,build/target/product/verity.mk)
+{{/dm_verity}}
 
 {{#verity_warning}}
 PRODUCT_PACKAGES += \

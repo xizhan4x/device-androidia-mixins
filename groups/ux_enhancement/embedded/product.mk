@@ -1,6 +1,13 @@
 # Default value for INTEL_FEATURE_UX_ENHANCEMENT
 # This flag can be overriden by make command line
-INTEL_FEATURE_UX_ENHANCEMENT := {{{activated}}}
+UX_ENHANCEMENT_ACTIVE := {{{activated}}}
+
+ifeq ($(UX_ENHANCEMENT_ACTIVE), true)
+INTEL_FEATURE_UX_ENHANCEMENT := true
+else
+INTEL_FEATURE_UX_ENHANCEMENT := false
+endif
+
 ifeq ($(INTEL_FEATURE_UX_ENHANCEMENT), true)
 INTEL_FEATURE_DATA_TRAFFIC := true
 INTEL_FEATURE_ENHANCED_CALL := true

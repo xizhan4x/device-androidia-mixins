@@ -1,17 +1,1 @@
-AOSP_CARRIER_CONFIG ?= {{carrier}}
-
-ifeq ($(AOSP_CARRIER_CONFIG), VZW)
-# DataActivationManager
-PRODUCT_PACKAGES += \
-    DataActivationManager
-
-INTEL_FEATURE_IMS_EXT := true
-EXT_IMS_PACKAGES_SRC_FILES_PATH := ../../../vendor/intel/featsetclass_tel/ims/packages/apps/Settings/src
-
-# VZW specific TLV apply on boot time
-ADDITIONAL_BUILD_PROPERTIES += \
-    persist.config.specific=vzw
-endif
-
-INTEL_FEATURE_IMS_EXT ?= {{ims_ext_volte_vt_wfc}}
-EXT_IMS_PACKAGES_SRC_FILES_PATH ?= ../../../device/intel/common/telephony/carrier/imsstub/packages/apps/Settings/src
+../common/product.mk.2
