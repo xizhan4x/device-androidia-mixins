@@ -1,1 +1,1 @@
-../product.mk
+../enabled/product.mk
