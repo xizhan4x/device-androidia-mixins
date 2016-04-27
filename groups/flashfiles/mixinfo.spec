@@ -1,2 +1,2 @@
 [mixinfo]
-deps = variants
+deps = variants slot-ab

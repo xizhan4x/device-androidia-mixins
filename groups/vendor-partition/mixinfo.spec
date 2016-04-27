@@ -1,2 +1,2 @@
 [mixinfo]
-deps = boot-arch
+deps = boot-arch slot-ab
