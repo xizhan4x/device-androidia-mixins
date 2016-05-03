@@ -257,3 +257,9 @@ on property:persist.disable_NVM_Server=1
     setprop persist.tcs.hw_filename /system/vendor/etc/telephony/{{m2_config}}.xml
     {{/m2_config}}
 {{/m2}}
+
+on post-fs-factory
+    # create factory modem FW folder
+    mkdir /factory/telephony
+    chown system radio /factory/telephony
+    chmod 770 /factory/telephony
