@@ -1,0 +1,19 @@
+on boot
+     insmod ${ro.boot.moduleslocation}/snd-hda-core.ko
+     insmod ${ro.boot.moduleslocation}/snd-hda-ext-core.ko
+     insmod ${ro.boot.moduleslocation}/snd-soc-sst-acpi.ko
+     insmod ${ro.boot.moduleslocation}/snd-soc-sst-dsp.ko
+     insmod ${ro.boot.moduleslocation}/snd-soc-sst-ipc.ko
+     insmod ${ro.boot.moduleslocation}/snd-soc-skl-ipc.ko
+     insmod ${ro.boot.moduleslocation}/snd-soc-skl.ko machine="gpmrb_machine"
+     insmod ${ro.boot.moduleslocation}/snd-soc-tdf8532.ko
+     insmod ${ro.boot.moduleslocation}/snd-soc-bxt_gpmrb.ko
+
+on boot
+    write /sys/kernel/debug/snd_soc_skl/nhlt/control enable
+    copy  /vendor/firmware/sspGpMrbAmp4ch.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp4p
+
+on boot
+    setprop persist.audio.audioConf AudioParameterFramework-tdf8532.xml
+    setprop persist.audio.routeConf RouteParameterFramework-tdf8532.xml
+
