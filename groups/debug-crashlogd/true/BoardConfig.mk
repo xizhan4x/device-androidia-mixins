@@ -1,4 +1,5 @@
 ifeq ($(MIXIN_DEBUG_LOGS),true)
+ADDITIONAL_DEFAULT_PROPERTIES += persist.crashlogd.data_quota=50
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/crashlogd
 
 CRASHLOGD_LOGS_PATH := "/data/logs"
