@@ -2,6 +2,7 @@ gptimage_size ?= {{{size}}}
 
 raw_config := none
 raw_factory := none
+tos_bin := none
 
 .PHONY: none
 none: ;
@@ -23,6 +24,11 @@ raw_factory := $(INSTALLED_FACTORYIMAGE_TARGET).raw
 endif
 
 .PHONY: $(GPTIMAGE_BIN)
+ifeq ($(strip $(TARGET_USE_TRUSTY)),true)
+$(GPTIMAGE_BIN): tosimage
+tos_bin = $(INSTALLED_TOS_IMAGE_TARGET)
+endif
+
 $(GPTIMAGE_BIN): \
 	bootloader \
 	bootimage \
@@ -51,6 +57,7 @@ $(GPTIMAGE_BIN): \
 		--size $(gptimage_size) \
 		--bootloader $(bootloader_bin) \
 		--bootloader2 $(bootloader_bin) \
+		--tos $(tos_bin) \
 		--boot $(INSTALLED_BOOTIMAGE_TARGET) \
 		--recovery $(INSTALLED_RECOVERYIMAGE_TARGET) \
 		--system $(INSTALLED_SYSTEMIMAGE).raw \
