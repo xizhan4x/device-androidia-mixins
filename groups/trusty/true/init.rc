@@ -1,0 +1,14 @@
+on fs
+    # Intall virtio drivers Trusty depends on
+    insmod ${ro.boot.moduleslocation}/virtio.ko
+    insmod ${ro.boot.moduleslocation}/virtio_ring.ko
+
+    # Install Trusty drivers
+    insmod ${ro.boot.moduleslocation}/trusty.ko
+    insmod ${ro.boot.moduleslocation}/trusty-irq.ko
+    insmod ${ro.boot.moduleslocation}/trusty-mem.ko
+    insmod ${ro.boot.moduleslocation}/trusty-ipc.ko
+    insmod ${ro.boot.moduleslocation}/trusty-virtio.ko
+
+    # Update device node r/w attribute
+    chmod 666 /dev/trusty-ipc-dev0
