@@ -35,3 +35,5 @@ BOARD_KERNEL_CMDLINE += \
         relative_sleep_states=1
 {{/relative_sleepstates}}
 
+BOARD_SEPOLICY_M4DEFS += module_kernel=true
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/kernel
