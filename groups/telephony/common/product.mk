@@ -47,5 +47,6 @@ PRODUCT_PACKAGES_DEBUG += \
     miu-app \
     run_test_ipc.sh \
     mcd-test \
-    ipcbox
+    ipcbox \
+    Autocall
 
