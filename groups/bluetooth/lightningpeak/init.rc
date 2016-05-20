@@ -5,8 +5,8 @@ on post-fs-data
 {{/bt_usc}}
 {{#gpp}}
     # create BT NVM folder
-    mkdir /config/bluetooth 0770 bluetooth system
-    restorecon_recursive /config/bluetooth
+    mkdir {{path_bt_nvm}} 0770 bluetooth system
+    restorecon_recursive {{path_bt_nvm}}
 {{/gpp}}
 
 on boot
@@ -28,7 +28,7 @@ on property:nvm_partition=mounted
     mkdir /nvm_fs_partition/bluetooth 0770 bluetooth system
     restorecon_recursive /nvm_fs_partition/bluetooth
 {{/gpp}}
-    setprop ro.bt.bdaddr_path {{{path_bt_nvm}}}/bd_addr.conf
+    setprop ro.bt.bdaddr_path {{path_bt_nvm}}/bd_addr.conf
     start init_bt_nvm
 
 service init_bt_nvm /system/vendor/bin/bt_nvm_init.sh

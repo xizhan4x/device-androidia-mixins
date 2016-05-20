@@ -10,14 +10,14 @@ on boot
     start rfkill_bt
 
 on post-fs
-    mkdir /config/bt
-    chown system bluetooth /config/bt
-    chmod 0770 /config/bt
+    mkdir {{path_bt_nvm}}
+    chown system bluetooth {{path_bt_nvm}}
+    chmod 0770 {{path_bt_nvm}}
     start bd_prov
 
 on early-boot
-    chmod 0644 /config/bt/bd_addr.conf
-    setprop ro.bt.bdaddr_path "/config/bt/bd_addr.conf"
+    chmod 0644 {{path_bt_nvm}}/bd_addr.conf
+    setprop ro.bt.bdaddr_path "{{path_bt_nvm}}/bd_addr.conf"
 
 service rfkill_bt /system/bin/sh /system/bin/rfkill_bt.sh
     seclabel u:r:rfkill:s0
