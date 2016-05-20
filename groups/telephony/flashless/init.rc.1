@@ -2,14 +2,14 @@
 
 on init
     # Contains dynamic configuration and calibration data.
-    mkdir /config 0770 radio radio
+    mkdir /oem_config 0770 radio radio
 
 on post-fs-data
 
 # create config modem FW folder
-    mkdir /config/telephony
-    chown system radio /config/telephony
-    chmod 770 /config/telephony
+    mkdir /oem_config/telephony
+    chown system radio /oem_config/telephony
+    chmod 770 /oem_config/telephony
 
 # create NVM log folder
     mkdir /data/modem
