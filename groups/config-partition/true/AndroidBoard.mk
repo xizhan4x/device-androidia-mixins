@@ -10,7 +10,7 @@ $(INSTALLED_CONFIGIMAGE_TARGET) : $(MKEXTUSERIMG) $(MAKE_EXT4FS) $(E2FSCK) $(sel
 		$(PRODUCT_OUT)/config \
 		$(PRODUCT_OUT)/config.img \
 		ext4 \
-		config \
+		oem_config \
 		$(BOARD_CONFIGIMAGE_PARTITION_SIZE) \
 		$(PRIVATE_SELINUX_FC)
 
