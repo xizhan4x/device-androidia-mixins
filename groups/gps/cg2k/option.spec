@@ -1,7 +1,7 @@
 [defaults]
 power=rfkill
 gpio=false
-nvm=/config/gnss
+nvm=/oem_config/gnss
 xtal=TCXO
 uart_close=false
 uart_pm=true

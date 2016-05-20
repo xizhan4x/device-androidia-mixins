@@ -2,12 +2,12 @@ on post-fs-data
     # Create data folder for GPS
     mkdir /data/gps 0770 gps system
     # Link to GNSS NVM
-    symlink {{{nvm}}} /data/gps/nvm
+    symlink {{nvm}} /data/gps/nvm
 
 on boot
     # GPS GPT factory partition data retrieval
-    mkdir /config/gnss 0770 gps system
-    restorecon_recursive /config/gnss
+    mkdir {{nvm}} 0770 gps system
+    restorecon_recursive {{nvm}}
 {{#gpp}}
     start gnss_rest_wpc
     start gnss_rest_mec
@@ -26,13 +26,13 @@ on boot
     symlink /sys/class/tty/{{{trans}}}/../../power/control /dev/gps/ttyGPSPowerControl
 
 {{#gpp}}
-service gnss_rest_wpc /system/bin/cws_manu -G -n0 -r/config/gnss/GNSS_WPC.bin
+service gnss_rest_wpc /system/bin/cws_manu -G -n0 -r{{nvm}}/GNSS_WPC.bin
     user gps
     group system
     oneshot
     disabled
 
-service gnss_rest_mec /system/bin/cws_manu -G -n1 -r/config/gnss/GNSS_MEC.bin
+service gnss_rest_mec /system/bin/cws_manu -G -n1 -r{{nvm}}/GNSS_MEC.bin
     user gps
     group system
     oneshot
