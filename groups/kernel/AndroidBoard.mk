@@ -56,7 +56,7 @@ endif
 CHECK_CONFIG_SCRIPT := $(LOCAL_KERNEL_SRC)/scripts/diffconfig
 CHECK_CONFIG_LOG :=  $(LOCAL_KERNEL_PATH)/.config.check
 
-KERNEL_DEPS := $(shell find $(LOCAL_KERNEL_SRC))
+KERNEL_DEPS := $(shell find $(LOCAL_KERNEL_SRC) \( -name *.git -prune \) -o -print )
 
 # Before building final defconfig with debug diffconfigs
 # Check that base defconfig is correct. Check is performed
@@ -151,7 +151,7 @@ PREVIOUS_KERNEL_MODULE := $(LOCAL_KERNEL)
 
 define bld_external_module
 
-$(eval MODULE_DEPS_$(2) := $(shell find kernel/modules/$(1)))
+$(eval MODULE_DEPS_$(2) := $(shell find kernel/modules/$(1) \( -name *.git -prune \) -o -print ))
 
 $(LOCAL_KERNEL_PATH)/build_$(2): $(LOCAL_KERNEL) $(MODULE_DEPS_$(2))
 	@echo BUILDING $(1)
