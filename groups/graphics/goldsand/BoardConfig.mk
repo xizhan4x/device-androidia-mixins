@@ -14,6 +14,9 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 BOARD_GRAPHIC_IS_MALI := true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/goldsand
 
+# Use vendor/intel/external/drm-gsd
+LIBDRM_VER ?= gsd
+
 {{#drm_atomic}}
 # Turn on DRM ATOMIC IOCTL
 BOARD_KERNEL_CMDLINE += drm.atomic=1
