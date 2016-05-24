@@ -25,5 +25,5 @@ on fs
    verity_update_state
 
 on verity-logging
-    exec u:r:slideshow:s0 -- /sbin/slideshow warning/verity_red_1 warning/verity_red_2
+    exec u:r:slideshow:s0 -- /sbin/slideshow -t 30000 -p warning/verity_red_1 warning/verity_red_2
 {{/verity_warning}}
