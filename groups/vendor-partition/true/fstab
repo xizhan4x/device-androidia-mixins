@@ -1,4 +1,4 @@
 # Following line is required if you use a vendor image.
 # If the vendor image is not used,
 # following line should be commented with the related ones in BoardConfig.mk
-/dev/block/by-name/{{partition_name}}       /vendor         {{system_fs}}    ro                                         wait,verify{{#verity_warning}}=/dev/block/by-name/android_metadata{{/verity_warning}}{{#slot-ab}},slotselect{{/slot-ab}}
+/dev/block/by-name/{{partition_name}}       /vendor         {{system_fs}}    ro                                         wait{{#verity_mode}},verify{{#verity_warning}}=/dev/block/by-name/android_metadata{{/verity_warning}}{{/verity_mode}}{{#slot-ab}},slotselect{{/slot-ab}}
