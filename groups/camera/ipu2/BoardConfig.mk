@@ -47,6 +47,8 @@ PLATFORM_FR_SUPPORT := true
 BOARD_SEPOLICY_M4DEFS += camera_ipu2_enable_fr_service=true
 {{/enable_fr_service}}
 
+BOARD_SEPOLICY_M4DEFS += module_camera_ipu2=true
+
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu_common
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu2
