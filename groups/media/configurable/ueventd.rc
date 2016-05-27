@@ -1,0 +1,49 @@
+/dev/video0		0600	mediacodec	mediacodec
+/dev/video1		0600	mediacodec	mediacodec
+/dev/video2		0600	mediacodec	mediacodec
+/dev/video3		0600	mediacodec	mediacodec
+
+{{#video_dec_verisilicon_g1v6}}
+/dev/hx170		0660	mediacodec	mediacodec
+/dev/ion		0666	system	system
+{{/video_dec_verisilicon_g1v6}}
+
+{{#image_dec_verisilicon_g1v6}}
+{{^video_dec_verisilicon_g1v6}}
+/dev/hx170		0660	mediacodec	mediacodec
+/dev/ion		0666	system	system
+{{/video_dec_verisilicon_g1v6}}
+{{/image_dec_verisilicon_g1v6}}
+
+{{#video_enc_verisilicon_h1v6}}
+/dev/hx280		0660	mediacodec	mediacodec
+{{^video_dec_verisilicon_g1v6}}
+{{^image_dec_verisilicon_g1v6}}
+/dev/ion		0666	system	system
+{{/image_dec_verisilicon_g1v6}}
+{{/video_dec_verisilicon_g1v6}}
+{{/video_enc_verisilicon_h1v6}}
+
+{{#video_dec_verisilicon_g2v1}}
+/dev/g2			0600	mediacodec	mediacodec
+{{^video_dec_verisilicon_g1v6}}
+{{^image_dec_verisilicon_g1v6}}
+{{^video_enc_verisilicon_h1v6}}
+/dev/ion		0666	system	system
+{{/video_enc_verisilicon_h1v6}}
+{{/image_dec_verisilicon_g1v6}}
+{{/video_dec_verisilicon_g1v6}}
+{{/video_dec_verisilicon_g2v1}}
+
+{{#video_enc_allegro_al5r}}
+/dev/al5r		0600	mediacodec	mediacodec
+{{^video_dec_verisilicon_g1v6}}
+{{^image_dec_verisilicon_g1v6}}
+{{^video_enc_verisilicon_h1v6}}
+{{^video_dec_verisilicon_g2v1}}
+/dev/ion		0666	system	system
+{{/video_dec_verisilicon_g2v1}}
+{{/video_enc_verisilicon_h1v6}}
+{{/image_dec_verisilicon_g1v6}}
+{{/video_dec_verisilicon_g1v6}}
+{{/video_enc_allegro_al5r}}
