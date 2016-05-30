@@ -1,6 +1,0 @@
-# NFCC node
-/dev/nfcc                                  0660 nfc nfc
-
-# NFC GPT factory partition block device
-/dev/block/*/*/*/by-name/nfc_nvm 0660 nfc system
-

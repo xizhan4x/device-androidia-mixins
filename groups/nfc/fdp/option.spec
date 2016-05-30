@@ -1,2 +1,0 @@
-[defaults]
-gpp = false
