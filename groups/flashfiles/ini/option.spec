@@ -13,3 +13,4 @@ flash=true
 clearrpmb_emmc=true
 clearrpmb_ufs=true
 startover=true
+bootloader = true

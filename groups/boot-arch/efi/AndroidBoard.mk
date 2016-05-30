@@ -137,12 +137,6 @@ $(call dist-for-goals,droidcore,$(bootloader_bin):$(TARGET_PRODUCT)-bootloader-$
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/testkeys_lockdown.txt:test-keys_efi_lockdown.txt)
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/unlock.txt:efi_unlock.txt)
 
-GPT_INI2BIN := ./device/intel/common/gpt_bin/gpt_ini2bin.py
-
-$(BOARD_GPT_BIN): $(BOARD_GPT_INI)
-	$(hide) $(GPT_INI2BIN) $< > $@
-	$(hide) echo GEN $(notdir $@)
-
 {{#bootloader_policy}}
 {{#blpolicy_use_efi_var}}
 ifeq ($(TARGET_BOOTLOADER_POLICY),$(filter $(TARGET_BOOTLOADER_POLICY),static external))
