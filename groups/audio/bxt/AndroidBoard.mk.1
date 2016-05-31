@@ -4,3 +4,31 @@ include device/intel/broxton/audio/parameter-framework/AndroidBoard.mk
 # BXT audio DFW (Dynamic Firmware)
 include device/intel/broxton/audio/libfwdt/AndroidBoard.mk
 
+# Copy the BXP-M LPE FW Binary
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := dsp_fw_bxtm_release.bin
+LOCAL_MODULE_OWNER := intel
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_RELATIVE_PATH := firmware
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)
+LOCAL_MODULE_STEM := dsp_fw_release.bin
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_SRC_FILES := dsp_fw_bxtm_release.bin
+include $(BUILD_PREBUILT)
+
+# Copy the BXP-M DFW Binary
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := dfw_sst_bxtm.bin
+LOCAL_MODULE_OWNER := intel
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_RELATIVE_PATH := firmware
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)
+LOCAL_MODULE_STEM := dfw_sst.bin
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_SRC_FILES := dfw_sst_bxtm.bin
+include $(BUILD_PREBUILT)
+
