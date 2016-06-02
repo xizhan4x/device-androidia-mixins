@@ -2,9 +2,10 @@
 ifeq ($(MIXIN_DEBUG_LOGS),true)
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.npk.rc:root/init.npk.rc
+    $(LOCAL_PATH)/init.npk.rc:root/init.npk.rc \
+    {{{npk_cfg_path}}}/npk.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/npk.cfg
 PRODUCT_PACKAGES += \
-    init.npk.sh \
+    npk_init \
     logd2sven
 
 endif #MIXIN_DEBUG_LOGS

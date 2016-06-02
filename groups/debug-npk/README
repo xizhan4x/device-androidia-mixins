@@ -20,6 +20,20 @@ not available with mixins, per option files are provided in
 'device/intel/common/debug/' folder and will be included at build time
 regarding selected option.
 
+Mixin parameters
+----------------
+
+* default_cfg: The default configuration to apply to Northpeak.
+* npk_cfg_path: Location of Northpeak config file npk.cfg.
+* console_master_range: Masters allocated for kernel console output (with
+  quotes): "<beginning> <end>"
+* console_channel_range: channels allocated for kernel console output (with
+  quotes): "<beginning> <end>"
+* user_master_range: Masters allocated for user-space output (with
+  quotes): "<beginning> <end>"
+* user_channel_range: channels allocated for user-space output (with
+  quotes): "<beginning> <end>"
+
 Logging configuration
 ---------------------
 
