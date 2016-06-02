@@ -23,6 +23,8 @@ PRODUCT_PACKAGES_ENG += ExoPlayerDemo
 
 PRODUCT_PACKAGES += liboemcrypto
 
-PRODUCT_PACKAGES += libmeimm libsecmem
+{{#additional_lib}}
+PRODUCT_PACKAGES += {{{additional_lib}}}
+{{/additional_lib}}
 
 BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 1
