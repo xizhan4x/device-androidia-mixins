@@ -67,3 +67,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.wifi.softap_dualband_allow=false
 {{/softap_dualband_allow}}
+
+BOARD_SEPOLICY_M4DEFS += module_iwlwifi=true
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/wlan/iwlwifi
