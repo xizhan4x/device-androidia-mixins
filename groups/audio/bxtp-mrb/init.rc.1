@@ -12,8 +12,14 @@ on boot
 on boot
     write /sys/kernel/debug/snd_soc_skl/nhlt/control enable
     copy  /vendor/firmware/sspGpMrbAmp4ch.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp4p
+    copy  /vendor/firmware/sspGpMrbTuner.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp2c
 
 on boot
     setprop persist.audio.audioConf AudioParameterFramework-tdf8532.xml
     setprop persist.audio.routeConf RouteParameterFramework-tdf8532.xml
+
+service dirana_config /vendor/bin/dirana_config.sh
+    user root
+    class late_start
+    oneshot
 

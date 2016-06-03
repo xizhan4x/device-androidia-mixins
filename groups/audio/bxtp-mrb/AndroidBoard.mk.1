@@ -31,3 +31,7 @@ LOCAL_MODULE_STEM := dfw_sst.bin
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_SRC_FILES := dfw_sst_bxtp.bin
 include $(BUILD_PREBUILT)
+
+BOARD_SEPOLICY_M4DEFS += module_dirana=true
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/audio/dirana
+
