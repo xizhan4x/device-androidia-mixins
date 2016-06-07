@@ -7,7 +7,7 @@ service msync /system/vendor/bin/msync
 service coreu /system/vendor/bin/coreu
     class main
     user media
-    group media
+    group media shell
 
 on post-fs-data
     mkdir /data/system 0770 system system
