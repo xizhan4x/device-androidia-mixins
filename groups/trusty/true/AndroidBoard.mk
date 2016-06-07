@@ -9,8 +9,9 @@ tosimage: $(INSTALLED_TOS_IMAGE_TARGET)
 $(INSTALLED_TOS_IMAGE_TARGET): $(PREBUILT_TOS_IMAGE_TARGET) $(MKBOOTIMG) $(BOOT_SIGNER)
 	@echo "mkbootimg to create boot image for TOS file: $@"
 	$(hide) $(MKBOOTIMG) --kernel $(PREBUILT_TOS_IMAGE_TARGET) --output $@
-	@echo "sign prebuilt TOS file: $@"
-	$(BOOT_SIGNER) /tos $@ $(TOS_SIGNING_KEY) $(TOS_SIGNING_CERT) $@
+	$(if $(filter true,$(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_SUPPORTS_BOOT_SIGNER)),\
+		@echo "sign prebuilt TOS file: $@" &&\
+		$(BOOT_SIGNER) /tos $@ $(TOS_SIGNING_KEY) $(TOS_SIGNING_CERT) $@)
 
 # Prebuild the evmm_pkg.bin and lk.bin
 $(PREBUILT_TOS_IMAGE_TARGET):
