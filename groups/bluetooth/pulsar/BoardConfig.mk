@@ -8,3 +8,14 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-hid-kb
 BOARD_SEPOLICY_M4DEFS += bt_pulsar_port={{{port}}}
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bluetooth/common \
                        device/intel/sepolicy/bluetooth/pulsar
+BOARD_HAVE_HCIVSSERVICE := {{{hci_vs_service}}}
+
+{{#hci_vs_service}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/bthcivsservice
+{{/hci_vs_service}}
+
+{{#gpp}}
+ifeq ($(findstring cws_manu,$(BOARD_SEPOLICY_DIRS)),)
+    BOARD_SEPOLICY_DIRS += device/intel/sepolicy/cws_manu
+endif
+{{/gpp}}
