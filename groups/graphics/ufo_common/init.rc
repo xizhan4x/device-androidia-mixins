@@ -1,11 +1,13 @@
 # for hardware accelerated graphics
 service msync /system/vendor/bin/msync
     class main
-#    seclabel u:r:msync:s0
+    user media
+    group media
 
 service coreu /system/vendor/bin/coreu
     class main
-#    seclabel u:r:coreu:s0
+    user media
+    group media
 
 on post-fs-data
     mkdir /data/system 0770 system system
@@ -14,3 +16,15 @@ on post-fs-data
 on boot
     #Give permission to system to use i915_videostatus sysfs interface
     chown system system /sys/class/drm/card0/power/i915_videostatus
+    chown media media /sys/kernel/debug/tracing/events/drm/drm_vblank_event/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_flip_complete/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_flip_request/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_gem_ring_dispatch/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_gem_request_complete/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_gem_request_retire/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_gem_request_wait_begin/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_gem_request_wait_end/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_ring_wait_begin/enable
+    chown media media /sys/kernel/debug/tracing/events/i915/i915_ring_wait_end/enable
+    chown media media /sys/devices/pci0000:00/0000:00:02.0/drm/card0/gt_max_freq_mhz
+    chown media media /sys/devices/pci0000:00/0000:00:02.0/drm/card0/gt_min_freq_mhz
