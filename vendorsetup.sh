@@ -53,7 +53,31 @@ function lunch
     else
         echo "WARNING: Unknown One Android AOSP ring $ring"
     fi
+
     aosp_lunch $*
+
+    # cherry-picking patches on top of ring0 for some platforms
+    if [[ "${ring}" == 0 ]]; then
+        echo "Ring 0 is vanilla AOSP"
+        rm -rf Android.mk
+        local patch_folder=vendor/intel/utils/android_n/google_diff
+
+        # Check if there is a list of files to parse and apply patches listed in them if any
+        for file in `find $patch_folder -type f 2>/dev/null` ; do
+            if [[ "$TARGET_PRODUCT" =~ $(basename $file) ]]; then
+                echo "Applying patche(s) needed for $TARGET_PRODUCT"
+                vendor/intel/utils/autopatch.py -f $file
+                local ret=$?
+                if [ $ret -ne 0 ]; then
+                    local files_with_issues="$files_with_issues $file"
+                fi
+                # If some patch does not apply create Android.mk to stop compilation.
+                if [ -n "$files_with_issues" ]; then
+                    echo "\$(error \"[GOOGLE_DIFF] Some patches given to autopatch did not applied correctly in $files_with_issues.\") " > Android.mk
+                fi
+            fi
+        done
+    fi
 }
 
 # a small alias, to run mixin-update from anywhere in the tree.
