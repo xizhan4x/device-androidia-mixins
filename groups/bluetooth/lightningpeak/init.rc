@@ -16,6 +16,8 @@ on boot
 {{^usif}}
     chmod 0660 /sys/devices/pci0000:00/0000:00:18.0/power/control
     chown bluetooth bluetooth /sys/devices/pci0000:00/0000:00:18.0/power/control
+    # TMP: disable power control
+    write /sys/devices/pci0000:00/0000:00:18.0/power/control on
     # by default, 8250 driver is used
     insmod ${ro.boot.moduleslocation}/8250_dw.ko
 {{/usif}}
