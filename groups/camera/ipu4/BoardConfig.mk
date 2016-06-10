@@ -1,8 +1,3 @@
-# The make targets for both projects are identical
-# (e.g. camera.gmin.so), so the Android.mk's wrap themselves in tests
-# for these.  Set only one.  And we'll just ignore the inconsistent _.
-USE_CAMERA_HAL2 := false
-USE_CAMERA_HAL_3 := true
 IPU_SYSVER := {{{ipu4_version}}}
 IPU_CAMERA_PROFILES := {{{camera_profiles}}}
 IPU_CAMERA_CONFIG := {{{camera_config}}}
@@ -37,6 +32,13 @@ USE_CAMERA_STUB := false
 PLATFORM_FR_SUPPORT := true
 BOARD_SEPOLICY_M4DEFS += camera_ipu4_enable_fr_service=true
 {{/enable_fr_service}}
+
+# The make targets for both projects are identical
+# (e.g. camera.gmin.so), so the Android.mk's wrap themselves in tests
+# for these.  Set only one.  And we'll just ignore the inconsistent _.
+USE_CAMERA_HAL2 := {{{enable_hal_2}}}
+USE_CAMERA_HAL_3 := {{{enable_hal_3}}}
+USE_CAMERA_HAL_SOC := {{{enable_hal_soc}}}
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu_common
