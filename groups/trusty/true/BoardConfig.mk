@@ -5,6 +5,7 @@ TARGET_USE_MULTIBOOT := true
 BOARD_USES_TRUSTY := true
 BOARD_USES_KEYMASTER1 := true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/trusty
+BOARD_SEPOLICY_M4DEFS += module_trusty=true
 
 LKBUILD_TOOLCHAIN_ROOT = $(PWD)/vendor/intel/external/prebuilts/elf/
 LKBUILD_X86_TOOLCHAIN = $(LKBUILD_TOOLCHAIN_ROOT)i386-elf-4.9.1-Linux-x86_64/bin
