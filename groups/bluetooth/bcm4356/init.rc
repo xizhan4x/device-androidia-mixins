@@ -19,8 +19,7 @@ on early-boot
     chmod 0644 {{path_bt_nvm}}/bd_addr.conf
     setprop ro.bt.bdaddr_path "{{path_bt_nvm}}/bd_addr.conf"
 
-service rfkill_bt /system/bin/sh /system/bin/rfkill_bt.sh
-    seclabel u:r:rfkill:s0
+service rfkill_bt /system/bin/rfkill_bt.sh
     class core
     user root
     oneshot
