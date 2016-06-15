@@ -190,7 +190,7 @@ Only the three quirks included above are recognized at this point:
     </Decoders>
     <Encoders>
 {{#video_enc_verisilicon_h1v6}}
-	<!-- Verisilicon H1 Encoder -->
+        <!-- Verisilicon H1 Encoder -->
        <MediaCodec name="OMX.hantro.H1.video.encoder.avc" type="video/avc">
         <!--profiles and levels:
             OMX_VIDEO_AVCProfileBaseline: OMX_VIDEO_AVCLevel41
@@ -217,7 +217,7 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
 {{/video_enc_verisilicon_h1v6}}
 {{#video_enc_allegro_al5r}}
-	<!-- Allegro Encoder -->
+      <!-- Allegro Encoder -->
      <MediaCodec name="OMX.allegro.h265.encoder" >
        <Type name="video/hevc" />
        <!-- profiles and levels: MainProfile HierTier : Level41 -->
@@ -225,6 +225,12 @@ Only the three quirks included above are recognized at this point:
        <Limit name="bitrate" range="1-50000000" />
        <Limit name="alignment" value="8x8" />
        <Limit name="block-size" value="32x32" />
+{{#video_enc_allegro_al5r_hevc_1080p60}}
+       <Limit name="frame-rate" range="1-60" />
+{{/video_enc_allegro_al5r_hevc_1080p60}}
+{{^video_enc_allegro_al5r_hevc_1080p60}}
+       <Limit name="frame-rate" range="1-30" />
+{{/video_enc_allegro_al5r_hevc_1080p60}}
        <Limit name="blocks-per-second" range="1-61200" />
        <Quirk name="requires-allocate-on-input-ports" />
      </MediaCodec>
@@ -235,6 +241,12 @@ Only the three quirks included above are recognized at this point:
        <Limit name="bitrate" range="1-50000000" />
        <Limit name="alignment" value="8x8" />
        <Limit name="block-size" value="64x64" />
+{{#video_enc_allegro_al5r_vp9_1080p60}}
+       <Limit name="frame-rate" range="1-60" />
+{{/video_enc_allegro_al5r_vp9_1080p60}}
+{{^video_enc_allegro_al5r_vp9_1080p60}}
+       <Limit name="frame-rate" range="1-30" />
+{{/video_enc_allegro_al5r_vp9_1080p60}}
        <Limit name="blocks-per-second" range="1-15300" />
        <Quirk name="requires-allocate-on-input-ports" />
      </MediaCodec>

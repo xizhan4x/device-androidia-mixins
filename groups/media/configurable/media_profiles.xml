@@ -114,7 +114,6 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-
         <EncoderProfile quality="720p" fileFormat="mp4" duration="60">
             <Video codec="h264"
                    bitRate="8100000"
@@ -138,7 +137,6 @@
                    sampleRate="48000"
                    channels="1" />
         </EncoderProfile>
-
         <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="4400000"
@@ -183,7 +181,9 @@
                    sampleRate="8000"
                    channels="1" />
         </EncoderProfile>
+
 {{/video_enc_verisilicon_h1v6}}
+
         <EncoderProfile quality="timelapseqcif" fileFormat="3gp" duration="30">
             <Video codec="h263"
                    bitRate="110000"
@@ -306,13 +306,26 @@
         minBitRate="1"    maxBitRate="50000000"
         minFrameWidth="128" maxFrameWidth="4096"
         minFrameHeight="128" maxFrameHeight="4096"
-        minFrameRate="1" maxFrameRate="30" />
-
+        minFrameRate="1" 
+{{#video_enc_allegro_al5r_hevc_1080p60}}
+        maxFrameRate="60"
+{{/video_enc_allegro_al5r_hevc_1080p60}}
+{{^video_enc_allegro_al5r_hevc_1080p60}}
+        maxFrameRate="30"
+{{/video_enc_allegro_al5r_hevc_1080p60}}
+        />
     <VideoEncoderCap name="vp9" enabled="false"
         minBitRate="1"    maxBitRate="50000000"
         minFrameWidth="136" maxFrameWidth="4096"
         minFrameHeight="136" maxFrameHeight="4096"
-        minFrameRate="1" maxFrameRate="30" />
+        minFrameRate="1"
+{{#video_enc_allegro_al5r_vp9_1080p60}}
+        maxFrameRate="60"
+{{/video_enc_allegro_al5r_vp9_1080p60}}
+{{^video_enc_allegro_al5r_vp9_1080p60}}
+        maxFrameRate="30"
+{{/video_enc_allegro_al5r_vp9_1080p60}}
+     />
 {{/video_enc_allegro_al5r}}
     <VideoEncoderCap name="h263" enabled="true"
         minBitRate="64000" maxBitRate="192000"
