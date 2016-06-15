@@ -32,8 +32,15 @@ on boot
 {{#f_dvc_trace}}
     mkdir /config/usb_gadget/g1/functions/dvc_trace.gs9
 {{/f_dvc_trace}}
+{{#dvctrace_source_dev}}
+    mkdir /config/usb_gadget/g1/functions/dvctrace.{{{dvctrace_source_dev}}}
+{{/dvctrace_source_dev}}
     mkdir /config/usb_gadget/g1/configs/b.1 0770 shell shell
     mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
+{{#dvctrace_source_dev}}
+    # This should not be removed
+    symlink /config/usb_gadget/g1/functions/dvctrace.{{{dvctrace_source_dev}}} /config/usb_gadget/g1/configs/b.1/f9
+{{/dvctrace_source_dev}}
     write /config/usb_gadget/g1/os_desc/b_vendor_code 0x1
     write /config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
     write /config/usb_gadget/g1/configs/b.1/MaxPower 500
