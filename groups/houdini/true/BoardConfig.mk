@@ -24,3 +24,6 @@ else
   TARGET_CPU_ABI_LIST_32_BIT += $(NB_ABI_LIST_32_BIT)
   TARGET_CPU_ABI_LIST := $(TARGET_CPU_ABI_LIST_32_BIT)
 endif
+
+BOARD_SEPOLICY_M4DEFS += module_houdini=true
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/houdini
