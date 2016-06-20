@@ -9,6 +9,7 @@ on fs
     insmod ${ro.boot.moduleslocation}/trusty-mem.ko
     insmod ${ro.boot.moduleslocation}/trusty-ipc.ko
     insmod ${ro.boot.moduleslocation}/trusty-virtio.ko
+    insmod ${ro.boot.moduleslocation}/trusty-log.ko
 
     # Update device node r/w attribute
     chmod 666 /dev/trusty-ipc-dev0
