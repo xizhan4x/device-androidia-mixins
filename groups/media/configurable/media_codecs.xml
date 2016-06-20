@@ -174,7 +174,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="5" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
-        <MediaCodec name="OMX.hantro.G2.video.decoder.vp9" type="video/vp9" >
+        <MediaCodec name="OMX.hantro.G2.video.decoder.vp9" type="video/x-vnd.on2.vp9" >
             <!--profiles and levels:
                 OMX_VIDEO_VP9Profile0: 0 -->
             <Quirk name="requires-allocate-on-output-ports" />
@@ -217,9 +217,8 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
 {{/video_enc_verisilicon_h1v6}}
 {{#video_enc_allegro_al5r}}
-      <!-- Allegro Encoder -->
-     <MediaCodec name="OMX.allegro.h265.encoder" >
-       <Type name="video/hevc" />
+	<!-- Allegro Encoder -->
+     <MediaCodec name="OMX.allegro.h265.encoder" type="video/hevc" >
        <!-- profiles and levels: MainProfile HierTier : Level41 -->
        <Limit name="size" min="128x128" max="4096x4096"/>
        <Limit name="bitrate" range="1-50000000" />
@@ -234,8 +233,7 @@ Only the three quirks included above are recognized at this point:
        <Limit name="blocks-per-second" range="1-61200" />
        <Quirk name="requires-allocate-on-input-ports" />
      </MediaCodec>
-     <MediaCodec name="OMX.allegro.vp9.encoder" >
-       <Type name="video/vp9" />
+     <MediaCodec name="OMX.allegro.vp9.encoder" type="video/x-vnd.on2.vp9" >
        <!-- profiles : Profile0 -->
        <Limit name="size" min="136x136" max="4096x4096"/>
        <Limit name="bitrate" range="1-50000000" />

@@ -1,6 +1,3 @@
 
 on post-fs
   setprop media.wfd.video-bitrate 2500000
-{{#video_enc_verisilicon_h1v6}}
-  setprop OMX.hantro.H1.video.encoder.avc.maxprofilelevel 4096
-{{/video_enc_verisilicon_h1v6}}
