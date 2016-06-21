@@ -16,4 +16,7 @@ CRASHLOGD_USE_SD := false
 {{#arch}}
 CRASHLOGD_ARCH := {{{arch}}}
 {{/arch}}
+{{#ssram_crashlog}}
+CRASHLOGD_SSRAM_CRASHLOG := {{{ssram_crashlog}}}
+{{/ssram_crashlog}}
 endif

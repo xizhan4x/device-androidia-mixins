@@ -23,6 +23,13 @@ server (http://crashtool.tl.intel.com) for post-mortem analysis.
 More details on crashtool wiki :
  http://wiki.ith.intel.com/display/DRD/CrashTool
 
+Mixin parameters
+----------------
+
+* ssram_crashlog: on some platform(s), there is no BERT ACPI table,
+   but FW crashlog can be retrieved directly from SSRAM.
+   The value of that option is used to identify the platform.
+   Currently, only "broxton" platform is supported.
 
 Debug only mixins consideration
 -------------------------------
