@@ -25,3 +25,4 @@ hung_task_timeout_secs = 120
 vendor-partition = false
 os_secure_boot = false
 verity_mode = true
+ifwi_debug = false

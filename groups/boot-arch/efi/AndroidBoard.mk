@@ -33,11 +33,13 @@ $(call flashfile_add_blob,dnxp_0x1.bin,hardware/intel/efi_capsules/$(TARGET_PROD
 $(call flashfile_add_blob,cfgpart.xml,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/cfgpart.xml,,CFGPART_XML)
 $(call flashfile_add_blob,cse_spi.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/$(BIOS_VARIANT)/cse_spi.bin,,CSE_SPI_BIN)
 
+{{#ifwi_debug}}
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Allow to add debug ifwi file only on userdebug and eng flashfiles
 $(call flashfile_add_blob,ifwi_debug.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/debug/ifwi.bin,,EFI_IFWI_DEBUG_BIN)
 $(call flashfile_add_blob,ifwi_debug_dnx.bin,hardware/intel/efi_capsules/$(TARGET_PRODUCT)/::variant::/debug/ifwi_dnx.bin,,EFI_IFWI_DEBUG_DNX_BIN)
 endif
+{{/ifwi_debug}}
 
 ifneq ($(EFI_IFWI_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
