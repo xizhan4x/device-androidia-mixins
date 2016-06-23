@@ -33,7 +33,11 @@ USE_INTEL_JPEG := true
 # depencencies will remove themselves from the build...
 USE_CAMERA_STUB := false
 
+{{#enable_fr_service}}
 PLATFORM_FR_SUPPORT := true
+BOARD_SEPOLICY_M4DEFS += camera_ipu4_enable_fr_service=true
+{{/enable_fr_service}}
+
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu_common
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu4

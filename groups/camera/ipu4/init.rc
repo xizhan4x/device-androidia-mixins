@@ -36,3 +36,5 @@ on property:ro.camera.hardware.ipu4=*
     #echo "module intel_ipu4_isys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module lib2600psys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module intel_ipu4_psys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
+    chmod 0660 /sys/module/intel_ipu4_psys_mod_bxtB0/parameters/enable_concurrency
+    chown system camera /sys/module/intel_ipu4_psys_mod_bxtB0/parameters/enable_concurrency
