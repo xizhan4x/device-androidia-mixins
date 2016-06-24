@@ -13,3 +13,4 @@ hung_task_timeout_secs = 120
 vendor-partition = false
 system_fs = ext4
 ifwi_debug = false
+config = gr_mrb

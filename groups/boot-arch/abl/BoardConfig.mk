@@ -32,6 +32,11 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/boot/overlay
 ADDITIONAL_DEFAULT_PROPERTIES += ro.frp.pst=/dev/block/by-name/android_persistent
 
 # Use internal ABL if available, else external
+BOARD_USE_ABL := true
+ABL_AVAILABLE_CONFIG := {{config}}
+ABL_AVAILABLE_CONFIG_PATH = $(TARGET_DEVICE_DIR)/abl
+ABL_BUILD_OUT = $(ANDROID_PRODUCT_OUT)/abl
+
 ABL_PATH := vendor/intel/abl
 ABL_PREBUILTS_INTERNAL := $(ABL_PATH)/abl_prebuilt/internal
 ABL_PREBUILTS_EXTERNAL := $(ABL_PATH)/abl/abl_prebuilt/external
@@ -46,9 +51,11 @@ $(error ABL package error : nor source, nor internal or external prebuilt are av
 endif
 endif
 
-BOARD_FLASHFILES += $(ABL_PREBUILT_PATH)/ioc_firmware_gp_mrb_fab_c_slcan.ias_ioc:ioc_firmware_gp_mrb_fab_c.ias_ioc
+ABL_AVAILABLE_IOC := $(wildcard $(ABL_PREBUILT_PATH)/ioc_firmware*)
+BOARD_FLASHFILES += $(foreach ioc, $(ABL_AVAILABLE_IOC), $(ioc):$(notdir $(ioc)))
 BOARD_FLASHFILES += $(ABL_PREBUILT_PATH)/bldr_utils.img:bldr_utils.img
-BOARD_FLASHFILES += $(ABL_PREBUILT_PATH)/ifwi_mrb.bin:ifwi_mrb.bin
+BOARD_FLASHFILES += $(foreach config, $(ABL_AVAILABLE_CONFIG), $(ABL_BUILD_OUT)/ifwi_$(config).bin:ifwi_$(config).bin)
+INSTALLED_RADIOIMAGE_TARGET += $(foreach config, $(ABL_AVAILABLE_CONFIG), $(ABL_BUILD_OUT)/ifwi_$(config).bin)
 
 #can't use := here, as PRODUCT_OUT is not defined yet
 BOARD_GPT_BIN = $(PRODUCT_OUT)/gpt.bin
