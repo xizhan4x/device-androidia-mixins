@@ -26,3 +26,4 @@ vendor-partition = false
 os_secure_boot = false
 verity_mode = true
 ifwi_debug = false
+bootloader_len = 33
