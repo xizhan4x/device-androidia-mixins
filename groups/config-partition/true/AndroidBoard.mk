@@ -6,6 +6,7 @@ $(INSTALLED_CONFIGIMAGE_TARGET) : PRIVATE_SELINUX_FC := $(selinux_fc)
 $(INSTALLED_CONFIGIMAGE_TARGET) : $(MKEXTUSERIMG) $(MAKE_EXT4FS) $(E2FSCK) $(selinux_fc)
 	$(call pretty,"Target config fs image: $(INSTALLED_CONFIGIMAGE_TARGET)")
 	@mkdir -p $(PRODUCT_OUT)/config
+	@mkdir -p $(PRODUCT_OUT)/root/oem_config
 	$(hide)	$(MKEXTUSERIMG) -s \
 		$(PRODUCT_OUT)/config \
 		$(PRODUCT_OUT)/config.img \
