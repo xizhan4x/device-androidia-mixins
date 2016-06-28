@@ -32,3 +32,8 @@ on boot
     setprop audio.aware.mixer "aware_out classifier 0 mdl params"
     setprop audio.aware.card   wm8998audio
 {{/aware}}
+
+on boot
+    setprop persist.audio.audioConf AudioParameterFramework-wm8998.xml
+    setprop persist.audio.routeConf RouteParameterFramework-wm8998.xml
+
