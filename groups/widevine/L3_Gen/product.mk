@@ -15,7 +15,6 @@ PRODUCT_PACKAGES += com.google.widevine.software.drm.xml \
     libWVStreamControlAPI_L3 \
     libwvdrm_L3
 
-PRODUCT_PACKAGES_ENG += WidevineSamplePlayer \
-                        ExoPlayerDemo
+PRODUCT_PACKAGES_ENG += ExoPlayerDemo
 
 BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 3

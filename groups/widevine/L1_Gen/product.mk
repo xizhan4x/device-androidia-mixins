@@ -14,8 +14,6 @@ PRODUCT_PACKAGES += com.google.widevine.software.drm.xml \
     libWVStreamControlAPI_L1 \
     libwvdrm_L1
 
-PRODUCT_PACKAGES_ENG += WidevineSamplePlayer
-
 # WV Modular
 PRODUCT_PACKAGES += libwvdrmengine
 
