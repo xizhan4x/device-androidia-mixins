@@ -2,6 +2,7 @@ on boot
     mount configfs none /config
     mkdir /config/usb_gadget/g1 0770 shell shell
     write /config/usb_gadget/g1/idVendor 0x8087
+    write /config/usb_gadget/g1/idProduct 0x09ef
     write /config/usb_gadget/g1/bcdDevice {{{bcdDevice}}}
     write /config/usb_gadget/g1/bcdUSB {{{bcdUSB}}}
     mkdir /config/usb_gadget/g1/strings/0x409 0770
@@ -24,6 +25,9 @@ on property:sys.usb.config=none && property:sys.usb.configfs=1
 on property:init.svc.adbd=stopped
     setprop sys.usb.ffs.ready 0
 
-on property:sys.usb.config=adb && property:sys.usb.configfs=1
-    write /config/usb_gadget/g1/idVendor 0x8087
-    write /config/usb_gadget/g1/idProduct 0x09ef
+on property:sys.usb.ffs.ready=1
+    symlink /config/usb_gadget/g1/configs/b.1 /config/usb_gadget/g1/os_desc/b.1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC {{controller}}
+    setprop persist.sys.usb.config adb
