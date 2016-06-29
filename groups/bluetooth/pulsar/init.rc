@@ -37,6 +37,10 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
    disabled
    oneshot
 
+#Bluetooth HFP version update to 1.6
+on post-fs-data
+    setprop ro.bluetooth.hfp.ver 1.6
+
 #Bluetooth timeout values for Simics environment
 on post-fs-data
     setprop bluetooth.enable_timeout_ms 80000000
