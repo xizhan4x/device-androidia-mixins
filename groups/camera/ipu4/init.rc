@@ -1,5 +1,8 @@
 on boot
     setprop camera.disable_zsl_mode 1
+{{#ipu4_version}}
+    setprop ro.camera.hardware.ipu4 {{ipu4_version}}
+{{/ipu4_version}}
 
 on property:ro.camera.hardware.ipu4=*
     ## Defer loading modules that may require firmware till fs is ready
