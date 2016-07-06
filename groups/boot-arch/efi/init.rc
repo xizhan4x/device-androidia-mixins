@@ -2,7 +2,7 @@ on fs
     # ro.boot.hardware = TARGET_PRODUCT (set in kernel command line
     # as androidboot.hardware). Mount all the filesystems as specified
     # in the fstab.
-    mount_all /fstab
+    mount_all /fstab.${ro.hardware}
 
 service watchdogd /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters}}}{{/watchdog_parameters}}
     user root
