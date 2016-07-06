@@ -25,7 +25,7 @@
 {{/video_enc_verisilicon_h1v6}}
 
 {{#video_dec_verisilicon_g2v1}}
-/dev/g2			0600	mediacodec	mediacodec
+/dev/g2			0660	mediacodec	mediacodec
 {{^video_dec_verisilicon_g1v6}}
 {{^image_dec_verisilicon_g1v6}}
 {{^video_enc_verisilicon_h1v6}}
@@ -36,7 +36,7 @@
 {{/video_dec_verisilicon_g2v1}}
 
 {{#video_enc_allegro_al5r}}
-/dev/al5r		0600	mediacodec	mediacodec
+/dev/allegroIP		0660	mediacodec	mediacodec
 {{^video_dec_verisilicon_g1v6}}
 {{^image_dec_verisilicon_g1v6}}
 {{^video_enc_verisilicon_h1v6}}
