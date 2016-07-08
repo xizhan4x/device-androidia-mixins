@@ -31,6 +31,25 @@ BOARD_GPT_INI ?= $(TARGET_DEVICE_DIR)/gpt.ini
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/boot/overlay
 ADDITIONAL_DEFAULT_PROPERTIES += ro.frp.pst=/dev/block/by-name/android_persistent
 
+# Use internal ABL if available, else external
+ABL_PATH := vendor/intel/abl
+ABL_PREBUILTS_INTERNAL := $(ABL_PATH)/abl_prebuilt/internal
+ABL_PREBUILTS_EXTERNAL := $(ABL_PATH)/abl/abl_prebuilt/external
+
+ifneq ($(wildcard $(ABL_PREBUILTS_INTERNAL)),)
+ABL_PREBUILT_PATH := $(ABL_PREBUILTS_INTERNAL)/$(TARGET_DEVICE)
+else
+ifneq ($(wildcard $(ABL_PREBUILTS_EXTERNAL)),)
+ABL_PREBUILT_PATH := $(ABL_PREBUILTS_EXTERNAL)/$(TARGET_DEVICE)
+else
+$(error ABL package error : nor source, nor internal or external prebuilt are available)
+endif
+endif
+
+BOARD_FLASHFILES += $(ABL_PREBUILT_PATH)/ioc_firmware_gp_mrb_fab_c_slcan.ias_ioc:ioc_firmware_gp_mrb_fab_c.ias_ioc
+BOARD_FLASHFILES += $(ABL_PREBUILT_PATH)/bldr_utils.img:bldr_utils.img
+BOARD_FLASHFILES += $(ABL_PREBUILT_PATH)/ifwi_mrb.bin:ifwi_mrb.bin
+
 #can't use := here, as PRODUCT_OUT is not defined yet
 BOARD_GPT_BIN = $(PRODUCT_OUT)/gpt.bin
 BOARD_FLASHFILES += $(BOARD_GPT_BIN):gpt.bin
