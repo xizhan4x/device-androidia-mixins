@@ -231,7 +231,7 @@ Only the three quirks included above are recognized at this point:
        <Limit name="frame-rate" range="1-30" />
 {{/video_enc_allegro_al5r_hevc_1080p60}}
        <Limit name="blocks-per-second" range="1-61200" />
-       <Quirk name="requires-allocate-on-input-ports" />
+       <Quirk name="requires-allocate-on-output-ports" />
      </MediaCodec>
      <MediaCodec name="OMX.allegro.vp9.encoder" type="video/x-vnd.on2.vp9" >
        <!-- profiles : Profile0 -->
@@ -246,7 +246,7 @@ Only the three quirks included above are recognized at this point:
        <Limit name="frame-rate" range="1-30" />
 {{/video_enc_allegro_al5r_vp9_1080p60}}
        <Limit name="blocks-per-second" range="1-15300" />
-       <Quirk name="requires-allocate-on-input-ports" />
+       <Quirk name="requires-allocate-on-output-ports" />
      </MediaCodec>
 {{/video_enc_allegro_al5r}}
 {{#audio_enc_intel_aac}}
@@ -277,9 +277,9 @@ Only the three quirks included above are recognized at this point:
 {{^video_enc_verisilicon_h1v6}}
        <Setting name="max-video-encoder-input-buffers" value="6" />
 {{/video_enc_verisilicon_h1v6}}
-{{/video_enc_allegro_al5r}}    
+{{/video_enc_allegro_al5r}}
 {{#video_enc_verisilicon_h1v6}}
        <Setting name="max-video-encoder-input-buffers" value="4" />
-{{/video_enc_verisilicon_h1v6}}   
+{{/video_enc_verisilicon_h1v6}}
     </Settings>
 </MediaCodecs>
