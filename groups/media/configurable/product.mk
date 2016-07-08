@@ -4,7 +4,7 @@
 #Allegro al5r video encoder
 PRODUCT_PACKAGES += libOMX.allegro.video_encoder \
                     liballegro_encoder-shared
-PRODUCT_PACKAGES += liballegro_omxil_core
+PRODUCT_PACKAGES += libOMX.allegro.core
 {{^video_dec_verisilicon_g1v6}}
 {{^image_dec_verisilicon_g1v6}}
 {{^video_dec_verisilicon_g2v1}}
