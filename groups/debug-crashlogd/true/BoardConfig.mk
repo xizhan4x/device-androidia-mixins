@@ -19,4 +19,7 @@ CRASHLOGD_ARCH := {{{arch}}}
 {{#ssram_crashlog}}
 CRASHLOGD_SSRAM_CRASHLOG := {{{ssram_crashlog}}}
 {{/ssram_crashlog}}
+{{#ramdump}}
+CRASHLOGD_RAMDUMP := {{{ramdump}}}
+{{/ramdump}}
 endif

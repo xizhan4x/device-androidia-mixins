@@ -30,6 +30,12 @@ Mixin parameters
    but FW crashlog can be retrieved directly from SSRAM.
    The value of that option is used to identify the platform.
    Currently, only "broxton" platform is supported.
+* ramdump: when this option is set, on some specific conditions,
+   crashlogd will run in RAMDUMP mode, meaning that it will force a
+   reboot after having collected the kernel panic/watchdog debug data.
+   In user build, reboot is directly issued by init on defined
+   bootreason. The value of that option is used to identify the
+   platform.
 
 Debug only mixins consideration
 -------------------------------
