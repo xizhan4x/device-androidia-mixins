@@ -15,4 +15,6 @@ USE_CAMERA_SR300_OEM_TOOLS := true
 USE_CAMERA_ATOMISP_EMBED := true
 
 # Use the SR300 libusb specific SELinux rules
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/depth-camera/sr300
+BOARD_SEPOLICY_DIRS +=  \
+	device/intel/sepolicy/depth-camera/common \
+	device/intel/sepolicy/depth-camera/sr300
