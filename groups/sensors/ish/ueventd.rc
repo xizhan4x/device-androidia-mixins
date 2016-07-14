@@ -1,0 +1,4 @@
+# change dev node rights to let sensorhubd user can read and write
+/dev/ish                 0660  system root
+/dev/sensor-collection   0440  system root
+

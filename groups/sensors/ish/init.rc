@@ -1,6 +1,6 @@
 service sensorhubd /system/vendor/bin/sensorhubd
     class main
-    user root
+    user system
     group root
     socket sensorhubd stream 600 system system
 
