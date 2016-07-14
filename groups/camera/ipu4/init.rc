@@ -41,3 +41,6 @@ on property:ro.camera.hardware.ipu4=*
     #echo "module intel_ipu4_psys_mod +p" > /sys/kernel/debug/dynamic_debug/control;
     chmod 0660 /sys/module/intel_ipu4_psys_mod_bxtB0/parameters/enable_concurrency
     chown system camera /sys/module/intel_ipu4_psys_mod_bxtB0/parameters/enable_concurrency
+
+    # Forcing ipu4 psys freq to 450
+    write /sys/kernel/debug/0000\:00\:03.0/buttress/psys_force_freq 450
