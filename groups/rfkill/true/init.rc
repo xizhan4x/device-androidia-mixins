@@ -4,5 +4,6 @@ on boot
 
 service rfkill-init /system/bin/rfkill-init.sh {{{force_disable}}}
     disabled
+    user system
     group system
     oneshot
