@@ -8,6 +8,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += wpa_supplicant \
     hostapd \
     wlan_prov \
+    sec_tool \
     fw_bcmdhd_4356a2_pcie.bin \
     fw_bcmdhd_4356a2_pcie_apsta.bin \
     nvram_pcie_4356_a2.cal

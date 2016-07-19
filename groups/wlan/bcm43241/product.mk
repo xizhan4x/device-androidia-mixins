@@ -8,6 +8,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += wpa_supplicant \
     hostapd \
     wlan_prov \
+    sec_tool \
     brcmfmac43241b4-sdio.bin \
     brcmfmac43241b4-sdio_apsta.bin \
     brcmfmac43241b4-sdio.txt \
