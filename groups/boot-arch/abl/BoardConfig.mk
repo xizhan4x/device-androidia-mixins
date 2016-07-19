@@ -42,10 +42,10 @@ ABL_PREBUILTS_INTERNAL := $(ABL_PATH)/abl_prebuilt/internal
 ABL_PREBUILTS_EXTERNAL := $(ABL_PATH)/abl/abl_prebuilt/external
 
 ifneq ($(wildcard $(ABL_PREBUILTS_INTERNAL)),)
-ABL_PREBUILT_PATH := $(ABL_PREBUILTS_INTERNAL)/$(TARGET_DEVICE)
+ABL_PREBUILT_PATH := $(ABL_PREBUILTS_INTERNAL)/{{prebuilts_dir}}
 else
 ifneq ($(wildcard $(ABL_PREBUILTS_EXTERNAL)),)
-ABL_PREBUILT_PATH := $(ABL_PREBUILTS_EXTERNAL)/$(TARGET_DEVICE)
+ABL_PREBUILT_PATH := $(ABL_PREBUILTS_EXTERNAL)/{{prebuilts_dir}}
 else
 $(error ABL package error : nor source, nor internal or external prebuilt are available)
 endif

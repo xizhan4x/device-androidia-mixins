@@ -14,3 +14,4 @@ vendor-partition = false
 system_fs = ext4
 ifwi_debug = false
 config = gr_mrb
+prebuilts_dir = bxtp_abl
