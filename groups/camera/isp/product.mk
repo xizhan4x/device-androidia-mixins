@@ -11,7 +11,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += camera.$(TARGET_BOARD_PLATFORM)
 
 # Kernel module initialization helper script
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/init.atomisp.sh:system/etc/init.atomisp.sh
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/init.atomisp.sh:system/vendor/bin/init.atomisp.sh
 
 # 3A/AIQ
 PRODUCT_PACKAGES += \
