@@ -11,6 +11,7 @@ PRODUCT_PACKAGES += \
 {{/bt_usc}}
     bt_vendor.conf \
     03110006002a340f00.sfi \
+    37120006002a340f00.sfi \
     bddata_PULSAR \
     bt_nvm_init.sh \
 #TODO: to be added when avaialble for pulsar
