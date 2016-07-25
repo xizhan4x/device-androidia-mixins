@@ -1,0 +1,8 @@
+# Copy specific camera3_profiles.xml files into hald default fuse folder. The
+# correct files will be fused into /system/rt/hal_fuse upon device detection.
+
+ifeq (${TARGET_BOARD_PLATFORM},gsd)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/../camera3_profiles.xml:$(HAL_FUSE_PREFIX_DEFAULT)/camera3_profiles_gsd.xml
+endif
+
