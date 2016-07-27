@@ -15,3 +15,4 @@ system_fs = ext4
 ifwi_debug = false
 config = gr_mrb
 prebuilts_dir = bxtp_abl
+timeout = 60000

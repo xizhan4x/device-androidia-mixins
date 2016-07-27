@@ -55,6 +55,8 @@ ABL_AVAILABLE_IOC := $(wildcard $(ABL_PREBUILT_PATH)/ioc_firmware*)
 BOARD_FLASHFILES += $(foreach ioc, $(ABL_AVAILABLE_IOC), $(ioc):$(notdir $(ioc)))
 BOARD_FLASHFILES += $(ABL_PREBUILT_PATH)/bldr_utils.img:bldr_utils.img
 BOARD_FLASHFILES += $(foreach config, $(ABL_AVAILABLE_CONFIG), $(ABL_BUILD_OUT)/ifwi_$(config).bin:ifwi_$(config).bin)
+BOARD_FLASHFILES += $(foreach config, $(ABL_AVAILABLE_CONFIG), $(ABL_BUILD_OUT)/ifwi_dnx_$(config).bin:ifwi_dnx_$(config).bin)
+BOARD_FLASHFILES += $(ABL_BUILD_OUT)/dnxp_0x1.bin:dnxp_0x1.bin
 INSTALLED_RADIOIMAGE_TARGET += $(foreach config, $(ABL_AVAILABLE_CONFIG), $(ABL_BUILD_OUT)/ifwi_$(config).bin)
 
 #can't use := here, as PRODUCT_OUT is not defined yet
