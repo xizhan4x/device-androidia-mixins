@@ -9,11 +9,10 @@ PRODUCT_FEAT_VPU_ALLEGRO := true
 #use intel lib stagefright hw loader to load the codecs
 INTEL_STAGEFRIGHT := true
 
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media
 {{/video_dec_verisilicon_g2v1}}
 {{/image_dec_verisilicon_g1v6}}
 {{/video_dec_verisilicon_g1v6}}
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/allegro
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/configurable/allegro_al5r
 {{/video_enc_allegro_al5r}}
 
 {{#video_dec_verisilicon_g2v1}}
@@ -31,10 +30,9 @@ INTEL_STAGEFRIGHT := true
 #use ion memory
 BOARD_USE_MALI_IMC_GFX := true
 
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/verisilicon
 {{/image_dec_verisilicon_g1v6}}
 {{/video_dec_verisilicon_g1v6}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/configurable/verisilicon_g2v1
 {{/video_dec_verisilicon_g2v1}}
 
 {{#video_enc_verisilicon_h1v6}}
@@ -53,11 +51,10 @@ INTEL_STAGEFRIGHT := true
 #use ion memory
 BOARD_USE_MALI_IMC_GFX := true
 
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/verisilicon
 {{/video_dec_verisilicon_g2v1}}
 {{/image_dec_verisilicon_g1v6}}
 {{/video_dec_verisilicon_g1v6}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/configurable/verisilicon_h1v6
 {{/video_enc_verisilicon_h1v6}}
 
 {{#image_dec_verisilicon_g1v6}}
@@ -74,9 +71,9 @@ INTEL_STAGEFRIGHT := true
 #use ion memory
 BOARD_USE_MALI_IMC_GFX := true
 
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/verisilicon
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/configurable/verisilicon_g1v6
 {{/video_dec_verisilicon_g1v6}}
+
 {{/image_dec_verisilicon_g1v6}}
 
 {{#video_dec_verisilicon_g1v6}}
@@ -92,6 +89,5 @@ INTEL_STAGEFRIGHT := true
 #use ion memory
 BOARD_USE_MALI_IMC_GFX := true
 
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/verisilicon
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/media/configurable/verisilicon_g1v6
 {{/video_dec_verisilicon_g1v6}}
