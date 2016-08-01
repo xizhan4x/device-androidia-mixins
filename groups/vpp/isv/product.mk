@@ -11,8 +11,8 @@ PRODUCT_PACKAGES += \
 
 # copy permission files
 PRODUCT_COPY_FILES += \
-	vendor/intel/hardware/libmedia_utils/ISV/display/v1/com.intel.extmode.xml:system/etc/permissions/com.intel.extmode.xml
+    vendor/intel/mediasdk_release/ISV/display/v1/com.intel.extmode.xml:system/etc/permissions/com.intel.extmode.xml
 
 PRODUCT_PACKAGES += \
-	libextmodejni \
-	com.intel.extmode
+    libextmodejni \
+    com.intel.extmode
