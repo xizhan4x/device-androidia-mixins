@@ -63,130 +63,50 @@ on property:sys.usb.config=mtp && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/os_desc/use 1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct 0x0a5e
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/functions/mtp.gs0/os_desc/interface.MTP/compatible_id "MTP"
     write /config/usb_gadget/g1/os_desc/use 1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct {{{mtp_adb_pid}}}
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=rndis && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct {{{rndis_pid}}}
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=rndis,adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct {{{rndis_adb_pid}}}
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=ptp && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/functions/ptp.gs1/os_desc/interface.MTP/compatible_id "PTP"
     write /config/usb_gadget/g1/os_desc/use 1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct 0x0a60
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=ptp,adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/functions/ptp.gs1/os_desc/interface.MTP/compatible_id "PTP"
     write /config/usb_gadget/g1/os_desc/use 1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct {{{ptp_adb_pid}}}
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct 0x09ef
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=midi && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct 0x0a65
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.config=midi,adb && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct 0x0a67
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 {{#f_dvc_trace}}
 on property:sys.usb.config=adb,dvc_trace && property:sys.usb.configfs=1
     start adbd
     write /config/usb_gadget/g1/idVendor 0x8087
     write /config/usb_gadget/g1/idProduct 0x08f4
-{{#f_acm}}
-    rm /config/usb_gadget/g1/configs/b.1/f4
-    rm /config/usb_gadget/g1/configs/b.1/f5
-    rm /config/usb_gadget/g1/configs/b.1/f6
-    symlink /config/usb_gadget/g1/functions/acm.gs6 /config/usb_gadget/g1/configs/b.1/f4
-    symlink /config/usb_gadget/g1/functions/acm.gs7 /config/usb_gadget/g1/configs/b.1/f5
-    symlink /config/usb_gadget/g1/functions/acm.gs8 /config/usb_gadget/g1/configs/b.1/f6
-{{/f_acm}}
 
 on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb,dvc_trace && property:sys.usb.configfs=1
     write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "dvc_trace_adb"
