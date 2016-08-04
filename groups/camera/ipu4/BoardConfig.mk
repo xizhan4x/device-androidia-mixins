@@ -22,7 +22,7 @@ USE_INTEL_CAMERA_EXTRAS := true
 IA_PANORAMA_VERSION := 1.0
 
 # Use hardware JPEG encode on BXT
-USE_INTEL_JPEG := true
+USE_INTEL_JPEG := false
 
 # Must be "false" (NOT simply unset!) or else lots of camera
 # depencencies will remove themselves from the build...
