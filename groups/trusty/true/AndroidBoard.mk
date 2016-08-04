@@ -14,6 +14,7 @@ $(INSTALLED_TOS_IMAGE_TARGET): $(PREBUILT_TOS_IMAGE_TARGET) $(MKBOOTIMG) $(BOOT_
 		$(BOOT_SIGNER) /tos $@ $(TOS_SIGNING_KEY) $(TOS_SIGNING_CERT) $@)
 
 # Prebuild the evmm_pkg.bin and lk.bin
+.PHONY: $(PREBUILT_TOS_IMAGE_TARGET)
 $(PREBUILT_TOS_IMAGE_TARGET):
 	@echo "making lk.bin.."
 	$(hide) (cd $(TOPDIR)trusty && $(TRUSTY_ENV_VAR) ./generate_prebuilt.sh)
