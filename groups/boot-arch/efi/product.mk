@@ -99,3 +99,6 @@ KERNELFLINGER_TXE_BIND_ROOT_TRUST := true
 # The BIOS must support this variable to enable this feature
 KERNELFLINGER_OS_SECURE_BOOT := true
 {{/os_secure_boot}}
+# Android Kernelflinger uses the OpenSSL library to support the
+# bootloader policy
+KERNELFLINGER_SSL_LIBRARY := openssl
