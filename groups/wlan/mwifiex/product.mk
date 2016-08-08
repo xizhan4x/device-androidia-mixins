@@ -14,6 +14,3 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
 
-PRODUCT_COPY_FILES += \
-    device/intel/common/wlan/mwifiex/load_mwifiex.sh:system/bin/load_mwifiex.sh
-

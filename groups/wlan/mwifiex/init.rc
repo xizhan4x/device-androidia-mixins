@@ -43,9 +43,7 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service load_mwifiex /system/bin/load_mwifiex.sh
-    class main
-    user root
-    group system wifi
-    oneshot
+on boot
+    insmod ${ro.boot.moduleslocation}/mlan.ko
+    insmod ${ro.boot.moduleslocation}/pcie8xxx.ko fw_serial=0 cal_data_cfg=mrvl/cal_data.conf cfg80211_wext=0xF
 
