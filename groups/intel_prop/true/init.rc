@@ -1,5 +1,5 @@
 service intel_prop /system/vendor/bin/intel_prop
-    user system
-    group root system
+    user 5002
+    group root
     class core
     oneshot

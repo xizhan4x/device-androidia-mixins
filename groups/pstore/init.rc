@@ -1,13 +1,13 @@
 on fs
-    mkdir /dev/pstore 0775 root system
+    mkdir /dev/pstore 0700 5001 root
     mount pstore pstore /dev/pstore
 
 on post-fs-data
-   mkdir /data/dontpanic 0775 root log
+   mkdir /data/dontpanic 0770 root log
 
 service pstore-clean /system/vendor/bin/pstore-clean
-    user system
-    group root system log
+    user 5001
+    group root log
     class late_start
     oneshot
 

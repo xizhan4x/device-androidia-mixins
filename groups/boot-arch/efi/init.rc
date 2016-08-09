@@ -20,12 +20,8 @@ on init
    verity_load_state
 
 on early-boot
-     chmod 0770 /sys/firmware/dmi/entries/148-0/raw
-     chmod 0770 /sys/firmware/dmi/entries/0-0/raw
-     chmod 0770 /sys/firmware/dmi
-     chown system system /sys/firmware/dmi/entries/148-0/raw
-     chown system system /sys/firmware/dmi/entries/0-0/raw
-     chown system system /sys/firmware/dmi
+     chmod 0440 /sys/firmware/dmi/entries/148-0/raw
+     chmod 0440 /sys/firmware/dmi/entries/0-0/raw
 
 on fs
    # Update dm-verity persistent state and set partition.*.verified
