@@ -5,6 +5,8 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 PRODUCT_PACKAGE_OVERLAYS += packages/services/Car/car_product/overlay
 
+PRODUCT_PACKAGES += \
+    vehicle.default
 # Replace framework versions with dummy one, which is essentially
 # the same as removing the xml. Needs this as there is no easy
 # way to remove PRODUCT_COPY_FILES from inherited products.
