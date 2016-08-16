@@ -111,7 +111,8 @@ Only the three quirks included above are recognized at this point:
             <Limit name="bitrate" range="1-40000000" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
-        <MediaCodec name="OMX.Intel.{{vd_vp9_type}}_vd.vp9" type="video/x-vnd.on2.vp9" >
+{{#vp9}}
+        <MediaCodec name="OMX.Intel.hw_vd.vp9" type="video/x-vnd.on2.vp9" >
             <Limit name="size" min="64x64" max="3840x2160" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
@@ -119,6 +120,7 @@ Only the three quirks included above are recognized at this point:
             <Limit name="bitrate" range="1-40000000" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
+{{/vp9}}
         <MediaCodec name="OMX.Intel.hw_vd.h265" type="video/hevc" >
             <Limit name="size" min="64x64" max="3840x2160" />
             <Limit name="alignment" value="2x2" />
