@@ -7,6 +7,10 @@ PRODUCT_PACKAGE_OVERLAYS += packages/services/Car/car_product/overlay
 
 PRODUCT_PACKAGES += \
     vehicle.default
+
+PRODUCT_PACKAGES += \
+    radio.fm.default
+
 # Replace framework versions with dummy one, which is essentially
 # the same as removing the xml. Needs this as there is no easy
 # way to remove PRODUCT_COPY_FILES from inherited products.
