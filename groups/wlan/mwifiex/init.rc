@@ -1,0 +1,51 @@
+on post-fs-data
+    chmod 0660 /data/misc/wifi/p2p_supplicant.conf
+
+setprop wifi.direct.interface wfd0
+setprop wifi.interface mlan0
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -Dnl80211 -imlan0 -g@android:wpa_mlan0 \
+    -c/data/misc/wifi/wpa_supplicant.conf -dt \
+    -e /data/misc/wifi/entropy.bin
+    class main
+    socket wpa_mlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service dhcpcd_mlan0 /system/bin/dhcpcd -ABDKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_mlan0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service p2p_supplicant /system/bin/wpa_supplicant \
+    -imlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+    -m/data/misc/wifi/p2p_supplicant.conf \
+    -O/data/misc/wifi/sockets \
+    -e/data/misc/wifi/entropy.bin \
+    -dt -g@android:wpa_mlan0
+    class main
+    socket wpa_mlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
+service load_mwifiex /system/bin/load_mwifiex.sh
+    class main
+    user root
+    group system wifi
+    oneshot
+
