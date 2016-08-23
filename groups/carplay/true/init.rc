@@ -1,0 +1,63 @@
+# mdnsd for Carplay
+service mdnsd_carplay /system/bin/mdnsd_carplay -nodaemon
+    class main
+    user mdnsr
+    group inet net_raw
+    socket mdnsd stream 0660 mdnsr inet
+    disabled
+    oneshot
+    setenv MDNS_DIRECT_LINK_INTERFACE ncm0
+
+service carplaydaemon /system/bin/carplay-ipod-daemon-2 -t mrb -f /etc/carplay-ipod-daemon-2.cfg
+    class main
+
+service cpserver /system/bin/cpserver
+    class main
+    user system
+    group root
+
+on property:carplay.usb.mode=device
+    write /dev/kmsg "CHANGING USB MODE : device\n"
+    setprop carplay.usb.configured false
+    setprop sys.usb.config iap2,ncm
+    exec /system/bin/usleep 1000000
+    write /sys/bus/platform/devices/intel-cht-otg.0/mux_state pp
+    start mdnsd_carplay
+
+on property:carplay.usb.mode=host
+    write /dev/kmsg "CHANGING USB MODE : host\n"
+    # Change usb config to default
+    setprop sys.usb.config ${persist.sys.usb.config}
+    # Wait for mode change.
+    write /config/usb_gadget/g1/configs/b.1/MaxPower 500
+    write /config/usb_gadget/g1/configs/b.1/bmAttributes 0x80
+
+    exec /system/bin/usleep 1000000
+    write /sys/bus/platform/devices/intel-cht-otg.0/mux_state hh
+    # ifdown ncm0
+    # Wireless CarPlay stiil using Bonjour after usb mode changes.
+    # stop mdnsd_carplay
+
+on early-boot
+    chmod 0660 /dev/i2c-1
+
+on boot
+    mkdir /config/usb_gadget/g1/functions/ncm.cp1
+    mkdir /config/usb_gadget/g1/functions/giap2.cp2
+
+on property:sys.usb.config=iap2,ncm && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/idVendor 0x8087
+    write /config/usb_gadget/g1/idProduct 0x0a80
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "ncm"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    symlink /config/usb_gadget/g1/functions/giap2.cp2 /config/usb_gadget/g1/configs/b.1/f1
+    symlink /config/usb_gadget/g1/functions/ncm.cp1 /config/usb_gadget/g1/configs/b.1/f2
+    write /config/usb_gadget/g1/configs/b.1/MaxPower 0
+    write /config/usb_gadget/g1/configs/b.1/bmAttributes 0xc0
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
+
+on property:init.svc.reset_usb=stopped
+    write /sys/bus/platform/devices/intel-cht-otg.0/mux_state hh
