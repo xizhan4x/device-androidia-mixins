@@ -23,3 +23,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.screen.portrait.xml:system/etc/permissions/android.hardware.screen.portrait.xml \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:system/etc/permissions/android.software.freeform_window_management.xml
 
+# Car apps
+PRODUCT_PACKAGES += \
+    CarLatinIME \
+    CarMediaApp \
+    CarDialerApp \
+    CarLensPickerApp \
+    CarTrustAgentService \
+    CarHvacApp \
+    CarRadioApp \
+    SystemUpdater
+
