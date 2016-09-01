@@ -32,5 +32,6 @@ PRODUCT_PACKAGES += \
     CarTrustAgentService \
     CarHvacApp \
     CarRadioApp \
-    SystemUpdater
+    SystemUpdater \
+    UniversalMusicPlayer
 
