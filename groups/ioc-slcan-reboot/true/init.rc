@@ -1,0 +1,8 @@
+service slcan_init /sbin/ioc_slcan.sh init
+    oneshot
+    seclabel u:r:ioc_slcan:s0
+    disabled
+
+on post-fs
+    start slcan_init
+
