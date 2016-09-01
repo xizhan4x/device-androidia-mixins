@@ -1,5 +1,6 @@
 PRODUCT_PACKAGES += \
     pcie8897_wlan.bin \
+    pcieuart8897_combo.bin \
     cal_data.conf
 
 PRODUCT_PACKAGES += \

@@ -45,5 +45,5 @@ service iprenew_p2p /system/bin/dhcpcd -n
 
 on boot
     insmod ${ro.boot.moduleslocation}/mlan.ko
-    insmod ${ro.boot.moduleslocation}/pcie8xxx.ko fw_serial=0 cal_data_cfg=mrvl/cal_data.conf cfg80211_wext=0xF
+    insmod ${ro.boot.moduleslocation}/pcie8xxx.ko cal_data_cfg=mrvl/cal_data.conf cfg80211_wext=0xF
 
