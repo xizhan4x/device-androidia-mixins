@@ -6,6 +6,7 @@ TRUSTY_ENV_VAR += LOAD_MEM_BASE={{load_mem_base}}
 TRUSTY_ENV_VAR += LK_CORE_NUM={{lk_core_num}}
 #Using same toolchain as android kernel
 TRUSTY_ENV_VAR += COMPILE_TOOLCHAIN=$(YOCTO_CROSSCOMPILE)
+TRUSTY_ENV_VAR += TARGET_PRODUCT=$(TARGET_PRODUCT)
 
 #Workaround CPU lost issue on SIMICS, will remove this line below
 #after PO.
