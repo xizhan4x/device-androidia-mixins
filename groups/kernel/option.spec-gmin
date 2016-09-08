@@ -22,3 +22,4 @@ interactive_governor=false
 intel_pstate=true
 loglevel = 5
 user_loglevel = 2
+cfg_path = false

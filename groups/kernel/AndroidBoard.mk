@@ -22,10 +22,16 @@ LOCAL_KERNEL_SRC := {{{src_path}}}
 EXTERNAL_MODULES := {{{external_modules}}}
 EXTMOD_SRC := ../modules
 
+{{#cfg_path}}
+KERNEL_CONFIG_PATH := {{cfg_path}}
+{{/cfg_path}}
+{{^cfg_path}}
+KERNEL_CONFIG_PATH := $(LOCAL_KERNEL_SRC)/arch/x86/configs
+{{/cfg_path}}
 
-KERNEL_DEFCONFIG := $(LOCAL_KERNEL_SRC)/arch/x86/configs/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}defconfig
+KERNEL_DEFCONFIG := $(KERNEL_CONFIG_PATH)/$(TARGET_KERNEL_ARCH)_{{{kdefconfig}}}defconfig
 ifneq ($(TARGET_BUILD_VARIANT), user)
-KERNEL_DEBUG_DIFFCONFIG += $(wildcard $(LOCAL_KERNEL_SRC)/arch/x86/configs/debug_diffconfig)
+KERNEL_DEBUG_DIFFCONFIG += $(wildcard $(KERNEL_CONFIG_PATH)/debug_diffconfig)
 ifneq ($(KERNEL_DEBUG_DIFFCONFIG),)
 KERNEL_DIFFCONFIG += $(KERNEL_DEBUG_DIFFCONFIG)
 else
