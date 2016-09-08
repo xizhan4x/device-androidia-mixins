@@ -26,6 +26,11 @@ PRODUCT_PACKAGES += \
     libmfldadvci \
     dummy.aiqb \
 
+{{#enable_rvc}}
+PRODUCT_PACKAGES += \
+    rvc \
+    media-ctl
+{{/enable_rvc}}
 # Camera: Format set up for graphics
 PRODUCT_PROPERTY_OVERRIDES += ro.camera.pixel_format = 0x10F
 PRODUCT_PROPERTY_OVERRIDES += ro.camera.rec.pixel_format = 0x100

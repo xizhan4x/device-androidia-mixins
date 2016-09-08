@@ -1,10 +1,17 @@
+{{#enable_rvc}}
+on early-init
+{{/enable_rvc}}
+{{^enable_rvc}}
 on boot
+{{/enable_rvc}}
     setprop camera.disable_zsl_mode 1
 {{#ipu4_version}}
     setprop ro.camera.hardware.ipu {{ipu4_version}}
 {{/ipu4_version}}
 
+{{^enable_rvc}}
 on property:ro.camera.hardware.ipu=*
+{{/enable_rvc}}
     ## Defer loading modules that may require firmware till fs is ready
     ## additional list of modules to load for intel-ipu4
     ## In A0 modules can't be loaded automatically at least yet
@@ -44,3 +51,14 @@ on property:ro.camera.hardware.ipu=*
 
     # Forcing ipu4 psys freq to 450
     write /sys/kernel/debug/0000\:00\:03.0/buttress/psys_force_freq 450
+
+{{#enable_rvc}}
+on early-init
+    start rvc
+
+service rvc /vendor/bin/rvc
+    class core
+    disabled
+    oneshot
+    seclabel u:r:rvc:s0
+{{/enable_rvc}}
