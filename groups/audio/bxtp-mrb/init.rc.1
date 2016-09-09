@@ -11,8 +11,10 @@ on boot
 
 on boot
     write /sys/kernel/debug/snd_soc_skl/nhlt/control enable
-    copy  /vendor/firmware/sspGpMrbAmp4ch.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp4p
-    copy  /vendor/firmware/sspGpMrbTuner.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp2c
+    copy /vendor/firmware/sspGpMrbAmp4ch.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp4p
+    copy /vendor/firmware/sspGpMrbTuner.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp2c
+    copy /vendor/firmware/sspGpMrbBtHfp.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp0p
+    copy /vendor/firmware/sspGpMrbBtHfp.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp0c
 
 on boot
     setprop persist.audio.audioConf AudioParameterFramework-tdf8532.xml
