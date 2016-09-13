@@ -2,6 +2,8 @@ PREBUILT_TOS_IMAGE_TARGET := $(TOPDIR)vendor/intel/fw/evmm/prebuilts/ikgt_pkg.bi
 INSTALLED_TOS_IMAGE_TARGET := $(PRODUCT_OUT)/tos.img
 TOS_SIGNING_KEY := $(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_VERITY_SIGNING_KEY).pk8
 TOS_SIGNING_CERT := $(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_VERITY_SIGNING_KEY).x509.pem
+# The product is prefixed with platform name
+INTERNAL_PLATFORM := $(firstword $(subst _, " ", $(TARGET_PRODUCT)))
 
 .PHONY: tosimage
 tosimage: $(INSTALLED_TOS_IMAGE_TARGET)
@@ -19,7 +21,7 @@ $(PREBUILT_TOS_IMAGE_TARGET):
 	@echo "making lk.bin.."
 	$(hide) (cd $(TOPDIR)trusty && $(TRUSTY_ENV_VAR) ./generate_prebuilt.sh)
 	@echo "making tos image.."
-	$(hide) (cd $(TOPDIR)vendor/intel/fw/evmm/$(TARGET_BOARD_PLATFORM) && $(TRUSTY_ENV_VAR) ./generate_prebuilt.sh)
+	$(hide) (cd $(TOPDIR)vendor/intel/fw/evmm/$(INTERNAL_PLATFORM) && $(TRUSTY_ENV_VAR) ./generate_prebuilt.sh)
 
 # Add dependence for flashfiles
 INSTALLED_RADIOIMAGE_TARGET += $(INSTALLED_TOS_IMAGE_TARGET)
