@@ -13,4 +13,4 @@
 /dev/block/by-name/android_bootloader2  /bootloader2    emmc    defaults                                                    recoveryonly
 /dev/block/by-name/android_persistent   /persistent     emmc    defaults                                                    defaults
 /dev/block/by-name/android_metadata     /metadata       emmc    defaults                                                    defaults
-
+/dev/block/by-name/android_bldr_utils   /bldr_utils     emmc    defaults                                                    recoveryonly
