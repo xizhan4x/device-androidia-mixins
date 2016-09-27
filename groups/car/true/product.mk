@@ -33,5 +33,5 @@ PRODUCT_PACKAGES += \
     CarHvacApp \
     CarRadioApp \
     SystemUpdater \
-    UniversalMusicPlayer
+    LocalMediaPlayer
 
