@@ -1,0 +1,16 @@
+on post-fs-data
+    # To store BT paired info
+    mkdir /data/misc/hcid 0770 bluetooth bluetooth
+
+on boot
+   # TMP to be removed: disable power control
+   write /sys/devices/pci0000:00/0000:00:18.0/power/control on
+
+on property:bluetooth.hwcfg=start
+    start btcfg
+
+service btcfg /system/bin/btcfg.sh
+    user bluetooth
+    group bluetooth
+    oneshot
+    disabled
