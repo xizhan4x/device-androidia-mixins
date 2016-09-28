@@ -6,6 +6,8 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/fstab:root/fstab.$(TARGET_PRODUCT) \
 	frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
 
+TARGET_NO_DEVICE_UNLOCK := true
+TARGET_BOOT_SIGNER := ias
 TARGET_IAFW_ARCH := i386
 
 # Libpayload configuration for ABL
