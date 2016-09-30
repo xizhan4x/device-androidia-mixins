@@ -1,0 +1,1 @@
+BOARD_KERNEL_CMDLINE += console=tty0
