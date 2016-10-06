@@ -1,6 +1,6 @@
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_LINUX := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/intel/common/bluetooth/default/
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR = $(TARGET_DEVICE_DIR)
 DEVICE_PACKAGE_OVERLAYS += \
     device/intel/common/bluetooth/overlay-bt-pan \
     device/intel/common/bluetooth/overlay-hid-kb \
