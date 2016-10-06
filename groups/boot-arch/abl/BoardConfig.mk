@@ -12,6 +12,9 @@ TARGET_RELEASETOOLS_EXTENSIONS ?= device/intel/common/recovery/bootloader
 # By default recovery minui expects RGBA framebuffer
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 
+# Needed for ABL firmware update
+TARGET_RECOVERY_UPDATER_LIBS := libabl_recovery
+
 #
 # FILESYSTEMS
 #
