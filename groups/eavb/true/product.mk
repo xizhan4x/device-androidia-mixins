@@ -10,3 +10,5 @@ PRODUCT_PACKAGES += \
     alsa_ctl \
     alsa_amixer \
 
+AUDIOSERVER_MULTILIB := 64
+
