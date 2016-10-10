@@ -1,6 +1,6 @@
 # can't use := here, as PRODUCT_OUT is not defined yet
 GPTIMAGE_BIN = $(PRODUCT_OUT)/$(TARGET_PRODUCT).img
-
+CRAFFIMAGE_BIN = $(PRODUCT_OUT)/$(TARGET_PRODUCT).craff
 BOARD_FLASHFILES += $(GPTIMAGE_BIN):$(TARGET_PRODUCT).img
 
 ifeq ($(TARGET_USE_TRUSTY),true)
