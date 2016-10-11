@@ -10,11 +10,18 @@ PRODUCT_PACKAGES += \
     libmfx_omx_components_hw \
     libmfx_omx_components_sw
 
-ifeq ($(UFO_ENABLE_GEN), gen9)
+ifeq ($(BOARD_USE_64BIT_USERSPACE),true)
+PRODUCT_PACKAGES += \
+    libmfxhw64 \
+    libmfxsw64
+endif
+
+{{#hevc_encoder}}
 PRODUCT_PACKAGES += \
     libmfx_hevce_hw32
 ifeq ($(BOARD_USE_64BIT_USERSPACE),true)
 PRODUCT_PACKAGES += \
     libmfx_hevce_hw64
 endif
-endif
+
+{{/hevc_encoder}}
