@@ -14,3 +14,13 @@ service btcfg /system/bin/btcfg.sh
     group bluetooth
     oneshot
     disabled
+
+on property:bluetooth.scocfg=start
+    start btscocfg
+
+service btscocfg /vendor/bin/btscocfg.sh
+    user bluetooth
+    group net_raw
+    oneshot
+    disabled
+
