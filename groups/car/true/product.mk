@@ -33,5 +33,9 @@ PRODUCT_PACKAGES += \
     CarHvacApp \
     CarRadioApp \
     SystemUpdater \
-    LocalMediaPlayer
+    LocalMediaPlayer \
+    CarNotificationsApp \
+    CarSettings \
+    OverviewApp \
+    Stream
 
