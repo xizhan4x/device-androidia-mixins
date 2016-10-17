@@ -18,3 +18,4 @@ prebuilts_dir = bxtp_abl
 timeout = 60000
 bootloader_block_size = 1024
 bootloader_len = 30
+multiboot-partition = false
