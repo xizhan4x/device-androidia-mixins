@@ -1,10 +1,10 @@
 on boot
     setprop camera.disable_zsl_mode 1
 {{#ipu4_version}}
-    setprop ro.camera.hardware.ipu4 {{ipu4_version}}
+    setprop ro.camera.hardware.ipu {{ipu4_version}}
 {{/ipu4_version}}
 
-on property:ro.camera.hardware.ipu4=*
+on property:ro.camera.hardware.ipu=*
     ## Defer loading modules that may require firmware till fs is ready
     ## additional list of modules to load for intel-ipu4
     ## In A0 modules can't be loaded automatically at least yet
@@ -18,13 +18,13 @@ on property:ro.camera.hardware.ipu4=*
     insmod ${ro.boot.moduleslocation}/videobuf-core.ko
     insmod ${ro.boot.moduleslocation}/videobuf2-dma-contig.ko
     insmod ${ro.boot.moduleslocation}/intel-ipu4-acpi.ko
-    insmod ${ro.boot.moduleslocation}/intel-ipu4-wrapper-${ro.camera.hardware.ipu4}.ko
-    insmod ${ro.boot.moduleslocation}/lib2600psys-mod-${ro.camera.hardware.ipu4}.ko
-    insmod ${ro.boot.moduleslocation}/lib2600-mod-${ro.camera.hardware.ipu4}.ko
-    insmod ${ro.boot.moduleslocation}/intel-ipu4-mod-${ro.camera.hardware.ipu4}.ko
-    insmod ${ro.boot.moduleslocation}/intel-ipu4-mmu-${ro.camera.hardware.ipu4}.ko
-    insmod ${ro.boot.moduleslocation}/intel-ipu4-psys-mod-${ro.camera.hardware.ipu4}.ko
-    insmod ${ro.boot.moduleslocation}/intel-ipu4-isys-mod-${ro.camera.hardware.ipu4}.ko num_stream_support=2
+    insmod ${ro.boot.moduleslocation}/intel-ipu4-wrapper-${ro.camera.hardware.ipu}.ko
+    insmod ${ro.boot.moduleslocation}/lib2600psys-mod-${ro.camera.hardware.ipu}.ko
+    insmod ${ro.boot.moduleslocation}/lib2600-mod-${ro.camera.hardware.ipu}.ko
+    insmod ${ro.boot.moduleslocation}/intel-ipu4-mod-${ro.camera.hardware.ipu}.ko
+    insmod ${ro.boot.moduleslocation}/intel-ipu4-mmu-${ro.camera.hardware.ipu}.ko
+    insmod ${ro.boot.moduleslocation}/intel-ipu4-psys-mod-${ro.camera.hardware.ipu}.ko
+    insmod ${ro.boot.moduleslocation}/intel-ipu4-isys-mod-${ro.camera.hardware.ipu}.ko num_stream_support=2
     #optional debug configuration
     #echo "module smiapp_pll +p" > /sys/kernel/debug/dynamic_debug/control;
     #echo "module smiapp +p" > /sys/kernel/debug/dynamic_debug/control;
