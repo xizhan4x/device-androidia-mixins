@@ -7,7 +7,8 @@ PRODUCT_PACKAGES += \
     hostapd \
     hostapd_cli \
     wpa_supplicant \
-    wpa_cli
+    wpa_cli \
+    iw
 
 PRODUCT_COPY_FILES += \
     device/intel/common/wlan/wpa_supplicant-common.conf:system/etc/wifi/wpa_supplicant.conf \
