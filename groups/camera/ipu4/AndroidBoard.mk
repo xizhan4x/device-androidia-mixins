@@ -17,5 +17,15 @@ copy_firmware: $(CAMERA_FIRMWARE)
 		find $(TARGET_OUT_VENDOR)/firmware -name $$f -exec cp {} $(PRODUCT_OUT)/root/vendor/firmware \; ;\
 		done
 
-$(PRODUCT_OUT)/ramdisk.img: copy_firmware
+RVC_BINARY := \
+	rvc \
+	media-ctl
+
+copy_rvc: $(RVC_BINARY)
+	$(hide) mkdir -p $(PRODUCT_OUT)/root/vendor/bin
+	$(hide) for f in $(RVC_BINARY); do \
+		find $(TARGET_OUT_VENDOR)/bin -name $$f -exec cp {} $(PRODUCT_OUT)/root/vendor/bin \; ;\
+		done
+
+$(PRODUCT_OUT)/ramdisk.img: copy_firmware copy_rvc
 {{/enable_rvc}}
