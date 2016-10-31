@@ -1,5 +1,9 @@
 # init.rc for telephony services specific to flashless platforms
 
+on init
+    # Contains dynamic configuration and calibration data.
+    mkdir /oem_config 0770 radio radio
+
 on post-fs-data
 
 # create config modem FW folder
