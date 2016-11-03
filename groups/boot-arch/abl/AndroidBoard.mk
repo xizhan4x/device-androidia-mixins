@@ -28,7 +28,7 @@ $(BOARD_GPT_IMG): $(BOARD_GPT_INI)
 # ABL FW and images files
 # Use internal ABL if available, else external
 BOARD_USE_ABL := true
-ABL_AVAILABLE_CONFIG := gr_mrb
+ABL_AVAILABLE_CONFIG := gr_mrb gr_mrb_b1
 ABL_AVAILABLE_CONFIG_PATH = $(TARGET_DEVICE_DIR)/abl
 ABL_BUILD_OUT = $(ANDROID_PRODUCT_OUT)/ifwi_abl
 
@@ -46,11 +46,18 @@ $(error ABL package error : nor source, nor internal or external prebuilt are av
 endif
 endif
 
+define add_board_flashfiles_variant
+$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(ABL_BUILD_OUT)/ifwi_$(1).bin:ifwi.bin) \
+$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(ABL_BUILD_OUT)/ifwi_dnx_$(1).bin:ifwi_dnx.bin) \
+$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(ABL_BUILD_OUT)/dnxp_0x1_$(1).bin:dnxp_0x1.bin) \
+$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(PRODUCT_OUT)/bootloader.img:bootloader) \
+$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(TARGET_DEVICE_DIR)/fftf_build.opt:fftf_build.opt)
+endef
+
 ABL_AVAILABLE_IOC := $(wildcard $(ABL_PREBUILT_PATH)/ioc_firmware*)
 BOARD_FLASHFILES += $(foreach ioc, $(ABL_AVAILABLE_IOC), $(ioc):$(notdir $(ioc)))
-BOARD_FLASHFILES += $(foreach config, $(ABL_AVAILABLE_CONFIG), $(ABL_BUILD_OUT)/ifwi_$(config).bin:ifwi_$(config).bin)
-BOARD_FLASHFILES += $(foreach config, $(ABL_AVAILABLE_CONFIG), $(ABL_BUILD_OUT)/ifwi_dnx_$(config).bin:ifwi_dnx.bin)
-BOARD_FLASHFILES += $(ABL_BUILD_OUT)/dnxp_0x1.bin:dnxp_0x1.bin
+
+$(foreach config,$(ABL_AVAILABLE_CONFIG),$(call add_board_flashfiles_variant,$(config)))
 
 # Rule to create $(OUT)/bootloader image, binaries within are signed with
 # testing keys
