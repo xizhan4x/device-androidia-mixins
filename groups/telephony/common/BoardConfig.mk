@@ -29,3 +29,6 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony
 {{#use_crm}}
 INTEL_TELEPHONY_USE_CRM := true
 {{/use_crm}}
+{{#use_mcm}}
+INTEL_TELEPHONY_USE_MCM := true
+{{/use_mcm}}

@@ -22,6 +22,7 @@ PRODUCT_PACKAGES_DEBUG += \
 {{/use_crm}}
 
 {{^use_crm}}
+{{^use_mcm}}
 PRODUCT_PACKAGES += \
     mmgr \
     libmdmcli_mmgr \
@@ -34,10 +35,32 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     mmgr-test \
     ModemClientJavaTest
+{{/use_mcm}}
 {{/use_crm}}
 
+{{#use_mcm}}
+PRODUCT_COPY_FILES += \
+    vendor/intel/modem_control/core/fls/{{{modem_bin}}}.fls:system/vendor/{{{modem_bin}}}.fls
+
 PRODUCT_PACKAGES += \
+    ModemControlManager \
+    GetModemProp \
+    at-manager \
+    at-terminal \
+    at-proxy \
+    nvm-manager \
+    mcm_custom \
+    mcm_coredump \
+    {{{mcm_json}}}.json \
+    ModemDetection.sh \
+    FlsTool \
+    DownloadTool
+{{/use_mcm}}
+
+PRODUCT_PACKAGES += \
+{{^use_mcm}}
     proxy \
+{{/use_mcm}}
     mts \
     librapid-ril-core \
     librapid-ril-util \

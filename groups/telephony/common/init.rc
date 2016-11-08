@@ -44,6 +44,10 @@ on post-fs-data
     mkdir /data/telephony
     chown radio radio /data/telephony
     chmod 770 /data/telephony
+{{#use_mcm}}
+    #dir for nvm files
+    mkdir /data/nvm 0777 system system
+{{/use_mcm}}
 
 # adding Modem Manager
 {{#use_crm}}
@@ -54,14 +58,32 @@ service crm /system/vendor/bin/crm
     user root
     group radio cache inet misc system usb
 {{/use_crm}}
+
 {{^use_crm}}
+{{^use_mcm}}
 service mmgr /system/vendor/bin/mmgr
     class main
     socket mmgr stream 660 system radio
     user system
     group radio cache inet misc system usb
+{{/use_mcm}}
 {{/use_crm}}
 
+{{#use_mcm}}
+service mcm /system/vendor/bin/ModemDetection.sh
+    class core
+    user root
+    group radio cache inet misc system usb
+
+# AT proxy service
+service at-proxy /system/vendor/bin/at-proxy --d2s /dev/ttyGS0 127.0.0.1
+    class main
+    user radio
+    group radio system cache inet misc
+    disabled
+{{/use_mcm}}
+
+{{^use_mcm}}
 # AT proxy service
 service proxy /system/vendor/bin/proxy -d /dev/gsmtty1 -m /dev/gsmtty10
     socket atproxy-status stream 666 root radio system
@@ -82,6 +104,7 @@ service atproxy_usbreset /system/bin/atproxy_usbreset
     oneshot
     user radio
     disabled
+{{/use_mcm}}
 
 # USB ACM configuration, with rndis and adb
 on property:sys.usb.config=rndis,acm,adb
@@ -106,6 +129,23 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=rndis,acm,adb
 on property:persist.system.at-proxy.mode=*
     setprop system.at-proxy.mode ${persist.system.at-proxy.mode}
 
+{{#use_mcm}}
+on property:system.at-proxy.mode=0
+    stop at-proxy
+    start atproxy_usbreset
+
+on property:system.at-proxy.mode=1
+    stop ad_proxy
+    stop at-proxy
+    setprop sys.usb.config rndis,acm,adb
+
+on property:system.at-proxy.mode=2
+    stop ad_proxy
+    setprop sys.usb.config rndis,acm,adb
+    start at-proxy
+{{/use_mcm}}
+
+{{^use_mcm}}
 on property:system.at-proxy.mode=0
     stop proxy
     stop proxy-tunneling
@@ -122,6 +162,7 @@ on property:system.at-proxy.mode=2
     stop proxy
     setprop sys.usb.config rndis,acm,adb
     start proxy-tunneling
+{{/use_mcm}}
 
 # MTS SERVICES
 
