@@ -5,7 +5,7 @@ LOCAL_KERNEL_PATH := $(abspath $(PRODUCT_OUT)/obj/kernel)
 KERNEL_INSTALL_MOD_PATH := .
 LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/arch/x86/boot/{{{binary_name}}}
 LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
-KERNELRELEASE = $(shell cat $(LOCAL_KERNEL_PATH)/include/config/kernel.release)
+KERNELRELEASE := $(shell cat $(LOCAL_KERNEL_PATH)/include/config/kernel.release)
 
 KERNEL_CCACHE := $(realpath $(CC_WRAPPER))
 
@@ -118,14 +118,14 @@ $(PRODUCT_OUT)/system.img: $(LOCAL_KERNEL_PATH)/copy_modules
 # First copy modules keeping directory hierarchy lib/modules/`uname-r`for libkmod
 # Second, create flat hierarchy for insmod linking to previous hierarchy
 $(LOCAL_KERNEL_PATH)/copy_modules: $(LOCAL_KERNEL)
-	@echo Copy modules from $(LOCAL_KERNEL_PATH)/lib/modules/$(KERNELRELEASE) into $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
-	$(hide) rm -rf $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
+	@echo Copy modules from $(LOCAL_KERNEL_PATH)/lib/modules/$(KERNELRELEASE) into $(PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
+	$(hide) rm -rf $(PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
 	$(hide) rm -rf $(TARGET_RECOVERY_OUT)/$(KERNEL_MODULES_ROOT)
-	$(hide) mkdir -p $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
+	$(hide) mkdir -p $(PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)
 	$(hide) cd $(LOCAL_KERNEL_PATH)/lib/modules/$(KERNELRELEASE) && for f in `find . -name '*.ko' -or -name 'modules.*'`; do \
-		cp $$f $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(basename $$f) || exit 1; \
-		mkdir -p $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$(KERNELRELEASE)/$$(dirname $$f) ; \
-		ln -s /$(KERNEL_MODULES_ROOT_PATH)/$$(basename $$f) $(ANDROID_PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$(KERNELRELEASE)/$$f || exit 1; \
+		cp $$f $(PWD)/$(PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$$(basename $$f) || exit 1; \
+		mkdir -p $(PWD)/$(PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$(KERNELRELEASE)/$$(dirname $$f) ; \
+		ln -s /$(KERNEL_MODULES_ROOT_PATH)/$$(basename $$f) $(PWD)/$(PRODUCT_OUT)/$(KERNEL_MODULES_ROOT)/$(KERNELRELEASE)/$$f || exit 1; \
 		done
 	$(hide) touch $@
 {{#camera_cos_hack}}

@@ -6,7 +6,8 @@ $(INSTALLED_CONFIGIMAGE_TARGET) : PRIVATE_SELINUX_FC := $(selinux_fc)
 $(INSTALLED_CONFIGIMAGE_TARGET) : $(MKEXTUSERIMG) $(MAKE_EXT4FS) $(E2FSCK) $(selinux_fc)
 	$(call pretty,"Target config fs image: $(INSTALLED_CONFIGIMAGE_TARGET)")
 	@mkdir -p $(PRODUCT_OUT)/config
-	$(hide)	$(MKEXTUSERIMG) -s \
+	$(hide)	PATH=$(HOST_OUT_EXECUTABLES):$$PATH \
+		$(MKEXTUSERIMG) -s \
 		$(PRODUCT_OUT)/config \
 		$(PRODUCT_OUT)/config.img \
 		ext4 \
