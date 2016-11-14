@@ -89,6 +89,13 @@ $(CHECK_CONFIG_LOG): $(KERNEL_DEFCONFIG) $(KERNEL_DEPS)
 	  echo "Recommanded method to generate defconfig is menuconfig tool instead of manual edit." ; \
 	  exit 1;  fi;
 
+menuconfig xconfig gconfig: $(CHECK_CONFIG_LOG)
+	$(hide) xterm -e $(MAKE) $(KERNEL_MAKE_OPTIONS) $@
+	$(hide) cp -f $(KERNEL_CONFIG) $(KERNEL_DEFCONFIG)
+	@echo ===========
+	@echo $(KERNEL_DEFCONFIG) has been modified !
+	@echo ===========
+
 $(KERNEL_CONFIG): $(KERNEL_CONFIG_DEPS) | yoctotoolchain $(CHECK_CONFIG_LOG)
 	$(hide) echo "KERNEL_CONFIG_PREV_DEPS := $^" > $(KERNEL_CONFIG_MK)
 	$(hide) cat $^ > $@
