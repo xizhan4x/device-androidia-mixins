@@ -15,6 +15,7 @@ PRODUCT_PACKAGES += esif_ufd \
     DptfPolicyVirtualSensor \
     upe_java \
     jhs
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/dptf.dv:/system/etc/dptf/dv/dptf.dv
 {{#thermal_lite}}
 PRODUCT_PACKAGES += thermal_lite
 {{/thermal_lite}}
