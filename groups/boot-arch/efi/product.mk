@@ -1,16 +1,6 @@
 TARGET_UEFI_ARCH := {{{uefi_arch}}}
 BIOS_VARIANT := {{{bios_variant}}}
 
-# FIXME surfaceflinger explodes if this is not "gmin"
-TARGET_BOARD_PLATFORM := {{target_board_platform}}
-
-# Copy init.rc files
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.rc:root/init.$(TARGET_PRODUCT).rc \
-    $(LOCAL_PATH)/init.recovery.rc:root/init.recovery.$(TARGET_PRODUCT).rc \
-    $(LOCAL_PATH)/ueventd.rc:root/ueventd.$(TARGET_PRODUCT).rc \
-    $(LOCAL_PATH)/fstab:root/fstab
-
 $(call inherit-product,build/target/product/verity.mk)
 
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/by-name/android_system

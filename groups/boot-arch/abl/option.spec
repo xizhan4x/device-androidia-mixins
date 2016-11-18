@@ -4,7 +4,6 @@
 deps = disk-bus
 
 [defaults]
-target_board_platform = gmin
 data_encryption = true
 verity_warning = true
 verity_mode = true

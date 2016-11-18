@@ -1,6 +1,3 @@
-on init
-    symlink /fstab /fstab.$(TARGET_PRODUCT)
-
 on fs
     # ro.boot.hardware = TARGET_PRODUCT (set in kernel command line
     # as androidboot.hardware). Mount all the filesystems as specified
