@@ -42,3 +42,5 @@ BOARD_KERNEL_CMDLINE += iTCO_wdt.stop_on_shutdown=0
 {{/run_tco_on_shutdown}}
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/abl
+
+TARGET_BOOTLOADER_BOARD_NAME := $(TARGET_DEVICE)
