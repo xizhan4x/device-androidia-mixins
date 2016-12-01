@@ -1,4 +1,7 @@
 TARGET_USE_TRUSTY := true
+{{^tos_partition}}
+TARGET_USE_MULTIBOOT := true
+{{/tos_partition}}
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/trusty
 
 LKBUILD_TOOLCHAIN_ROOT = $(PWD)/vendor/intel/external/prebuilts/elf/
