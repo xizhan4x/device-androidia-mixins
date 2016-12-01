@@ -6,7 +6,8 @@ $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 PRODUCT_PACKAGE_OVERLAYS += packages/services/Car/car_product/overlay
 
 PRODUCT_PACKAGES += \
-    vehicle.default
+    slcan \
+    vehicle.$(TARGET_BOARD_PLATFORM)
 
 PRODUCT_PACKAGES += \
     radio.fm.default

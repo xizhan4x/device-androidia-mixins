@@ -1,1 +1,11 @@
 import init.car.rc
+
+service slcan /sbin/slcan
+    class core
+    user root
+    group root
+    seclabel u:r:ioc_slcan:s0
+    critical
+
+on boot
+    start slcan
