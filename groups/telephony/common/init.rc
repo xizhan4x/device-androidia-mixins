@@ -81,6 +81,18 @@ service at-proxy /system/vendor/bin/at-proxy --d2s /dev/ttyGS0 127.0.0.1
     user radio
     group radio system cache inet misc
     disabled
+
+service rpc-daemon /system/bin/rpc-daemon
+    socket rpc_send stream 660 system radio
+    socket rpc_recv stream 660 system radio
+    socket rpc_reg stream 660 system radio
+    group root radio system
+    class core
+    user root
+    disabled
+
+on property:rpcd.start=1
+  start rpc-daemon
 {{/use_mcm}}
 
 {{^use_mcm}}

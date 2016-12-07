@@ -11,7 +11,7 @@ BOARD_MODEM_LIST := {{{modems}}}
 
 # System Properties
 ADDITIONAL_BUILD_PROPERTIES += \
-    rild.libpath=librapid-ril-core.so \
+    rild.libpath={{{rild}}}.so \
     ro.telephony.default_network=9 \
     persist.tel.stk.apbip=true
 
@@ -25,6 +25,9 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony/pcie
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_data
 
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony
+{{#use_mcm}}
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/telephony/rpc
+{{/use_mcm}}
 
 {{#use_crm}}
 INTEL_TELEPHONY_USE_CRM := true

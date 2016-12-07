@@ -54,7 +54,10 @@ PRODUCT_PACKAGES += \
     {{{mcm_json}}}.json \
     ModemDetection.sh \
     FlsTool \
-    DownloadTool
+    DownloadTool \
+    librpc-ril \
+    rpc-daemon \
+    rpcd_adapter
 {{/use_mcm}}
 
 PRODUCT_PACKAGES += \
