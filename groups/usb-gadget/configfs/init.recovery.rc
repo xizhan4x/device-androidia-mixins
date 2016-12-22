@@ -1,4 +1,5 @@
 on boot
+    mkdir /config 0500 root root
     mount configfs none /config
     mkdir /config/usb_gadget/g1 0770 shell shell
     write /config/usb_gadget/g1/idVendor 0x8087
