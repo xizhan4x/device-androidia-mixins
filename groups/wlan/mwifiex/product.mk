@@ -6,6 +6,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hostapd \
     hostapd_cli \
+    wificond \
+    wifilogd \
     wpa_supplicant \
     wpa_cli \
     iw
