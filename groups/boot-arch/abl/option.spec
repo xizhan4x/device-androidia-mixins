@@ -19,3 +19,4 @@ timeout = 60000
 bootloader_block_size = 1024
 bootloader_len = 30
 multiboot-partition = false
+fastboot_in_ifwi = true

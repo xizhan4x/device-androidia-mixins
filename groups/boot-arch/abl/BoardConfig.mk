@@ -44,3 +44,7 @@ BOARD_KERNEL_CMDLINE += iTCO_wdt.stop_on_shutdown=0
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/boot-arch/abl
 
 TARGET_BOOTLOADER_BOARD_NAME := $(TARGET_DEVICE)
+
+{{#fastboot_in_ifwi}}
+FASTBOOT_IN_IFWI := true
+{{/fastboot_in_ifwi}}
