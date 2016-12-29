@@ -65,10 +65,8 @@ endif # $(TARGET_PREBUILT_KERNEL)
 {{/useprebuilt}}
 
 {{#modules_in_bootimg}}
-ifneq ($(TARGET_BUILD_VARIANT),user)
   KERNEL_MODULES_ROOT_PATH := lib/modules
   KERNEL_MODULES_ROOT := root/$(KERNEL_MODULES_ROOT_PATH)
-endif
 {{/modules_in_bootimg}}
 KERNEL_MODULES_ROOT_PATH ?= system/lib/modules
 KERNEL_MODULES_ROOT ?= $(KERNEL_MODULES_ROOT_PATH)
