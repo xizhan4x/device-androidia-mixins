@@ -1,0 +1,13 @@
+on early-init
+    write /sys/class/gpio/export 442
+    chown system system /sys/class/gpio/gpio442/value
+    restorecon /sys/devices/platform/INT3452:00/gpio/gpio442/value
+    start rvc
+
+service rvc /sbin/rvc
+    class core
+    disabled
+    oneshot
+    user root
+    group graphics camera
+    seclabel u:r:rvc:s0

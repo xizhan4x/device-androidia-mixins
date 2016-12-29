@@ -26,18 +26,8 @@ PRODUCT_PACKAGES += \
     libmfldadvci \
     dummy.aiqb \
 
-{{#enable_rvc}}
-PRODUCT_PACKAGES += \
-    rvc \
-    media-ctl
-{{/enable_rvc}}
 # Camera: Format set up for graphics
 PRODUCT_PROPERTY_OVERRIDES += ro.camera.pixel_format = 0x10F
 PRODUCT_PROPERTY_OVERRIDES += ro.camera.rec.pixel_format = 0x100
 PRODUCT_PROPERTY_OVERRIDES += ro.camera.zsl.pixel_format = 0x20
 PRODUCT_PROPERTY_OVERRIDES += ro.ycbcr.pixel_format = 0x10F
-{{#enable_rvc}}
-$(foreach t, $(patsubst $(LOCAL_PATH)/splash/%.png,%,$(wildcard $(LOCAL_PATH)/splash/intel_*.png)) ,\
-$(eval PRODUCT_COPY_FILES += $(LOCAL_PATH)/splash/$(t).png:root/splash/$(t).png ))
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/splash/splash.png:root/splash/splash.png
-{{/enable_rvc}}

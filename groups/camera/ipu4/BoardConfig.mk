@@ -43,6 +43,3 @@ USE_CAMERA_HAL_SOC := {{{enable_hal_soc}}}
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu_common
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/camera/ipu4
-{{#enable_rvc}}
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/rvc
-{{/enable_rvc}}
