@@ -5,5 +5,6 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/gptp
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/ufipc
 
 # for AVB Streamhandler daemon
+BOARD_SEPOLICY_M4DEFS += module_gptp=true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/avbstreamhandler
 
