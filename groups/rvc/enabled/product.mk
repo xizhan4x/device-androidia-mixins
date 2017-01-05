@@ -1,6 +1,7 @@
 PRODUCT_PACKAGES += \
     rvc \
-    media-ctl
+    media-ctl \
+    RvcApp
 
 
 $(foreach t, $(patsubst $(LOCAL_PATH)/splash/%.png,%,$(wildcard $(LOCAL_PATH)/splash/intel_*.png)) ,\
