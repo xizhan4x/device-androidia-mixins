@@ -15,6 +15,7 @@ BOARD_GRAPHIC_IS_MALI := true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/goldsand
 
 # Use vendor/intel/external/drm-gsd
+TARGET_USE_PRIVATE_LIBDRM := true
 LIBDRM_VER ?= gsd
 
 {{#drm_atomic}}
