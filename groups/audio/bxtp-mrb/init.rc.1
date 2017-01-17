@@ -17,6 +17,8 @@ on post-fs
     copy /vendor/firmware/sspGpMrbTuner.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp2c
     copy /vendor/firmware/sspGpMrbBtHfp.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp0p
     copy /vendor/firmware/sspGpMrbBtHfp.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp0c
+    copy /vendor/firmware/sspGpMrbModem.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp3p
+    copy /vendor/firmware/sspGpMrbModem.blob /sys/kernel/debug/snd_soc_skl/nhlt/ssp3c
 
 on post-fs
     setprop persist.audio.audioConf AudioParameterFramework-tdf8532.xml
