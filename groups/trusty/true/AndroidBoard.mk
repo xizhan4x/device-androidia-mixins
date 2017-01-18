@@ -1,14 +1,15 @@
 TOS_IMAGE_TARGET := $(TRUSTY_BUILDROOT)/ikgt_pkg.bin
 # The product is prefixed with platform name
 INTERNAL_PLATFORM := $(firstword $(subst _, " ", $(TARGET_PRODUCT)))
+LOCAL_MAKE := make
 
 # Build the evmm_pkg.bin and lk.bin
 .PHONY: $(TOS_IMAGE_TARGET)
 $(TOS_IMAGE_TARGET): yoctotoolchain
 	@echo "making lk.bin.."
-	$(hide) (cd $(TOPDIR)trusty && $(TRUSTY_ENV_VAR) $(MAKE) {{{lk_project}}})
+	$(hide) (cd $(TOPDIR)trusty && $(TRUSTY_ENV_VAR) $(LOCAL_MAKE) {{{lk_project}}})
 	@echo "making tos image.."
-	$(hide) (cd $(TOPDIR)vendor/intel/fw/evmm/$(INTERNAL_PLATFORM) && $(TRUSTY_ENV_VAR) $(MAKE))
+	$(hide) (cd $(TOPDIR)vendor/intel/fw/evmm/$(INTERNAL_PLATFORM) && $(TRUSTY_ENV_VAR) $(LOCAL_MAKE))
 
 {{#tos_partition}}
 #tos partition is assigned for trusty
