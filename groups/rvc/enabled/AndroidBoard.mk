@@ -13,4 +13,7 @@ copy_i915_firmware: $(I915_FIRMWARE_FILES)
 	    cp $${f} $(PRODUCT_OUT)/root/vendor/firmware/i915 ; \
 	done
 
-$(PRODUCT_OUT)/ramdisk.img: copy_i915_firmware
+hwclock: rvc
+	@touch $(PRODUCT_OUT)/root/hwc.lock
+
+$(PRODUCT_OUT)/ramdisk.img: copy_i915_firmware hwclock
