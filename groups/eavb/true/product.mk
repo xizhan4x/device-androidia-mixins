@@ -9,6 +9,7 @@ PRODUCT_PACKAGES += \
     alsa_aplay \
     alsa_ctl \
     alsa_amixer \
+    asound.conf \
 
 AUDIOSERVER_MULTILIB := 64
 
