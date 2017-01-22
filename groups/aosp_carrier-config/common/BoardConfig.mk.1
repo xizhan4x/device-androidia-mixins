@@ -2,7 +2,7 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
 # For security concerns, the software scalability is disabled on USER build.
 # Static configuration is selected instead.
 DEVICE_PACKAGE_OVERLAYS += $(OVERLAY_AOSP_$(AOSP_CARRIER_CONFIG))
-ADDITIONAL_DEFAULT_PROPERTIES += $(shell cat $(AOSP_CARRIER_PROP_DIR)/$(AOSP_CARRIER_CONFIG).prop)
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += $(shell cat $(AOSP_CARRIER_PROP_DIR)/$(AOSP_CARRIER_CONFIG).prop)
 else
 {{#carrier_att}}
 DEVICE_PACKAGE_OVERLAYS += $(AOSP_CARRIER_FEATURE_RES_DIR)/carrier_001

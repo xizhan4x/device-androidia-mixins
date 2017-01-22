@@ -10,7 +10,7 @@ CRASHLOGD_MODULE_MODEM ?= true
 BOARD_MODEM_LIST := {{{modems}}}
 
 # System Properties
-ADDITIONAL_BUILD_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath={{{rild}}}.so \
     ro.telephony.default_network=9 \
     persist.tel.stk.apbip=true

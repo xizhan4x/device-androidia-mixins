@@ -1,6 +1,6 @@
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_sflte
 
-ADDITIONAL_BUILD_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.ril-daemon.disable=dsds\
 
 BOARD_USE_IMC_OEM_TELEPHONY := false
@@ -31,24 +31,24 @@ DEVICE_PACKAGE_OVERLAYS += vendor/intel/featsetres_tel/cta
 {{/intel_cta}}
 
 {{#dsds}}
-ADDITIONAL_BUILD_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=dsds
 {{/dsds}}
 
 # unstub CRM only if modem silent reset is enabled
 ifeq ($(MODEM_SILENT_RESET_ENABLED),true)
-  ADDITIONAL_DEFAULT_PROPERTIES += \
+  PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
       persist.sys.crm0.load_stub=false \
       persist.sys.crm1.load_stub=false
 endif
 
 ifeq ($(MODEM_SILENT_RESET_ACTIVE),true)
-  ADDITIONAL_DEFAULT_PROPERTIES += \
+  PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
       persist.sys.crm0.silent_reset=true \
       persist.sys.crm1.silent_reset=true
 endif
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
       ro.telephony.tcs.hw_name={{tcs_hw}}
 
 BOARD_HAVE_ATPROXY := true

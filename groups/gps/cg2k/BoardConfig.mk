@@ -39,5 +39,5 @@ endif
 {{/gpp}}
 
 ifneq (, $(filter r2_%, $(TARGET_PRODUCT)))
-    ADDITIONAL_DEFAULT_PROPERTIES += ro.gnss.sv.status=true
+    PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.gnss.sv.status=true
 endif

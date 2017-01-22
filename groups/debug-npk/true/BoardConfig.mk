@@ -9,7 +9,7 @@ BOARD_SEPOLICY_DIRS += \
 ifeq ($(PSTORE_CONFIG),PRAM)
 
 # Default configuration for dumps to pstore
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.npk.cfg={{default_cfg}}
 
 # Increase pstore dump size to fit MSC buffers

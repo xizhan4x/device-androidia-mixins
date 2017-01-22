@@ -70,7 +70,7 @@ endif # $(TARGET_PREBUILT_KERNEL)
 {{/modules_in_bootimg}}
 KERNEL_MODULES_ROOT_PATH ?= system/lib/modules
 KERNEL_MODULES_ROOT ?= $(KERNEL_MODULES_ROOT_PATH)
-ADDITIONAL_DEFAULT_PROPERTIES += ro.boot.moduleslocation=/$(KERNEL_MODULES_ROOT_PATH)
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.boot.moduleslocation=/$(KERNEL_MODULES_ROOT_PATH)
 {{#useprebuilt}}
 # Copy kernel into place and modules
 PRODUCT_COPY_FILES += \

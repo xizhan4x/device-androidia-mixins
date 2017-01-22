@@ -48,7 +48,7 @@ TARGET_BOOTLOADER_BOARD_NAME := $(TARGET_DEVICE)
 # Trusted Factory Reset - persistent partition
 #
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/boot/overlay
-ADDITIONAL_DEFAULT_PROPERTIES += ro.frp.pst=/dev/block/by-name/android_persistent
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/android_persistent
 
 #can't use := here, as PRODUCT_OUT is not defined yet
 BOARD_GPT_BIN = $(PRODUCT_OUT)/gpt.bin

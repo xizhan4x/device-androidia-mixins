@@ -1,4 +1,4 @@
-ADDITIONAL_DEFAULT_PROPERTIES += wifi.interface=wlan0
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += wifi.interface=wlan0
 # FIXME: use VER_0_8_X so lib_driver_cmd_bcmdhd can be built
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_PRIVATE_LIB      := lib_driver_cmd_bcmdhd

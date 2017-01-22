@@ -62,7 +62,7 @@ TARGET_BOOTLOADER_POLICY := {{bootloader_policy}}
 TARGET_BOOTLOADER_POLICY_USE_EFI_VAR := {{blpolicy_use_efi_var}}
 ifeq ($(TARGET_BOOTLOADER_POLICY),$(filter $(TARGET_BOOTLOADER_POLICY),0x0 0x2 0x4 0x6))
 # OEM Unlock reporting
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.oem_unlock_supported=1
 endif
 ifeq ($(TARGET_BOOTLOADER_POLICY),$(filter $(TARGET_BOOTLOADER_POLICY),static external))
@@ -70,13 +70,13 @@ ifeq ($(TARGET_BOOTLOADER_POLICY),$(filter $(TARGET_BOOTLOADER_POLICY),static ex
 # statically in the repository or in $(PRODUCT_OUT)/.  If your
 # bootloader policy allows the device to be unlocked, uncomment the
 # following lines:
-# ADDITIONAL_DEFAULT_PROPERTIES += \
+# PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # 	ro.oem_unlock_supported=1
 endif
 {{/bootloader_policy}}
 {{^bootloader_policy}}
 # OEM Unlock reporting
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.oem_unlock_supported=1
 {{/bootloader_policy}}
 {{#ignore_not_applicable_reset}}

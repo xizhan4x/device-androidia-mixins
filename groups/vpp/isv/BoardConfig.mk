@@ -3,7 +3,7 @@ TARGET_HAS_ISV := true
 
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/video_isv/overlay
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.media.avsync = 1
 
 # Settings for the video extended mode:

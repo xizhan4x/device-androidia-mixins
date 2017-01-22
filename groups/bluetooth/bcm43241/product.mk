@@ -16,7 +16,7 @@ PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.bluetooth.xml:
 		frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
 {{^hsu}}
-ADDITIONAL_BUILD_PROPERTIES += bluetooth.hwcfg=stop \
+PRODUCT_PROPERTY_OVERRIDES += bluetooth.hwcfg=stop \
                 bluetooth.rfkill=1
 
 # Bluetooth eng / userdebug

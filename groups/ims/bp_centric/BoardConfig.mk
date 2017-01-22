@@ -5,13 +5,13 @@ ifneq ($(wildcard frameworks/opt/telephony/src/java/com/android/internal/telepho
 
 # IMS Properties
 {{#ims_enabled}}
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.ims_support=2
 {{/ims_enabled}}
 
 # IMS Properties
 {{#s2b_enabled}}
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.s2b_support=1
 {{/s2b_enabled}}
 endif

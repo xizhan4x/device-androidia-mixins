@@ -3,7 +3,7 @@ AOSP_CARRIER_CONFIG ?= {{carrier}}
 ifeq ($(AOSP_CARRIER_CONFIG), VZW)
 
 # VZW specific TLV apply on boot time
-ADDITIONAL_BUILD_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.config.specific=vzw
 endif
 

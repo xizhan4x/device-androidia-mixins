@@ -13,5 +13,5 @@ PRODUCT_PACKAGES += \
 FM_TYPE := ag620
 
 # Do not turn FM off on airplane mode activation
-ADDITIONAL_DEFAULT_PROPERTIES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
         persist.fmr.airplane.support=true

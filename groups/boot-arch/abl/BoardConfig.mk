@@ -35,7 +35,7 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 # Trusted Factory Reset - persistent partition
 #
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/boot/overlay
-ADDITIONAL_DEFAULT_PROPERTIES += ro.frp.pst=/dev/block/by-name/android_persistent
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/android_persistent
 
 {{#run_tco_on_shutdown}}
 BOARD_KERNEL_CMDLINE += iTCO_wdt.stop_on_shutdown=0

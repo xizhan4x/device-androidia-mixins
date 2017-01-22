@@ -10,7 +10,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/btcfg.sh:system/bin/btcfg.sh \
     $(LOCAL_PATH)/btscocfg.sh:vendor/bin/btscocfg.sh
 
-ADDITIONAL_BUILD_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hwcfg=stop \
     bluetooth.scocfg=stop
 
