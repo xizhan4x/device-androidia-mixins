@@ -314,8 +314,6 @@ def clear_file(dest):
     return orig_dlines, output
 
 warn_vars = [
-        "PRODUCT_PROPERTY_OVERRIDES",
-        "PRODUCT_DEFAULT_PROPERTY_OVERRIDES",
         "BOARD_KERNEL_CMDLINE",
         "DEVICE_PACKAGE_OVERLAYS",
         "PRODUCT_COPY_FILES",
