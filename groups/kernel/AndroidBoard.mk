@@ -100,7 +100,7 @@ $(KERNEL_CONFIG): $(KERNEL_CONFIG_DEPS) | yoctotoolchain $(CHECK_CONFIG_LOG)
 	$(hide) echo "KERNEL_CONFIG_PREV_DEPS := $^" > $(KERNEL_CONFIG_MK)
 	$(hide) cat $^ > $@
 	@echo "Generating Kernel configuration, using $^"
-	$(hide) $(MAKE) $(KERNEL_MAKE_OPTIONS) oldconfig
+	$(hide) $(MAKE) $(KERNEL_MAKE_OPTIONS) olddefconfig </dev/null
 
 $(PRODUCT_OUT)/kernel: $(LOCAL_KERNEL) $(LOCAL_KERNEL_PATH)/copy_modules
 	$(hide) cp $(LOCAL_KERNEL) $@
