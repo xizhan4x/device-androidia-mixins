@@ -8,3 +8,5 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/ufipc
 BOARD_SEPOLICY_M4DEFS += module_gptp=true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/avbstreamhandler
 
+# for AVB and GPTP services
+ADDITIONAL_BUILD_PROPERTIES += persist.eavb.mode=m
