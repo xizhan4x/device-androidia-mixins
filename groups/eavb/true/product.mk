@@ -3,7 +3,7 @@ PRODUCT_PACKAGES += \
     ufipc_daemon_app \
     avb_streamhandler_app \
     avb_streamhandler_client_app \
-    pluginias-media_transport-avb_configuration_reference \
+    pluginias-media_transport-avb_configuration_gp_mrb \
     libias-audio-smartx \
     libias-audio-modules \
     libsmartx-subsystem \
