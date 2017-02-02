@@ -5,6 +5,7 @@ PRODUCT_PACKAGES += \
     avb_streamhandler_client_app \
     pluginias-media_transport-avb_configuration_reference \
     libias-audio-smartx \
+    libias-audio-modules \
     libsmartx-subsystem \
     alsa_aplay \
     alsa_ctl \
