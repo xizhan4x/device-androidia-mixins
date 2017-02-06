@@ -7,3 +7,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += wpa_supplicant
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += wifi.interface=wlan0
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.tether.denied=true

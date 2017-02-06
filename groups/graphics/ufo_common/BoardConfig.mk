@@ -19,17 +19,6 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
 # Allow HWC to perform a final CSC on virtual displays
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.ufo.use_msync=1 \
-	ro.ufo.use_coreu=1
-
 BOARD_SEPOLICY_M4DEFS += module_ufo_common=true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/color_config
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/ufo_common
-
-# Enable gfx debug daemon
-ifneq ($(TARGET_BUILD_VARIANT),user)
-    PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.gen_gfxd.enable=1
-else
-    PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.gen_gfxd.enable=0
-endif

@@ -15,3 +15,5 @@ PRODUCT_PACKAGES += wpa_supplicant \
 
 
 PRODUCT_PACKAGES_DEBUG += dhdutil_1.201.90
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += wifi.interface=wlan0

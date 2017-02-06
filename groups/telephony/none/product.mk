@@ -4,3 +4,7 @@ PRODUCT_COPY_FILES += \
 
 # Inherit from common Open Source Telephony product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+
+DEVICE_PACKAGE_OVERLAYS += device/intel/common/telephony/overlay_none
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.radio.noril=true

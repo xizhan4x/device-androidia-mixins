@@ -59,14 +59,5 @@ ifeq ($(findstring cws_manu,$(BOARD_SEPOLICY_DIRS)),)
 endif
 {{/gpp}}
 
-{{#softap_dualband_allow}}
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.wifi.softap_dualband_allow=true
-{{/softap_dualband_allow}}
-{{^softap_dualband_allow}}
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.wifi.softap_dualband_allow=false
-{{/softap_dualband_allow}}
-
 BOARD_SEPOLICY_M4DEFS += module_iwlwifi=true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/wlan/iwlwifi

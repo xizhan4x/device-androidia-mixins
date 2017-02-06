@@ -38,3 +38,11 @@ PRODUCT_PACKAGES += \
     wlan_intel_restore.sh
 {{/gpp}}
 
+{{#softap_dualband_allow}}
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.wifi.softap_dualband_allow=true
+{{/softap_dualband_allow}}
+{{^softap_dualband_allow}}
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.wifi.softap_dualband_allow=false
+{{/softap_dualband_allow}}

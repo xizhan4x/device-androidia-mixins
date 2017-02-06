@@ -17,3 +17,5 @@ LIBPAYLOAD_STACK_SIZE := 1048576
 
 # Disable Kernelflinger UI support
 KERNELFLINGER_USE_UI := false
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/android_persistent

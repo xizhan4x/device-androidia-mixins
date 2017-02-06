@@ -27,3 +27,22 @@ PRODUCT_PACKAGES += hwcomposer.$(TARGET_BOARD_PLATFORM)
 PRODUCT_PACKAGES += libhwcservice
 PRODUCT_PROPERTY_OVERRIDES += ro.opengles.version = 196609
 
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	ro.ufo.use_msync=1 \
+	ro.ufo.use_coreu=1
+
+# Enable gfx debug daemon
+ifneq ($(TARGET_BUILD_VARIANT),user)
+    PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.gen_gfxd.enable=1
+else
+    PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.gen_gfxd.enable=0
+endif
+
+ifneq (,$(UFO_VERSION_PUBLISHED))
+    _UFO_VERSION_PROPERTY := dev.ufo.version=$(UFO_VERSION_PUBLISHED)
+    PRODUCT_PROPERTY_OVERRIDES += $(_UFO_VERSION_PROPERTY)
+    ## $(info $(UFO_GEN_MK): ADDITIONAL_BUILD_PROPERTIES += $(_UFO_VERSION_PROPERTY))
+ifeq ($(UFO_DEBUG_GEN_MK),1)
+    $(shell echo $(UFO_GEN_MK): PRODUCT_PROPERTY_OVERRIDES += $(_UFO_VERSION_PROPERTY) >>$(dbgmk))
+endif
+endif

@@ -1,4 +1,3 @@
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += wifi.interface=wlan0
 WPA_SUPPLICANT_VERSION := VER_2_1_DEVEL
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WLAN_DEVICE := rtl
@@ -10,5 +9,3 @@ DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-wifi-display
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-go
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-p2p-connected-stop-scan
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/wlan/overlay-miracast-force-single-ch
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.tether.denied=true

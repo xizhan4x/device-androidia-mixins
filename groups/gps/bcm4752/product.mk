@@ -13,3 +13,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
 
+{{#gnss_sv_status}}
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.gnss.sv.status=true
+{{/gnss_sv_status}}

@@ -102,3 +102,5 @@ KERNELFLINGER_OS_SECURE_BOOT := true
 # Android Kernelflinger uses the OpenSSL library to support the
 # bootloader policy
 KERNELFLINGER_SSL_LIBRARY := openssl
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/android_persistent

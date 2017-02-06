@@ -13,3 +13,5 @@ PRODUCT_PACKAGES += wpa_supplicant \
     brcmfmac43241b4-sdio_apsta.bin \
     brcmfmac43241b4-sdio.txt \
     brcmfmac43241b4-oob-sdio.txt
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += wifi.interface=wlan0

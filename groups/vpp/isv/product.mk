@@ -16,3 +16,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libextmodejni \
     com.intel.extmode
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.media.avsync = 1

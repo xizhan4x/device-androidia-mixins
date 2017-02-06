@@ -10,3 +10,5 @@ PRODUCT_PACKAGES += \
 		wpa_supplicant-brcm \
 		wpa_supplicant-rtk \
 		fw_wifi_bcm43xx
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += wifi.interface=wlan0
