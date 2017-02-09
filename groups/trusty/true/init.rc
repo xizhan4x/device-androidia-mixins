@@ -22,8 +22,3 @@ on post-fs-data
     chmod 666 /dev/rpmb0
     chmod 666 /dev/rpmb1
 
-service storageproxyd /system/vendor/bin/intelstorageproxyd -d /dev/trusty-ipc-dev0 -p /data/misc/securestorage -r /dev/rpmb1
-    class late_start
-    user system
-    group system
-
