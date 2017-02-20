@@ -13,3 +13,9 @@ ADDITIONAL_BUILD_PROPERTIES += persist.eavb.mode=m
 
 # for gPTP service in automotive profile or not
 ADDITIONAL_BUILD_PROPERTIES += persist.gptp.automotive_profile={{automotive_profile}}
+
+# SmartX module Properties
+smxelements := CFG SMX EVT RZN AHD MDL SXC SHM SMW RB DP DBG TST SMJ
+
+ADDITIONAL_BUILD_PROPERTIES += \
+       $(foreach item, $(smxelements),persist.media.smartx.$(item)log=3)
