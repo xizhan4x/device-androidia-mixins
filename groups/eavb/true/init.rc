@@ -1,5 +1,8 @@
-on post-fs-data
-    mkdir /data/misc/run 0700 audioserver audioserver
-    mkdir /data/misc/run/smartx 0700 audioserver audioserver
-    mkdir /data/misc/eavb 0700  root root
-    mkdir /data/avb 0700 root root
+on init
+    mkdir /mnt/eavb 0777 audioserver audioserver
+    mkdir /mnt/eavb/misc 0777 audioserver audioserver
+    mkdir /mnt/eavb/misc/run 0777 audioserver audioserver
+    mkdir /mnt/eavb/misc/run/smartx 0777 audioserver audioserver
+    mkdir /mnt/eavb/misc/audioserver 0777 audioserver audioserver
+    mkdir /mnt/eavb/misc/eavb 0777  root root
+    mkdir /mnt/eavb/avb 0777 root root
