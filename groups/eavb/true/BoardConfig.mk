@@ -27,4 +27,3 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 else
   IAS_COMMON_CFLAGS :=
 endif
-

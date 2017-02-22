@@ -14,3 +14,8 @@ PRODUCT_PACKAGES += \
 
 AUDIOSERVER_MULTILIB := 64
 
+# for AVB and GPTP services
+PRODUCT_PROPERTY_OVERRIDES += persist.eavb.mode=m
+
+# for gPTP service in automotive profile or not
+PRODUCT_PROPERTY_OVERRIDES += persist.gptp.automotive_profile={{automotive_profile}}
