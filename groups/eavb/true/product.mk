@@ -19,3 +19,6 @@ PRODUCT_PROPERTY_OVERRIDES += persist.eavb.mode=m
 
 # for gPTP service in automotive profile or not
 PRODUCT_PROPERTY_OVERRIDES += persist.gptp.automotive_profile={{automotive_profile}}
+
+PRODUCT_PROPERTY_OVERRIDES += \
+       $(foreach item, $(smxelements),persist.media.smartx.$(item)log=3)
