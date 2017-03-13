@@ -1,6 +1,4 @@
-import init.car.rc
-
-service slcan /sbin/slcan
+service com.intel.vehicled /vendor/bin/com.intel.vehicled
     class core
     user root
     group root
@@ -8,4 +6,4 @@ service slcan /sbin/slcan
     critical
 
 on boot
-    start slcan
+    start com.intel.vehicled
