@@ -26,3 +26,11 @@ PRODUCT_PACKAGES += \
     libaware_client \
     aware.primary.$(TARGET_BOARD_PLATFORM)
 {{/aware}}
+
+{{#treble}}
+PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio@2.0-service \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.broadcastradio@1.0-impl
+{{/treble}}

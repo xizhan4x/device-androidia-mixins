@@ -11,3 +11,12 @@ USE_CUSTOM_PARAMETER_FRAMEWORK := true
 
 BOARD_SEPOLICY_M4DEFS += module_coe_common=true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/audio/coe-common
+
+{{#treble}}
+# Do not use audio HAL directly w/o hwbinder middleware
+USE_LEGACY_LOCAL_AUDIO_HAL := false
+{{/treble}}
+{{^treble}}
+# Use audio HAL directly w/o hwbinder middleware
+USE_LEGACY_LOCAL_AUDIO_HAL := true
+{{/treble}}
