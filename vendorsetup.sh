@@ -64,7 +64,7 @@ function lunch
 
         # Check if there is a list of files to parse and apply patches listed in them if any
         for file in `find $patch_folder -type f 2>/dev/null` ; do
-            if [[ "$TARGET_BOARD_PLATFORM" =~ $(basename $file) ]]; then
+            if [[ "$TARGET_PRODUCT" =~ $(basename $file) ]]; then
                 echo "Applying patche(s) needed for $TARGET_PRODUCT"
                 vendor/intel/utils/autopatch.py -f $file
                 local ret=$?
