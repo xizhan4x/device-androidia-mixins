@@ -63,7 +63,7 @@ function lunch
         local patch_folder=vendor/intel/utils/android_o/google_diff
 
         # Check if there is a list of files to parse and apply patches listed in them if any
-        for file in `find $patch_folder -type f 2>/dev/null` ; do
+        for file in `find $patch_folder -type f -o -type l 2>/dev/null` ; do
             if [[ "$TARGET_PRODUCT" =~ $(basename $file) ]]; then
                 echo "Applying patche(s) needed for $TARGET_PRODUCT"
                 vendor/intel/utils/autopatch.py -f $file
