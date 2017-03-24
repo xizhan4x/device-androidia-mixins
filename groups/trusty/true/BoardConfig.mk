@@ -2,6 +2,8 @@ TARGET_USE_TRUSTY := true
 {{^tos_partition}}
 TARGET_USE_MULTIBOOT := true
 {{/tos_partition}}
+BOARD_USES_TRUSTY := true
+BOARD_USES_KEYMASTER1 := true
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/trusty
 BOARD_SEPOLICY_M4DEFS += module_trusty=true
 
