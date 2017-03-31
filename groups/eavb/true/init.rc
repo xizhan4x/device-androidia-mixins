@@ -6,3 +6,21 @@ on init
     mkdir /mnt/eavb/misc/audioserver 0777 audioserver audioserver
     mkdir /mnt/eavb/misc/eavb 0777  root root
     mkdir /mnt/eavb/avb 0777 root root
+
+on property:persist.d6.mode=y
+    setprop persist.avb.compatibility.audio d6_1722a
+
+on property:persist.d6.mode=n
+    setprop persist.avb.compatibility.audio ""
+
+on property:persist.eavb.mode=m && property:persist.gptp.automotive_profile=y
+    setprop persist.avb.profile.name MRB_Master_Audio_Raw
+    setprop persist.audio.audioConf AudioParameterFramework-tdf8532-eavb-master-raw.xml
+
+on property:persist.eavb.mode=m && property:persist.gptp.automotive_profile=n
+    setprop persist.avb.profile.name MRB_Master_Audio
+    setprop persist.audio.audioConf AudioParameterFramework-tdf8532-eavb-master.xml
+
+on property:persist.eavb.mode=s
+    setprop persist.avb.profile.name MRB_Slave_Audio
+    setprop persist.audio.audioConf AudioParameterFramework-tdf8532-eavb-slave.xml
