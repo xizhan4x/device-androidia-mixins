@@ -17,6 +17,7 @@ on boot
     chown system system /sys/class/powercap/intel-rapl:0/enabled
     chown system system /sys/class/powercap/intel-rapl:0/constraint_0_power_limit_uw
     chown system system /sys/class/backlight/intel_backlight/brightness
+    chown system system /sys/class/thermal/cooling_device5/cur_state
     restorecon_recursive /sys/class/powercap
 
 {{#thermal_lite}}
