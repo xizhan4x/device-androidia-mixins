@@ -7,6 +7,7 @@ PRODUCT_PACKAGES += esif_ufd \
     dptf.dv \
     libc++_shared.so \
     Dptf \
+    DptfPolicyActive \
     DptfPolicyAdaptivePerformance \
     DptfPolicyConditionalLogicLib \
     DptfPolicyCritical \
