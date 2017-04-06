@@ -11,3 +11,6 @@ service rvc /sbin/rvc
     user root
     group graphics camera
     seclabel u:r:rvc:s0
+
+on property:vold.decrypt=trigger_restart_min_framework
+    stop rvc
