@@ -1,9 +1,0 @@
-service com.intel.vehicled /vendor/bin/com.intel.vehicled
-    class core
-    user root
-    group root
-    seclabel u:r:ioc_slcan:s0
-    critical
-
-on boot
-    start com.intel.vehicled
