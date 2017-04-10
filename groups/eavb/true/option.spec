@@ -1,2 +1,2 @@
 [defaults]
-automotive_profile = false
+automotive_profile =n
