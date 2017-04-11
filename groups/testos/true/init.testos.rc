@@ -9,8 +9,6 @@ import /init.trace.rc
 import /init.testos.device.rc
 
 on early-init
-    setenforce 0
-    setcon u:r:init:s0
     start ueventd
     loglevel 7
 
@@ -47,6 +45,9 @@ on init
 
     start console
     start logd
+
+    setprop ro.product.manufacturer "Intel"
+    setprop ro.product.model "AOSP on Intel Platform"
 
     trigger testos_mount
     # on gmin/imin, init doesn't trigger boot anymore
@@ -93,7 +94,7 @@ service console /system/bin/sh
      console
      disabled
      user root
-     group shell log readproc
+     group shell log
      seclabel u:r:shell:s0
 
 service logd /system/bin/logd
@@ -123,3 +124,10 @@ service netd /system/bin/netd
     socket netd stream 0660 root system
     socket dnsproxyd stream 0660 root inet
     socket mdns stream 0660 root system
+
+on boot
+    trigger late-boot
+    write /sys/devices/pci0000:00/0000:00:15.1/intel-cht-otg.0/vbus_evt "1\"
+
+on late-boot
+    setprop persist.sys.usb.config adb
