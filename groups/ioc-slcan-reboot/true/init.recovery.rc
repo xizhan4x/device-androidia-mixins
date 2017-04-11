@@ -1,4 +1,4 @@
-service ioc_slcand /sbin/ioc_slcand
+service ioc_slcand /sbin/ioc_slcand --recovery
     oneshot
     seclabel u:r:ioc_slcan:s0
     disabled
