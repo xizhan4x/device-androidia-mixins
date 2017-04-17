@@ -1,6 +1,8 @@
+{{^avb}}
 $(call inherit-product,build/target/product/verity.mk)
 
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/by-name/android_system
+{{/avb}}
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/fstab:root/fstab.$(TARGET_PRODUCT) \
