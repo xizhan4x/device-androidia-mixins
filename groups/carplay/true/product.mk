@@ -7,5 +7,5 @@ PRODUCT_PACKAGES += AndroidAutoService \
 		libwrs-carplay-ipod-usb-host \
 		libCarPlayAudio
 
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.iap2=true
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.carplay=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.sys.iap2=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.sys.carplay=true

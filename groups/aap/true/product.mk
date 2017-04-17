@@ -1,4 +1,4 @@
 PRODUCT_PACKAGES += AndroidAutoService \
 	                 AndroidAutoSample \
 
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.aap=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.sys.aap=true
