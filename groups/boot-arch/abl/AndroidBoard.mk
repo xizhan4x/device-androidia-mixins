@@ -73,7 +73,8 @@ ifneq ($(BOARD_BOOTLOADER_PARTITION_SIZE),0)
 define generate_bootloader_var
 $(eval BOARD_BOOTLOADER_VAR_IMG := $(BOARD_BOOTLOADER_DIR)/$(1)/bootloader.img)
 $(hide) $(ACP) -f $(BOARD_BLDR_SECOND_STAGE_BIN) $(BOARD_BOOTLOADER_DIR)/$(1)/out/osloader.bin
-PATH=$(HOST_OUT_EXECUTABLES):$$PATH mkext2img  $(BOARD_BOOTLOADER_VAR_IMG) $(BOARD_BOOTLOADER_BLOCK_SIZE) $(BOARD_BOOTLOADER_PARTITION_SIZE) $(BOARD_BOOTLOADER_DIR)/$(1)/out
+$(hide) dd of=$(BOARD_BOOTLOADER_VAR_IMG) if=$(BOARD_BOOTLOADER_DIR)/$(1)/out/ifwi_update.bin bs=1024
+$(hide) dd of=$(BOARD_BOOTLOADER_VAR_IMG) if=$(BOARD_BOOTLOADER_DIR)/$(1)/out/osloader.bin bs=1024 seek=8000
 cp $(BOARD_BOOTLOADER_VAR_IMG) $(BOARD_BOOTLOADER_DEFAULT_IMG)
 echo "Bootloader image successfully generated $(BOARD_BOOTLOADER_VAR_IMG)"
 endef
