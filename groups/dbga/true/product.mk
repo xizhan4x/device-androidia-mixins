@@ -1,5 +1,6 @@
 PRODUCT_PACKAGES_DEBUG += \
-    DBGA_Main
+    DBGA_Main \
+    fdk-modules-structure
 
 {{#mock_dev}}
 ifneq ($(TARGET_BUILD_VARIANT),user)
@@ -11,6 +12,7 @@ endif
 {{#func_test}}
 ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES_DEBUG += \
-    DBGA_FunctionalTests
+    DBGA_FunctionalTests \
+    functionalTestsDatafiles
 endif
 {{/func_test}}
