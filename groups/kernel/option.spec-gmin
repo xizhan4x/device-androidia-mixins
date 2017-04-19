@@ -23,3 +23,4 @@ intel_pstate=true
 loglevel = 5
 user_loglevel = 2
 cfg_path = false
+disable_cpuidle_on_boot = false
