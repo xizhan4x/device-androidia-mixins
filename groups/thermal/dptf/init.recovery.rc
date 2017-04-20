@@ -1,5 +1,6 @@
 {{#thermal_lite}}
 service thermal_lite /thermal_lite
+    user system
     oneshot
     seclabel u:r:thermal_lite:s0
 
