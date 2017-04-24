@@ -10,6 +10,7 @@ on boot
 
 on property:bluetooth.hwcfg=start
     start btcfg
+    disabled
 
 service btcfg /system/bin/btcfg.sh
     user bluetooth

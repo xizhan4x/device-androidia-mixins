@@ -8,7 +8,7 @@ KERNEL_LOGLEVEL ?= {{{user_loglevel}}}
 endif
 
 BOARD_KERNEL_CMDLINE += \
-        loglevel=$(KERNEL_LOGLEVEL) \
+        ignore_loglevel \
         androidboot.hardware=$(TARGET_DEVICE)\
         firmware_class.path={{{firmware_path}}}
 {{#boot_boost}}

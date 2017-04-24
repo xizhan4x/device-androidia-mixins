@@ -6,4 +6,4 @@ TARGET_USE_PRIVATE_LIBDRM := true
 LIBDRM_VER ?= bxt
 
 # Force atomic modesetting on gen9 and above
-BOARD_KERNEL_CMDLINE += drm.atomic=1 i915.nuclear_pageflip=1 i915.enable_rc6=1
+BOARD_KERNEL_CMDLINE += i915.enable_rc6=0 drm.debug=0xe

@@ -27,4 +27,5 @@ service storageproxyd /system/vendor/bin/intelstorageproxyd -d /dev/trusty-ipc-d
     class late_start
     user system
     group system
+    disabled
 {{/enable_hw_sec}}

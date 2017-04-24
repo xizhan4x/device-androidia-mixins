@@ -5,8 +5,8 @@ BOARD_SEPOLICY_DIRS += device/intel/sepolicy/gptp
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/ufipc
 
 # for AVB Streamhandler daemon
-BOARD_SEPOLICY_M4DEFS += module_gptp=true
-BOARD_SEPOLICY_DIRS += device/intel/sepolicy/avbstreamhandler
+# BOARD_SEPOLICY_M4DEFS += module_gptp=true
+# BOARD_SEPOLICY_DIRS += device/intel/sepolicy/avbstreamhandler
 
 # SmartX module Properties
 smxelements := CFG SMX EVT RZN AHD MDL SXC SHM SMW RB DP DBG TST SMJ
