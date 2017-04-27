@@ -1,7 +1,14 @@
 service ioc_slcand /sbin/ioc_slcand
+    class animation
     oneshot
     seclabel u:r:ioc_slcan:s0
     disabled
 
 on boot
     start ioc_slcand
+
+service ioc_reboot /sbin/ioc_reboot.sh
+    class animation
+    oneshot
+    seclabel u:r:ioc_slcan:s0
+    disabled
