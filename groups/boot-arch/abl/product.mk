@@ -18,6 +18,7 @@ LIBPAYLOAD_STACK_SIZE := 1048576
 # Disable Kernelflinger UI support
 KERNELFLINGER_USE_UI := false
 
+ABL_OS_KERNEL_KEY := build/target/product/security/verity
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/android_persistent
 
 # Kernelflinger will set IOC_USE_SLCAN variable

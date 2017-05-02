@@ -47,8 +47,8 @@ ifeq ($(TARGET_BUILD_VARIANT),eng)
 	$(IAS_IMAGE_APP) -o $(PRODUCT_OUT)/multiboot.img -i $(IMAGE_TYPE) $(TOS_IMAGE_TARGET)
 else
 	$(IAS_IMAGE_APP) -o $(@:.img=.img_unsigned) -i $(IMAGE_TYPE) $(TOS_IMAGE_TARGET)
-	$(IAS_IMAGE_SIGNER) $(@:.img=.img_unsigned) $(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_VERITY_SIGNING_KEY).pk8 \
-        $(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_VERITY_SIGNING_KEY).x509.pem  $@
+	$(IAS_IMAGE_SIGNER) $(@:.img=.img_unsigned) $(ABL_OS_KERNEL_KEY).pk8 \
+        $(ABL_OS_KERNEL_KEY).x509.pem  $@
 endif
 	@echo "Multiboot ABL image successfully generated at $(PRODUCT_OUT)/multiboot.img"
 
