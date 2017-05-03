@@ -1,8 +1,8 @@
 on post-fs-data
     chmod 0660 /data/misc/wifi/p2p_supplicant.conf
 
-setprop wifi.direct.interface p2p0
-setprop wifi.interface wlan0
+    setprop wifi.direct.interface p2p0
+    setprop wifi.interface wlan0
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABDKL
     class main
