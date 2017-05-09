@@ -1,0 +1,24 @@
+on boot
+    start evs-hal-1-0
+    start evs_manager
+    start evs_app
+
+service evs-hal-1-0 /vendor/bin/hw/android.hardware.automotive.evs@1.0-service
+    class main
+    user root
+    disabled
+    oneshot
+    group graphics camera
+    seclabel u:object_r:evs_exec:s0
+
+service evs_manager /system/bin/android.automotive.evs.manager@1.0
+    class hal
+    user cameraserver
+    group graphics camera
+    seclabel u:object_r:evs_manager:s0
+
+service evs_app /system/bin/evs_app
+    class bin
+    user cameraserver
+    group graphics camera
+    seclabel u:object_r:evs_app:s0
