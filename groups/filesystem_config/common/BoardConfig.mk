@@ -1,3 +1,1 @@
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := device/intel/common/filesystem_config/android_filesystem_config.h
-
-
+TARGET_FS_CONFIG_GEN += device/intel/common/filesystem_config/config.fs
