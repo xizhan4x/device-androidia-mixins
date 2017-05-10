@@ -1,3 +1,4 @@
+{{#enable_hw_sec}}
 PRODUCT_PACKAGES += \
 	keystore.${TARGET_BOARD_PLATFORM} \
 	libtrusty \
@@ -16,3 +17,4 @@ PRODUCT_PACKAGES_DEBUG += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.hardware.gatekeeper=trusty \
+{{/enable_hw_sec}}

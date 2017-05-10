@@ -2,8 +2,10 @@ TARGET_USE_TRUSTY := true
 {{^tos_partition}}
 TARGET_USE_MULTIBOOT := true
 {{/tos_partition}}
+{{#enable_hw_sec}}
 BOARD_USES_TRUSTY := true
 BOARD_USES_KEYMASTER1 := true
+{{/enable_hw_sec}}
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/trusty
 BOARD_SEPOLICY_M4DEFS += module_trusty=true
 
@@ -27,5 +29,10 @@ TRUSTY_ENV_VAR += COMPILE_TOOLCHAIN=$(YOCTO_CROSSCOMPILE)
 TRUSTY_ENV_VAR += BUILD_DIR=$(TRUSTY_BUILDROOT)
 TRUSTY_ENV_VAR += LKBIN_DIR=$(TRUSTY_BUILDROOT)/build-{{{lk_project}}}/
 
-#Workaround CPU lost issue on SIMICS, will remove this line below after PO.
-BOARD_KERNEL_CMDLINE += cpu_init_udelay=500000
+#Fix the cpu hotplug fail due to the trusty.
+#Trusty will introduce some delay for cpu_up().
+#Experiment show need wait at least 60us after
+#apic_icr_write(APIC_DM_STARTUP | (start_eip >> 12), phys_apicid);
+#So here override the cpu_init_udelay to have the cpu wait for 300us
+#to guarantee the cpu_up success.
+BOARD_KERNEL_CMDLINE += cpu_init_udelay=10
