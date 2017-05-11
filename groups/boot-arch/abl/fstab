@@ -14,3 +14,6 @@
 /dev/block/by-name/android_persistent   /persistent     emmc    defaults                                                    defaults
 /dev/block/by-name/android_metadata     /metadata       emmc    defaults                                                    defaults
 /dev/block/by-name/android_bldr_utils   /bldr_utils     emmc    defaults                                                    recoveryonly
+{{#multiboot-partition}}
+/dev/block/by-name/android_multiboot    /multiboot      emmc    defaults                                                    defaults
+{{/multiboot-partition}}
