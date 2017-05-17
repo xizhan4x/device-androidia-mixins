@@ -27,3 +27,4 @@ os_secure_boot = false
 verity_mode = true
 ifwi_debug = false
 bootloader_len = 33
+flash_block_size = 512
