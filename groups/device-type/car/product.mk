@@ -12,4 +12,5 @@ PRODUCT_PACKAGE_OVERLAYS += packages/services/Car/car_product/overlay
 
 PRODUCT_PACKAGES += \
     radio.fm.default \
-    CarSettings
+    CarSettings \
+    android.hardware.automotive.vehicle@2.0-service
