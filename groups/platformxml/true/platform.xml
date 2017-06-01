@@ -20,3 +20,7 @@
      Be VERY careful when editing this file!  Mistakes made here can open
      big security holes.
 -->
+<permissions>
+    <!-- WA: allow vehicle HAL to control audio settings e.g. volume -->
+    <assign-permission name="android.permission.MODIFY_AUDIO_SETTINGS" uid="vehicle_network" />
+</permissions>
