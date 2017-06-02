@@ -5,6 +5,8 @@ on post-fs-data
 on boot
    # TMP to be removed: disable power control
    write /sys/devices/pci0000:00/0000:00:18.0/power/control on
+   insmod ${ro.boot.moduleslocation}/bluetooth.ko
+   insmod ${ro.boot.moduleslocation}/hci_uart.ko
 
 on property:bluetooth.hwcfg=start
     start btcfg
