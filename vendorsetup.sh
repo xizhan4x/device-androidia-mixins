@@ -59,7 +59,7 @@ function lunch
     # cherry-picking patches on top of ring0 for some platforms
     if [[ "${ring}" == 0 ]]; then
         echo "Ring 0 is vanilla AOSP"
-        rm -rf Android.mk
+        rm -rf vendor/intel/utils/Android.mk
         local patch_folder=vendor/intel/utils/android_o/google_diff
 
         # Check if there is a list of files to parse and apply patches listed in them if any
@@ -73,7 +73,7 @@ function lunch
                 fi
                 # If some patch does not apply create Android.mk to stop compilation.
                 if [ -n "$files_with_issues" ]; then
-                    echo "\$(error \"[GOOGLE_DIFF] Some patches given to autopatch did not applied correctly in $files_with_issues.\") " > Android.mk
+                    echo "\$(error \"[GOOGLE_DIFF] Some patches given to autopatch did not applied correctly in $files_with_issues.\") " > vendor/intel/utils/Android.mk
                 fi
             fi
         done
