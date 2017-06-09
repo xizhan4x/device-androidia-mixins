@@ -33,6 +33,12 @@ BOARD_FLASH_BLOCK_SIZE := 512
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 #
+#kernel always use primary gpt without command line option "gpt",
+#the label let kernel use the alternate GPT if primary GPT is corrupted.
+#
+BOARD_KERNEL_CMDLINE += gpt
+
+#
 # Trusted Factory Reset - persistent partition
 #
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/boot/overlay
