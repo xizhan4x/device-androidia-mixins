@@ -1,7 +1,9 @@
 TARGET_USE_TRUSTY := true
-{{^tos_partition}}
+
+ifeq ({{boot-arch}}, abl)
 TARGET_USE_MULTIBOOT := true
-{{/tos_partition}}
+endif
+
 {{#enable_hw_sec}}
 BOARD_USES_TRUSTY := true
 BOARD_USES_KEYMASTER1 := true
