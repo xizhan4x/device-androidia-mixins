@@ -1,4 +1,4 @@
-TOS_IMAGE_TARGET := $(TRUSTY_BUILDROOT)/ikgt_pkg.bin
+TOS_IMAGE_TARGET := $(TRUSTY_BUILDROOT)/evmm_lk_pkg.bin
 # The product is prefixed with platform name
 INTERNAL_PLATFORM := $(firstword $(subst _, " ", $(TARGET_PRODUCT)))
 LOCAL_MAKE := make
