@@ -12,6 +12,9 @@ on fs
     symlink /dev/block/by-name/android_vbmeta    /dev/block/by-name/vbmeta
     symlink /dev/block/by-name/android_system    /dev/block/by-name/system
     symlink /dev/block/by-name/android_vendor    /dev/block/by-name/vendor
+{{#trusty}}
+    symlink /dev/block/by-name/android_tos       /dev/block/by-name/tos
+{{/trusty}}
 {{/avb}}
 
 on boot

@@ -16,11 +16,17 @@
 /dev/block/by-name/android_boot         /boot           emmc    defaults                                                    defaults
 /dev/block/by-name/android_recovery     /recovery       emmc    defaults                                                    defaults
 /dev/block/by-name/android_misc         /misc           emmc    defaults                                                    defaults
+{{#trusty}}
+/dev/block/by-name/android_tos          /tos            emmc    defaults                                                    defaults
+{{/trusty}}
 {{/avb}}
 {{#avb}}
 /dev/block/by-name/boot                 /boot           emmc    defaults                                                    defaults
 /dev/block/by-name/recovery             /recovery       emmc    defaults                                                    defaults
 /dev/block/by-name/misc                 /misc           emmc    defaults                                                    defaults
+{{#trusty}}
+/dev/block/by-name/tos                  /tos            emmc    defaults                                                    defaults
+{{/trusty}}
 {{/avb}}
 /dev/block/by-name/android_bootloader   /bootloader     emmc    defaults                                                    recoveryonly
 /dev/block/by-name/android_bootloader2  /bootloader2    emmc    defaults                                                    recoveryonly
