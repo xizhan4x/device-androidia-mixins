@@ -56,7 +56,8 @@ $(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(ABL_BUILD_OUT)/ifwi_$(1).bin:ifwi.bin
 $(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(ABL_BUILD_OUT)/ifwi_dnx_$(1).bin:ifwi_dnx.bin) \
 $(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(ABL_BUILD_OUT)/dnxp_0x1_$(1).bin:dnxp_0x1.bin) \
 $(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(BOARD_BOOTLOADER_DIR)/$(1)/bootloader.img:bootloader) \
-$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(TARGET_DEVICE_DIR)/fftf_build.opt:fftf_build.opt)
+$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(TARGET_DEVICE_DIR)/fftf_build.opt:fftf_build.opt) \
+$(eval BOARD_FLASHFILES_FIRMWARE_$(1) += $(PRODUCT_OUT)/abl/fb4abl.abl:fastboot)
 endef
 
 ABL_AVAILABLE_IOC := $(wildcard $(ABL_PREBUILT_PATH)/ioc_firmware*)
