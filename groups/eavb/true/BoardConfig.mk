@@ -12,3 +12,5 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 else
   IAS_COMMON_CFLAGS :=
 endif
+
+TARGET_FS_CONFIG_GEN += device/intel/common/eavb/filesystem_config/config.fs
