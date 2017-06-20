@@ -4,6 +4,16 @@ service watchdogd /sbin/watchdogd{{#watchdog_parameters}} {{{watchdog_parameters
     oneshot
     seclabel u:r:watchdogd:s0
 
+{{#avb}}
+on fs
+    symlink /dev/block/by-name/android_misc      /dev/block/by-name/misc
+    symlink /dev/block/by-name/android_boot      /dev/block/by-name/boot
+    symlink /dev/block/by-name/android_recovery  /dev/block/by-name/recovery
+    symlink /dev/block/by-name/android_vbmeta    /dev/block/by-name/vbmeta
+    symlink /dev/block/by-name/android_system    /dev/block/by-name/system
+    symlink /dev/block/by-name/android_vendor    /dev/block/by-name/vendor
+{{/avb}}
+
 on boot
     start watchdogd
     write /proc/sys/kernel/hung_task_timeout_secs{{#hung_task_timeout_secs}} {{{hung_task_timeout_secs}}}{{/hung_task_timeout_secs}}
