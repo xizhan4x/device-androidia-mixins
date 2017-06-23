@@ -64,7 +64,7 @@ on property:bluetooth.hwcfg=start
 on property:bluetooth.hwcfg=stop
     stop btcfg
 
-service btcfg /system/bin/hciattach -n /dev/ttyS1 bcm43xx 3000000 flow no
+service btcfg /vendor/bin/hciattach -n /dev/ttyS1 bcm43xx 3000000 flow no
     user bluetooth
     group bluetooth
     oneshot

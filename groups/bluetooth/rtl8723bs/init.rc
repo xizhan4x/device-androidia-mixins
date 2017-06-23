@@ -63,7 +63,7 @@ on property:bluetooth.hwcfg=start
 on property:bluetooth.hwcfg=stop
     stop btcfg
 
-service btcfg /system/bin/hciattach -n /dev/ttyS1 rtk_h5
+service btcfg /vendor/bin/hciattach -n /dev/ttyS1 rtk_h5
     user bluetooth
     group bluetooth
     oneshot
