@@ -11,3 +11,4 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
 # Allow HWC to perform a final CSC on virtual displays
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/graphics/software
