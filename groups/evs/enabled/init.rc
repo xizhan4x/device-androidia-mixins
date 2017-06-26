@@ -3,7 +3,7 @@ on boot
     start evs_manager
     start evs_app
 
-service evs-hal-1-0 /vendor/bin/hw/android.hardware.automotive.evs@1.0-service
+service evs-hal-1-0 /vendor/bin/hw/android.hardware.automotive.evs.broxton@1.0-service
     class main
     user root
     disabled
@@ -11,13 +11,13 @@ service evs-hal-1-0 /vendor/bin/hw/android.hardware.automotive.evs@1.0-service
     group graphics camera
     seclabel u:object_r:evs_exec:s0
 
-service evs_manager /system/bin/android.automotive.evs.manager@1.0
+service evs_manager /vendor/bin/android.automotive.evs.manager.broxton@1.0
     class hal
     user cameraserver
     group graphics camera
     seclabel u:object_r:evs_manager:s0
 
-service evs_app /system/bin/evs_app
+service evs_app /vendor/bin/evs_broxton_app
     class bin
     user cameraserver
     group graphics camera
