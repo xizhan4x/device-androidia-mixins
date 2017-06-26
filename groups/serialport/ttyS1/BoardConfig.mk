@@ -1,0 +1,1 @@
+BOARD_KERNEL_CMDLINE += console=ttyS1,115200n8
