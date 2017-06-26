@@ -24,9 +24,9 @@ COMBO_CHIP := lnp
 # will trigger the fwReloadSoftap function, what will lead to an error
 # enabling the SoftAp.
 # so we set up this for letting the function execute gracefully.
-WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/iwlwifi-softap-dummy.ucode"
-WIFI_DRIVER_FW_PATH_AP  := "/system/vendor/firmware/iwlwifi-softap-dummy.ucode"
-WIFI_DRIVER_FW_PATH_P2P := "/system/vendor/firmware/iwlwifi-softap-dummy.ucode"
+WIFI_DRIVER_FW_PATH_STA := "/vendor/firmware/iwlwifi-softap-dummy.ucode"
+WIFI_DRIVER_FW_PATH_AP  := "/vendor/firmware/iwlwifi-softap-dummy.ucode"
+WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/iwlwifi-softap-dummy.ucode"
 WIFI_DRIVER_FW_PATH_PARAM := "/dev/null"
 
 # config_wifi_background_scan_support=true:

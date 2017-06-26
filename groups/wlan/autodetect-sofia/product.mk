@@ -15,14 +15,14 @@ PRODUCT_COPY_FILES += \
 
 #copy iwlwifi wpa config files
 PRODUCT_COPY_FILES += \
-        device/intel/common/wlan/wpa_supplicant-common.conf:system/etc/wifi/wpa_supplicant.conf \
+        device/intel/common/wlan/wpa_supplicant-common.conf:vendor/etc/wifi/wpa_supplicant.conf \
         device/intel/common/wlan/iwlwifi/wpa_supplicant_overlay_no_tdls.conf:system/etc/hald/fuse/default/wpa_supplicant_overlay_no_tdls.conf \
         device/intel/common/wlan/iwlwifi/wpa_supplicant_overlay.conf:system/etc/hald/fuse/default/wpa_supplicant_overlay_tdls.conf \
         frameworks/native/data/etc/android.hardware.wifi.xml:vendor/etc/permissions/android.hardware.wifi.xml \
         frameworks/native/data/etc/android.hardware.wifi.direct.xml:vendor/etc/permissions/android.hardware.wifi.direct.xml
 
 # Firmwares with device-specific file names can go to standard firmware folder
-TARGET_OUT_WLAN_FW_COMMON := $(TARGET_OUT)/system/vendor/firmware
+TARGET_OUT_WLAN_FW_COMMON := $(TARGET_OUT)/vendor/firmware
 
 # Because system images for LTE and 3GR are almost full, we don't copy all the
 # firmwares on both platforms. Choice is based on iwl_platform mixins parameter.
@@ -31,10 +31,10 @@ IWL_PLATFORM := {{{iwl_platform}}}
 ifeq ($(IWL_PLATFORM), sofia_3gr)
 
 #
-# Copy a620 firwmare and config files to system/vendor/wifi/a620
+# Copy a620 firwmare and config files to vendor/wifi/a620
 # It will be bind-mounted by hald upon device discovery
-TARGET_OUT_WLAN_FW := $(TARGET_OUT)/system/vendor/wifi/a620/firmware
-TARGET_OUT_ETC_WIFI := $(TARGET_OUT)/system/vendor/wifi/a620/etc
+TARGET_OUT_WLAN_FW := $(TARGET_OUT)/vendor/wifi/a620/firmware
+TARGET_OUT_ETC_WIFI := $(TARGET_OUT)/vendor/wifi/a620/etc
 LOCAL_IWL_FW_DIR := vendor/intel/fw/iwl/lhp
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR)/*a620*.ucode))
@@ -59,10 +59,10 @@ endif
 ifeq ($(IWL_PLATFORM), sofia_lte)
 
 #
-# Copy lnp firwmare and config files to system/vendor/wifi/lnp
+# Copy lnp firwmare and config files to vendor/wifi/lnp
 # It will be bind-mounted by hald upon device discovery
-TARGET_OUT_WLAN_FW_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/firmware
-TARGET_OUT_ETC_WIFI_LNP := $(TARGET_OUT)/system/vendor/wifi/lnp/etc
+TARGET_OUT_WLAN_FW_LNP := $(TARGET_OUT)/vendor/wifi/lnp/firmware
+TARGET_OUT_ETC_WIFI_LNP := $(TARGET_OUT)/vendor/wifi/lnp/etc
 LOCAL_IWL_FW_DIR_LNP := vendor/intel/fw/iwl/rel
 
 IWL_UCODE_FILES := $(notdir $(wildcard $(LOCAL_IWL_FW_DIR_LNP)/*8000*.ucode))

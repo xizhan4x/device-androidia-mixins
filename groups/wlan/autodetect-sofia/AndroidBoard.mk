@@ -19,14 +19,14 @@ ifeq ($(HAL_BIND_MOUNT), true)
 # get overridden by bind-mount or fuse.
 
 AUTODETECT_LINK_PAIRS := \
-	$(PRODUCT_OUT)/system/etc/wifi/nvmDataDefault:../../..$(HAL_BM_TARGET_WIFI)/etc/nvmDataDefault \
-	$(PRODUCT_OUT)/system/vendor/firmware/iwl_nvm.bin:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwl_nvm.bin \
-	$(PRODUCT_OUT)/system/vendor/firmware/nvmData:../../../nvm_fs_partition/wlan/nvmData \
-	$(PRODUCT_OUT)/system/vendor/firmware/fw_info.txt:../../..$(HAL_BM_TARGET_WIFI)/firmware/fw_info.txt \
-	$(PRODUCT_OUT)/system/vendor/firmware/iwl-dbg-cfg.ini:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwl-dbg-cfg.ini \
-	$(PRODUCT_OUT)/system/vendor/firmware/iwlwifi-softap-dummy.ucode:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwlwifi-softap-dummy.ucode \
-	$(PRODUCT_OUT)/system/etc/wifi/papd_db:../../..$(HAL_BM_TARGET_WIFI)/etc/papd_db \
-	$(PRODUCT_OUT)/system/etc/wifi/wpa_supplicant_overlay.conf:../../..$(HAL_FUSE_MOUNT_DEFAULT)/wpa_supplicant_overlay.conf \
+	$(PRODUCT_OUT)/vendor/etc/wifi/nvmDataDefault:../../..$(HAL_BM_TARGET_WIFI)/etc/nvmDataDefault \
+	$(PRODUCT_OUT)/vendor/firmware/iwl_nvm.bin:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwl_nvm.bin \
+	$(PRODUCT_OUT)/vendor/firmware/nvmData:../../../nvm_fs_partition/wlan/nvmData \
+	$(PRODUCT_OUT)/vendor/firmware/fw_info.txt:../../..$(HAL_BM_TARGET_WIFI)/firmware/fw_info.txt \
+	$(PRODUCT_OUT)/vendor/firmware/iwl-dbg-cfg.ini:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwl-dbg-cfg.ini \
+	$(PRODUCT_OUT)/vendor/firmware/iwlwifi-softap-dummy.ucode:../../..$(HAL_BM_TARGET_WIFI)/firmware/iwlwifi-softap-dummy.ucode \
+	$(PRODUCT_OUT)/vendor/etc/wifi/papd_db:../../..$(HAL_BM_TARGET_WIFI)/etc/papd_db \
+	$(PRODUCT_OUT)/vendor/etc/wifi/wpa_supplicant_overlay.conf:../../..$(HAL_FUSE_MOUNT_DEFAULT)/wpa_supplicant_overlay.conf \
 
 AUTODETECT_LINKS := \
 	$(foreach item, $(AUTODETECT_LINK_PAIRS), $(call word-colon, 1, $(item)))
