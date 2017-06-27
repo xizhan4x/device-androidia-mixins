@@ -30,7 +30,7 @@ HAL_FUSE_PREFIX_MODPROBE := /system/etc/hald/fuse/modprobe.d
 HAL_OEM_VAR_PREFIX := /system/etc/firmware/
 
 HAL_FUSE_MOUNT_DEFAULT := /system/rt/hal_fuse
-HAL_FUSE_MOUNT_PERM := /system/etc/permissions
+HAL_FUSE_MOUNT_PERM := /vendor/etc/permissions
 HAL_FUSE_MOUNT_ATOMISP := /system/etc/atomisp
 HAL_FUSE_MOUNT_MODPROBE := /system/etc/modprobe.d
 

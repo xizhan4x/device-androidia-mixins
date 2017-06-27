@@ -11,7 +11,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.spid.gps.pmm=disabled
 
 PRODUCT_COPY_FILES += \
-        frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+        frameworks/native/data/etc/android.hardware.location.gps.xml:vendor/etc/permissions/android.hardware.location.gps.xml \
 
 {{#gnss_sv_status}}
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.gnss.sv.status=true

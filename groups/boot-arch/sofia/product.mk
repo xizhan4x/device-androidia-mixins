@@ -56,7 +56,7 @@ INTERACTIVE_FASTBOOT_UI := true
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc0/e0000000.noc/by-name/ImcPartID068
 #Declare feature android.software.verified_boot
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
+    frameworks/native/data/etc/android.software.verified_boot.xml:vendor/etc/permissions/android.software.verified_boot.xml
 
 {{#dm_verity}}
 #Include verity.mk for GVB and DM_VERITY feature

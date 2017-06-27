@@ -18,8 +18,8 @@ PRODUCT_COPY_FILES += \
         device/intel/common/wlan/wpa_supplicant-common.conf:system/etc/wifi/wpa_supplicant.conf \
         device/intel/common/wlan/iwlwifi/wpa_supplicant_overlay_no_tdls.conf:system/etc/hald/fuse/default/wpa_supplicant_overlay_no_tdls.conf \
         device/intel/common/wlan/iwlwifi/wpa_supplicant_overlay.conf:system/etc/hald/fuse/default/wpa_supplicant_overlay_tdls.conf \
-        frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-        frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml
+        frameworks/native/data/etc/android.hardware.wifi.xml:vendor/etc/permissions/android.hardware.wifi.xml \
+        frameworks/native/data/etc/android.hardware.wifi.direct.xml:vendor/etc/permissions/android.hardware.wifi.direct.xml
 
 # Firmwares with device-specific file names can go to standard firmware folder
 TARGET_OUT_WLAN_FW_COMMON := $(TARGET_OUT)/system/vendor/firmware

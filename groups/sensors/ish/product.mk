@@ -14,4 +14,4 @@ PRODUCT_PACKAGES += \
     activity_recognition.$(TARGET_BOARD_PLATFORM)
 
 $(foreach sensor,{{{sensors}}}, \
-$(eval PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.sensor.$(sensor).xml:system/etc/permissions/android.hardware.sensor.$(sensor).xml))
+$(eval PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.sensor.$(sensor).xml:vendor/etc/permissions/android.hardware.sensor.$(sensor).xml))

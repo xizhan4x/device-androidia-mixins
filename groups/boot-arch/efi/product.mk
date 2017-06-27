@@ -7,7 +7,7 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/by-name/android_system
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/fstab:root/fstab.$(TARGET_PRODUCT) \
-	frameworks/native/data/etc/android.software.verified_boot.xml:system/etc/permissions/android.software.verified_boot.xml
+	frameworks/native/data/etc/android.software.verified_boot.xml:vendor/etc/permissions/android.software.verified_boot.xml
 
 {{#acpi_permissive}}
 # Kernelflinger won't check the ACPI table oem_id, oem_table_id and

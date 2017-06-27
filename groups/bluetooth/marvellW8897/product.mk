@@ -5,8 +5,8 @@ PRODUCT_PACKAGES += \
     helper_uart_3000000.bin
 
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:vendor/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:vendor/etc/permissions/android.hardware.bluetooth_le.xml \
     $(LOCAL_PATH)/btcfg.sh:system/bin/btcfg.sh \
     $(LOCAL_PATH)/btscocfg.sh:vendor/bin/btscocfg.sh
 

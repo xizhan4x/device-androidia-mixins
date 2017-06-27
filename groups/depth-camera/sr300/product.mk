@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += \
 # Product configuration files.
 PRODUCT_COPY_FILES += \
 	device/intel/common/camera/sr300/camera_realsense.xml:system/etc/camera_realsense.xml \
-	device/intel/common/camera/sr300/com.intel.camera.depth.xml:system/etc/permissions/com.intel.camera.depth.xml
+	device/intel/common/camera/sr300/com.intel.camera.depth.xml:vendor/etc/permissions/com.intel.camera.depth.xml
 
 $(eval PRODUCT_COPY_FILES += $(LOCAL_PATH)/camera_realsense.xml:system/etc/camera_realsense.$(TARGET_BOARD_PLATFORM).xml)
 
