@@ -2,8 +2,8 @@
 BOARD_SEPOLICY_DIRS += device/intel/sepolicy/gptp
 
 # for AVB Streamhandler daemon
-# BOARD_SEPOLICY_M4DEFS += module_gptp=true
-# BOARD_SEPOLICY_DIRS += device/intel/sepolicy/avbstreamhandler
+BOARD_SEPOLICY_M4DEFS += module_gptp=true
+BOARD_SEPOLICY_DIRS += device/intel/sepolicy/avbstreamhandler
 
 # Common CFLAGS for IAS components
 #IAS eng and userdebug build variant
