@@ -4,9 +4,9 @@ ifeq ($(FLAG_GMS_AVAILABLE),true)
 FLAG_GMS_MINIMAL := true
 {{/minimal}}
 {{^car}}
-$(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
+$(call inherit-product-if-exists, vendor/google/gms/products/gms.mk)
 {{/car}}
 {{#car}}
-$(call inherit-product-if-exists, vendor/google/gms/products/gms_car.mk)
+$(call inherit-product-if-exists, vendor/google/gms/products/gas.mk)
 {{/car}}
 endif
