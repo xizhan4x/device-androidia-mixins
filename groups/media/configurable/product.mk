@@ -61,6 +61,6 @@ PRODUCT_PACKAGES += libion
 {{/video_dec_verisilicon_g1v6}}
 #use the configurable media_codec.xml media_codecs_performance.xml and media_profiles.xml
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/media_codecs.xml:vendor/etc/media_codecs.xml \
+    $(LOCAL_PATH)/media_codecs_performance.xml:vendor/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/media_profiles.xml:vendor/etc/media_profiles.xml
