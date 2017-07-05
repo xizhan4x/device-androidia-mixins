@@ -1,2 +1,2 @@
 [mixinfo]
-deps = trusty
+deps = trusty vendor-partition

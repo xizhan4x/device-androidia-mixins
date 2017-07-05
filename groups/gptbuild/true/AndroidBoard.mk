@@ -35,6 +35,9 @@ $(GPTIMAGE_BIN): \
 	recoveryimage \
 	systemimage \
 	cacheimage \
+    {{#vendor-partition}}
+	vendorimage \
+    {{/vendor-partition}}
 	$(SIMG2IMG) \
 	$(raw_config) \
 	$(raw_factory)
@@ -49,6 +52,9 @@ $(GPTIMAGE_BIN): \
 
 	$(SIMG2IMG) $(INSTALLED_SYSTEMIMAGE) $(INSTALLED_SYSTEMIMAGE).raw
 	$(SIMG2IMG) $(INSTALLED_CACHEIMAGE_TARGET) $(INSTALLED_CACHEIMAGE_TARGET).raw
+    {{#vendor-partition}}
+	$(SIMG2IMG) $(INSTALLED_VENDORIMAGE_TARGET) $(INSTALLED_VENDORIMAGE_TARGET).raw
+    {{/vendor-partition}}
 
 	device/intel/build/create_gpt_image.py \
 		--create $@ \
@@ -61,6 +67,9 @@ $(GPTIMAGE_BIN): \
 		--boot $(INSTALLED_BOOTIMAGE_TARGET) \
 		--recovery $(INSTALLED_RECOVERYIMAGE_TARGET) \
 		--system $(INSTALLED_SYSTEMIMAGE).raw \
+        {{#vendor-partition}}
+		--vendor $(INSTALLED_VENDORIMAGE_TARGET).raw \
+        {{/vendor-partition}}
 		--data $(PRODUCT_OUT)/userdata.dummy \
 		--cache $(INSTALLED_CACHEIMAGE_TARGET).raw \
 		--config $(raw_config) \
