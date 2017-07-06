@@ -5,7 +5,7 @@ endif
 #enable Widevine drm
 PRODUCT_PROPERTY_OVERRIDES += drm.service.enabled=true
 
-PRODUCT_COPY_FILES += device/intel/common/media/mfx_omxil_core_widevine.conf:system/etc/mfx_omxil_core.conf
+PRODUCT_COPY_FILES += device/intel/common/media/mfx_omxil_core_widevine.conf:vendor/etc/mfx_omxil_core.conf
 
 # There is an additional dependency on hdcpd that should be controlled
 # through the content-protection mixin
