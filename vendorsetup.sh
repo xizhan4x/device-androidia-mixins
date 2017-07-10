@@ -60,7 +60,11 @@ function lunch
     if [[ "${ring}" == 0 ]]; then
         echo "Ring 0 is vanilla AOSP"
         rm -rf vendor/intel/utils/Android.mk
+        target_platform_version=$(get_build_var PLATFORM_VERSION_CODENAME)
         local patch_folder=vendor/intel/utils/android_o/google_diff
+        if [  "$target_platform_version"x = "OMR1"x ]; then
+           patch_folder=vendor/intel/utils/android_omr1/google_diff
+        fi
 
         # Check if there is a list of files to parse and apply patches listed in them if any
         for file in `find $patch_folder -type f -o -type l 2>/dev/null` ; do
