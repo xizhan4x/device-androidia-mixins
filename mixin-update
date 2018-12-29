@@ -5,9 +5,9 @@ import uuid
 import sys
 
 FAKE_MIXIN_OUTPUTS = [
-    "bootable/liveinstaller/mixin-fake-output"
+    "bootable/liveinstaller/mixin-fake-output",
     "device/intel/broxton/mixin-fake-output",
-    "device/intel/cherrytrail/mixin-fake-output",]
+    "device/intel/cherrytrail/mixin-fake-output", ]
 
 
 def _findRepoRoot():
