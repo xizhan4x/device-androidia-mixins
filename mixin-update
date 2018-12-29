@@ -5,6 +5,7 @@ import uuid
 import sys
 
 FAKE_MIXIN_OUTPUTS = [
+    "device-androidia-mixins"
     "device/intel/broxton/mixin-fake-output",
     "device/intel/cherrytrail/mixin-fake-output",]
 
