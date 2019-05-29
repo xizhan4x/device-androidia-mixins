@@ -5,7 +5,7 @@ import uuid
 import sys
 
 FAKE_MIXIN_OUTPUTS = [
-    "device/intel/openmixins/mixin-fake-output",
+    "bootable/liveinstaller/mixin-fake-output",
     "device/intel/broxton/mixin-fake-output",
     "device/intel/cherrytrail/mixin-fake-output", ]
 
